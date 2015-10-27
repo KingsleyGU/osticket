@@ -917,7 +917,9 @@ ul.tabs {
 #response_options ul.tabs {
     padding-left:100px;
 }
-
+#responza-Knowledge iframe{
+    width: 100%;
+}
 
 ul.tabs li {
     margin:0;
