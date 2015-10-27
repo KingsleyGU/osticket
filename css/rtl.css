@@ -102,7 +102,7 @@
     text-align:right;
 }
 .rtl #response_options ul.tabs {
-    padding-right:190px;
+    padding-right:100px;
     padding-left: 4px;
 }
 .rtl .action-button i.icon-caret-down {

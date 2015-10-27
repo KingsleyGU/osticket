@@ -465,7 +465,7 @@ $tcount+= $ticket->getNumNotes();
         <li><a id="assign_tab" href="#assign"><?php echo $ticket->isAssigned()?__('Reassign Ticket'):__('Assign Ticket'); ?></a></li>
         <?php
         } ?>
-        <li><a id="Responza_KB" href="#note"><?php echo __('Responza KnowledgeBase');?></a></li>
+        <li><a id="Responza_KB" href="#responza-Knowledge"><?php echo __('Responza KnowledgeBase');?></a></li>
     </ul>
     <?php
     if($thisstaff->canPostReply()) { ?>
@@ -881,6 +881,9 @@ print $note_form->getField('attachments')->render();
     </form>
     <?php
     } ?>
+    <form id="responza-Knowledge">
+        <iframe src="http://erst.spitzeco.dk/contentkb/1_1"></iframe>
+    </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
