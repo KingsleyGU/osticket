@@ -26,7 +26,7 @@ require_once('../main.inc.php');
 if (($logo = $ost->getConfig()->getStaffLogo())) {
     $logo->display();
 } else {
-    header('Location: images/ost-logo.png');
+    header('Location: images/responza-logo.png');
 }
 
 ?>

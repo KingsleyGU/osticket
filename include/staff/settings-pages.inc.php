@@ -131,7 +131,7 @@ $pages = Page::getPages();
                     style="box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
                         margin: 0.5em; height: 5em;
                         vertical-align: middle"/>
-                <img src="<?php echo ROOT_PATH; ?>scp/images/ost-logo.png"
+                <img src="<?php echo ROOT_PATH; ?>scp/images/responza-logo.png"
                     alt="Default Logo" valign="middle"
                     style="box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
                         margin: 0.5em; height: 5em;
