@@ -882,8 +882,10 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" onhover="getTest(this)"></iframe>
+        <!-- <iframe id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" onhover="getTest(this)"></iframe> -->
         <!-- <iframe src="http://www.baidu.com/"></iframe> -->
+        <div id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" onhover="getTest(this)"></div>
+
     </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
@@ -983,11 +985,11 @@ print $note_form->getField('attachments')->render();
 <script type="text/javascript">
 $(document).ready(function(){
     // $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
-    $("#responza-Knowledge-iframe").on("hover",function(){
-        alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
-    });
+    // $("#responza-Knowledge-iframe").on("hover",function(){
+    //     alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
+    // });
       // $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
-      // $("#responza-Knowledge-iframe").load($("#responza-Knowledge-iframe").data("src"));
+       $("#responza-Knowledge-iframe").load($("#responza-Knowledge-iframe").data("src"));
      // $.get($("#responza-Knowledge-iframe").data("src")).success(function(data) {
      //     $("#responza-Knowledge-iframe").html(data);
      // }).error(function() { $("#responza-Knowledge-iframe").html("Could not load page."); });
