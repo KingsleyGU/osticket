@@ -1024,8 +1024,8 @@ $(function() {
 // iframe.click(function(){
 //     alert("222");
 // })
-// $('#responza-Knowledge-iframe').keydown(function(){
-//     alert("222");
-// })
+$('#responza-Knowledge-iframe')..mousedown(function(){
+    alert("222");
+})
 
 </script>
