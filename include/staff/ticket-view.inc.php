@@ -988,7 +988,7 @@ $(function() {
         var tid = <?php echo $ticket->getOwnerId(); ?>;
         var cid = <?php echo $ticket->getOwnerId(); ?>;
         var url = 'ajax.php/'+$(this).attr('href').substr(1);
-        $("#responza-Knowledge-iframe").load('http://www.baidu.com');
+        $("#responza-Knowledge-iframe").attr('src', "http://www.baidu.com");
         $.userLookup(url, function(user) {
             if(cid!=user.id
                     && $('.dialog#confirm-action #changeuser-confirm').length) {
