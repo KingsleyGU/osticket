@@ -1000,9 +1000,9 @@ $(function() {
             }
         });
     });
-    $("#responza-Knowledge-iframe").click(function(){
-        alert("222");
-    });
+    // $("#responza-Knowledge-iframe").click(function(){
+    //     alert("222");
+    // });
 <?php
     // Set the lock if one exists
     if ($lock) { ?>
@@ -1018,4 +1018,9 @@ $(function() {
 }();
 <?php } ?>
 });
+
+$('#responza-Knowledge-iframe').on('click', function(event) { 
+    alert("222");
+});
+
 </script>
