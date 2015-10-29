@@ -102,7 +102,6 @@ div#header a {
     display:block;
     text-decoration:none;
     outline:none;
-    max-width: 400px;
     padding: 5px 0 7px 5px;
 }
 #logo:hover{
