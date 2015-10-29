@@ -882,7 +882,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>"></iframe>
+        <div id="responza-Knowledge-iframe" data-src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>"></div>
         <!-- <iframe src="http://www.baidu.com/"></iframe> -->
     </form>
 </div>
@@ -983,13 +983,13 @@ print $note_form->getField('attachments')->render();
 <script type="text/javascript">
 $(document).ready(function(){
     // $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
-    $("#responza-Knowledge-iframe").on("mouseover",function(){
-        alert($(this).contents().text());
-    });
-     // $("div#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
-     // $.get($("div#responza-Knowledge-iframe").data("src")).success(function(data) {
-     //     $("div#responza-Knowledge-iframe").html(data);
-     // }).error(function() { $("div#responza-Knowledge-iframe").html("Could not load page."); });
+    // $("#responza-Knowledge-iframe").on("mouseover",function(){
+    //     alert($(this).contents().text());
+    // });
+     $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
+     $.get($("#responza-Knowledge-iframe").data("src")).success(function(data) {
+         $("#responza-Knowledge-iframe").html(data);
+     }).error(function() { $("#responza-Knowledge-iframe").html("Could not load page."); });
 });
 $(function() {
    
