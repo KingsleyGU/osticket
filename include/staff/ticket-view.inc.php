@@ -981,7 +981,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(function() {
-    alert($('#responza-Knowledge-iframe').text());
+    // alert($('#responza-Knowledge-iframe').text());
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;
@@ -1024,6 +1024,9 @@ $(function() {
 // iframe.click(function(){
 //     alert("222");
 // })
+$('#responza-Knowledge-iframe').load(function(){
+    alert('loaded!');
+});
 $('#responza-Knowledge-iframe').mousedown(function(){
     alert("222");
 })
