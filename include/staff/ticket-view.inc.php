@@ -986,10 +986,11 @@ $(document).ready(function(){
     // $("#responza-Knowledge-iframe").on("mouseover",function(){
     //     alert($(this).contents().text());
     // });
-     $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
-     $.get($("#responza-Knowledge-iframe").data("src")).success(function(data) {
-         $("#responza-Knowledge-iframe").html(data);
-     }).error(function() { $("#responza-Knowledge-iframe").html("Could not load page."); });
+      $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
+      $("#responza-Knowledge-iframe").load($("#responza-Knowledge-iframe").data("src"));
+     // $.get($("#responza-Knowledge-iframe").data("src")).success(function(data) {
+     //     $("#responza-Knowledge-iframe").html(data);
+     // }).error(function() { $("#responza-Knowledge-iframe").html("Could not load page."); });
 });
 $(function() {
    
