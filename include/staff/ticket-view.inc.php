@@ -1033,7 +1033,7 @@ $(function() {
 // });
 function getContentofEmail(selector)
 {
-    alert($(this).html());
+    alert($(this).contents().html());
 }
 
 </script>
