@@ -982,7 +982,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(function() {
-    $("#responza-Knowledge-iframe").attr('src', "http://www.baidu.com");
+    $("#responza-Knowledge-iframe").attr('data', "http://www.baidu.com");
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;
