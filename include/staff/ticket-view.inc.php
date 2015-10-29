@@ -1025,10 +1025,11 @@ $(function() {
 //     alert("222");
 // })
 $('#responza-Knowledge-iframe').load(function(){
-    alert('loaded!');
+    alert("loaded");
+    $(this).click(function(){
+        alert("2222");
+    })
 });
-$('#responza-Knowledge-iframe').mousedown(function(){
-    alert("222");
-})
+
 
 </script>
