@@ -882,7 +882,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" ></iframe>
+        <iframe id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" ></iframe>
     </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
@@ -999,6 +999,9 @@ $(function() {
                 .parent('div').show().trigger('click');
             }
         });
+    });
+    $("#responza-Knowledge-iframe").contents().find("#_Mail").click(function(){
+        alert("222");
     });
 <?php
     // Set the lock if one exists
