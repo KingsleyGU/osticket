@@ -882,7 +882,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>"></iframe>
+        <object id="responza-Knowledge-iframe" data="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>"></object>
         <!-- <iframe src="http://www.baidu.com/"></iframe> -->
     </form>
 </div>
@@ -984,7 +984,7 @@ print $note_form->getField('attachments')->render();
 $(document).ready(function(){
     $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
     $("#responza-Knowledge-iframe").on("hover",function(){
-        alert($(this).contents().text());
+        alert($(this).html());
     });
       // $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
       // $("#responza-Knowledge-iframe").load($("#responza-Knowledge-iframe").data("src"));
