@@ -105,6 +105,10 @@ div#header a {
     max-width: 400px;
     padding: 5px 0 7px 5px;
 }
+#logo:hover{
+    background-color: #9c9c9c;
+}
+
 #logo img {
     max-height: 66px;
     max-width: 300px;
