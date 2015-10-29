@@ -1019,10 +1019,12 @@ $(function() {
 <?php } ?>
 });
 
-var iframe = $('#responza-Knowledge-iframe').contents();
-iframe.click(function(){
+// var iframe = $('#responza-Knowledge-iframe').contents();
+// iframe.click(function(){
+//     alert("222");
+// })
+$('#responza-Knowledge-iframe').hover(function(){
     alert("222");
 })
-
 
 </script>
