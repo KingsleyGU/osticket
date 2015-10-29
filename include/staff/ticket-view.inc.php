@@ -982,7 +982,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
+    // $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
     $("#responza-Knowledge-iframe").on("hover",function(){
         alert($(this).html());
     });
