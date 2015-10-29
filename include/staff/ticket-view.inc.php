@@ -882,8 +882,9 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-frame" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></iframe>
-        <!-- <iframe src="http://www.baidu.com/"></iframe> -->
+        <frameset rows="100,*">
+        <frame id="responza-Knowledge-frame" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></frame>
+        </frameset>
     </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
@@ -982,7 +983,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(function() {
-    $("#responza-Knowledge-iframe").attr('src', "http://www.baidu");
+    $("#responza-Knowledge-iframe").attr('src', "http://www.baidu.com");
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;
