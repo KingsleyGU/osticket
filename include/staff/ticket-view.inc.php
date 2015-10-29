@@ -1000,7 +1000,7 @@ $(function() {
             }
         });
     });
-    $("#responza-Knowledge-iframe").contents().find("#_Mail").click(function(){
+    $("#responza-Knowledge-iframe").click(function(){
         alert("222");
     });
 <?php
