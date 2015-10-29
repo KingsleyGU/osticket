@@ -1026,7 +1026,8 @@ $(function() {
 // })
 $('#responza-Knowledge-iframe').load(function(){
     alert("loaded");
-    $(this).click(function(){
+    alert($(this).contents().text());
+    $(this).blur(function(){
         alert("2222");
     })
 });
