@@ -983,6 +983,10 @@ print $note_form->getField('attachments')->render();
 <script type="text/javascript">
 $(document).ready(function(){
     // $("#responza-Knowledge-iframe").src = "http://www.baidu";
+     $("div#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
+     $.get($("div#responza-Knowledge-iframe").data("src")).success(function(data) {
+         $("div#responza-Knowledge-iframe").html(data);
+     }).error(function() { $("div#responza-Knowledge-iframe").html("Could not load page."); });
 });
 $(function() {
    
