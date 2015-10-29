@@ -983,7 +983,7 @@ print $note_form->getField('attachments')->render();
 <script type="text/javascript">
 $(document).ready(function(){
     $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
-    $("#responza-Knowledge-iframe").on("click",function(e){
+    $("#responza-Knowledge-iframe").on("mouseover",function(){
         alert("222");
     });
      // $("div#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
