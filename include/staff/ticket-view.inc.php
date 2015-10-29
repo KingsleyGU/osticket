@@ -982,13 +982,12 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(function() {
-    // alert($('#responza-Knowledge-iframe').text());
+    $("#responza-Knowledge-iframe").attr('src', "http://www.baidu");
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;
         var cid = <?php echo $ticket->getOwnerId(); ?>;
         var url = 'ajax.php/'+$(this).attr('href').substr(1);
-        $("#responza-Knowledge-iframe").attr('src', "http://www.baidu");
         $.userLookup(url, function(user) {
             if(cid!=user.id
                     && $('.dialog#confirm-action #changeuser-confirm').length) {
