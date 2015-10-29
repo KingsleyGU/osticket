@@ -982,7 +982,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#responza-Knowledge-iframe").attr("src")"http://www.baidu.com");
+    $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
      // $("div#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
      // $.get($("div#responza-Knowledge-iframe").data("src")).success(function(data) {
      //     $("div#responza-Knowledge-iframe").html(data);
