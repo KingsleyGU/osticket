@@ -129,9 +129,8 @@ div#header a {
     width:auto;
     max-width:630px;
     margin:10px;
-    background-color: rgba(213,214,210, 0.3);
-    border-radius:7px; 
-    border:1px solid #ccc;
+    background-color: rgba(255,255,255, 0.7);
+    border-radius:5px; 
     padding:8px;
     text-align:center;
 }
