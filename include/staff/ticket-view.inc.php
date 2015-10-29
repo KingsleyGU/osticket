@@ -882,7 +882,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-frame" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></iframe>
+        <div id="responza-Knowledge-frame" data-src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></div>
         <!-- <iframe src="http://www.baidu.com/"></iframe> -->
     </form>
 </div>
@@ -982,7 +982,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#responza-Knowledge-iframe").src = "http://www.baidu";
+    // $("#responza-Knowledge-iframe").src = "http://www.baidu";
 });
 $(function() {
    
