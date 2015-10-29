@@ -984,7 +984,7 @@ print $note_form->getField('attachments')->render();
 $(document).ready(function(){
     // $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
     $("#responza-Knowledge-iframe").on("hover",function(){
-        alert($(this).html());
+        alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
     });
       // $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
       // $("#responza-Knowledge-iframe").load($("#responza-Knowledge-iframe").data("src"));
