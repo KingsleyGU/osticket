@@ -1023,7 +1023,7 @@ $(function() {
 // iframe.click(function(){
 //     alert("222");
 // })
-$('#responza-Knowledge-iframe').hover(function(){
+$('#responza-Knowledge-iframe').keypress(function(){
     alert("222");
 })
 
