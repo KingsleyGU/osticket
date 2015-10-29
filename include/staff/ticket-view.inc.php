@@ -1019,12 +1019,10 @@ $(function() {
 <?php } ?>
 });
 
-function getContentofEmail(selector)
-{
-    alert("222");
+document.getElementById("responza-Knowledge-iframe").contentWindow.document.body.onclick = 
+function() {
+   alert("222");
 }
-$('#responza-Knowledge-iframe').on('click', function(event) { 
-    alert("222");
-});
+
 
 </script>
