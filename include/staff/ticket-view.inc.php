@@ -1024,13 +1024,16 @@ $(function() {
 // iframe.click(function(){
 //     alert("222");
 // })
-$('#responza-Knowledge-iframe').load(function(){
-    alert("loaded");
-    alert($(this).contents().text());
-    $(this).blur(function(){
-        alert("2222");
-    })
-});
-
+// $('#responza-Knowledge-iframe').load(function(){
+//     alert("loaded");
+//     alert($(this).contents().text());
+//     $(this).blur(function(){
+//         alert("2222");
+//     })
+// });
+function getContentofEmail(selector)
+{
+    alert($(this).html());
+}
 
 </script>
