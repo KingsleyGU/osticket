@@ -92,7 +92,6 @@ div#header a {
 }
 
 #header {
-    height:70px;
     border-left:1px solid #aaa;
     border-right:1px solid #aaa;
     background-color: rgb(173,175,175);
@@ -103,7 +102,6 @@ div#header a {
     display:block;
     text-decoration:none;
     outline:none;
-    height: 64px;
     max-width: 400px;
     padding: 5px 0 7px 5px;
 }
