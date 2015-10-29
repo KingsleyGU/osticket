@@ -1019,10 +1019,10 @@ $(function() {
 <?php } ?>
 });
 
-document.getElementById("responza-Knowledge-iframe").contentWindow.document.body.onclick = 
-function() {
-   alert("222");
-}
+var iframe = $('#responza-Knowledge-iframe').contents();
+iframe.click(function(){
+    alert("222");
+})
 
 
 </script>
