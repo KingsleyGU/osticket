@@ -882,9 +882,8 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <frameset rows="100,*">
-        <frame id="responza-Knowledge-frame" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></frame>
-        </frameset>
+        <object id="responza-Knowledge-frame" type="text/html" data="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></object>
+        <!-- <iframe src="http://www.baidu.com/"></iframe> -->
     </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
