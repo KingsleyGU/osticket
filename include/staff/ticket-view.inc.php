@@ -1031,6 +1031,9 @@ $(function() {
 //         alert("2222");
 //     })
 // });
+$("#responza-Knowledge").click(function(){
+    alert("2222");
+})
 function getContentofEmail(selector)
 {
     alert($(this).contents().html());
