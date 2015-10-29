@@ -983,6 +983,9 @@ print $note_form->getField('attachments')->render();
 <script type="text/javascript">
 $(document).ready(function(){
     $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
+    $("#responza-Knowledge-iframe").on("click",function(e){
+        alert("222");
+    });
      // $("div#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
      // $.get($("div#responza-Knowledge-iframe").data("src")).success(function(data) {
      //     $("div#responza-Knowledge-iframe").html(data);
@@ -1042,9 +1045,6 @@ $(function() {
 // $("#responza-Knowledge").click(function(){
 //     alert("2222");
 // })
-function getContentofEmail(selector)
-{
-    alert($(this).contents().find("body").text());
-}
+
 
 </script>
