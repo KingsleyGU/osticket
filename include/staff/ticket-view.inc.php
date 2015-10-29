@@ -882,7 +882,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-frame" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></iframe>
+        <iframe id="responza-Knowledge-frame" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=111; ?>" onhover="getContentofEmail(this)"></iframe>
         <!-- <iframe src="http://www.baidu.com/"></iframe> -->
     </form>
 </div>
