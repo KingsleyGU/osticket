@@ -885,7 +885,7 @@ print $note_form->getField('attachments')->render();
         <!-- <iframe id="responza-Knowledge-iframe" src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" onhover="getTest(this)"></iframe> -->
         <!-- <iframe src="http://www.baidu.com/"></iframe> -->
         <!-- <div id="responza-Knowledge-iframe" data-src="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" onhover="getTest(this)"></div> -->
-        <object id="responza-Knowledge-iframe" data="http://erst.spitzeco.dk/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getTest(this)"></object>
+        <object id="responza-Knowledge-iframe" data="http://localhost:49819//contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getTest(this)"></object>
     </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
