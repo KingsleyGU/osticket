@@ -992,7 +992,8 @@ $(document).ready(function(){
 
 // Click getContentBtn to get the content of iframe
 $("#getContentBtn").click(function(){
-    alert($("#responza-Knowledge-iframe").contents().find("#_Telefon").html());
+    var contentWindow = $("#responza-Knowledge-iframe").contentWindow;
+    contentWindow.postMessage("hello","http://localhost:49819/");
 })
 
 $(function() {
