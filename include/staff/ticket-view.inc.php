@@ -375,6 +375,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
     } ?>
 </table>
 <div class="clear"></div>
+<button id="getContentBtn">click me</button>
 <h2 style="padding:10px 0 5px 0; font-size:11pt;"><?php echo Format::htmlchars($ticket->getSubject()); ?></h2>
 <?php
 $tcount = $ticket->getThreadCount();
@@ -981,16 +982,19 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    // $("#responza-Knowledge-iframe").attr("src","http://www.baidu.com");
-    $("#responza-Knowledge-iframe").on("hover",function(){
-        alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
-    });
-      // $("#responza-Knowledge-iframe").css("overflow", "auto"); // or do it in css
-       // $("#responza-Knowledge-iframe").load($("#responza-Knowledge-iframe").data("src"));
-     // $.get($("#responza-Knowledge-iframe").data("src")).success(function(data) {
-     //     $("#responza-Knowledge-iframe").html(data);
-     // }).error(function() { $("#responza-Knowledge-iframe").html("Could not load page."); });
+    // $("#responza-Knowledge-iframe").on("hover",function(){
+    //     alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
+    // });
+
+    // $("#myiframe").contents().find("#myContent")
+
 });
+
+// Click getContentBtn to get the content of iframe
+$("#getContentBtn").click(function(){
+    alert($("#responza-Knowledge-iframe").contents().find("#_Telefon").html());
+})
+
 $(function() {
    
     $(document).on('click', 'a.change-user', function(e) {
@@ -1012,9 +1016,7 @@ $(function() {
             }
         });
     });
-    // $("#responza-Knowledge-iframe").click(function(){
-    //     alert("222");
-    // });
+
 <?php
     // Set the lock if one exists
     if ($lock) { ?>
@@ -1036,20 +1038,6 @@ $(function() {
         alert(222);
     }
 
-// var iframe = $('#responza-Knowledge-iframe').contents();
-// iframe.click(function(){
-//     alert("222");
-// })
-// $('#responza-Knowledge-iframe').load(function(){
-//     alert("loaded");
-//     alert($(this).contents().text());
-//     $(this).blur(function(){
-//         alert("2222");
-//     })
-// });
-// $("#responza-Knowledge").click(function(){
-//     alert("2222");
-// })
 
 
 </script>
