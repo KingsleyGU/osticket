@@ -101,6 +101,10 @@
     padding-right: 20px;
     text-align:right;
 }
+#responza-Knowledge-iframe
+{
+    width: 100%;
+}
 .rtl #response_options ul.tabs {
     padding-right:100px;
     padding-left: 4px;
