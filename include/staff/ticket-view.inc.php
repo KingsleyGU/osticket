@@ -982,6 +982,7 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
+    contentWindow.postMessage("hello","http://localhost:49819/");
     // $("#responza-Knowledge-iframe").on("hover",function(){
     //     alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
     // });
@@ -993,7 +994,7 @@ $(document).ready(function(){
 // Click getContentBtn to get the content of iframe
 $("#getContentBtn").click(function(){
     var contentWindow = $("#responza-Knowledge-iframe").contentWindow;
-    contentWindow.postMessage("hello","http://localhost:49819/");
+    contentWindow.postMessage("hello to responza","http://localhost:49819/");
 })
 
 $(function() {
