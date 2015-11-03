@@ -882,8 +882,8 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-iframe" src="http://localhost:49819/contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo rawurlencode(Format::htmlchars($ticket->getSubject())); ?>" onhover="getContentofEmail(this)"></iframe>
- </form>
+        <iframe id="responza-Knowledge-iframe" src="http://localhost:49819/contentkb/1_1" onhover="getContentofEmail(this)"></iframe>
+ </form>/contentkb/1_1
 </div>
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
