@@ -33,6 +33,7 @@ if (($lang = Internationalization::getCurrentLanguage())
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery.magnific-popup.js"></script>
     
     <script type="text/javascript" src="./js/bootstrap-typeahead.js?19292ad"></script>
+    <link rel="shortcut icon" href="<?php echo ROOT_PATH; ?>images/Responza/responza-logo.png">
     <link rel="stylesheet" href="<?php echo ROOT_PATH ?>css/thread.css?19292ad" media="all"/>
     <link rel="stylesheet" href="./css/scp.css?19292ad" media="all"/>
     <link rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/redactor.css?19292ad" media="screen"/>

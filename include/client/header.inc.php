@@ -21,6 +21,8 @@ if (($lang = Internationalization::getCurrentLanguage())
     <meta name="description" content="customer support platform">
     <meta name="keywords" content="osTicket, Customer support system, support ticket system">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="<?php echo ROOT_PATH; ?>images/Responza/responza-logo.png">
+
 	<link rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/osticket.css?19292ad" media="screen"/>
     <link rel="stylesheet" href="<?php echo ASSETS_PATH; ?>css/theme.css?19292ad" media="screen"/>
     <link rel="stylesheet" href="<?php echo ASSETS_PATH; ?>css/print.css?19292ad" media="print"/>
