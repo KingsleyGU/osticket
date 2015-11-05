@@ -1045,8 +1045,9 @@ $(function() {
 });
 function popUpArticleContect(articleIndex)
 {
-    $( "#dialog body" ).html($.parseHTML(responzaArticleArray[articleIndex]));
     $( "#dialog" ).dialog();
+    $( "#dialog" ).html($.parseHTML(responzaArticleArray[articleIndex]));
+
     return false;
 }
 </script>
