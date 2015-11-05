@@ -988,7 +988,7 @@ $(document).ready(function(){
         var articleSearchResultObject = jQuery.parseJSON( data );  
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
-            var articleLinkString = "<a class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</a>";
+            var articleLinkString = "<button type='button' class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["html"]);
         }
@@ -1041,5 +1041,6 @@ $(function() {
 function popUpArticleContect(articleIndex)
 {
      $( "#dialog" ).dialog();
+     return false;
 }
 </script>

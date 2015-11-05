@@ -1,5 +1,6 @@
 a.responza-article-link
 {
+	cursor:pointer;
 	display: block;
 	margin-left: 20px;
     color: #1a0dab;
