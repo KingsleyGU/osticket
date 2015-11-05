@@ -993,16 +993,21 @@ $(document).ready(function(){
         var articleSearchResultObject = jQuery.parseJSON( data );  
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
-            var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
+            var articleLinkString = "<a href='#test-modal' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</a>";
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
         }
     });
-
-    // $(document).on('click', '.popup-modal-dismiss', function (e) {
-    //   e.preventDefault();
-    //   $.magnificPopup.close();
-    // });
+    $('.popup-modal').magnificPopup({
+      type: 'inline',
+      preloader: false,
+      focus: '#username',
+      modal: true
+    });
+    $(document).on('click', '.popup-modal-dismiss', function (e) {
+      e.preventDefault();
+      $.magnificPopup.close();
+    });
 });
 
 // Click getContentBtn to get the content of iframe
@@ -1050,8 +1055,8 @@ $(function() {
 });
 function popUpArticleContect(articleIndex)
 {
-    $( ".responza-Knowledge-content" ).empty();
-    $( ".responza-Knowledge-content" ).html($.parseHTML(responzaArticleArray[articleIndex]));
+    // $( ".responza-Knowledge-content" ).empty();
+    $( "#test-modal" ).html($.parseHTML(responzaArticleArray[articleIndex]));
 
     return false;
 }
