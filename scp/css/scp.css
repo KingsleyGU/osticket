@@ -968,7 +968,7 @@ ul.tabs li a.active {
 #response_options > form {
     padding:10px 5px;
     background:#f9f9f9;
-    /*border:1px solid #aaa;*/
+    border:1px solid #aaa;
     border-top:none;
 }
 
