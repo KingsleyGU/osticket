@@ -883,7 +883,11 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <div class="responza-Knowledge-content">
+        <div class="responza-article-link-content">
+        </div>
+        <div class="responza-article-block" style="display:none;">
+            <div class="responza-article-content">
+            </div>
         </div>
     </form>
 </div>
@@ -994,7 +998,7 @@ $(document).ready(function(){
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
             var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
-            $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
+            $(".responza-article-link-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
         }
     });
@@ -1055,8 +1059,9 @@ $(function() {
 });
 function popUpArticleContect(articleIndex)
 {
-    // $( ".responza-Knowledge-content" ).empty();
-    $( "#test-modal" ).html($.parseHTML(responzaArticleArray[articleIndex]));
+    $( ".responza-article-link-content" ).css("display","none");
+    $( ".responza-article-block" ).css("display","block");
+    $( ".responza-article-content" ).html($.parseHTML(responzaArticleArray[articleIndex]));
 
     return false;
 }
