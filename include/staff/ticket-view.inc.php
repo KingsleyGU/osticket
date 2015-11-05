@@ -988,7 +988,7 @@ $(document).ready(function(){
         var articleSearchResultObject = jQuery.parseJSON( data );  
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
-            var articleLinkString = "<a class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[1]["Title"]+"</a>";
+            var articleLinkString = "<a class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</a>";
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["html"]);
         }
