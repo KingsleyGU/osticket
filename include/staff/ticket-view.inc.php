@@ -993,7 +993,7 @@ $(document).ready(function(){
         var articleSearchResultObject = jQuery.parseJSON( data );  
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
-            var articleLinkString = "<button  class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
+            var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
         }
