@@ -886,6 +886,7 @@ print $note_form->getField('attachments')->render();
         <div class="responza-article-link-content">
         </div>
         <div class="responza-article-block" style="display:none;">
+            <button type="button" onclick="goBackToArticleLink()"><i class="icon-back"></i>back</button>
             <div class="responza-article-content">
             </div>
         </div>
