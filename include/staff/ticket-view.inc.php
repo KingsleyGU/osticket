@@ -1059,7 +1059,7 @@ $(function() {
 <?php } ?>
 });
 
-function popUpArticleContect(var articleIndex)
+function popUpArticleContect(articleIndex)
 {
     $(".modal-body").html($.parseHTML(responzaArticleArray[articleIndex]));
 }
