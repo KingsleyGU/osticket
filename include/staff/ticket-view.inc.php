@@ -1038,5 +1038,8 @@ $(function() {
 }();
 <?php } ?>
 });
-
+function popUpArticleContect(articleIndex)
+{
+     $( "#dialog" ).dialog();
+}
 </script>
