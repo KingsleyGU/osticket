@@ -981,6 +981,11 @@ print $note_form->getField('attachments')->render();
     </form>
     <div class="clear"></div>
 </div>
+<!-- this is for the popup box -->
+<div id="dialog" title="Basic dialog">
+
+</div>
+
 <script type="text/javascript">
 var responzaArticleArray = [];
 $(document).ready(function(){
@@ -1040,7 +1045,8 @@ $(function() {
 });
 function popUpArticleContect(articleIndex)
 {
-     $( "#dialog" ).dialog();
-     return false;
+    $( "#dialog" ).html($.parseHTML(responzaArticleArray[articleIndex]));
+    $( "#dialog" ).dialog();
+    return false;
 }
 </script>
