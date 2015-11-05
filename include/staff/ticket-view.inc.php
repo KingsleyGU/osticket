@@ -1050,6 +1050,7 @@ $(function() {
 });
 function popUpArticleContect(articleIndex)
 {
+    $( "#responza-Knowledge-content" ).empty();
     $( "#responza-Knowledge-content" ).html($.parseHTML(responzaArticleArray[articleIndex]));
 
     return false;
