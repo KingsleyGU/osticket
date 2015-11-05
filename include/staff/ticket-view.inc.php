@@ -1032,11 +1032,4 @@ $(function() {
 <?php } ?>
 });
 
-    function getTest(selector)
-    {
-        alert(222);
-    }
-
-
-
 </script>
