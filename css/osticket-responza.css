@@ -55,3 +55,15 @@
     -moz-transition: opacity 0.25s ease, background-color 0.25s ease, color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
     transition: opacity 0.25s ease, background-color 0.25s ease, color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
+.goBackButton{
+    position: fixed;
+    top: 195px;
+    right: 50px;
+    background-color: rgba(213,214,210, 0.3) !important;
+    color: #444 !important;
+    border-radius: 7px !important;
+    padding: 0.5em 0.0em 0.7em !important;
+    float: right !important;
+    min-height: 33px !important;
+    width: 42.4531px;
+}
