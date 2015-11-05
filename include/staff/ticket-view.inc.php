@@ -883,8 +883,9 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
     <form id="responza-Knowledge">
-        <iframe id="responza-Knowledge-iframe" src="http://localhost:49819/contentkb/1_1" onhover="getContentofEmail(this)"></iframe>
- </form>/contentkb/1_1
+        <div class="responza-Knowledge-content">
+        </div>
+    </form>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
@@ -982,13 +983,9 @@ print $note_form->getField('attachments')->render();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    contentWindow.postMessage("hello","http://localhost:49819/");
-    // $("#responza-Knowledge-iframe").on("hover",function(){
-    //     alert(document.getElementById('responza-Knowledge-iframe').contentWindow.document.body.innerHTML);
-    // });
-
-    // $("#myiframe").contents().find("#myContent")
-
+    $.get( "http://localhost:49819//api/ArticleApi/SearchArticles?title=a&customer=1&portal_id=1&field=Date&order=ASC&number=10", function( data ) {
+    var obj = jQuery.parseJSON( data );      
+    $(".responza-Knowledge-content").html($.parseHTML(obj[0]["HTML"]));
 });
 
 // Click getContentBtn to get the content of iframe
