@@ -982,7 +982,7 @@ print $note_form->getField('attachments')->render();
     <div class="clear"></div>
 </div>
 <!-- this is for the popup box -->
-<div id="dialog" title="Basic dialog">
+<div id="test-modal" class="mfp-hide white-popup-block">
 
 </div>
 
@@ -993,10 +993,20 @@ $(document).ready(function(){
         var articleSearchResultObject = jQuery.parseJSON( data );  
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
-            var articleLinkString = "<button type='button' class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
+            var articleLinkString = "<a href='#test-modal' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</a>";
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["html"]);
         }
+    });
+    $('.popup-modal').magnificPopup({
+      type: 'inline',
+      preloader: false,
+      focus: '#username',
+      modal: true
+    });
+    $(document).on('click', '.popup-modal-dismiss', function (e) {
+      e.preventDefault();
+      $.magnificPopup.close();
     });
 });
 
