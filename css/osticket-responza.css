@@ -1,5 +1,7 @@
-a.responza-article-link
+responza-article-link
 {
+	background: none;
+	border:0px;
 	cursor:pointer;
 	display: block;
 	margin-left: 20px;
