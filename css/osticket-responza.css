@@ -58,3 +58,25 @@
     min-height: 33px ;
     width: 42.4531px;
 }
+.responza-Knowledge
+{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.responza-article-block a
+{
+	background-color: rgba(0, 0, 0, 0);
+	box-sizing: border-box;
+	color: rgb(35, 82, 124);
+	cursor: auto;
+	display: inline;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	height: auto;
+	line-height: 20px;
+	list-style-type: disc;
+	outline-color: rgb(35, 82, 124);
+	outline-style: none;
+	outline-width: 0px;
+	text-align: left;
+	text-decoration: underline;
+}

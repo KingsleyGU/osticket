@@ -1058,6 +1058,7 @@ $(function() {
 }();
 <?php } ?>
 });
+//this function is for displying the content of the relevant article
 function popUpArticleContect(articleIndex)
 {
     $( ".responza-article-link-content" ).css("display","none");
