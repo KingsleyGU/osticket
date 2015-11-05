@@ -995,7 +995,7 @@ $(document).ready(function(){
         {
             var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
-            responzaArticleArray.push(articleSearchResultObject[i]["html"]);
+            responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
         }
     });
 
