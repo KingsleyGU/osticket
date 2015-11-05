@@ -470,7 +470,7 @@ $tcount+= $ticket->getNumNotes();
     </ul>
     <?php
     if($thisstaff->canPostReply()) { ?>
-    <form id="reply" action="tickets.php?id=<?php echo $ticket->getId(); ?>#reply" name="reply" method="post" enctype="multipart/form-data">
+    <form id="reply" action="tickets.php?id=<?php echo $ticket->getId(); ?>#reply" name="reply" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="msgId" value="<?php echo $msgId; ?>">
@@ -648,7 +648,7 @@ print $response_form->getField('attachments')->render();
     </form>
     <?php
     } ?>
-    <form id="note" action="tickets.php?id=<?php echo $ticket->getId(); ?>#note" name="note" method="post" enctype="multipart/form-data">
+    <form id="note" action="tickets.php?id=<?php echo $ticket->getId(); ?>#note" name="note" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="locktime" value="<?php echo $cfg->getLockTime(); ?>">
@@ -727,7 +727,7 @@ print $note_form->getField('attachments')->render();
    </form>
     <?php
     if($thisstaff->canTransferTickets()) { ?>
-    <form id="transfer" action="tickets.php?id=<?php echo $ticket->getId(); ?>#transfer" name="transfer" method="post" enctype="multipart/form-data">
+    <form id="transfer" action="tickets.php?id=<?php echo $ticket->getId(); ?>#transfer" name="transfer" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="ticket_id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="a" value="transfer">
@@ -786,7 +786,7 @@ print $note_form->getField('attachments')->render();
     } ?>
     <?php
     if($thisstaff->canAssignTickets()) { ?>
-    <form id="assign" action="tickets.php?id=<?php echo $ticket->getId(); ?>#assign" name="assign" method="post" enctype="multipart/form-data">
+    <form id="assign" action="tickets.php?id=<?php echo $ticket->getId(); ?>#assign" name="assign" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="a" value="assign">
@@ -882,7 +882,7 @@ print $note_form->getField('attachments')->render();
     </form>
     <?php
     } ?>
-    <form id="responza-Knowledge">
+    <div id="responza-Knowledge" class="tab-response-block">
         <div class="responza-article-link-content">
         </div>
         <div class="responza-article-block" style="display:none;">
@@ -890,7 +890,7 @@ print $note_form->getField('attachments')->render();
             <div class="responza-article-content">
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
