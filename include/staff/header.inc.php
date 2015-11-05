@@ -30,6 +30,7 @@ if (($lang = Internationalization::getCurrentLanguage())
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor.min.js?19292ad"></script>
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor-osticket.js?19292ad"></script>
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor-fonts.js?19292ad"></script>
+    <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap-typeahead.js?19292ad"></script>
     <link rel="stylesheet" href="<?php echo ROOT_PATH ?>css/thread.css?19292ad" media="all"/>
     <link rel="stylesheet" href="./css/scp.css?19292ad" media="all"/>
@@ -45,7 +46,8 @@ if (($lang = Internationalization::getCurrentLanguage())
     <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/loadingbar.css?19292ad"/>
     <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css?19292ad"/>
     <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/osticket-responza.css"/>
-    
+    <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/bootstrap.min.css"/>
+
     <script type="text/javascript" src="./js/jquery.dropdown.js?19292ad"></script>
 
     <?php
