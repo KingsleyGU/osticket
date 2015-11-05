@@ -16,3 +16,24 @@
 	width: 50% !important;
 	height: 50% !important;
 }
+.responzaBtn
+{
+	cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    min-height: 1em;
+    outline: none;
+    border: none;
+    background-color: #FAFAFA;
+    color: #808080;
+    margin: 0em;
+    font-size: 11px !important;
+    padding: 0.8em 1.5em;
+    font-size: 1rem;
+    text-transform: uppercase;
+    line-height: 1;
+    font-weight: 100;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+}

@@ -886,7 +886,7 @@ print $note_form->getField('attachments')->render();
         <div class="responza-article-link-content">
         </div>
         <div class="responza-article-block" style="display:none;">
-            <button type="button" onclick="goBackToArticleLink()"><i class="icon-back"></i>back</button>
+            <button type="button" class="responzaBtn goBackButton" onclick="goBackToArticleLink()">back</button>
             <div class="responza-article-content">
             </div>
         </div>
@@ -1065,5 +1065,10 @@ function popUpArticleContect(articleIndex)
     $( ".responza-article-content" ).html($.parseHTML(responzaArticleArray[articleIndex]));
 
     return false;
+}
+function goBackToArticleLink()
+{
+    $( ".responza-article-block" ).css("display","none");
+    $( ".responza-article-link-content" ).css("display","block");
 }
 </script>
