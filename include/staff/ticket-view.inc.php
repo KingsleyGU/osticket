@@ -986,6 +986,7 @@ $(document).ready(function(){
     $.get( "http://localhost:49819//api/ArticleApi/SearchArticles?title=a&customer=1&portal_id=1&field=Date&order=ASC&number=10", function( data ) {
     var obj = jQuery.parseJSON( data );      
     $(".responza-Knowledge-content").html($.parseHTML(obj[0]["HTML"]));
+    });
 });
 
 // Click getContentBtn to get the content of iframe
