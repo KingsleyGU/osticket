@@ -982,10 +982,16 @@ print $note_form->getField('attachments')->render();
     <div class="clear"></div>
 </div>
 <script type="text/javascript">
+var responzaArticleArray = [];
 $(document).ready(function(){
     $.get( "http://localhost:49819//api/ArticleApi/SearchArticles?title=a&customer=1&portal_id=1&field=Date&order=ASC&number=10", function( data ) {
-    var obj = jQuery.parseJSON( data );   
-    $(".responza-Knowledge-content").html($.parseHTML(obj[1]["HTML"]));
+        var articleSearchResultObject = jQuery.parseJSON( data );  
+        for(var i=0; i< articleSearchResultObject.length; i++)
+        {
+            var articleLinkString = "<a class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[1]["Title"]+"</a>";
+            $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
+            responzaArticleArray.push(articleSearchResultObject[i]["html"]);
+        }
     });
 });
 
