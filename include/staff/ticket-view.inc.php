@@ -981,6 +981,26 @@ print $note_form->getField('attachments')->render();
     </form>
     <div class="clear"></div>
 </div>
+
+<!-- this is for popup box of the article content -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 var responzaArticleArray = [];
 $(document).ready(function(){
@@ -988,7 +1008,8 @@ $(document).ready(function(){
         var articleSearchResultObject = jQuery.parseJSON( data );  
         for(var i=0; i< articleSearchResultObject.length; i++)
         {
-            var articleLinkString = "<a class='responza-article-link' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</a>";
+            var articleLinkString = "<button type='button' class='btn btn-link responza-article-link' data-toggle='modal' 
+            data-target='.bs-example-modal-lg' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>"
             $(".responza-Knowledge-content").append($.parseHTML(articleLinkString));
             responzaArticleArray.push(articleSearchResultObject[i]["html"]);
         }
@@ -1038,5 +1059,10 @@ $(function() {
 }();
 <?php } ?>
 });
+
+function popUpArticleContect(var articleIndex)
+{
+    $(".modal-body").html($.parseHTML(responzaArticleArray[articleIndex]));
+}
 
 </script>
