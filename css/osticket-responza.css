@@ -1,5 +1,7 @@
 a.responza-article-link
 {
+	display: block;
+	margin-left: 20px;
     color: #1a0dab;
     font-size: 18px;
     font-weight: 500;
