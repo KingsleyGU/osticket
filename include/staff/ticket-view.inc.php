@@ -577,8 +577,8 @@ $tcount+= $ticket->getNumNotes();
                         ); ?>"
                         data-draft-object-id="<?php echo $ticket->getId(); ?>"
                         rows="9" wrap="soft"
-                        class="richtext ifhtml draft draft-delete"><?php
-                        echo $info['response']; ?></textarea>
+                        class="richtext ifhtml draft draft-delete" onpaste="pasteContent(event)"><?php
+                        echo $info['response'];?></textarea>
                 <div id="reply_form_attachments" class="attachments">
 <?php
 print $response_form->getField('attachments')->render();
@@ -1082,12 +1082,19 @@ $(".pasteContentFromClip").on("click",function(){
   $("#response").trigger( "paste" );
 
 });
-$(document).on("copy",function(e){
- e.stopPropagation();
-  e.preventDefault();
+// $(document).on("copy",function(e){
+//  e.stopPropagation();
+//   e.preventDefault();
                 
-var cd = e.originalEvent.clipboardData;
-  cd.setData("text/plain", "nice, eh?!");
-    alert(cd.getData("text/plain"));
-})
+// var cd = e.originalEvent.clipboardData;
+//   cd.setData("text/plain", "nice, eh?!");
+//     alert(cd.getData("text/plain"));
+// })
+function pasteContent(e)
+  e.stopPropagation();
+  e.preventDefault();
+  alert("222");
+  var cd = e.originalEvent.clipboardData;     
+  $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
+}
 </script>
