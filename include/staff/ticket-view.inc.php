@@ -1079,7 +1079,7 @@ function goBackToArticleLink()
 
 $(".pasteContentFromClip").on("click",function(e){
 
-var cd = e.originalEvent.clipboardData;
+var cd = window.originalEvent.clipboardData;
   cd.setData("text/plain", "nice, eh?!");
     $("#response").text(cd.getData("text/plain"));
 })
