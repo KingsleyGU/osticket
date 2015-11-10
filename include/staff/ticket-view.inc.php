@@ -1086,7 +1086,7 @@ $(document).on("copy",function(e){
  e.stopPropagation();
   e.preventDefault();
                 
-var cd = e.originalEvent.clipboardData;
+var cd = e.clipboardData;
   cd.setData("text/plain", "nice, eh?!");
     alert(cd.getData("text/plain"));
 })
