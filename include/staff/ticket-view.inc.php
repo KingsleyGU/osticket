@@ -1079,7 +1079,6 @@ function goBackToArticleLink()
 
 $(".pasteContentFromClip").on("click",function(e){
 
-var cd = window.originalEvent.clipboardData;
   $("#result").trigger( "paste" );
 })
 
