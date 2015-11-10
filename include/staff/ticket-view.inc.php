@@ -1102,11 +1102,9 @@ $(".pasteContentFromClip").on("click",function(){
 //     alert(e.clipboardData.getData("text/plain"));
 //     e.preventDefault();
 // }
-$("#response").on("paste", function(e){
+$("#response").on("paste", function(event){
   // e.stopPropagation();
   // e.preventDefault();
-  alert("222");
-  var cd = e.clipboardData;
     if (window.clipboardData && window.clipboardData.getData) { // IE
     pastedText = window.clipboardData.getData('Text');
     }
