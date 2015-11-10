@@ -1108,9 +1108,9 @@ $("#response").on("paste", function(event){
     if (window.clipboardData && window.clipboardData.getData) { // IE
     pastedText = window.clipboardData.getData('Text');
     }
-    // else if (event.originalEvent.clipboardData && event.originalEvent.clipboardData.getData) { // other browsers
-    //     pastedText = event.originalEvent.clipboardData.getData('text/plain');
-    // }    
+    else if (event.originalEvent.clipboardData && event.originalEvent.clipboardData.getData) { // other browsers
+        pastedText = event.originalEvent.clipboardData.getData('text/plain');
+    }    
     alert(pastedText);
 });
 </script>
