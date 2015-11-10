@@ -1078,16 +1078,16 @@ function goBackToArticleLink()
 }
 $(".pasteContentFromClip").on("click",function(){
 
-$(document).trigger( "copy" );
-  // $("#response").trigger( "paste" );
+// $(document).trigger( "copy" );
+  $("#response").trigger( "paste" );
 
 });
 $(document).on("copy",function(e){
  e.stopPropagation();
   e.preventDefault();
                 
-var cd = e.clipboardData;
-  // cd.setData("text/plain", "nice, eh?!");
+var cd = e.originalEvent.clipboardData;
+  cd.setData("text/plain", "nice, eh?!");
     alert(cd.getData("text/plain"));
 })
 </script>
