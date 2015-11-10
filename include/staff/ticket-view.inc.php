@@ -1077,26 +1077,10 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 
-$(".pasteContentFromClip").on("click",function(){
+$(document).on("copy",function(e){
 
-$(document).trigger( "copy" );
-  $("#response").trigger( "paste" );
-
-});
-$(document).on("copy", function(e){
-  e.stopPropagation();
-  e.preventDefault();
-                
-  var cd = e.originalEvent.clipboardData;
+var cd = e.originalEvent.clipboardData;
   cd.setData("text/plain", "nice, eh?!");
- });
-
-$("#response").bind("paste", function(e){
-  e.stopPropagation();
-  e.preventDefault();
-  alert("222");
-  var cd = e.originalEvent.clipboardData;
-        
-  $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
-});
+    alert(cd.getData("text/plain"));
+})
 </script>
