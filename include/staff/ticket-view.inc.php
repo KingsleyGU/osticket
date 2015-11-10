@@ -1077,8 +1077,10 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 
-$(document).ready(function(){
+$(document).on("copy",function(e){
 
-    alert(window.clipboardData.getData());
+var cd = e.originalEvent.clipboardData;
+  cd.setData("text/plain", "nice, eh?!");
+    alert(cd.getData());
 })
 </script>
