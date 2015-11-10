@@ -1090,8 +1090,9 @@ $(".pasteContentFromClip").on("click",function(){
 //   cd.setData("text/plain", "nice, eh?!");
 //     alert(cd.getData("text/plain"));
 // })
-function pasteContent(e)
-
+function pasteContent(e){
+  e.stopPropagation();
+  e.preventDefault();
   alert("222");
   var cd = e.originalEvent.clipboardData;     
   $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
