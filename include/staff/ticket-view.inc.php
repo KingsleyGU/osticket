@@ -1079,7 +1079,7 @@ function goBackToArticleLink()
 $(".pasteContentFromClip").on("click",function(){
 
 // $(document).trigger( "paste" );
-  $("#response").simulate( "paste" );
+  $("#response").trigger( "paste" );
 // 
 });
 // $(document).on("copy",function(e){
@@ -1097,9 +1097,17 @@ $(".pasteContentFromClip").on("click",function(){
 //   var cd = e.originalEvent.clipboardData;     
 //   $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
 // }
-$("#response").onpaste = function(e) {
-    alert("222");
-    alert(e.clipboardData.getData("text/plain"));
-    e.preventDefault();
-}
+// $("#response").onpaste = function(e) {
+//     alert("222");
+//     alert(e.clipboardData.getData("text/plain"));
+//     e.preventDefault();
+// }
+$("#response").on("paste", function(e){
+  // e.stopPropagation();
+  // e.preventDefault();
+  alert("222");
+  var cd = e.clipboardData;
+        
+  $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
+});
 </script>
