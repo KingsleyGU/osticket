@@ -1079,7 +1079,7 @@ function goBackToArticleLink()
 $(".pasteContentFromClip").on("click",function(){
 
 // $(document).trigger( "paste" );
-  $("#response").trigger( "paste" );
+  $("#response").simulate( "paste" );
 // 
 });
 // $(document).on("copy",function(e){
