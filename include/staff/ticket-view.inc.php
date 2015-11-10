@@ -375,7 +375,6 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
     } ?>
 </table>
 <div class="clear"></div>
-<button id="getContentBtn">click me</button>
 <h2 style="padding:10px 0 5px 0; font-size:11pt;"><?php echo Format::htmlchars($ticket->getSubject()); ?></h2>
 <?php
 $tcount = $ticket->getThreadCount();
@@ -882,7 +881,11 @@ print $note_form->getField('attachments')->render();
     </form>
     <?php
     } ?>
-    <div id="responza-Knowledge" class="tab-response-block">
+     <div id="responza-Knowledge" class="tab-response-block">
+        <iframe  id="responza-iframe" src="http://newerst.spitzeco.dk//contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo Format::htmlchars($ticket->getSubject()); ?>">
+        </iframe>
+     </div>
+<!--     <div id="responza-Knowledge" class="tab-response-block">
         <div class="responza-article-link-content">
         </div>
         <div class="responza-article-block" style="display:none;">
@@ -890,7 +893,7 @@ print $note_form->getField('attachments')->render();
             <div class="responza-article-content">
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
@@ -992,34 +995,34 @@ print $note_form->getField('attachments')->render();
 </div>
 
 <script type="text/javascript">
-var responzaArticleArray = [];
-$(document).ready(function(){
-    $.get( "http://localhost:49819//api/ArticleApi/SearchArticles?title=a&customer=1&portal_id=1&field=Date&order=ASC&number=10", function( data ) {
-        var articleSearchResultObject = jQuery.parseJSON( data );  
-        for(var i=0; i< articleSearchResultObject.length; i++)
-        {
-            var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='popUpArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
-            $(".responza-article-link-content").append($.parseHTML(articleLinkString));
-            responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
-        }
-    });
-    $('.popup-modal').magnificPopup({
-      type: 'inline',
-      preloader: false,
-      focus: '#username',
-      modal: true
-    });
-    $(document).on('click', '.popup-modal-dismiss', function (e) {
-      e.preventDefault();
-      $.magnificPopup.close();
-    });
-});
+// var responzaArticleArray = [];
+// $(document).ready(function(){
+//     $.get( "http://localhost:49819//api/ArticleApi/SearchArticles?title=a&customer=1&portal_id=1&field=Date&order=ASC&number=10", function( data ) {
+//         var articleSearchResultObject = jQuery.parseJSON( data );  
+//         for(var i=0; i< articleSearchResultObject.length; i++)
+//         {
+//             var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='switchToArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
+//             $(".responza-article-link-content").append($.parseHTML(articleLinkString));
+//             responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
+//         }
+//     });
+//     $('.popup-modal').magnificPopup({
+//       type: 'inline',
+//       preloader: false,
+//       focus: '#username',
+//       modal: true
+//     });
+//     $(document).on('click', '.popup-modal-dismiss', function (e) {
+//       e.preventDefault();
+//       $.magnificPopup.close();
+//     });
+// });
 
 // Click getContentBtn to get the content of iframe
-$("#getContentBtn").click(function(){
-    var contentWindow = $("#responza-Knowledge-iframe").contentWindow;
-    contentWindow.postMessage("hello to responza","http://localhost:49819/");
-})
+// $("#getContentBtn").click(function(){
+//     var contentWindow = $("#responza-Knowledge-iframe").contentWindow;
+//     contentWindow.postMessage("hello to responza","http://localhost:49819/");
+// })
 
 $(function() {
    
@@ -1059,7 +1062,7 @@ $(function() {
 <?php } ?>
 });
 //this function is for displying the content of the relevant article
-function popUpArticleContect(articleIndex)
+function switchToArticleContect(articleIndex)
 {
     $( ".responza-article-link-content" ).css("display","none");
     $( ".responza-article-block" ).css("display","block");
