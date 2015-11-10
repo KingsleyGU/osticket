@@ -1082,7 +1082,7 @@ $(".pasteContentFromClip").on("click",function(e){
   $("#response").trigger( "paste" );
 })
 
-$("#response").on("paste", function(e){
+$("#response").bind("paste", function(e){
   e.stopPropagation();
   e.preventDefault();
   alert("222");
