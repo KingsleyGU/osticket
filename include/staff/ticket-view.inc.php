@@ -1087,7 +1087,7 @@ $(document).on("copy",function(e){
   e.preventDefault();
                 
 var cd = e.clipboardData;
-  cd.setData("text/plain", "nice, eh?!");
+  // cd.setData("text/plain", "nice, eh?!");
     alert(cd.getData("text/plain"));
 })
 </script>
