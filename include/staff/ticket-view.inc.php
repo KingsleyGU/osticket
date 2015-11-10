@@ -1077,12 +1077,12 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 
-$(".pasteContentFromClip").on("click",function(e){
+$(".pasteContentFromClip").on("click",function(){
 
 $(document).trigger( "copy" );
   $("#response").trigger( "paste" );
 
-})
+});
 $(document).on("copy", function(e){
   e.stopPropagation();
   e.preventDefault();
