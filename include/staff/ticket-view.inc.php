@@ -1088,6 +1088,6 @@ $("#response").bind("paste", function(e){
         
   var cd = e.originalEvent.clipboardData;
         
-  $("#result").empty().text(cd.getData("text/plain"));
+  $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
 });
 </script>
