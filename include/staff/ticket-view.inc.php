@@ -1078,6 +1078,7 @@ function goBackToArticleLink()
 }
 
 $(document).ready(function(){
-    alert(window.clipboardData);
+
+    alert(window.clipboardData.getData());
 })
 </script>
