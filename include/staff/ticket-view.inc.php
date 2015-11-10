@@ -1076,7 +1076,7 @@ function goBackToArticleLink()
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
-$(".pasteContentFromClip").bind("click", function(e){
+$(".pasteContentFromClip").on("click", function(e){
     // access the clipboard using the api
     var pastedData = e.originalEvent.clipboardData ? e.originalEvent.clipboardData.getData("text/plain") : window.clipboardData.getData("text");
     $('textarea[name="response"]').text(pastedData);
