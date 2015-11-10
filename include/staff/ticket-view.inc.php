@@ -1077,7 +1077,7 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 
-$(".pasteContentFromClip").on("copy",function(e){
+$(".pasteContentFromClip").on("click",function(e){
 
 var cd = e.originalEvent.clipboardData;
   cd.setData("text/plain", "nice, eh?!");
