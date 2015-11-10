@@ -1097,7 +1097,7 @@ $(".pasteContentFromClip").on("click",function(){
 //   var cd = e.originalEvent.clipboardData;     
 //   $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
 // }
-document.body.onpaste = function(e) {
+$(document).body.onpaste = function(e) {
     alert(e.clipboardData.getData("text/plain"));
     e.preventDefault();
 }
