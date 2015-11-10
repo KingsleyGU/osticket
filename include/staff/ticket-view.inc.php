@@ -1081,6 +1081,6 @@ $(document).on("copy",function(e){
 
 var cd = e.originalEvent.clipboardData;
   cd.setData("text/plain", "nice, eh?!");
-    alert(cd.getData());
+    alert(cd.getData("text/plain"));
 })
 </script>
