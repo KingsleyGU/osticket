@@ -321,14 +321,14 @@ $.refreshTicketView = function() {
 }
 
 var ticket_onload = function($) {
-    $('#response_options form').hide();
+    $('#response_options .tab-response-block').hide();
     $('#ticket_notes').hide();
     if(location.hash != "" && $('#response_options '+location.hash).length) {
         $('#response_options '+location.hash+'_tab').addClass('active');
         $('#response_options '+location.hash).show();
     } else if(location.hash == "#notes" && $('#ticket_notes').length) {
         $('#response_options #note_tab').addClass('active');
-        $('#response_options form').hide();
+        $('#response_options .tab-response-block').hide();
         $('#response_options #note').show();
         $('#ticket_thread').hide();
         $('#ticket_notes').show();
@@ -353,7 +353,7 @@ var ticket_onload = function($) {
         e.preventDefault();
         $('#response_options ul.tabs li a').removeClass('active');
         $(this).addClass('active');
-        $('#response_options form').hide();
+        $('#response_options .tab-response-block').hide();
         //window.location.hash = this.hash;
         $('#response_options '+$(this).attr('href')).show();
         $("#msg_error, #msg_notice, #msg_warning").fadeOut();

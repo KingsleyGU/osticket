@@ -964,7 +964,10 @@ ul.tabs li a.active {
     border-bottom:none;
     bottom: 0;
 }
-
+#responza-iframe
+{
+    width: 95%;
+}
 #response_options > form {
     padding:10px 5px;
     background:#f9f9f9;
