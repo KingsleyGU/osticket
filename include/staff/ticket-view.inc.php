@@ -523,6 +523,7 @@ $tcount+= $ticket->getNumNotes();
                             $ticket->getId(),
                             $recipients);
                    ?>
+                   <button type="button" class="responzaBtn pasteContentFromClip" onclick="pasteToEditor()">back</button>
                 </td>
              </tr>
             </tbody>
@@ -1075,4 +1076,9 @@ function goBackToArticleLink()
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
+$(".pasteContentFromClip").bind("click", function(e){
+    // access the clipboard using the api
+    var pastedData = e.originalEvent.clipboardData.getData('text');
+    $('textarea[name="response"]').text(pastedData);
+} );
 </script>
