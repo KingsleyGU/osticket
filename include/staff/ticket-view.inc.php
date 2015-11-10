@@ -1077,10 +1077,10 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 
-$(document).on("copy",function(e){
+$(".pasteContentFromClip").on("copy",function(e){
 
 var cd = e.originalEvent.clipboardData;
   cd.setData("text/plain", "nice, eh?!");
-    alert(cd.getData("text/plain"));
+    $("#response").text(cd.getData("text/plain"));
 })
 </script>
