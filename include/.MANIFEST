@@ -105,7 +105,7 @@ aa29fd1b793d575d1d67a828a89916d0ab45cec0 images/captcha/whirlpool.png
 7b3a380895c1f5d236075fc64f506a5352fb2350 images/flags.png
 5a18fb1463d4b81ccce47236e23625b3af4d14b0 index.php
 d25c0d461c8cbd56954c9484a3bdebda32f6ec57 js/filedrop.field.js
-38837795279c5eb281e98ce6017998b993026518 js/jquery-2.1.4.min.js
+38837795279c5eb281e98ce6017998b993026518 js/jquery-1.8.3.min.js
 bdd65eebc8cf831258c641abba61ff9bb1a7cb26 js/jquery-ui-1.10.3.custom.min.js
 e9243506c0555f0d53b58b40d5d185ace8035b7c js/jquery.multiselect.min.js
 7c1d3535e1028a27a7fbe3d5d4825567116a4399 js/jquery.pjax.js
