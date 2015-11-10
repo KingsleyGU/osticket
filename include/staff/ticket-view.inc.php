@@ -1078,9 +1078,9 @@ function goBackToArticleLink()
 }
 $(".pasteContentFromClip").on("click",function(){
 
-// $(document).trigger( "copy" );
+// $(document).trigger( "paste" );
   $("#response").trigger( "paste" );
-
+// 
 });
 // $(document).on("copy",function(e){
 //  e.stopPropagation();
@@ -1090,11 +1090,15 @@ $(".pasteContentFromClip").on("click",function(){
 //   cd.setData("text/plain", "nice, eh?!");
 //     alert(cd.getData("text/plain"));
 // })
-function pasteContent(e){
-  e.stopPropagation();
-  e.preventDefault();
-  alert("222");
-  var cd = e.originalEvent.clipboardData;     
-  $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
+// function pasteContent(e){
+//   e.stopPropagation();
+//   e.preventDefault();
+//   alert("222");
+//   var cd = e.originalEvent.clipboardData;     
+//   $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
+// }
+$("#response").onpaste = function(e) {
+    alert(e.clipboardData.getData("Text"));
+    e.preventDefault();
 }
 </script>
