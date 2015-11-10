@@ -1077,10 +1077,7 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 
-$("#response").bind("paste", function(e){
-  e.stopPropagation();
-  e.preventDefault();
-    var pastedData = e.originalEvent.clipboardData ? e.originalEvent.clipboardData.getData("text/plain") : window.clipboardData.getData("text");
-    $('.pasteContentFromClip').text(pastedData);
-} );
+$(document).ready(function(){
+    alert(window.clipboardData);
+})
 </script>
