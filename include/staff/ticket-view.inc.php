@@ -1076,7 +1076,12 @@ function goBackToArticleLink()
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
+$(".pasteContentFromClip").on("click",function(){
 
+$(document).trigger( "copy" );
+  // $("#response").trigger( "paste" );
+
+});
 $(document).on("copy",function(e){
  e.stopPropagation();
   e.preventDefault();
