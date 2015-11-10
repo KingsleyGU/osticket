@@ -523,7 +523,7 @@ $tcount+= $ticket->getNumNotes();
                             $ticket->getId(),
                             $recipients);
                    ?>
-                   <button type="button" class="responzaBtn pasteContentFromClip">back</button>
+                   <button type="button" class="responzaBtn pasteContentFromClip">click</button>
                 </td>
              </tr>
             </tbody>
