@@ -1123,11 +1123,18 @@ $(".pasteContentFromClip").click(function(){
 alert(getClipboard());
 });
 function getClipboard() {
+
+    try{
     var pasteTarget = document.createElement("textarea");
     pasteTarget.contentEditable = true;
     var actElem = document.activeElement.appendChild(pasteTarget).parentNode;
     pasteTarget.focus();
     document.execCommand("Paste", null, null);
+}
+catch(err)
+{
+    alert(there is a error);
+}
     var paste = pasteTarget.innerText;
     actElem.removeChild(pasteTarget);
     return paste;
