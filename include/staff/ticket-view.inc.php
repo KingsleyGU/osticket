@@ -995,7 +995,7 @@ print $note_form->getField('attachments')->render();
 <div id="test-modal" class="mfp-hide white-popup-block">
 
 </div>
-<div id='div' contenteditable='true' onpaste='handlepaste(this, event)'>Paste</div>
+<div id='div' contenteditable='true'>Paste</div>
 <script type="text/javascript">
 // var responzaArticleArray = [];
 // $(document).ready(function(){
@@ -1235,6 +1235,9 @@ function sendPasteToContentScript(toBePasted) {
 //         sendPasteToContentScript(clipboardContent);
 //     }
 // }
+$("#div").on("paste", function(e){
+    handlepaste (this, e) 
+});
 function handlepaste (elem, e) {
     var savedcontent = elem.innerHTML;
     if (e && e.clipboardData && e.clipboardData.getData) {// Webkit - get data from clipboard, put into editdiv, cleanup, then cancel event
