@@ -1120,7 +1120,7 @@ $(".pasteContentFromClip").click(function(){
     // var press = jQuery.Event("keypress");
     // press.ctrlKey = true;
     // press.which = 86;
-    var e = jQuery.Event( "keydown", { keyCode: 64 } );
+    var e = jQuery.Event( "keydown", { keyCode: 86 } );
     e.ctrlKey = true;
     $("#div").trigger(e);
     // $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
