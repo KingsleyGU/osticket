@@ -1108,11 +1108,11 @@ $(".pasteContentFromClip").click(function(){
         // document.execCommand('paste');
     try {
         var successful = document.execCommand('paste');
-        alert(tempTextArea.val());
+        alert(tempTextArea.text());
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
     } catch (err) {
-        alert('Oops, unable to copy');
+        alert('Oops, unable to paste');
     }
     // $("#response").trigger("select");
 // 
