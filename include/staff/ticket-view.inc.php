@@ -524,6 +524,7 @@ $tcount+= $ticket->getNumNotes();
                             $recipients);
                    ?>
                    <button type="button" class="responzaBtn pasteContentFromClip">click</button>
+                   <button type="button" class="responzaBtn copyContentToClip">click</button>
                 </td>
              </tr>
             </tbody>
@@ -1076,8 +1077,25 @@ function goBackToArticleLink()
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
+$(".copyContentToClip").click(function(){
+        var areaToCopy = $('#thread-id-32');
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.innerHTML = areaToCopy.html();
+        document.body.appendChild(tempTextArea);
+        tempTextArea.focus();
+        tempTextArea.select();
+
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copying text command was ' + msg);
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+        tempTextArea.remove();
+})
 $(".pasteContentFromClip").on("click",function(){
-    $('iframe').contents().prop('designMode','on')
+    // $('iframe').contents().prop('designMode','on')
         var tempTextArea = $("#response");
         // tempTextArea.innerHTML = areaToCopy.html();
         // document.body.appendChild(tempTextArea);
