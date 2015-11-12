@@ -1096,31 +1096,42 @@ $(".copyContentToClip").click(function(){
         return false;
 })
 $(".pasteContentFromClip").click(function(){
-        var tempTextArea = document.createElement('textarea');
-        document.body.appendChild(tempTextArea);
+//         var tempTextArea = document.createElement('textarea');
+//         document.body.appendChild(tempTextArea);
         
-// $('iframe').contents().prop('designMode','on')
-        // var tempTextArea = $("#response");
-        // tempTextArea.innerHTML = areaToCopy.html();
-        // document.body.appendChild(tempTextArea);
-        tempTextArea.contentEditable = true;
-        tempTextArea.focus();
-        // tempTextArea.select();
-     tempTextArea.select();
-        // document.execCommand('paste');
+// // $('iframe').contents().prop('designMode','on')
+//         // var tempTextArea = $("#response");
+//         // tempTextArea.innerHTML = areaToCopy.html();
+//         // document.body.appendChild(tempTextArea);
+//         tempTextArea.contentEditable = true;
+//         tempTextArea.focus();
+//         // tempTextArea.select();
+//      tempTextArea.select();
+//         // document.execCommand('paste');
 
-    try {
+//     try {
 
-        var successful = document.execCommand('paste',null,null);
-        alert(tempTextArea.value);
-        var msg = successful ? 'successful' : 'unsuccessful';
-        console.log('pasting text command was ' + msg);
-    } catch (err) {
-        alert('Oops, unable to paste');
-    }
+//         var successful = document.execCommand('paste',null,null);
+//         alert(tempTextArea.value);
+//         var msg = successful ? 'successful' : 'unsuccessful';
+//         console.log('pasting text command was ' + msg);
+//     } catch (err) {
+//         alert('Oops, unable to paste');
+//     }
     // $("#response").trigger("select");
 // 
+alert(getClipboard());
 });
+function getClipboard() {
+    var pasteTarget = document.createElement("div");
+    pasteTarget.contentEditable = true;
+    var actElem = document.activeElement.appendChild(pasteTarget).parentNode;
+    pasteTarget.focus();
+    document.execCommand("Paste", null, null);
+    var paste = pasteTarget.innerText;
+    actElem.removeChild(pasteTarget);
+    return paste;
+};
 // $("#response").select(function(){
 //     try {
 //         var successful = document.execCommand('paste');
