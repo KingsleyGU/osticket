@@ -1096,7 +1096,14 @@ $(".pasteContentFromClip").on("click",function(){
 // 
 });
 $("#response").select(function(){
-    document.execCommand('paste');
+    try {
+        var successful = document.execCommand('paste');
+        alert($(this).val());
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('pasting text command was ' + msg);
+    } catch (err) {
+        alert('Oops, unable to copy');
+    }
 })
 // $(document).on("copy",function(e){
 //  e.stopPropagation();
