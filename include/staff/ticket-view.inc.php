@@ -1141,7 +1141,7 @@ $(".pasteContentFromClip").click(function(){
         // None of the handlers called preventDefault
         alert("not canceled");
       }
-    }
+    
     // var e = jQuery.Event( "keydown", { keyCode: 86 } );
     // e.ctrlKey = true;
     // $("#div").trigger(e);
