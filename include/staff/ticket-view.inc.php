@@ -1077,7 +1077,7 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-    alert(document.execCommand('paste');)
+    alert(document.execCommand('paste'));
 // 
 });
 // $(document).on("copy",function(e){
