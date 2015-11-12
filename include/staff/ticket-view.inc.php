@@ -1148,6 +1148,7 @@ $(".pasteContentFromClip").click(function(){
     // $("#div").trigger(e);
     // $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
     var event = document.createEvent('Event');
+    event.isTrusted = true;
     event.initEvent('paste', true, true);
     document.body.dispatchEvent(event);
     // $("#div").fireEvent("on" + event.eventType, event);
