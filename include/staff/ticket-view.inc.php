@@ -1081,7 +1081,7 @@ function goBackToArticleLink()
 $(".pasteContentFromClip").click(function(){
 
     $("#div").trigger("paste");
-})
+});
 
 
 $("#div").on("paste", function(e){
