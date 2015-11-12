@@ -1077,14 +1077,7 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-    if (window.clipboardData) { // Internet Explorer
-        window.clipboardData.getData("Text");
-    } else {  
-        unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
-        const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
-        clipboardHelper.copyString(text);
-    }
-  $("#response").trigger( "paste" );
+    alert(document.execCommand('paste');)
 // 
 });
 // $(document).on("copy",function(e){
