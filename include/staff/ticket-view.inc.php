@@ -995,7 +995,7 @@ print $note_form->getField('attachments')->render();
 <div id="test-modal" class="mfp-hide white-popup-block">
 
 </div>
-<textarea id="sandbox"></textarea>
+<div id='div' contenteditable='true' onpaste='handlepaste(this, event)'>Paste</div>
 <script type="text/javascript">
 // var responzaArticleArray = [];
 // $(document).ready(function(){
@@ -1103,7 +1103,7 @@ $(".pasteContentFromClip").click(function(){
     // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
     // var clipboardContent = getContentFromClipboard();
     // alert(clipboardContent);
-    $("#response").trigger("paste");
+    $("#div").trigger("paste");
 })
 $('#response').bind('paste',function(e) {
     e.preventDefault();
@@ -1235,5 +1235,55 @@ function sendPasteToContentScript(toBePasted) {
 //         sendPasteToContentScript(clipboardContent);
 //     }
 // }
+function handlepaste (elem, e) {
+    var savedcontent = elem.innerHTML;
+    if (e && e.clipboardData && e.clipboardData.getData) {// Webkit - get data from clipboard, put into editdiv, cleanup, then cancel event
+        if (/text\/html/.test(e.clipboardData.types)) {
+            elem.innerHTML = e.clipboardData.getData('text/html');
+        }
+        else if (/text\/plain/.test(e.clipboardData.types)) {
+            elem.innerHTML = e.clipboardData.getData('text/plain');
+        }
+        else {
+            elem.innerHTML = "";
+        }
+        waitforpastedata(elem, savedcontent);
+        if (e.preventDefault) {
+                e.stopPropagation();
+                e.preventDefault();
+        }
+        return false;
+    }
+    else {// Everything else - empty editdiv and allow browser to paste content into it, then cleanup
+        elem.innerHTML = "";
+        waitforpastedata(elem, savedcontent);
+        return true;
+    }
+}
 
+function waitforpastedata (elem, savedcontent) {
+    if (elem.childNodes && elem.childNodes.length > 0) {
+        processpaste(elem, savedcontent);
+    }
+    else {
+        that = {
+            e: elem,
+            s: savedcontent
+        }
+        that.callself = function () {
+            waitforpastedata(that.e, that.s)
+        }
+        setTimeout(that.callself,20);
+    }
+}
+
+function processpaste (elem, savedcontent) {
+    pasteddata = elem.innerHTML;
+    //^^Alternatively loop through dom (elem.childNodes or elem.getElementsByTagName) here
+
+    elem.innerHTML = savedcontent;
+
+    // Do whatever with gathered data;
+    alert(pasteddata);
+}
 </script>
