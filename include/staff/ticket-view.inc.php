@@ -883,7 +883,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
      <div id="responza-Knowledge" class="tab-response-block">
-        <iframe  id="responza-iframe" src="http://newerst.spitzeco.dk//contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo Format::htmlchars($ticket->getSubject()); ?>">
+        <iframe  id="responza-iframe" src="http://localhost:59004/Article/1/1/13">
         </iframe>
      </div>
 <!--     <div id="responza-Knowledge" class="tab-response-block">
@@ -1077,8 +1077,13 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-
-// $(document).trigger( "paste" );
+    if (window.clipboardData) { // Internet Explorer
+        window.clipboardData.getData("Text");
+    } else {  
+        unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+        const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
+        clipboardHelper.copyString(text);
+    }
   $("#response").trigger( "paste" );
 // 
 });
@@ -1103,14 +1108,12 @@ $(".pasteContentFromClip").on("click",function(){
 //     e.preventDefault();
 // }
 $("#response").on("paste", function(event){
-  // e.stopPropagation();
-  // e.preventDefault();
-    if (window.clipboardData && window.clipboardData.getData) { // IE
-    pastedText = window.clipboardData.getData('Text');
+    if (window.clipboardData) { // Internet Explorer
+        window.clipboardData.setData("Text", text);
+    } else {  
+        unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+        const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
+        clipboardHelper.copyString(text);
     }
-    else if (event.originalEvent.clipboardData && event.originalEvent.clipboardData.getData) { // other browsers
-        pastedText = event.originalEvent.clipboardData.getData('text/plain');
-    }    
-    alert(pastedText);
 });
 </script>
