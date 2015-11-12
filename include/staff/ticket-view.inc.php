@@ -1079,7 +1079,7 @@ function goBackToArticleLink()
 $(".pasteContentFromClip").on("click",function(){
         var tempTextArea = $("#response");
         // tempTextArea.innerHTML = areaToCopy.html();
-        document.body.appendChild(tempTextArea);
+        // document.body.appendChild(tempTextArea);
         tempTextArea.focus();
         tempTextArea.select();
     // tempTextArea.select();
