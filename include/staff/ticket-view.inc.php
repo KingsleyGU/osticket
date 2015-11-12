@@ -1117,10 +1117,10 @@ $(".pasteContentFromClip").click(function(){
     // $("#div").trigger("paste");
     $("#div").select();
     $("#div").focus();
-    var press = jQuery.Event("keypress");
-    press.ctrlKey = true;
-    press.which = 86;
-    $("#div").trigger({type: 'keypress', which: 17 && 86, keyCode: 17 && 86});
+    // var press = jQuery.Event("keypress");
+    // press.ctrlKey = true;
+    // press.which = 86;
+    $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
     // document.createEvent('Event');
     // event.initEvent('paste', true, true);
     // $("#div").fireEvent("on" + event.eventType, event);
