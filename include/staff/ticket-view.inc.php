@@ -1096,11 +1096,20 @@ $(".copyContentToClip").click(function(){
         return false;
 })
 $(".pasteContentFromClip").click(function(){
-    alert(document.queryCommandSupported('paste'));
+    // var tempTextArea = document.createElement('textarea');
+    // tempTextArea.addClass( "tempTextArea" );
+    // tempTextArea.paste();
+    // alert(document.queryCommandSupported('paste'));
     // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
     // var clipboardContent = getContentFromClipboard();
     // alert(clipboardContent);
+    $("#response").trigger("paste");
 })
+$('#response').on('paste',function(e) {
+    e.preventDefault();
+    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+    window.document.execCommand('insertText', false, text);
+});
 // $(".pasteContentFromClip").click(function(){
 //         var tempTextArea = document.createElement('textarea');
 //         document.body.appendChild(tempTextArea);
