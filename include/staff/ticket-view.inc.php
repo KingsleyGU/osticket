@@ -1128,12 +1128,12 @@ $(".pasteContentFromClip").click(function(){
     // $("#div").trigger("paste");
 })
 
-$(document).on('paste','#div',function(e) {
-    jQuery.event.props.push( "originalEvent" );
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-    window.document.execCommand('insertText', false, text);
-});
+// $(document).on('paste','#div',function(e) {
+//     jQuery.event.props.push( "originalEvent" );
+//     e.preventDefault();
+//     var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+//     window.document.execCommand('insertText', false, text);
+// });
 // $('#div').bind('paste',function(e) {
 //     e.preventDefault();
 //     var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
