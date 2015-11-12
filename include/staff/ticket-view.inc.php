@@ -1097,16 +1097,18 @@ $(".copyContentToClip").click(function(){
 })
 $(".pasteContentFromClip").click(function(){
         var tempTextArea = document.createElement('textarea');
-        document.body.appendChild(tempTextArea);
+        
 // $('iframe').contents().prop('designMode','on')
         // var tempTextArea = $("#response");
         // tempTextArea.innerHTML = areaToCopy.html();
         // document.body.appendChild(tempTextArea);
         tempTextArea.focus();
         // tempTextArea.select();
-    // tempTextArea.select();
+     tempTextArea.select();
         // document.execCommand('paste');
+        document.body.appendChild(tempTextArea);
     try {
+
         var successful = document.execCommand('paste');
         alert(tempTextArea.value);
         var msg = successful ? 'successful' : 'unsuccessful';
