@@ -995,7 +995,7 @@ print $note_form->getField('attachments')->render();
 <div id="test-modal" class="mfp-hide white-popup-block">
 
 </div>
-
+<textarea id="sandbox"></textarea>
 <script type="text/javascript">
 // var responzaArticleArray = [];
 // $(document).ready(function(){
@@ -1095,7 +1095,8 @@ $(".copyContentToClip").click(function(){
         tempTextArea.remove();
         return false;
 })
-$(".pasteContentFromClip").click(function(){
+$(".pasteContentFromClip").onClicked.addListener(onClickHandler);
+// $(".pasteContentFromClip").click(function(){
 //         var tempTextArea = document.createElement('textarea');
 //         document.body.appendChild(tempTextArea);
         
@@ -1120,26 +1121,26 @@ $(".pasteContentFromClip").click(function(){
 //     }
     // $("#response").trigger("select");
 // 
-alert(getClipboard());
-});
-function getClipboard() {
+// alert(getClipboard());
+// });
+// function getClipboard() {
 
-    try{
-    var pasteTarget = document.createElement("textarea");
-    pasteTarget.contentEditable = true;
-    var actElem = document.activeElement.appendChild(pasteTarget).parentNode;
-    pasteTarget.focus();
-    pasteTarget.select();
-    var successful = document.execCommand("insertText", null, null);
-}
-catch(err)
-{
-    alert("there is a error");
-}
-    var paste = pasteTarget.innerText;
-    actElem.removeChild(pasteTarget);
-    return paste;
-};
+//     try{
+//     var pasteTarget = document.createElement("textarea");
+//     pasteTarget.contentEditable = true;
+//     var actElem = document.activeElement.appendChild(pasteTarget).parentNode;
+//     pasteTarget.focus();
+//     pasteTarget.select();
+//     var successful = document.execCommand("insertText", null, null);
+// }
+// catch(err)
+// {
+//     alert("there is a error");
+// }
+//     var paste = pasteTarget.innerText;
+//     actElem.removeChild(pasteTarget);
+//     return paste;
+// };
 // $("#response").select(function(){
 //     try {
 //         var successful = document.execCommand('paste');
@@ -1183,4 +1184,42 @@ $("#response").on("paste", function(event){
         clipboardHelper.copyString(text);
     }
 });
+
+function getContentFromClipboard() {
+    var result = '';
+    var sandbox = document.getElementById('sandbox');
+    sandbox.value = '';
+    sandbox.select();
+    if (document.execCommand('paste')) {
+        result = sandbox.value;
+        console.log('got value from sandbox: ' + result);
+    }
+    sandbox.value = '';
+    return result;
+}
+
+/**
+ * Send the value that should be pasted to the content script.
+ */
+function sendPasteToContentScript(toBePasted) {
+    // We first need to find the active tab and window and then send the data
+    // along. This is based on:
+    // https://developer.chrome.com/extensions/messaging
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {data: toBePasted});
+    });
+}
+
+/**
+ * The function that will handle our context menu clicks.
+ */
+function onClickHandler(info, tab) {
+    var clipboardContent = getContentFromClipboard();
+    console.log('clipboardContent: ' + clipboardContent);
+    if (info.menuItemId === 'pasteDemo') {
+        console.log('clicked paste demo');
+        sendPasteToContentScript(clipboardContent);
+    }
+}
+
 </script>
