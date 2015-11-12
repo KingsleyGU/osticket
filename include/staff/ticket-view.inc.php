@@ -1111,7 +1111,7 @@ $(".pasteContentFromClip").click(function(){
 
     try {
 
-        var successful = document.execCommand('insertText');
+        var successful = document.execCommand('paste');
         alert(tempTextArea.value);
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
