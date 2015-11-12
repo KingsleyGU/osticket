@@ -1079,12 +1079,12 @@ function goBackToArticleLink()
 $(".pasteContentFromClip").on("click",function(){
     var tempTextArea = $("#response");
     tempTextArea.focus();
-    tempTextArea.select();
+    // tempTextArea.select();
 
     try {
         var successful = document.execCommand('paste');
         var msg = successful ? 'successful' : 'unsuccessful';
-        console.log('Copying text command was ' + msg);
+        console.log('pasting text command was ' + msg);
     } catch (err) {
         alert('Oops, unable to copy');
     }
