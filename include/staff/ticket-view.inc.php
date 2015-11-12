@@ -1077,13 +1077,13 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-        var tempTextArea = document.createElement('textarea');
+        var tempTextArea = $("#response");
         // tempTextArea.innerHTML = areaToCopy.html();
         document.body.appendChild(tempTextArea);
         tempTextArea.focus();
         tempTextArea.select();
     // tempTextArea.select();
-
+        $("#response").execCommand('paste');
     try {
         var successful = $("#response").execCommand('paste');
         alert($("#response").val());
