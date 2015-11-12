@@ -1103,9 +1103,26 @@ $(".pasteContentFromClip").click(function(){
     // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
     // var clipboardContent = getContentFromClipboard();
     // alert(clipboardContent);
-    document.createEvent('Event');
-    event.initEvent('paste', true, true);
+    var event;
+     if (document.createEvent) {
+    event = document.createEvent("HTMLEvents");
+    event.initEvent("paste", true, true);
+  } else {
+    event = document.createEventObject();
+    event.eventType = "paste";
+  }
+
+  event.eventName = "paste";
+
+  if (document.createEvent) {
     $("#div").dispatchEvent(event);
+  } else {
+    $("#div").fireEvent("on" + event.eventType, event);
+  }
+    // document.createEvent('Event');
+    // event.initEvent('paste', true, true);
+    // $("#div").fireEvent("on" + event.eventType, event);
+    // $("#div").dispatchEvent(event);
     // $("#div").trigger("paste");
 })
 $('#response').bind('paste',function(e) {
