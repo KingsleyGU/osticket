@@ -1103,18 +1103,18 @@ $(".pasteContentFromClip").click(function(){
     // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
     // var clipboardContent = getContentFromClipboard();
     // alert(clipboardContent);
-    var event;
-     if (document.createEvent) {
-    event = document.createEvent("HTMLEvents");
-    event.initEvent("paste", true, true);
-  } else {
-    event = document.createEventObject();
-    event.eventType = "paste";
-  }
+  //   var event;
+  //    if (document.createEvent) {
+  //   event = document.createEvent("HTMLEvents");
+  //   event.initEvent("paste", true, true);
+  // } else {
+  //   event = document.createEventObject();
+  //   event.eventType = "paste";
+  // }
 
-  event.eventName = "paste";
+  // event.eventName = "paste";
 
-    $("#div").paste();
+    $("#div").trigger("paste");
 
     // document.createEvent('Event');
     // event.initEvent('paste', true, true);
