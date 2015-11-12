@@ -1142,13 +1142,14 @@ $(".pasteContentFromClip").click(function(){
      //    alert("not canceled");
      //  }
     
-    var e = jQuery.Event( "keydown", { keyCode: 86 } );
-    e.ctrlKey = true;
-    document.body.dispatchEvent(event);
+    // var e = jQuery.Event( "keydown", { keyCode: 86 } );
+    // e.ctrlKey = true;
+    // document.body.dispatchEvent(event);
     // $("#div").trigger(e);
     // $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
-    // document.createEvent('Event');
-    // event.initEvent('paste', true, true);
+    document.createEvent('Event');
+    event.initEvent('paste', true, true);
+    document.body.dispatchEvent(event);
     // $("#div").fireEvent("on" + event.eventType, event);
     // $("#div").dispatchEvent(event);
     // $("#div").trigger("paste");
