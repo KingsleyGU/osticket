@@ -1120,9 +1120,31 @@ $(".pasteContentFromClip").click(function(){
     // var press = jQuery.Event("keypress");
     // press.ctrlKey = true;
     // press.which = 86;
-    var e = jQuery.Event( "keydown", { keyCode: 86 } );
-    e.ctrlKey = true;
-    $("#div").trigger(e);
+     var event = document.createEvent("KeyboardEvent");
+       event.initKeyEvent(
+                     "keyup",           //  event,
+                      true,             //  bubbleable,
+                      true,             //  cancelable,
+                      null,             //  window
+                      true,             //  ctrlKey,
+                      false,            //  altKey,
+                      false,            //  shiftKey,
+                      false,            //  metaKey,
+                       86,              //  keyCodeArg (virtual key code),
+                       0);              //  charCodeArg ;
+
+      var canceled = !document.body.dispatchEvent(event);
+      if(canceled) {
+        // A handler called preventDefault
+        alert("canceled");
+      } else {
+        // None of the handlers called preventDefault
+        alert("not canceled");
+      }
+    }
+    // var e = jQuery.Event( "keydown", { keyCode: 86 } );
+    // e.ctrlKey = true;
+    // $("#div").trigger(e);
     // $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
     // document.createEvent('Event');
     // event.initEvent('paste', true, true);
