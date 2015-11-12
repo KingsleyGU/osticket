@@ -1116,7 +1116,7 @@ $(".pasteContentFromClip").click(function(){
 
     // $("#div").trigger("paste");
     // $("#div").select();
-    // $("#div").focus();
+    $("#div").focus();
     // var press = jQuery.Event("keypress");
     // press.ctrlKey = true;
     // press.which = 86;
