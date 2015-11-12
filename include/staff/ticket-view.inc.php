@@ -1077,7 +1077,17 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-    alert(document.execCommand('paste'));
+    var tempTextArea = $("#response");
+    tempTextArea.focus();
+    tempTextArea.select();
+
+    try {
+        var successful = document.execCommand('paste');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+    } catch (err) {
+        alert('Oops, unable to copy');
+    }
 // 
 });
 // $(document).on("copy",function(e){
