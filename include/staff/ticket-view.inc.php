@@ -1096,7 +1096,7 @@ $(".copyContentToClip").click(function(){
         return false;
 })
 $(".pasteContentFromClip").click(function(){
-    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
     var clipboardContent = getContentFromClipboard();
     alert(clipboardContent);
 })
