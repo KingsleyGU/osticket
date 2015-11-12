@@ -1096,8 +1096,6 @@ $(".pasteContentFromClip").on("click",function(){
 // 
 });
 $("#response").select(function(){
-    $(this).focus();
-    $(this).select();
     document.execCommand('paste');
 })
 // $(document).on("copy",function(e){
