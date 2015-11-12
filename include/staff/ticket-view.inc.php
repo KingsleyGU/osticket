@@ -995,7 +995,7 @@ print $note_form->getField('attachments')->render();
 <div id="test-modal" class="mfp-hide white-popup-block">
 
 </div>
-<textarea id="div">Paste</textare>
+<div id='div' contenteditable='true'>Paste</div>
 <script type="text/javascript">
 // var responzaArticleArray = [];
 // $(document).ready(function(){
@@ -1236,7 +1236,7 @@ function sendPasteToContentScript(toBePasted) {
 //     }
 // }
 $("#div").on("paste", function(e){
-    handlepaste (this, e);
+    handlepaste (this, e) ;
 })
 function handlepaste (elem, e) {
     var savedcontent = elem.innerHTML;
