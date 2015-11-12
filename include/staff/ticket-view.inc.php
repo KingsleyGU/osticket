@@ -1114,7 +1114,7 @@ $(".pasteContentFromClip").click(function(){
 
   event.eventName = "paste";
 
-    $("#div").fireEvent("on" + event.eventType, event);
+    $("#div").paste();
 
     // document.createEvent('Event');
     // event.initEvent('paste', true, true);
