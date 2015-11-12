@@ -1097,6 +1097,7 @@ $(".copyContentToClip").click(function(){
 })
 $(".pasteContentFromClip").click(function(){
         var tempTextArea = document.createElement('textarea');
+        document.body.appendChild(tempTextArea);
         
 // $('iframe').contents().prop('designMode','on')
         // var tempTextArea = $("#response");
@@ -1106,10 +1107,10 @@ $(".pasteContentFromClip").click(function(){
         // tempTextArea.select();
      tempTextArea.select();
         // document.execCommand('paste');
-        document.body.appendChild(tempTextArea);
+
     try {
 
-        var successful = document.execCommand('paste');
+        var successful = document.execCommand('insertText');
         alert(tempTextArea.value);
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
