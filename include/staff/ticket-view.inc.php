@@ -1077,12 +1077,13 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-    var tempTextArea = $("#response");
-    tempTextArea.focus();
+    var tempTextArea = $("#response").val('').select();;
+    // tempTextArea.focus();
     // tempTextArea.select();
 
     try {
         var successful = document.execCommand('paste');
+        alert($("#response").val());
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
     } catch (err) {
