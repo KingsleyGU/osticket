@@ -1114,8 +1114,13 @@ $(".pasteContentFromClip").click(function(){
 
   // event.eventName = "paste";
 
-    $("#div").trigger("paste");
-
+    // $("#div").trigger("paste");
+    $("#div").select();
+    $("#div").focus();
+    var press = jQuery.Event("keypress");
+    press.ctrlKey = true;
+    press.which = 86;
+    $("#div").trigger(press);
     // document.createEvent('Event');
     // event.initEvent('paste', true, true);
     // $("#div").fireEvent("on" + event.eventType, event);
@@ -1124,6 +1129,7 @@ $(".pasteContentFromClip").click(function(){
 })
 
 $(document).on('paste','#div',function(e) {
+    jQuery.event.props.push( "originalEvent" );
     e.preventDefault();
     var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
     window.document.execCommand('insertText', false, text);
