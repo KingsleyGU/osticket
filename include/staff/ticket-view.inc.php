@@ -1129,7 +1129,7 @@ function getClipboard() {
     pasteTarget.contentEditable = true;
     var actElem = document.activeElement.appendChild(pasteTarget).parentNode;
     pasteTarget.focus();
-    document.execCommand("Paste", null, null);
+    var successful = document.execCommand("insertText", null, null);
 }
 catch(err)
 {
