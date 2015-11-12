@@ -1108,7 +1108,7 @@ $(".pasteContentFromClip").click(function(){
         // document.execCommand('paste');
     try {
         var successful = document.execCommand('paste');
-        alert(tempTextArea.text());
+        alert(tempTextArea.value);
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
     } catch (err) {
