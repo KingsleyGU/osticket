@@ -1096,9 +1096,10 @@ $(".copyContentToClip").click(function(){
         return false;
 })
 $(".pasteContentFromClip").click(function(){
-    unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
-    var clipboardContent = getContentFromClipboard();
-    alert(clipboardContent);
+    alert(document.queryCommandSupported('paste'));
+    // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+    // var clipboardContent = getContentFromClipboard();
+    // alert(clipboardContent);
 })
 // $(".pasteContentFromClip").click(function(){
 //         var tempTextArea = document.createElement('textarea');
