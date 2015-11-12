@@ -21,7 +21,7 @@ if (($lang = Internationalization::getCurrentLanguage())
     </style>
     <![endif]-->
 
-    <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-2.1.4.min.js?19292ad"></script>
+   <!-- <script type="text/javascript" src="js/jquery-2.1.4.min.js?19292ad"></script> -->
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-1.8.3.min.js?19292ad"></script>
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-ui-1.10.3.custom.min.js?19292ad"></script>
     <script type="text/javascript" src="./js/scp.js?19292ad"></script>
