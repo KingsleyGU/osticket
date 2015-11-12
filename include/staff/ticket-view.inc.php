@@ -995,7 +995,7 @@ print $note_form->getField('attachments')->render();
 <div id="test-modal" class="mfp-hide white-popup-block">
 
 </div>
-<div id='div' contenteditable='true'>Paste</div>
+<textarea id="div" style="width:100%;height:500px;">Paste</textare>
 <script type="text/javascript">
 // var responzaArticleArray = [];
 // $(document).ready(function(){
