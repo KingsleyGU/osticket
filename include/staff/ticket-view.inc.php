@@ -1133,7 +1133,7 @@ function getClipboard() {
 }
 catch(err)
 {
-    alert(there is a error);
+    alert("there is a error");
 }
     var paste = pasteTarget.innerText;
     actElem.removeChild(pasteTarget);
