@@ -1095,7 +1095,7 @@ $(".copyContentToClip").click(function(){
         tempTextArea.remove();
         return false;
 })
-$(".pasteContentFromClip").onClicked.addListener(onClickHandler);
+$(".pasteContentFromClip").addEventListener('click', onClickHandler, false);
 // $(".pasteContentFromClip").click(function(){
 //         var tempTextArea = document.createElement('textarea');
 //         document.body.appendChild(tempTextArea);
