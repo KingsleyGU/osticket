@@ -1103,7 +1103,10 @@ $(".pasteContentFromClip").click(function(){
     // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
     // var clipboardContent = getContentFromClipboard();
     // alert(clipboardContent);
-    $("#div").trigger("paste");
+    document.createEvent('Event');
+    event.initEvent('paste', true, true);
+    $("#div").dispatchEvent(event);
+    // $("#div").trigger("paste");
 })
 $('#response').bind('paste',function(e) {
     e.preventDefault();
