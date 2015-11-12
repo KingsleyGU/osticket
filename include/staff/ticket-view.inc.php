@@ -1236,7 +1236,7 @@ function sendPasteToContentScript(toBePasted) {
 //     }
 // }
 $("#div").on("paste", function(e){
-    handlepaste (this, e) 
+    handlepaste (this, e);
 })
 function handlepaste (elem, e) {
     var savedcontent = elem.innerHTML;
