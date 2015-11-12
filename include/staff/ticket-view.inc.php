@@ -1085,7 +1085,7 @@ $(".pasteContentFromClip").on("click",function(){
     // tempTextArea.select();
 
     try {
-        var successful = document.execCommand('paste');
+        var successful = $("#response").execCommand('paste');
         alert($("#response").val());
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
