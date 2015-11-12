@@ -1083,7 +1083,7 @@ $(".copyContentToClip").click(function(){
         tempTextArea.innerHTML = areaToCopy.html();
         document.body.appendChild(tempTextArea);
         tempTextArea.focus();
-        tempTextArea.select();
+        // tempTextArea.select();
 
         try {
             var successful = document.execCommand('copy');
@@ -1093,19 +1093,22 @@ $(".copyContentToClip").click(function(){
             console.log('Oops, unable to copy');
         }
         tempTextArea.remove();
+        return false;
 })
-$(".pasteContentFromClip").on("click",function(){
-    // $('iframe').contents().prop('designMode','on')
-        var tempTextArea = $("#response");
+$(".pasteContentFromClip").click(function(){
+        var tempTextArea = document.createElement('textarea');
+        document.body.appendChild(tempTextArea);
+// $('iframe').contents().prop('designMode','on')
+        // var tempTextArea = $("#response");
         // tempTextArea.innerHTML = areaToCopy.html();
         // document.body.appendChild(tempTextArea);
         tempTextArea.focus();
-        tempTextArea.select();
+        // tempTextArea.select();
     // tempTextArea.select();
         // document.execCommand('paste');
     try {
         var successful = document.execCommand('paste');
-        alert($("#response").val());
+        alert(tempTextArea.val());
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
     } catch (err) {
