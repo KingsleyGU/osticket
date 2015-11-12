@@ -1095,7 +1095,10 @@ $(".copyContentToClip").click(function(){
         tempTextArea.remove();
         return false;
 })
-$(".pasteContentFromClip").addEventListener('click', onClickHandler, false);
+$(".pasteContentFromClip").click(function(){
+    var clipboardContent = getContentFromClipboard();
+    alert(clipboardContent);
+})
 // $(".pasteContentFromClip").click(function(){
 //         var tempTextArea = document.createElement('textarea');
 //         document.body.appendChild(tempTextArea);
@@ -1213,13 +1216,13 @@ function sendPasteToContentScript(toBePasted) {
 /**
  * The function that will handle our context menu clicks.
  */
-function onClickHandler(info, tab) {
-    var clipboardContent = getContentFromClipboard();
-    console.log('clipboardContent: ' + clipboardContent);
-    if (info.menuItemId === 'pasteDemo') {
-        console.log('clicked paste demo');
-        sendPasteToContentScript(clipboardContent);
-    }
-}
+// function onClickHandler(info, tab) {
+//     var clipboardContent = getContentFromClipboard();
+//     console.log('clipboardContent: ' + clipboardContent);
+//     if (info.menuItemId === 'pasteDemo') {
+//         console.log('clicked paste demo');
+//         sendPasteToContentScript(clipboardContent);
+//     }
+// }
 
 </script>
