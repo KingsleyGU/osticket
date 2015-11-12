@@ -1105,6 +1105,10 @@ $("#response").select(function(){
         alert('Oops, unable to copy');
     }
 })
+$(document).on("paste" function(e){
+    var text = e.clipboardData.getData("text/plain");
+    alert(text);
+})
 // $(document).on("copy",function(e){
 //  e.stopPropagation();
 //   e.preventDefault();
