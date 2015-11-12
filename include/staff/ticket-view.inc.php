@@ -1105,7 +1105,7 @@ $(".pasteContentFromClip").click(function(){
     // alert(clipboardContent);
     $("#response").trigger("paste");
 })
-$('#response').on('paste',function(e) {
+$('#response').bind('paste',function(e) {
     e.preventDefault();
     var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
     window.document.execCommand('insertText', false, text);
@@ -1189,15 +1189,15 @@ $('#response').on('paste',function(e) {
 //     alert(e.clipboardData.getData("text/plain"));
 //     e.preventDefault();
 // }
-$("#response").on("paste", function(event){
-    if (window.clipboardData) { // Internet Explorer
-        window.clipboardData.setData("Text", text);
-    } else {  
-        unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
-        const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
-        clipboardHelper.copyString(text);
-    }
-});
+// $("#response").on("paste", function(event){
+//     if (window.clipboardData) { // Internet Explorer
+//         window.clipboardData.setData("Text", text);
+//     } else {  
+//         unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+//         const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
+//         clipboardHelper.copyString(text);
+//     }
+// });
 
 function getContentFromClipboard() {
     var result = '';
