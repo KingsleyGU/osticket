@@ -1077,8 +1077,11 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-    var tempTextArea = $("#response").val('').select();;
-    // tempTextArea.focus();
+        var tempTextArea = document.createElement('textarea');
+        // tempTextArea.innerHTML = areaToCopy.html();
+        document.body.appendChild(tempTextArea);
+        tempTextArea.focus();
+        tempTextArea.select();
     // tempTextArea.select();
 
     try {
