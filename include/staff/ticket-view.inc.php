@@ -1077,38 +1077,39 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".pasteContentFromClip").on("click",function(){
-    //     var tempTextArea = $("#response");
-    //     // tempTextArea.innerHTML = areaToCopy.html();
-    //     // document.body.appendChild(tempTextArea);
-    //     tempTextArea.focus();
-    //     tempTextArea.select();
-    // // tempTextArea.select();
-    //     document.execCommand('paste');
-    // try {
-    //     var successful = document.execCommand('paste');
-    //     alert($("#response").val());
-    //     var msg = successful ? 'successful' : 'unsuccessful';
-    //     console.log('pasting text command was ' + msg);
-    // } catch (err) {
-    //     alert('Oops, unable to copy');
-    // }
-    $("#response").trigger("select");
-// 
-});
-$("#response").select(function(){
+    $('iframe').contents().prop('designMode','on')
+        var tempTextArea = $("#response");
+        // tempTextArea.innerHTML = areaToCopy.html();
+        // document.body.appendChild(tempTextArea);
+        tempTextArea.focus();
+        tempTextArea.select();
+    // tempTextArea.select();
+        // document.execCommand('paste');
     try {
         var successful = document.execCommand('paste');
-        alert($(this).val());
+        alert($("#response").val());
         var msg = successful ? 'successful' : 'unsuccessful';
         console.log('pasting text command was ' + msg);
     } catch (err) {
         alert('Oops, unable to copy');
     }
-})
-$(document).on("paste" function(e){
-    var text = e.clipboardData.getData("text/plain");
-    alert(text);
-})
+    // $("#response").trigger("select");
+// 
+});
+// $("#response").select(function(){
+//     try {
+//         var successful = document.execCommand('paste');
+//         // alert($(this).val());
+//         var msg = successful ? 'successful' : 'unsuccessful';
+//         console.log('pasting text command was ' + msg);
+//     } catch (err) {
+//         alert('Oops, unable to copy');
+//     }
+// })
+// $(document).on("paste" function(e){
+//     var text = e.clipboardData.getData("text/plain");
+//     alert(text);
+// })
 // $(document).on("copy",function(e){
 //  e.stopPropagation();
 //   e.preventDefault();
