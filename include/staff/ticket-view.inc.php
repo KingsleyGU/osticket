@@ -991,11 +991,7 @@ print $note_form->getField('attachments')->render();
     </form>
     <div class="clear"></div>
 </div>
-<!-- this is for the popup box -->
-<div id="test-modal" class="mfp-hide white-popup-block">
 
-</div>
-<textarea id='div' contenteditable='true'>Paste</textarea>
 <script type="text/javascript">
 // var responzaArticleArray = [];
 // $(document).ready(function(){
@@ -1147,10 +1143,14 @@ $(".pasteContentFromClip").click(function(){
     // document.body.dispatchEvent(event);
     // $("#div").trigger(e);
     // $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
-    var event = document.createEvent('Event');
-    event.isTrusted = true;
-    event.initEvent('paste', true, true);
-    document.body.dispatchEvent(event);
+    // var event = document.createEvent('Event');
+    // event.isTrusted = true;
+    // event.initEvent('paste', true, true);
+    // document.body.dispatchEvent(event);
+
+    var pressEvent = document.createEvent ("KeyboardEvent");    
+pressEvent.initKeyEvent ("keypress", true, true, window, true, false, false, false, 86, 0);
+var accepted=aTarget.dispatchEvent (pressEvent);
     // $("#div").fireEvent("on" + event.eventType, event);
     // $("#div").dispatchEvent(event);
     // $("#div").trigger("paste");
@@ -1163,188 +1163,5 @@ $(document).on('paste','#div',function(e) {
     window.document.execCommand('insertText', false, text);
     alert("2222");
 });
-// $('#div').bind('paste',function(e) {
-//     e.preventDefault();
-//     var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-//     window.document.execCommand('insertText', false, text);
-// });
-// $(".pasteContentFromClip").click(function(){
-//         var tempTextArea = document.createElement('textarea');
-//         document.body.appendChild(tempTextArea);
-        
-// // $('iframe').contents().prop('designMode','on')
-//         // var tempTextArea = $("#response");
-//         // tempTextArea.innerHTML = areaToCopy.html();
-//         // document.body.appendChild(tempTextArea);
-//         tempTextArea.contentEditable = true;
-//         tempTextArea.focus();
-//         // tempTextArea.select();
-//      tempTextArea.select();
-//         // document.execCommand('paste');
 
-//     try {
-
-//         var successful = document.execCommand('paste',null,null);
-//         alert(tempTextArea.value);
-//         var msg = successful ? 'successful' : 'unsuccessful';
-//         console.log('pasting text command was ' + msg);
-//     } catch (err) {
-//         alert('Oops, unable to paste');
-//     }
-    // $("#response").trigger("select");
-// 
-// alert(getClipboard());
-// });
-// function getClipboard() {
-
-//     try{
-//     var pasteTarget = document.createElement("textarea");
-//     pasteTarget.contentEditable = true;
-//     var actElem = document.activeElement.appendChild(pasteTarget).parentNode;
-//     pasteTarget.focus();
-//     pasteTarget.select();
-//     var successful = document.execCommand("insertText", null, null);
-// }
-// catch(err)
-// {
-//     alert("there is a error");
-// }
-//     var paste = pasteTarget.innerText;
-//     actElem.removeChild(pasteTarget);
-//     return paste;
-// };
-// $("#response").select(function(){
-//     try {
-//         var successful = document.execCommand('paste');
-//         // alert($(this).val());
-//         var msg = successful ? 'successful' : 'unsuccessful';
-//         console.log('pasting text command was ' + msg);
-//     } catch (err) {
-//         alert('Oops, unable to copy');
-//     }
-// })
-// $(document).on("paste" function(e){
-//     var text = e.clipboardData.getData("text/plain");
-//     alert(text);
-// })
-// $(document).on("copy",function(e){
-//  e.stopPropagation();
-//   e.preventDefault();
-                
-// var cd = e.originalEvent.clipboardData;
-//   cd.setData("text/plain", "nice, eh?!");
-//     alert(cd.getData("text/plain"));
-// })
-// function pasteContent(e){
-//   e.stopPropagation();
-//   e.preventDefault();
-//   alert("222");
-//   var cd = e.originalEvent.clipboardData;     
-//   $(".pasteContentFromClip").empty().text(cd.getData("text/plain"));
-// }
-// $("#response").onpaste = function(e) {
-//     alert("222");
-//     alert(e.clipboardData.getData("text/plain"));
-//     e.preventDefault();
-// }
-// $("#response").on("paste", function(event){
-//     if (window.clipboardData) { // Internet Explorer
-//         window.clipboardData.setData("Text", text);
-//     } else {  
-//         unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
-//         const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
-//         clipboardHelper.copyString(text);
-//     }
-// });
-
-// function getContentFromClipboard() {
-//     var result = '';
-//     var sandbox = document.getElementById('sandbox');
-//     sandbox.value = '';
-//     sandbox.select();
-//     if (document.execCommand('paste')) {
-//         result = sandbox.value;
-//         console.log('got value from sandbox: ' + result);
-//     }
-//     sandbox.value = '';
-//     return result;
-// }
-
-/**
- * Send the value that should be pasted to the content script.
- */
-// function sendPasteToContentScript(toBePasted) {
-//     // We first need to find the active tab and window and then send the data
-//     // along. This is based on:
-//     // https://developer.chrome.com/extensions/messaging
-//     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//         chrome.tabs.sendMessage(tabs[0].id, {data: toBePasted});
-//     });
-// }
-
-/**
- * The function that will handle our context menu clicks.
- */
-// function onClickHandler(info, tab) {
-//     var clipboardContent = getContentFromClipboard();
-//     console.log('clipboardContent: ' + clipboardContent);
-//     if (info.menuItemId === 'pasteDemo') {
-//         console.log('clicked paste demo');
-//         sendPasteToContentScript(clipboardContent);
-//     }
-// }
-// $("#div").on("paste", function(e){
-//     handlepaste (this, e) ;
-// })
-// function handlepaste (elem, e) {
-//     var savedcontent = elem.innerHTML;
-//     if (e && e.clipboardData && e.clipboardData.getData) {// Webkit - get data from clipboard, put into editdiv, cleanup, then cancel event
-//         if (/text\/html/.test(e.clipboardData.types)) {
-//             elem.innerHTML = e.clipboardData.getData('text/html');
-//         }
-//         else if (/text\/plain/.test(e.clipboardData.types)) {
-//             elem.innerHTML = e.clipboardData.getData('text/plain');
-//         }
-//         else {
-//             elem.innerHTML = "";
-//         }
-//         waitforpastedata(elem, savedcontent);
-//         if (e.preventDefault) {
-//                 e.stopPropagation();
-//                 e.preventDefault();
-//         }
-//         return false;
-//     }
-//     else {// Everything else - empty editdiv and allow browser to paste content into it, then cleanup
-//         elem.innerHTML = "";
-//         waitforpastedata(elem, savedcontent);
-//         return true;
-//     }
-// }
-
-// function waitforpastedata (elem, savedcontent) {
-//     if (elem.childNodes && elem.childNodes.length > 0) {
-//         processpaste(elem, savedcontent);
-//     }
-//     else {
-//         that = {
-//             e: elem,
-//             s: savedcontent
-//         }
-//         that.callself = function () {
-//             waitforpastedata(that.e, that.s)
-//         }
-//         setTimeout(that.callself,20);
-//     }
-// }
-
-// function processpaste (elem, savedcontent) {
-//     pasteddata = elem.innerHTML;
-//     //^^Alternatively loop through dom (elem.childNodes or elem.getElementsByTagName) here
-
-//     elem.innerHTML = savedcontent;
-
-//     // Do whatever with gathered data;
-//     alert(pasteddata);
-// }
 </script>
