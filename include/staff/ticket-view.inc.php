@@ -1071,6 +1071,10 @@ function goBackToArticleLink()
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
+$(".redactor_richtext").click{
+    $(this).focus();
+    $(this).select();
+}
 $(".pasteContentFromClip").click(function(){
     // var tempTextArea = document.createElement('textarea');
     // tempTextArea.addClass( "tempTextArea" );
