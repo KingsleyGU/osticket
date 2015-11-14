@@ -1072,8 +1072,7 @@ function goBackToArticleLink()
     $( ".responza-article-link-content" ).css("display","block");
 }
 $(".redactor_richtext").click(function(){
-    $(this).focus();
-    $(this).select();
+    document.execCommand('selectAll',false,null);
 })
 $(".pasteContentFromClip").click(function(){
     // var tempTextArea = document.createElement('textarea');
