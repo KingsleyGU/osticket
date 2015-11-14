@@ -523,8 +523,6 @@ $tcount+= $ticket->getNumNotes();
                             $ticket->getId(),
                             $recipients);
                    ?>
-                   <button type="button" class="responzaBtn pasteContentFromClip">click</button>
-                   <button type="button" class="responzaBtn copyContentToClip">click</button>
                 </td>
              </tr>
             </tbody>
@@ -1073,24 +1071,6 @@ function goBackToArticleLink()
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
-$(".copyContentToClip").click(function(){
-        var areaToCopy = $('#thread-id-32');
-        var tempTextArea = document.createElement('textarea');
-        tempTextArea.innerHTML = areaToCopy.html();
-        document.body.appendChild(tempTextArea);
-        tempTextArea.focus();
-        // tempTextArea.select();
-
-        try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copying text command was ' + msg);
-        } catch (err) {
-            console.log('Oops, unable to copy');
-        }
-        tempTextArea.remove();
-        return false;
-})
 $(".pasteContentFromClip").click(function(){
     // var tempTextArea = document.createElement('textarea');
     // tempTextArea.addClass( "tempTextArea" );
@@ -1156,12 +1136,5 @@ var accepted=aTarget.dispatchEvent (pressEvent);
     // $("#div").trigger("paste");
 })
 
-$(document).on('paste','#div',function(e) {
-    jQuery.event.props.push( "originalEvent" );
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-    window.document.execCommand('insertText', false, text);
-    alert("2222");
-});
 
 </script>
