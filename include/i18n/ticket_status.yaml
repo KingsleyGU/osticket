@@ -1,0 +1,46 @@
+---
+- 
+  id: 1
+  name: Åben
+  state: åben
+  mode: 3
+  sort: 1
+  flags: 0
+  properties:
+    description: Åbne sager.
+- 
+  id: 2
+  name: Løst
+  state: Løst
+  mode: 3
+  sort: 2
+  flags: 0
+  properties:
+    description: Løste sager er lukket sager der kan genåbnes af slut brugeren. Dette kan være brugbart når en udløser er brugt til at lukke en bestilling med besked sendt til slut brugeren.
+- 
+  id: 3
+  name: Lukket
+  state: lukket
+  mode: 3
+  sort: 3
+  flags: 0
+  properties:
+    description: Sager markeret som lukket kan ikke genåbnes af slutbrugeren. sager vil stadig være tilgængelig på slutbruger og personale panelet.
+- 
+  id: 4
+  name: Arkiveret
+  state: Arkiveret
+  mode: 3
+  sort: 4
+  flags: 0
+  properties:
+    description: Sager kun administrativt tilgængelige, men ikke via sags køer.
+- 
+  id: 5
+  name: Slettet
+  state: slettet
+  mode: 3
+  sort: 5
+  flags: 0
+  properties:
+    description: sager i kø til sletning. Ikke tilgængelig via sags køer.

@@ -1,0 +1,41 @@
+---
+notes: Sendt til personalet, når en ny besked er indsendt af en bruger til en sag. Dette kan ske når brugeren reagerer på en email fra systemet, eller besøger webportalen og skriver en ny besked der.
+subject: Ny Besked Påmindelser
+body: |2
+  <h3> <strong> Hej %{recipient},</strong></h3>
+  Ny besked vedlagt i bestillingen <a
+  href = "%{ticket.staff_link}">#%{ticket.number}</a>
+  <br>
+  <br>
+  <table>
+  <tbody>
+  <tr>
+       <td>
+            <strong> Fra </strong>:
+       </td>
+       <td>
+           %{ticket.name} &lt;%{ticket.email}&gt;
+       </td>
+  </tr>
+  <tr>
+       <td>
+            <strong>Afdeling</strong>:
+       </td>
+       <td>
+            %{ticket.dept.name}
+       </td>
+  </tr>
+  </tbody>
+  </table>
+  <br>
+  %{message}
+  <br>
+  <br>
+  <hr>
+  <div> at se eller reagere på bestillingen, skal du <a
+  href = "%{ticket.staff_link}"><span style = "color: rgb (84, 141, 212);"
+  > Log ind </span> </a> i bestillings systemet </div>
+  <em style="color: rgb(127,127,127); font-size: small; "> din venlige
+  Kundesupport system</em> <br>
+  <img src = "cid: b56944cb4722cc5cda9d1e23a3ea7fbc"
+  alt = "Powered by osTicket" width = "126" height = "19" style = "width: 126px;">

@@ -1,0 +1,13 @@
+---
+signature:
+  title: Personale signaturlinje
+  content: Opret ansattes underskrift for svar til billetter. Denne signatur vises som en indstilling i bunden af en billet svar
+type:
+  title: Kontotype
+  content: Admins har privilegiet at få adgang til Admin Panel. Personale har kun adgang til at administrere bestillinger og vidensbase
+group:
+  title: Tildelt gruppe
+  content: Gruppemedlemskabet definerer de ansattes rolle i systemet. Besøg administrationssiden for gruppe for at definere, hvilken adgang dette personale har til helpdesk
+notes:
+  title: Interne notater
+  content: sæt interne notater vedrørende personale; noter er kun synlig for personale hvis kontotypen er Admin

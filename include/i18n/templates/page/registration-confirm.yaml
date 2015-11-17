@@ -1,0 +1,4 @@
+---
+notes: Disse skabeloner definerer den side, der vises til kunderne efter at have udfyldt tilmeldingsblanketten. Skabelonen bør nævne, at systemet sender en e-mail bekræftelse link, og hvad er det næste skridt i registreringsprocessen er.
+name: Konto registrering
+body: '<div><strong>Tak for tilmelding til en konto.</strong> <br/> <br/> vi har sendt dig en e-mail til den adresse, du indtastede. Følg linket i e-mailen til at bekræfte din konto og få adgang til dine bestillinger. </div>'

@@ -1,0 +1,4 @@
+---
+ban_list:
+  title: bandlyste Email adresser
+  content: Emails modtaget fra bandlyste email adresser som ses på banlyst listen vil blive automatisk afvist.
