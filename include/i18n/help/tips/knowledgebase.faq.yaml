@@ -1,8 +1,0 @@
----
-listing_type:
-  title: Notering Type
-  content: 'Vælg <span class="doc-desc-opt"> Offentlige (Udgiv)</span> hvis du ønsker dette<span class="doc-desc-title">FAQ</span> skal offentliggøres på offentlige knowledgebase, hvis den overordnede kategori er offentlige.'
-  links:
-    - 
-      title: Aktiver den offentlige Knowledgebase for Kunde Portalen
-      href: /scp/settings.php?t=kb

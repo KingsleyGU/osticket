@@ -1,6 +1,0 @@
----
-notes: |
-  Sendt til brugerne, når personale medlemmere laver et svar på deres bestilling.
-  Svar bliver kun genereret af personale medlemmere.
-subject: 'SV: %{ticket.subject}'
-body: '<h3><strong>Kære %{recipient.name}</strong></h3> %{response} <br><br><div style="color: rgb(127, 127, 127);"> dit %{company.name} Team, <br>%{signature}</div> <hr><div style="color: rgb(127, 127, 127); font-size: small; text-align: center;" > <em>vi håber dette svar har tilstrækkeligt besvaret dit spørgsmål. Hvis ikke, bedes du besvare denne e-mail eller <a href="%{recipient.ticket_link}" style="color: rgb(84, 141, 212);" > logge ind på din konto</a> for en komplet oversigt af alle dine bestillinger og svar.</em></div>'
