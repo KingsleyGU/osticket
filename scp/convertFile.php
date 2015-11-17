@@ -7,7 +7,7 @@ unset($here); unset($h);
 
 define('INCLUDE_DIR', ROOT_DIR . 'include/'); // Set by installer
 try {
-	echo INCLUDE_DIR.'/i18n/myphar.phar';
+	echo INCLUDE_DIR.'/i18n/da.phar';
     $phar = new Phar(INCLUDE_DIR.'/i18n/myphar.phar');
     $phar->extractTo(INCLUDE_DIR.'/i18n/', 'lang.txt'); // extract only file.txt
 
