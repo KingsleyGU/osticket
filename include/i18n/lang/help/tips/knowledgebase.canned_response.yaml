@@ -1,0 +1,11 @@
+---
+canned_response:
+  title: Standardsvar
+  content: 'Opret et <span class="doc-desc-title">Standardsvar</span> det kan os blive medtaget i et sags svar. Det kan os bruges som et <span class="doc-desc-title">Sags Autosvar</span> som indstilles i <span class="doc-desc-title">Sags Filter</span>.'
+  links:
+    - 
+      title: Indstil et Sags Filter
+      href: /scp/filters.php
+canned_attachments:
+  title: standard vedhæftede filer
+  content: 'Vedhæft en fil, som du ønsker at være automatisk inkluderet i sags svar som udnytter det nye <span class="doc-desc-title">Standardsvar</span>.'

@@ -1,0 +1,40 @@
+---
+notes: Sendt til personale medlem når en ny bestilling bliver lavet i systemet. Dette gælder for bestillinger lavet via email, websiden eller api.
+subject: Ny Bestilling Alarm
+body: |2
+  <h2>Hej %{recipient},</h2>
+  New bestilling#%{ticket.number} er lavet
+  <br>
+  <br>
+  <table>
+  <tbody>
+  <tr>
+      <td>
+          <strong>From</strong>:
+      </td>
+      <td>
+          %{ticket.name} &lt;%{ticket.email}&gt;
+      </td>
+  </tr>
+  <tr>
+      <td>
+          <strong>Afdeling</strong>:
+      </td>
+      <td>
+          %{ticket.dept.name}
+      </td>
+  </tr>
+  </tbody>
+  </table>
+  <br>
+  %{message}
+  <br>
+  <br>
+  <hr>
+  <div>For at se eller svare på din bestilling, venligst <a
+  href="%{ticket.staff_link}">login</a> til bestillings systemet</div>
+  <em style="font-size: small">Din venlige kunde support system</em>
+  <br>
+  <a href="http://osticket.com/"><img width="126" height="19"
+      style="width: 126px; " alt="Powered By osTicket"
+      src="cid:b56944cb4722cc5cda9d1e23a3ea7fbc"/></a>

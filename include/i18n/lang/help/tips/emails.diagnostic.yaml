@@ -1,0 +1,20 @@
+---
+test_outgoing_email:
+  title: Test udgående Email
+  content: Den email levering afhænger af din serverindstillinger (php.ini) og/eller SMTP-konfiguration.
+  links:
+    - 
+      title: Vælg en email til at konfigurere indstillingerne for SMTP (udgående)
+      href: /scp/emails.php
+from:
+  title: Fra
+  content: ""
+to:
+  title: Til
+  content: ""
+subject:
+  title: Emne
+  content: ""
+message:
+  title: Besked
+  content: ""

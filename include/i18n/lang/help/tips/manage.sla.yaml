@@ -1,0 +1,13 @@
+---
+name:
+  title: Navn
+  content: 'Vælg et beskrivende navn for denne <span class="doc-desc-title">SLA Plan</span> der vil afspejle dens formål.'
+grace_period:
+  title: Afdragsfri Periode
+  content: |
+    Bestem antallet af timer efter en sag er lavet, der vil være automatisk mærket som forfalden. <br><br><em>Timer tælles fra sag bliver
+    oprettet.</em>
+transient:
+  title: Forbigående
+  content: |-
+    Forbigående SLA'er betragtes som midlertidige og kan tilsidesættes af en ikke-forbigående SLA på <span class="doc-desc-opt">Afdelingen</span> overførsel, eller når dens <span class="doc-desc-title">Hjælpe Emne</span> er ændret.

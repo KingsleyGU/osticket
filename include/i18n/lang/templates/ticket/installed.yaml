@@ -1,0 +1,42 @@
+---
+deptId: 1
+topicId: 1
+name: osTicket Support
+email: support@osticket.com
+source: Web
+subject: osTicket installeret!
+message: |
+  <p>
+  Tak for valget osTicket.
+  </p><p>
+  Sørg for at du deltage i <a
+  href = "http://osticket.com/forums"> osTicket forum </a> <a
+  href = "http://osticket.com/updates"> mailing liste </a> for at holde dig ajour
+  om de seneste nyheder, sikkerhedsadvarsler og opdateringer. osTicket forum er
+  også et godt sted at få hjælp, vejledning, tips og hjælp fra
+  andre osTicket brugere. Ud over forummet, er osTicket wiki
+  en nyttig samling af undervisningsmaterialer, dokumentation,
+  og bemærker, fra fællesskabet. Vi glæder os over Deres bidrag til
+  osTicket samfund.
+  </p><p>
+  Hvis du er på udkig efter en større grad af støtte, giver vi
+  professionel service og kommerciel support med garanteret svar
+  tidspunkter, og adgang til kernen udvikling teamet. Vi kan også hjælpe
+  tilpasse osTicket eller endda tilføje nye funktioner til systemet for at opfylde dine
+  unikke behov.
+  </p><p>
+  Hvis tanken om at styre og opgradering af denne osTicket installation er
+  skræmmende, kan du prøve osTicket som en hosted service på <a
+  href = "http://www.supportsystem.com"> http://www.supportsystem.com/ </a> --
+  ingen installation er nødvendig, og vi kan importere dine data! med
+  SupportSystemets turnkey infrastruktur, får du osTicket på sit bedste,
+  så du kan fokusere på dine kunder uden byrden af at gøre
+  Kontrol på  at programmet er stabil, vedligeholdes, og sikker.
+  </p><p>
+  Skål,
+  </p><p>
+  - <br/>
+  osTicket Team http://osticket.com/
+  </p><p>
+  <strong> PS. </strong> Gør ikke bare kunderne glade, men gør kunderne glade!
+  </p>

@@ -1,0 +1,28 @@
+---
+notes: |
+  Sendt til en bruger, når en automatisk Prædefineret svar er indlæg i en bestilling
+  når den er oprettet.
+  
+  Tilgængelige variabler for udskiftning: %{.ticket*}%%{response}
+subject: 'SV: %{ticket.subject} [#%{ticket.number}]'
+body: |
+  <h3><strong>Kære %{recipient.name.first},</strong></h3>
+  din bestilling er blevet oprettet <a
+  href="%{recipient.ticket_link}">#%{ticket.number}</a>med følgende
+  automatiske svar
+  <br>
+  <br>
+  Overskrift: <strong>%{ticket.topic.name}</strong>
+  <br>
+  Emne: <strong>%{ticket.subject}</strong>
+  <br>
+  <br>
+  %{response}
+  <br>
+  <br>
+  <div style="color: rgb(127, 127, 127);">Your %{company.name} Team,<br>
+  %{signature}</div>
+  <hr>
+  <div style="color: rgb(127, 127, 127); font-size: small;"><em>Vi håber at svaret fik løst dit problem. Har du yderlige spørgsmål eller kommentarer, skal du besvare den her e-mail
+  eller <a href="%{recipient.ticket_link}"><span
+  style="color: rgb(84, 141, 212);" >log ind på din konto</span></a>for at se en oversigt over dine bestillinger.</em></div>

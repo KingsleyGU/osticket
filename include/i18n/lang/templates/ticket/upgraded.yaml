@@ -1,0 +1,33 @@
+---
+source: Web
+name: osTicket Support
+email: support@osticket.com
+subject: osTicket er opgraderet!
+message: |
+  <p>
+  osTicket opgraderet med succes! Der henvises til udgivelsesbemærkningerne
+  (http://osticket.com/wiki/Release_Notes) for mere information om
+  ændringer og nye funktioner.
+  </p><p>
+  Vær sikker på at slutte sig til <a href="http://osticket.com/forums">osTicket
+  forum </a> og <a href="http://osticket.com/updates"> mailing
+  liste </a> for at holde dig ajour om meddelelser, sikkerhedsopdateringer og
+  alarmer! Dit bidrag til osTicket samfund vil blive værdsat!
+  </p><p>
+  osTicket teamet er forpligtet til at yde støtte til alle brugere gennem
+  vores gratis online-ressourcer og et komplet udvalg af kommerciel support
+  pakker og tjenester . For mere information, eller for at diskutere dine behov,
+  bedes du kontakte os i dag på http://osticket.com/support/. enhver feedback
+  vil blive værdsat!
+  </p><p>
+  Hvis forvaltningen og opgradering af denne osTicket installation er skræmmende, du
+  kan prøve osTicket som en hosted service på http://www.supportsystem.com/ -
+  ingen opgradering nogensinde , og vi kan importere dine data ! Med SupportSystem s
+  nøglefærdige infrastruktur , får du osTicket på sit bedste, så du fri
+  at fokusere på dine kunder uden at byrden af ​​at sørge for,
+  ansøgning er stabil , vedligeholdes, og sikker.
+  </p><p>
+  -<br/>
+  osTicket Team <br/>
+  http://osticket.com/
+  </p>

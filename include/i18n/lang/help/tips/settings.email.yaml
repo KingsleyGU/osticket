@@ -1,0 +1,67 @@
+---
+default_email_templates:
+  title: Standard Email skabelon sæt
+  content: 'Vælg <span class="doc-desc-title"> Email skabelon angivet</span> bruges til at sende <span class="doc-desc-title"> Auto-svar</span> og <span class="doc-desc-title"> advarsler</span> for forskellige handlinger, der kan finde sted under en bestillings levetid. <br><br>Afdelinger kan tildeles en bestemt Email skabelon angive.'
+  links:
+    - 
+      title: Administer Email skabelon sæt
+      href: /scp/templates.php
+default_system_email:
+  title: Standard udgående Email
+  content: 'Vælg en e-mail-adresse, hvorfra udgående e-mails sendes. <br><br><span class="doc-desc-title"> afdelinger</span> kan angive sin egen <span class="doc-desc-title"> e-mail-adresse</span>, som vil tilsidesætte hvad er angivet her.'
+  links:
+    - 
+      title: Administrere Email adresser
+      href: /scp/emails.php
+default_alert_email:
+  title: Standard Påmindelse Email
+  content: 'Vælg en e-mail-adresse som <span class="doc-desc-title"> påminder &amp; meddelelser</span> sendes til agenter.'
+  links:
+    - 
+      title: Administrere E-mail adresser
+      href: /scp/emails.php
+admins_email_address:
+  title: Admins Email adresse
+  content: 'Indtast en adminstrator e-mail adresse som sender <span class="doc-desc-title"> Systemfejl</span> og <span class="doc-desc-title"> Nye bestillinger advarsler</span> (hvis aktiveret).'
+  links:
+    - 
+      title: 'Administrer Advarsel & Meddelelser'
+      href: /scp/settings.php?t=alerts
+email_fetching:
+  title: Hentning af Email
+  content: 'Tillad IMAP/POP polling for konfigureret og aktiveret <span class="doc-desc-title">Mailbokse</span>.'
+  links:
+    - 
+      title: Administrere Mailbokse
+      href: /scp/emails.php
+enable_autocron_fetch:
+  title: Hentet E-mails ved hjælp af Auto-cron
+  content: 'Giver mulighed for periodisk email henter ved hjælp af en intern Jobliste udløst af Medarbejdernes aktivitet.  <br><br>Venligst Bemærk, at emails vil ikke blive hentet, hvis ingen er logget på Medarbejdernes Kontrolpanel. Eksterne Opgavestyring er stærkt anbefales til forudsigelige Hetnings intervaller.'
+  links:
+    - 
+      title: Brug af eksterne Opgavestyring
+      href: http://osticket.com/wiki/POP3/IMAP_Setting_Guide
+strip_quoted_reply:
+  title: Strip Citeret Svar
+  content: 'Hvis aktiveret, vil dette fjerne foregående korrespondance mellem email kommunikation. <br><br>Denne funktion er relationel afhængig <span class="doc-desc-title"> Svar Separator Tag</span> nedenfor.'
+reply_separator_tag:
+  title: Svar Separator Tag
+  content: 'Dette er en token, der angiver at brugeren kan svare over linjen. <br><br><strong>Note:</strong> dette er kun relevant, hvis <span class="doc-desc-title"> Strip citerede svar</span> er aktiveret ovenfor.'
+emailed_tickets_priority:
+  title: Emailed bestillings priotet
+  content: |
+    
+    Vælg om du vil have priotetet/betydning af brugernes email (f.eks. Outlook) til at diktere den nye bestillings priotet. <br><br> Denne indstilling kan blive overskrevet af en <span class="doc-desc-title>"Bestillings filtre</span>.
+  links:
+    - 
+      title: 'Opret &amp; administre bestillings filtre'
+      href: /scp/filters.php
+accept_all_emails:
+  title: Accepter alle Emails
+  content: 'Acceptere e-mails fra ukendte brugere. <br><br>Afmarkere denne indstilling vil resultere i bestillingen bliver afvist.'
+accept_email_collaborators:
+  title: Accepter Email Samarbejdspartnere
+  content: 'Tilføj e-mail deltagerne indgår i <code><strong>til</strong></code> og <code><strong>CC</strong></code> felter som billet samarbejdspartnere. <br/><br/> <em>samarbejdspartnere kan altid tilføjes manuelt af agenter når du får vist en bestilling.</em>'
+default_mta:
+  title: Standard MTA
+  content: '<span class="doc-desc-title"> Standard MTA</span> tager sig af email leverings processen for udgående e-mails uden SMTP-indstilling.'
