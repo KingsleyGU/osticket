@@ -38,6 +38,7 @@ $info['topicId'] = "2";
 
         $data =array();
         $data['emailId'] = 0;
+        $data['topicId'] = "2";
         $data['recipients'] = array();
         $data['subject'] = "From the API test";
         $data['header'] = "";
@@ -47,6 +48,7 @@ $info['topicId'] = "2";
         $data['email'] = "12345678@test.dk";
         $data['name'] = "Mike Black";
         $data['message'] =  "life sucks";
+        $data['phone'] = "50233011";
         $data['thread-type'] = 'N';
         $data['flags']['bounce'] = true;
          // $data['attachments'] = $parser->getAttachments();
