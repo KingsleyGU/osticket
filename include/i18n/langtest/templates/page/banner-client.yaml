@@ -1,0 +1,4 @@
+---
+notes: Dette komponerer i headeren på siden klient Login. Det kan være nyttigt at informere dine kunder om din login og registrering politikker.
+name: 'Logind på %{company.name}'
+body: for at kunne tjene dig bedre, opfordrer vi vores kunder til at registrere en konto.

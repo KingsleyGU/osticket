@@ -1,0 +1,22 @@
+---
+custom_lists:
+  title: Brugerdefinerede lister
+  content: 'Din <span class="doc-desc-title">brugerdefinerede lister</span> vil tillade dig at oprette dropdown bokse med forud definerede indstillinger som en klient kan vælge i din <span class="doc-desc-title">Brugerdefinerede formularer</span>. Hvis du vil bruge denne <span class="doc-desc-title">brugerdefinerede liste</span> som et <span class="doc-desc-title"> mål</span> i en <span class="doc-desc-title">Sags Filter</span>, skal du tilføje denne liste til din <span class="doc-desc-title">Sags detaljer</span> form.'
+name:
+  title: Navn
+  content: ""
+plural_name:
+  title: Flertals Navn
+  content: ""
+sort_order:
+  title: Sorteringsrækkefølge
+  content: ""
+list_s_initial_items:
+  title: Indledende listeelementer
+  content: ""
+value:
+  title: Værdi
+  content: ""
+extra:
+  title: Ekstra
+  content: 'Forkortelser og sådan. Hvis du tilfældigvis kommer til at bruge interne koder for elementer på denne liste, kan disse koder og forkortelser være angivet i denne kolonne. Hvis den brugerdefinerede liste gengives som en <span class="doc-desc-option"> TypeAhead</span>, kan disse forkortelser bruges til at søge efter brugerdefinerede listeelementerne.'

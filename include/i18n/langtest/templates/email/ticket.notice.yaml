@@ -1,0 +1,6 @@
+---
+notes: |
+  Sendt til en bruger, når et personalemedlem opretter en Ticket på brugerens vegne.
+  Dette udføres normalvist, når brugeren ringer på telefonen.
+subject: '%{ticket.subject} [#%{ticket.number}]'
+body: '<h3><strong>Kære %{recipient.name.first},</strong></h3> Vores kundepleje hold har skabt en bestilling, <a href="%{recipient.ticket_link}"> #%{ticket.number}</a> på dine vegne, med følgende detaljer og Resumé: <br><br>emne: <strong>%{ticket.topic.name}</strong> <br>emne: <strong>%{ticket.subject}</strong> <br><br>%{message} <br><br>Hvis du vil følge op på den, vil der være en repræsentant snarest. Du kan også <a href="%{recipient.ticket_link}"> Se bestillingens fremskridt online</a>. <br><br><div style="color: rgb(127, 127, 127);"> dit %{company.name} hold, <br>%{signature}</div> <hr><div style="color: rgb(127, 127, 127); font-size: small;"> <em>Hvis du ønsker at give yderligere bemærkninger eller oplysninger om spørgsmålet, bedes du besvare denne e-mail eller <a href="%{recipient.ticket_link}"> <span style="color: rgb(84, 141, 212);" > logge ind på din konto</span></a> for en komplet oversigt af dine supportanmodninger.</em></div>'

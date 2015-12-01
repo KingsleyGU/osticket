@@ -1,0 +1,36 @@
+---
+- 
+  type: sag status
+  name: Sag Status
+  name_plural: Sags Statuser
+  sort_mode: SortCol
+  masks: 13
+  notes: Sags statuser
+  properties:
+    title: Sags Status Egenskaber
+    instructions: Egenskaber der kan sættes på sags status.
+    deletable: false
+    fields:
+      - 
+        type: tilstand
+        name: tilstand
+        label: Tilstand
+        required: true
+        sort: 1
+        edit_mask: 63
+        configuration:
+          prompt: Sags tilstand
+      - 
+        type: memo
+        name: beskrivelse
+        label: Beskrivelse
+        required: false
+        sort: 3
+        edit_mask: 15
+        configuration:
+          rows: 2
+          cols: 40
+          html: false
+          length: 100
+  configuration:
+    handler: SagStatusListe

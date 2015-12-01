@@ -1,0 +1,15 @@
+---
+notes: Denne skabelon definerer det indhold, som bliver vist på Tak-siden efter en kunde afsender en ny Ticket i kundeportalen.
+name: Tak
+body: |
+  <div>%{ticket.name},
+  <br>
+  <br>
+  Tak for at du har kontaktet os.
+  <br>
+  <br>
+  En supportsag er blevet oprettet og en repræsentant vil vende tilbage til dig snarest, hvis det er nødvendigt.</p>
+  <br>
+  <br>
+  Support Teamet
+  </div>

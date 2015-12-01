@@ -1,0 +1,36 @@
+---
+helpdesk_status:
+  title: Helpdesk Status
+  content: 'Hvis status ændres til <span class="doc-desc-opt"> Offline</span>, deaktiveres grænseflade klienten.  Dette berører dog ikke nogen normal Agent interaktion med Agent panelet .'
+helpdesk_url:
+  title: Helpdesk URL
+  content: Denne URL-adresse er i base for din osTicket installation. Det bruges i email kommunikation til at linke slut brugere tilbage til din helpdesk.
+helpdesk_name_title:
+  title: Helpdesk navn/titel
+  content: Dette er den titel, der vises i gennemse tab. Hvis din helpdesk side er bookmarked, vil dette være titel/navn på websted.
+default_department:
+  title: Standard afdeling
+  content: 'Vælg en standard <span class="doc-desc-title"> afdeling</span> for bestilling, der ikke er automatisk dirigeres til en afdeling. <br/> <br/> Bestillingen kan være distribueret base på hjælpeemnet, indgående e-mail og billet filterindstillinger.'
+default_page_size:
+  title: Standard sidestørrelse
+  content: 'Vælg antallet poster pr. side i den bestilling køer i panelet personale. Hver Agent kan også tilpasse dette nummer for egen regning under <span class="doc-desc-title"> Mine indstillinger</span>.'
+default_log_level:
+  title: Standard logføringsniveau
+  content: 'Bestem minimum af spørgsmål, som vil blive registreret i <span class="doc-desc-title"> systemloggen</span>. <span class="doc-desc-opt"> Debug</span> repræsenterer mindst sværhedsgraden, og <span class="doc-desc-opt"> fejl</span> repræsenterer den største alvor. For eksempel, hvis du vil se alle emner i <span class="doc-desc-title"> Systemets logfiler</span>, vælg <span class="doc-desc-opt"> Debug</span>.'
+purge_logs:
+  title: Rens Logs
+  content: 'Bestem, hvor længe du ønsker at holde <span class="doc-desc-title"> Systemets logfiler</span>, før de slettes.'
+default_name_formatting:
+  title: Standardnavn formatering
+  content: Vælg et format til navne i hele systemet. E-mail-skabeloner vil bruge det til navne, hvis ingen andre formater er angivet i variablen.
+  links:
+    - 
+      title: Understøttede Email skabelon variabler
+      href: http://osticket.com/wiki/Email_templates
+date_time_options:
+  title: 'Dato &amp; tid indstillinger'
+  content: 'Følgende indstillinger definerer datoen &amp; indstillinger for klienter. Du kan ændre, hvordan disse vises ved at følge PHP dato format tegn. Datoerne vist nedenfor illustrerer simpelthen resultatet af deres tilsvarende værdier.'
+  links:
+    - 
+      title: Se tabellen PHP dato formatering
+      href: http://www.php.net/manual/en/function.date.php

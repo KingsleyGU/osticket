@@ -1,0 +1,11 @@
+---
+site_pages:
+  title: Arbejdsplads sider
+  content: Arbejdsplads sider kan tjene som en mini Content Management System (CMS). Du kan definere flere landing, offline, og tak sider og konfigurere dem i virksomheden indstillinger og Hjælp Emner.
+  links:
+    - 
+      title: Virksomheden Indstillinger
+      href: /scp/settings.php?t=pages
+type:
+  title: Type
+  content: '<span class="doc-desc-opt">Offline</span> sider ses på klient portalen, hvis din help desk er deaktiveret. <span class="doc-desc-opt">Landing</span> sider ses på startsiden for din klient  portal. <span class="doc-desc-opt">Tak</span> sider ses på en bruger sender en sags. <span class="doc-desc-opt">Andre</span> sider kan bruges som et simpelt content management system (CMS).'
