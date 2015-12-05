@@ -89,6 +89,7 @@ div#header a {
 #container {
     width:960px;
     margin:0 auto 20px auto;
+    font-size: 16px;
 }
 
 #header {
@@ -456,7 +457,7 @@ table.list {
     margin: 2px 0;
     border-bottom: 1px solid #ccc;
     font-family:arial, helvetica, sans-serif;
-    font-size:10pt;
+    font-size:12pt;
 }
 
 table.list caption {
