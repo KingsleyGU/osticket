@@ -15,4 +15,17 @@ if (($lang = Internationalization::getCurrentLanguage()) && $lang != 'en_US') { 
         echo $lang; ?>/js"></script>
 <?php } ?>
 </body>
+<script>
+//Tell the window to respond to the width, along with the whole middle part.
+jQuery("div#container").css("width","100%");// dynamic width to fit into the screen.
+jQuery("table").attr('width', "100%"); //now that that has been resized, we need to make sure the th's fit within it.
+jQuery(".message th:nth-child(1)").attr('width',"20%");
+
+jQuery(".message th:nth-child(2)").attr('width',"30%");
+// jQuery(".message th:nth-child(2)").attr('height',"200px");
+jQuery(".message th:nth-child(3)").attr('width',"30%");
+// jQuery(".message th:nth-child(3)").attr('height',"200px");
+jQuery(".message th:nth-child(4)").attr('width',"20%");
+jQuery(".message th:nth-child(4)").attr('height',"200px");
+</script>
 </html>
