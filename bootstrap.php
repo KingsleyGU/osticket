@@ -96,6 +96,9 @@ class Bootstrap {
         define('TICKET_COLLABORATOR_TABLE', $prefix.'ticket_collaborator');
         define('TICKET_STATUS_TABLE', $prefix.'ticket_status');
         define('TICKET_PRIORITY_TABLE',$prefix.'ticket_priority');
+        define('TICKET_CRM_SUBJECT1_TABLE',$prefix.'ticket_crm_subject1');
+        define('TICKET_CRM_SUBJECT2_TABLE',$prefix.'ticket_crm_subject2');
+        define('TICKET_CRM_ACTIVITY_TABLE',$prefix.'ticket_crm_activity');
 
         define('PRIORITY_TABLE',TICKET_PRIORITY_TABLE);
 

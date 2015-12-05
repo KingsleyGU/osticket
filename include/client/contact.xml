@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<contacts>
+  <contact id="0">
+    <crmsubject_id>
+      1
+    </crmsubject_id>
+    <crmsubject_text>
+      <![CDATA[ contact1_crmsubject_id ]]>
+    </crmsubject_text>
+    <crmsubject2_id>
+      2
+    </crmsubject2_id>
+    <crmsubject2_text>
+      <![CDATA[ contact1_ ]]>
+    </crmsubject2_text>
+    <name>
+      ContactName1
+    </name>
+    <cvr>
+      12345678
+    </cvr>
+    <phone>
+     12345678
+    </phone>
+    <email>
+      contact1@contacts.dk
+    </email>
+    <content>
+      contact1_content
+    </content>
+    <ordernumber>
+      123123123
+    </ordernumber>
+    <title>
+      contact1_title
+    </title>
+    <created>
+      13-12-2015
+    </created>
+    <business_form_id>
+      1
+    </business_form_id>
+    <activitycode>
+      contact1_activitycode
+    </activitycode>
+    <activitydescription>
+      contact1_activitydescription
+    </activitydescription>
+    <companyname>
+      contact1_companyname
+    </companyname>
+    <useragent>
+      Mozilla
+    </useragent>
+    <files>
+      <file id="1">
+        <name>
+          contact1_file_name
+        </name>
+        <mime>
+          contact1_file_mime
+        </mime>
+        <created>
+          11-12-2015
+        </created>
+        <url>
+          www.contact1.com
+        </url>
+      </file>
+    </files>
+  </contact>
+</contacts>

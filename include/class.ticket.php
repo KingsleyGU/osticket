@@ -85,6 +85,9 @@ class Ticket {
 
         $this->ht = db_fetch_array($res);
 
+        $this->orderNumber = $this->ht['orderNumber'];
+        $this->phone_number     = $this->ht['phone_number'];
+
         $this->id       = $this->ht['ticket_id'];
         $this->number   = $this->ht['number'];
         $this->_answers = array();
@@ -218,6 +221,14 @@ class Ticket {
     }
 
     //Getters
+    
+
+   function getOrderNumber() {
+        return $this->ht['orderNumber'];
+    }
+   function getCRMPhoneNumber() {
+        return $this->ht['phone_number'];
+    }
     function getId() {
         return  $this->id;
     }
@@ -388,6 +399,8 @@ class Ticket {
                             Misc::db2gmtime($this->getDueDate()))
                         :'',
                     'time'  =>  $this->getDueDate()?(Format::userdate('G:i', Misc::db2gmtime($this->getDueDate()))):'',
+                    'agency' => $this->getOrderNumber(),
+
                     );
 
         return $info;
@@ -2178,6 +2191,7 @@ class Ticket {
             return false;
 
         $fields=array();
+        $fields['orderNumber']    = array('type'=>'string',    'required'=>1, 'error'=>'Order Number required');
         $fields['topicId']  = array('type'=>'int',      'required'=>1, 'error'=>__('Help topic selection is required'));
         $fields['slaId']    = array('type'=>'int',      'required'=>0, 'error'=>__('Select a valid SLA'));
         $fields['duedate']  = array('type'=>'date',     'required'=>0, 'error'=>__('Invalid date format - must be MM/DD/YY'));
@@ -2216,7 +2230,9 @@ class Ticket {
             .' ,topic_id='.db_input($vars['topicId'])
             .' ,sla_id='.db_input($vars['slaId'])
             .' ,source='.db_input($vars['source'])
-            .' ,duedate='.($vars['duedate']?db_input(date('Y-m-d G:i',Misc::dbtime($vars['duedate'].' '.$vars['time']))):'NULL');
+            .' ,duedate='.($vars['duedate']?db_input(date('Y-m-d G:i',Misc::dbtime($vars['duedate'].' '.$vars['time']))):'NULL')
+            .' ,orderNumber='.db_input($vars['orderNumber'])
+            .', phone_number='.db_input($vars['phone_number']);
 
         if($vars['user_id'])
             $sql.=', user_id='.db_input($vars['user_id']);
@@ -2534,7 +2550,10 @@ class Ticket {
             foreach ($form->getFields() as $field) {
                 $fname = $field->get('name');
                 if ($fname && isset($vars[$fname]) && !$field->value)
+                {
                     $field->value = $field->parse($vars[$fname]);
+                }
+                    
             }
         }
 
@@ -2550,6 +2569,7 @@ class Ticket {
         switch (strtolower($origin)) {
             case 'web':
                 $fields['topicId']  = array('type'=>'int',  'required'=>1, 'error'=>__('Select a help topic'));
+                $fields['orderNumber']    = array('type'=>'string',    'required'=>1, 'error'=>'Order Number required');
                 break;
             case 'staff':
                 $fields['deptId']   = array('type'=>'int',  'required'=>0, 'error'=>__('Department selection is required'));
@@ -2764,11 +2784,34 @@ class Ticket {
             .' ,dept_id='.db_input($deptId)
             .' ,topic_id='.db_input($topicId)
             .' ,ip_address='.db_input($ipaddress)
-            .' ,source='.db_input($source);
+            .' ,source='.db_input($source)
+            .' ,orderNumber='.db_input($vars['orderNumber']);
 
         if (isset($vars['emailId']) && $vars['emailId'])
             $sql.=', email_id='.db_input($vars['emailId']);
-
+        if (isset($vars['phone_number']) && $vars['phone_number'])
+            $sql.=', phone_number='.db_input($vars['phone_number']);
+        if (isset($vars['crmsubject1_id']) && $vars['crmsubject1_id'])
+        {
+            $rowId = Ticket::createCRMSubject($vars['crmsubject1_id'],$vars['crmsubject1_text'],1);
+            $sql.=',crm_subject1_id='.db_input($rowId);
+        }
+        if (isset($vars['crmsubject2_id']) && $vars['crmsubject2_id'])
+        {
+            $rowId = Ticket::createCRMSubject($vars['crmsubject2_id'],$vars['crmsubject2_text'],2);
+            // $rowId = mysql_insert_id();
+            $sql.=',crm_subject2_id='.db_input($rowId);
+        }
+        if (isset($vars['activityCode']) && $vars['activityCode'])
+        {
+            $rowId = Ticket::createCRMActivity($vars['activityCode'],$vars['activityDescription']);
+            // $rowId = mysql_insert_id();
+            $sql.=',activity_id='.db_input($rowId);
+        }
+        if (isset($vars['useragent']) && $vars['useragent'])
+        {
+            $sql.=',user_agent='.db_input($vars['useragent']);
+        }
         //Make sure the origin is staff - avoid firebug hack!
         if($vars['duedate'] && !strcasecmp($origin,'staff'))
              $sql.=' ,duedate='.db_input(date('Y-m-d G:i',Misc::dbtime($vars['duedate'].' '.$vars['time'])));
@@ -3022,6 +3065,27 @@ class Ticket {
             //TODO: Trigger escalation on already overdue tickets - make sure last overdue event > grace_period.
 
         }
+   }
+
+   // insert the contents into crmsubject1
+   function createCRMSubject($subjectId,$subjectContent,$subjectChoice)
+   {
+        $subjectTableName= TICKET_CRM_SUBJECT1_TABLE;
+        if($subjectChoice == 2)
+            $subjectTableName= TICKET_CRM_SUBJECT2_TABLE;
+        $sql = 'INSERT INTO '.$subjectTableName
+            .' SET crm_subject'.$subjectChoice.'_reference_id='.db_input($subjectId)
+            .', crm_subject'.$subjectChoice.'_text='.db_input($subjectContent);
+        db_query($sql);
+        return db_insert_id();
+   }
+   function createCRMActivity($activityCode,$activityDescription)
+   {
+        $sql = 'INSERT INTO '.TICKET_CRM_ACTIVITY_TABLE
+            .' SET activity_code='.db_input($activityCode)
+            .', activity_description='.db_input($activityDescription);
+        db_query($sql);
+        return db_insert_id();
    }
 
 }
