@@ -10,9 +10,9 @@ require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 
 
-    // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
-    //     echo "The file remote.xml does not exist \n";
-    // }
+    if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
+        echo "The file remote.xml does not exist \n";
+    }
     // $fileName = CLIENTINC_DIR.'remote.xml';
     // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     // $response = getRequestFromUrl($fileName);
@@ -104,52 +104,41 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     }
     function getRequestFromUrl($url)
     {
-
-     $response = simplexml_load_string(file_get_contents($url), null, LIBXML_NOCDATA);
-     return $response;
-    }
-    function parseSubject1XML()
-    {
-        $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
-        // echo $url;
-        // $url = CLIENTINC_DIR.'remote.xml';
-        // header('Content-Type: text/plain');
-        // error_reporting(~0); ini_set('display_errors', 1);
         $arrContextOptions=array(
             "ssl"=>array(
                 "verify_peer"=>false,
                 "verify_peer_name"=>false,
             ),
         );  
-
-        $xml = file_get_contents($url, false, stream_context_create($arrContextOptions));
-        echo json_encode($xml);
-        // var_dump($http_response_header,$xml);
-        // $xml = simplexml_load_file($url);
-        // echo "2222";
-        // echo json_encode($xml);
-        // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
-        // {
-        //     echo $nodes[0]->attributes()->id;           
-            // for($i=0;$i<count($nodes);$i++)
-            // {
-            //     $referenceId = $nodes[$i]->attributes()->id;
-            //     $text = $nodes[$i]->crmsubject_text;
-            //     $url = $nodes[$i]->url;
-            //     // Ticket::updateCRMSubject1($referenceId,$text,$url);
-            //     if(Ticket::updateCRMSubject1($referenceId,$text,$url))
-            //     {
-            //         echo "updata the subject1 table successfully <br/>";
-            //     }
-            //     else
-            //     {
-            //         echo  $referenceId." can not be added into the table or it has already exists <br/>";
-            //     }
-            //     parseSubject2XML($referenceId);
-            // }
-        // }
-        // else
-        //     echo "no content provided from the subject web service <br/>";
+     $response = simplexml_load_string(file_get_contents($url, false, stream_context_create($arrContextOptions)), null, LIBXML_NOCDATA);
+     return $response;
+    }
+    function parseSubject1XML()
+    {
+        $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
+        $xml = getRequestFromUrl($url);
+        if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
+        {
+            // echo $nodes[0]->attributes()->id;           
+            for($i=0;$i<count($nodes);$i++)
+            {
+                $referenceId = $nodes[$i]->attributes()->id;
+                $text = $nodes[$i]->crmsubject_text;
+                $url = $nodes[$i]->url;
+                // Ticket::updateCRMSubject1($referenceId,$text,$url);
+                if(Ticket::updateCRMSubject1($referenceId,$text,$url))
+                {
+                    echo "updata the subject1 table successfully <br/>";
+                }
+                else
+                {
+                    echo  $referenceId." can not be added into the table or it has already exists <br/>";
+                }
+                parseSubject2XML($referenceId);
+            }
+        }
+        else
+            echo "no content provided from the subject web service <br/>";
     }
     function parseSubject2XML($subject1Id)
     {
