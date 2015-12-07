@@ -115,8 +115,16 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         // $url = CLIENTINC_DIR.'remote.xml';
         header('Content-Type: text/plain');
         error_reporting(~0); ini_set('display_errors', 1);
-        $xml = file_get_contents($url);
-        var_dump($http_response_header,$xml);
+        $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );  
+
+        $xml = file_get_contents($url, false, stream_context_create($arrContextOptions));
+        echo json_encode($xml);
+        // var_dump($http_response_header,$xml);
         // $xml = simplexml_load_file($url);
         // echo "2222";
         // echo json_encode($xml);
