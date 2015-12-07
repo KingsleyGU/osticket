@@ -115,6 +115,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         $url = CLIENTINC_DIR.'remote.xml';
         // echo json_encode(file_get_contents($url));
         $xml = simplexml_load_file($url);
+        echo "2222";
         echo json_encode($xml);
         // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
         // {
