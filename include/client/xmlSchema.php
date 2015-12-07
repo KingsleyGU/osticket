@@ -114,7 +114,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         // echo $url;
         // $url = CLIENTINC_DIR.'remote.xml';
         // header('Content-Type: text/plain');
-        error_reporting(~0); ini_set('display_errors', 1);
+        // error_reporting(~0); ini_set('display_errors', 1);
         $arrContextOptions=array(
             "ssl"=>array(
                 "verify_peer"=>false,
