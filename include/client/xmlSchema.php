@@ -113,7 +113,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
         // echo $url;
         // $url = CLIENTINC_DIR.'remote.xml';
-        header('Content-Type: text/plain');
+        // header('Content-Type: text/plain');
         error_reporting(~0); ini_set('display_errors', 1);
         $arrContextOptions=array(
             "ssl"=>array(
