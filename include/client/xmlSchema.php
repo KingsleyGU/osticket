@@ -103,9 +103,16 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                     }   
                     // $data['uid'] = $user->getId();
                     // echo json_encode($data);
-                    $api = new TicketApiController();
-                    $api->createTicket($data);
-                    echo "ticket has been generated successfully <br/>";
+                    if(Ticket::lookupForContactId($data['crm_contact_id']))
+                    {
+                        $api = new TicketApiController();
+                        $api->createTicket($data);
+                        echo "ticket has been generated successfully <br/>";
+                    }
+                    else
+                    {
+                        echo "ticket with id ".$data['crm_contact_id']." has already exists";
+                    }
                 }
             } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";

@@ -3119,6 +3119,16 @@ class Ticket {
             .', cvr_rule='.db_input($cvrRule))
             && db_affected_rows() == 1;
    }
+   function lookupForContactId($contactId)
+   {
+        $sql = "SELECT * FROM ost_ticket WHERE crm_contact_id=".db_input($contactId);
+        if(($res=db_query($sql))&&db_num_rows($res)>0)
+         {
+            return false;
+         } 
+         else
+            return true;
+   }
 
 }
 ?>

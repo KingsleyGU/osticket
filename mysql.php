@@ -12,9 +12,10 @@ require('client.inc.php');
 	// changeTicketTable("activity_id","int");
 	// changeTicketTable("crm_contact_id","int");
 	// changeTicketTable("business_form_id","int");
-	addCRMSubject1();
-	addCRMSubject2();
+	// addCRMSubject1();
+	// addCRMSubject2();
 	// addCRMActivity();
+	addCRMFile();
 	function addCRMSubject1()
 	{
 		$sql = 'CREATE TABLE ost_ticket_crm_subject1 (
@@ -55,6 +56,21 @@ require('client.inc.php');
 		else
 			echo "can not add the table ost_ticket_crm_activity to the database";
 	}
+	function addCRMFile()
+	{
+		$sql = 'CREATE TABLE ost_ticket_crm_files (
+		crm_file_reference_id int(11) NOT NULL,
+		ost_ticket_id int(11) NOT NULL,
+		name VARCHAR(255),
+		mime VARCHAR(255),
+		url VARCHAR(255),
+		created datetime
+		)';
+		if(!($res=db_query($sql)) || !db_num_rows($res))
+	    	echo "add the table ost_ticket_crm_files to the database";
+		else
+			echo "can not add the table ost_ticket_crm_files to the database";
+	}	
 	function changeTicketTable($fieldName,$type)
 	{
 		$fieldType = 'int(11)';
