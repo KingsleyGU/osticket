@@ -113,23 +113,23 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         $xml = getRequestFromUrl($url);
         if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
         {
-            // echo $nodes[0]->attributes()->id;           
-            for($i=0;$i<count($nodes);$i++)
-            {
-                $referenceId = $nodes[$i]->attributes()->id;
-                $text = $nodes[$i]->crmsubject_text;
-                $url = $nodes[$i]->url;
-                // Ticket::updateCRMSubject1($referenceId,$text,$url);
-                if(Ticket::updateCRMSubject1($referenceId,$text,$url))
-                {
-                    echo "updata the subject1 table successfully <br/>";
-                }
-                else
-                {
-                    echo  $referenceId." can not be added into the table or it has already exists <br/>";
-                }
-                parseSubject2XML($referenceId);
-            }
+            echo $nodes[0]->attributes()->id;           
+            // for($i=0;$i<count($nodes);$i++)
+            // {
+            //     $referenceId = $nodes[$i]->attributes()->id;
+            //     $text = $nodes[$i]->crmsubject_text;
+            //     $url = $nodes[$i]->url;
+            //     // Ticket::updateCRMSubject1($referenceId,$text,$url);
+            //     if(Ticket::updateCRMSubject1($referenceId,$text,$url))
+            //     {
+            //         echo "updata the subject1 table successfully <br/>";
+            //     }
+            //     else
+            //     {
+            //         echo  $referenceId." can not be added into the table or it has already exists <br/>";
+            //     }
+            //     parseSubject2XML($referenceId);
+            // }
         }
         else
             echo "no content provided from the subject web service <br/>";
