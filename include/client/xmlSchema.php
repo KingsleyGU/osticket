@@ -111,8 +111,8 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     function parseSubject1XML()
     {
         $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
-        echo $url;
-        echo json_encode(file_get_contents($url));
+        // echo $url;
+        echo file_get_contents($url);
         // $xml = getRequestFromUrl($url);
         // echo json_encode($xml);
         // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
