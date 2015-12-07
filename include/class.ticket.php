@@ -2793,14 +2793,14 @@ class Ticket {
             $sql.=', phone_number='.db_input($vars['phone_number']);
         if (isset($vars['crmsubject1_id']) && $vars['crmsubject1_id'])
         {
-            $rowId = Ticket::createCRMSubject($vars['crmsubject1_id'],$vars['crmsubject1_text'],1);
-            $sql.=',crm_subject1_id='.db_input($rowId);
+            // $rowId = Ticket::createCRMSubject($vars['crmsubject1_id'],$vars['crmsubject1_text'],1);
+            $sql.=',crm_subject1_id='.db_input($vars['crmsubject1_id']);
         }
         if (isset($vars['crmsubject2_id']) && $vars['crmsubject2_id'])
         {
-            $rowId = Ticket::createCRMSubject($vars['crmsubject2_id'],$vars['crmsubject2_text'],2);
+            // $rowId = Ticket::createCRMSubject($vars['crmsubject2_id'],$vars['crmsubject2_text'],2);
             // $rowId = mysql_insert_id();
-            $sql.=',crm_subject2_id='.db_input($rowId);
+            $sql.=',crm_subject2_id='.db_input($vars['crmsubject2_id']);
         }
         if (isset($vars['activityCode']) && $vars['activityCode'])
         {
@@ -3086,6 +3086,36 @@ class Ticket {
             .', activity_description='.db_input($activityDescription);
         db_query($sql);
         return db_insert_id();
+   }
+   function updateCRMSubject1($referenceId,$text,$url)
+   {
+    $sql = "SELECT * FROM ost_ticket_crm_subject1 WHERE crm_subject1_reference_id=".db_input($referenceId);
+    if(($res=db_query($sql))&&db_num_rows($res)>0)
+     {
+        return false;
+     } 
+     else  
+        return db_query('INSERT INTO '."ost_ticket_crm_subject1"
+            .' SET crm_subject1_reference_id='.db_input($referenceId)
+            .', crm_subject1_text='.db_input($text)
+            .', url='.db_input($url))
+            && db_affected_rows() == 1;
+   }
+  function updateCRMSubject2($referenceId,$text,$cvrRule,$orderRule,$titleRule)
+   {
+    $sql = "SELECT * FROM ost_ticket_crm_subject2 WHERE crm_subject2_reference_id=".db_input($referenceId);
+    if(($res=db_query($sql))&&db_num_rows($res)>0)
+     {
+        return false;
+     } 
+     else      
+         return db_query('INSERT INTO '."ost_ticket_crm_subject2"
+            .' SET crm_subject2_reference_id='.db_input($referenceId)
+            .', crm_subject2_text='.db_input($text)
+            .', title_rule='.db_input($titleRule)
+            .', order_rule='.db_input($orderRule)
+            .', cvr_rule='.db_input($cvrRule))
+            && db_affected_rows() == 1;
    }
 
 }
