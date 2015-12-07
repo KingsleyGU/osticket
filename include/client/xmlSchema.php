@@ -110,13 +110,14 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     }
     function parseSubject1XML()
     {
-        // $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
+        $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
         // echo $url;
-        $url = CLIENTINC_DIR.'remote.xml';
-        // echo json_encode(file_get_contents($url));
-        $xml = simplexml_load_file($url);
-        echo "2222";
-        echo json_encode($xml);
+        // $url = CLIENTINC_DIR.'remote.xml';
+        $xml = file_get_contents($url);
+        var_dump($http_response_header);
+        // $xml = simplexml_load_file($url);
+        // echo "2222";
+        // echo json_encode($xml);
         // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
         // {
         //     echo $nodes[0]->attributes()->id;           
