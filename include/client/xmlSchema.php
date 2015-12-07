@@ -10,9 +10,9 @@ require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 
 
-    if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
-        echo "The file remote.xml does not exist \n";
-    }
+    // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
+    //     echo "The file remote.xml does not exist \n";
+    // }
     // $fileName = CLIENTINC_DIR.'remote.xml';
     // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     // $response = getRequestFromUrl($fileName);
@@ -21,8 +21,20 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     //     createTicketByWebService($response);
     // else
     //     echo "no content provided from the web service <br/>";
-    parseSubject1XML();
+    // parseSubject1XML();
     // parseSubject2XML();
+    // while(true)
+    // {
+        $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
+        $response = getRequestFromUrl($fileName);
+        if(!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
+            createTicketByWebService($response);
+        else
+         {
+            echo "no content provided from the web service <br/>";
+            sleep(10);
+         }   
+    // }
 
     function createTicketByWebService($xml)
     {
@@ -44,6 +56,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                          $data['subject'] = "no title";
                     $data['header'] = "";
                     $data['mid'] = 1;
+                    $data['crm_contact_id'] = $nodes[$i]->attributes()->id;
                     $data['topicId'] = 2;
                     $data['priorityId'] = 2;
                     $data['flags'] = new ArrayObject();

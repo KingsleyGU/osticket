@@ -2791,6 +2791,8 @@ class Ticket {
             $sql.=', email_id='.db_input($vars['emailId']);
         if (isset($vars['phone_number']) && $vars['phone_number'])
             $sql.=', phone_number='.db_input($vars['phone_number']);
+        if (isset($vars['crm_contact_id']) && $vars['crm_contact_id'])
+            $sql.=', crm_contact_id='.db_input($vars['crm_contact_id']);        
         if (isset($vars['crmsubject1_id']) && $vars['crmsubject1_id'])
         {
             // $rowId = Ticket::createCRMSubject($vars['crmsubject1_id'],$vars['crmsubject1_text'],1);
