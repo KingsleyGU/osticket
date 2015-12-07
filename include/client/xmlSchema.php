@@ -111,9 +111,10 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     {
         $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
         $xml = getRequestFromUrl($url);
-        if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
-        {
-            echo $nodes[0]->attributes()->id;           
+        echo json_encode($xml);
+        // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
+        // {
+        //     echo $nodes[0]->attributes()->id;           
             // for($i=0;$i<count($nodes);$i++)
             // {
             //     $referenceId = $nodes[$i]->attributes()->id;
@@ -130,9 +131,9 @@ require_once(INCLUDE_DIR.'api.tickets.php');
             //     }
             //     parseSubject2XML($referenceId);
             // }
-        }
-        else
-            echo "no content provided from the subject web service <br/>";
+        // }
+        // else
+        //     echo "no content provided from the subject web service <br/>";
     }
     function parseSubject2XML($subject1Id)
     {
