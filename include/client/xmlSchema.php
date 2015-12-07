@@ -114,6 +114,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?". $query;
         // echo $url;
         echo json_encode(file_get_contents($url));
+        var_dump($http_response_header);
         // $xml = getRequestFromUrl($url);
         // echo json_encode($xml);
         // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
