@@ -10,9 +10,9 @@ require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 
 
-    if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
-        echo "The file remote.xml does not exist \n";
-    }
+    // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
+    //     echo "The file remote.xml does not exist \n";
+    // }
     // $fileName = CLIENTINC_DIR.'remote.xml';
     // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     // $response = getRequestFromUrl($fileName);
