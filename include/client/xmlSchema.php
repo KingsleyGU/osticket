@@ -113,9 +113,9 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         // $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.subject_xml?i_id=";
         // echo $url;
         $url = CLIENTINC_DIR.'remote.xml';
-        echo json_encode(file_get_contents($url));
-        // $xml = getRequestFromUrl($url);
-        // echo json_encode($xml);
+        // echo json_encode(file_get_contents($url));
+        $xml = simplexml_load_file($url);
+        echo json_encode($xml);
         // if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
         // {
         //     echo $nodes[0]->attributes()->id;           
