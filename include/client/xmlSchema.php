@@ -111,7 +111,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                     }
                     else
                     {
-                        echo "ticket with id ".$data['crm_contact_id']." has already exists";
+                        echo "ticket with id ".$data['crm_contact_id']." has already exists <br/>";
                     }
                 }
             } catch (Exception $e) {
