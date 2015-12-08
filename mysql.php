@@ -15,7 +15,8 @@ require('client.inc.php');
 	// addCRMSubject1();
 	// addCRMSubject2();
 	// addCRMActivity();
-	addCRMFile();
+	// addCRMFile();
+	addCRMActivity();
 	function addCRMSubject1()
 	{
 		$sql = 'CREATE TABLE ost_ticket_crm_subject1 (
@@ -47,7 +48,6 @@ require('client.inc.php');
 	function addCRMActivity()
 	{
 		$sql = 'CREATE TABLE ost_ticket_crm_activity (
-		id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		activity_code VARCHAR(255),
 		activity_description VARCHAR(255) 
 		)';
