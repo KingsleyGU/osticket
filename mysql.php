@@ -10,7 +10,7 @@ require('client.inc.php');
 	// changeTicketTable("crm_subject1_id","int");
 	// changeTicketTable("crm_subject2_id","int");
 	// changeTicketTable("activity_id","int");
-	// changeTicketTable("crm_contact_id","int");
+	// changeTicketTable("crm_activity_code","string");
 	// changeTicketTable("business_form_id","int");
 	// addCRMSubject1();
 	// addCRMSubject2();

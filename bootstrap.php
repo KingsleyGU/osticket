@@ -99,6 +99,7 @@ class Bootstrap {
         define('TICKET_CRM_SUBJECT1_TABLE',$prefix.'ticket_crm_subject1');
         define('TICKET_CRM_SUBJECT2_TABLE',$prefix.'ticket_crm_subject2');
         define('TICKET_CRM_ACTIVITY_TABLE',$prefix.'ticket_crm_activity');
+        define('TICKET_CRM_FILES_TABLE',$prefix.'ticket_crm_files');
 
         define('PRIORITY_TABLE',TICKET_PRIORITY_TABLE);
 

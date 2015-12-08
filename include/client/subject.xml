@@ -1,0 +1,76 @@
+<crmsubjects>
+<crmsubject id="1">
+<crmsubject_text>
+<![CDATA[ Start ny virksomhed ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /start-ny-virksomhed-0 ]]>
+</url>
+</crmsubject>
+<crmsubject id="2">
+<crmsubject_text>
+<![CDATA[ Ændre eksisterende virksomhed ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /aendre-eksisterende-virksomhed ]]>
+</url>
+</crmsubject>
+<crmsubject id="3">
+<crmsubject_text>
+<![CDATA[ Luk virksomhed ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /luk-virksomhed ]]>
+</url>
+</crmsubject>
+<crmsubject id="4">
+<crmsubject_text>
+<![CDATA[ Regler, love, retningslinjer og vejledninger ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /vejledninger-regler-love-og-retningslinjer ]]>
+</url>
+</crmsubject>
+<crmsubject id="5">
+<crmsubject_text>
+<![CDATA[ Få adgang til data og rapporter ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /faa-adgang-til-data-og-rapporter ]]>
+</url>
+</crmsubject>
+<crmsubject id="6">
+<crmsubject_text>
+<![CDATA[ Aflever regnskab og årsrapporter ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /aflever-regnskab-og-aarsrapporter ]]>
+</url>
+</crmsubject>
+<crmsubject id="8">
+<crmsubject_text>
+<![CDATA[ Register of Foreign Service Providers (RUT) ]]>
+</crmsubject_text>
+<url>
+<![CDATA[
+/register-udenlandske-tjenesteydere-register-foreign-service-providers-rut
+]]>
+</url>
+</crmsubject>
+<crmsubject id="9">
+<crmsubject_text>
+<![CDATA[ Rettigheder, brugeradministration og NemID ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /nemid-rettigheder-brugeradministration ]]>
+</url>
+</crmsubject>
+<crmsubject id="10">
+<crmsubject_text>
+<![CDATA[ Digital post (e-boks) ]]>
+</crmsubject_text>
+<url>
+<![CDATA[ /digital-post-e-boks ]]>
+</url>
+</crmsubject>
+</crmsubjects>

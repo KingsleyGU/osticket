@@ -1,0 +1,80 @@
+<contacts>
+<contact id="8640">
+<crmsubject_id>9</crmsubject_id>
+<crmsubject_text>Rettigheder, brugeradministration og NemID</crmsubject_text>
+<crmsubject2_id>29</crmsubject2_id>
+<crmsubject2_text>Opret administrator for organisationen</crmsubject2_text>
+<name>Susanne Skjødt</name>
+<cvr>26721059</cvr>
+<phone/>
+<email>susk@ffv.dk</email>
+<content>
+Hermed returneres underskreven "Ansøgning om oprettelse af Administrator for Organisationen" for jeres videre behandling.
+</content>
+<ordernumber/>
+<title>
+Ansøgning om oprettelse af Administrator for Organisationen
+</title>
+<created>07.12.2015 11:34</created>
+<business_form_id>60</business_form_id>
+<activitycode>353000</activitycode>
+<activitydescription>Varmeforsyning</activitydescription>
+<companyname>FFV VARME A/S</companyname>
+<useragent>
+Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+</useragent>
+<files>
+<file id="1819">
+<name>
+Administrator anmodning - Virk-dk - FFV Varme AS - signed.pdf
+</name>
+<mime>application/pdf</mime>
+<created>07.12.2015 11:34</created>
+<url>/pls/wopdprod/erstcrm_pck.getfile?id=1819</url>
+</file>
+</files>
+</contact>
+<contact id="8641">
+<crmsubject_id>9</crmsubject_id>
+<crmsubject_text>Rettigheder, brugeradministration og NemID</crmsubject_text>
+<crmsubject2_id>29</crmsubject2_id>
+<crmsubject2_text>Opret administrator for organisationen</crmsubject2_text>
+<name>Susanne Skjødt</name>
+<cvr>26498961</cvr>
+<phone/>
+<email>susk@ffv.dk</email>
+<content>
+Hermed returneres underskreven "Ansøgning om oprettelse af Administrator for Organisationen" for jeres videre behandling.
+</content>
+<ordernumber/>
+<title>
+Ansøgning om oprettelse af Administrator for Organisationen
+</title>
+<created>07.12.2015 11:35</created>
+<business_form_id>60</business_form_id>
+<activitycode>381100</activitycode>
+<activitydescription>Indsamling af ikke-farligt affald</activitydescription>
+<companyname>FFV RENOVATION A/S</companyname>
+<useragent>
+Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+</useragent>
+<files>
+<file id="1820">
+<name>
+Administrator anmodning - Virk-dk - FFV Renovation AS - signed.pdf
+</name>
+<mime>application/pdf</mime>
+<created>07.12.2015 11:35</created>
+<url>/pls/wopdprod/erstcrm_pck.getfile?id=1820</url>
+</file>
+<file id="1821">
+<name>
+Administrator anmodning - Virk-dk - FFV Renovation AS - signed.pdf
+</name>
+<mime>application/pdf</mime>
+<created>07.12.2015 11:35</created>
+<url>/pls/wopdprod/erstcrm_pck.getfile?id=1820</url>
+</file>
+</files>
+</contact>
+</contacts>

@@ -64,7 +64,9 @@ class Ticket {
         if(!$id && !($id=$this->getId()))
             return false;
 
-        $sql='SELECT  ticket.*, lock_id, dept_name '
+        $sql='SELECT  ticket.*, lock_id, dept_name,activity_description, crm_subject1_text, '
+            .'subject1.url as subject1_url, crm_subject2_text, subject2.order_rule as subject2_order_rule,'
+            .'subject2.cvr_rule as subject2_cvr_rule,subject2.title_rule as subject2_title_rule,files.*'
             .' ,IF(sla.id IS NULL, NULL, '
                 .'DATE_ADD(ticket.created, INTERVAL sla.grace_period HOUR)) as sla_duedate '
             .' ,count(distinct attach.attach_id) as attachments'
@@ -74,7 +76,12 @@ class Ticket {
             .' LEFT JOIN '.TICKET_LOCK_TABLE.' tlock
                 ON ( ticket.ticket_id=tlock.ticket_id AND tlock.expire>NOW()) '
             .' LEFT JOIN '.TICKET_ATTACHMENT_TABLE.' attach
-                ON ( ticket.ticket_id=attach.ticket_id) '
+                ON ( ticket.ticket_id=attach.ticket_id) '            
+
+            .' LEFT JOIN '.TICKET_CRM_ACTIVITY_TABLE.' activity ON (ticket.crm_activity_code=activity.activity_code) '
+            .' LEFT JOIN '.TICKET_CRM_SUBJECT1_TABLE.' subject1 ON (ticket.crm_subject1_id=subject1.crm_subject1_reference_id)'
+            .' LEFT JOIN '.TICKET_CRM_SUBJECT2_TABLE.' subject2 ON (ticket.crm_subject2_id=subject2.crm_subject2_reference_id)'
+            .' LEFT JOIN '.TICKET_CRM_FILES_TABLE.' files ON (files.ost_ticket_id=ticket.ticket_id)'
             .' WHERE ticket.ticket_id='.db_input($id)
             .' GROUP BY ticket.ticket_id';
 
@@ -85,8 +92,6 @@ class Ticket {
 
         $this->ht = db_fetch_array($res);
 
-        $this->orderNumber = $this->ht['orderNumber'];
-        $this->phone_number     = $this->ht['phone_number'];
 
         $this->id       = $this->ht['ticket_id'];
         $this->number   = $this->ht['number'];
@@ -221,8 +226,26 @@ class Ticket {
     }
 
     //Getters
-    
+    function getFileContents()
+    {
+        $fileArray = array();
+        $currentId = $this->id ;
+        $sql='SELECT  files.*'
+            .' FROM '.TICKET_CRM_FILES_TABLE.' as files '
+            .' WHERE files.ost_ticket_id='.db_input($currentId);
 
+        //echo $sql;
+        if(!($res=db_query($sql)) || !db_num_rows($res))
+            return null;
+        else
+        {
+           while (  $row  =  db_fetch_array($res) )  {
+              array_push($fileArray,$row);
+            }
+            return  $fileArray;
+        }    
+
+    }
    function getOrderNumber() {
         return $this->ht['orderNumber'];
     }
@@ -399,7 +422,6 @@ class Ticket {
                             Misc::db2gmtime($this->getDueDate()))
                         :'',
                     'time'  =>  $this->getDueDate()?(Format::userdate('G:i', Misc::db2gmtime($this->getDueDate()))):'',
-                    'agency' => $this->getOrderNumber(),
 
                     );
 
@@ -2191,7 +2213,6 @@ class Ticket {
             return false;
 
         $fields=array();
-        $fields['orderNumber']    = array('type'=>'string',    'required'=>1, 'error'=>'Order Number required');
         $fields['topicId']  = array('type'=>'int',      'required'=>1, 'error'=>__('Help topic selection is required'));
         $fields['slaId']    = array('type'=>'int',      'required'=>0, 'error'=>__('Select a valid SLA'));
         $fields['duedate']  = array('type'=>'date',     'required'=>0, 'error'=>__('Invalid date format - must be MM/DD/YY'));
@@ -2230,9 +2251,7 @@ class Ticket {
             .' ,topic_id='.db_input($vars['topicId'])
             .' ,sla_id='.db_input($vars['slaId'])
             .' ,source='.db_input($vars['source'])
-            .' ,duedate='.($vars['duedate']?db_input(date('Y-m-d G:i',Misc::dbtime($vars['duedate'].' '.$vars['time']))):'NULL')
-            .' ,orderNumber='.db_input($vars['orderNumber'])
-            .', phone_number='.db_input($vars['phone_number']);
+            .' ,duedate='.($vars['duedate']?db_input(date('Y-m-d G:i',Misc::dbtime($vars['duedate'].' '.$vars['time']))):'NULL');
 
         if($vars['user_id'])
             $sql.=', user_id='.db_input($vars['user_id']);
@@ -2569,7 +2588,7 @@ class Ticket {
         switch (strtolower($origin)) {
             case 'web':
                 $fields['topicId']  = array('type'=>'int',  'required'=>1, 'error'=>__('Select a help topic'));
-                $fields['orderNumber']    = array('type'=>'string',    'required'=>1, 'error'=>'Order Number required');
+
                 break;
             case 'staff':
                 $fields['deptId']   = array('type'=>'int',  'required'=>0, 'error'=>__('Department selection is required'));
@@ -2784,15 +2803,22 @@ class Ticket {
             .' ,dept_id='.db_input($deptId)
             .' ,topic_id='.db_input($topicId)
             .' ,ip_address='.db_input($ipaddress)
-            .' ,source='.db_input($source)
-            .' ,orderNumber='.db_input($vars['orderNumber']);
+            .' ,source='.db_input($source);
 
         if (isset($vars['emailId']) && $vars['emailId'])
             $sql.=', email_id='.db_input($vars['emailId']);
+        if (isset($vars['orderNumber']) && $vars['orderNumber'])
+            $sql.=', orderNumber='.db_input($vars['orderNumber']);      
         if (isset($vars['phone_number']) && $vars['phone_number'])
             $sql.=', phone_number='.db_input($vars['phone_number']);
         if (isset($vars['crm_contact_id']) && $vars['crm_contact_id'])
-            $sql.=', crm_contact_id='.db_input($vars['crm_contact_id']);        
+            $sql.=', crm_contact_id='.db_input($vars['crm_contact_id']);   
+        if (isset($vars['business_form_id']) && $vars['business_form_id'])
+            $sql.=', business_form_id='.db_input($vars['business_form_id']);     
+        if (isset($vars['companyName']) && $vars['companyName'])
+            $sql.=', company_name='.db_input($vars['companyName']);    
+        if (isset($vars['cvr']) && $vars['cvr'])
+            $sql.=', cvr_number='.db_input($vars['cvr']);                        
         if (isset($vars['crmsubject1_id']) && $vars['crmsubject1_id'])
         {
             // $rowId = Ticket::createCRMSubject($vars['crmsubject1_id'],$vars['crmsubject1_text'],1);
@@ -2806,9 +2832,9 @@ class Ticket {
         }
         if (isset($vars['activityCode']) && $vars['activityCode'])
         {
-            $rowId = Ticket::createCRMActivity($vars['activityCode'],$vars['activityDescription']);
+            Ticket::createCRMActivity($vars['activityCode'],$vars['activityDescription']);
             // $rowId = mysql_insert_id();
-            $sql.=',activity_id='.db_input($rowId);
+            $sql.=', crm_activity_code='.db_input($vars['activityCode']);
         }
         if (isset($vars['useragent']) && $vars['useragent'])
         {
@@ -2818,10 +2844,22 @@ class Ticket {
         if($vars['duedate'] && !strcasecmp($origin,'staff'))
              $sql.=' ,duedate='.db_input(date('Y-m-d G:i',Misc::dbtime($vars['duedate'].' '.$vars['time'])));
 
-
         if(!db_query($sql) || !($id=db_insert_id()) || !($ticket =Ticket::lookup($id)))
+        {
             return null;
-
+        }
+        if (isset($vars['fileContent']) && $vars['fileContent'])
+        {
+            $ticketId = intval($id);
+            if(Ticket::parseFileXML($vars['fileContent'],$ticketId))
+            {
+                echo "file has been generate successfully <br/>";
+            }
+            else
+            {
+                echo "file can not be generated <br/>";
+            }
+        }
         /* -------------------- POST CREATE ------------------------ */
 
         // Save the (common) dynamic form
@@ -3083,11 +3121,16 @@ class Ticket {
    }
    function createCRMActivity($activityCode,$activityDescription)
    {
-        $sql = 'INSERT INTO '.TICKET_CRM_ACTIVITY_TABLE
+    $sql = "SELECT * FROM ".TICKET_CRM_ACTIVITY_TABLE." WHERE activity_code=".db_input($activityCode);
+    if(($res=db_query($sql))&&db_num_rows($res)>0)
+     {
+        return false;
+     } 
+     else      
+         return db_query('INSERT INTO '.TICKET_CRM_ACTIVITY_TABLE
             .' SET activity_code='.db_input($activityCode)
-            .', activity_description='.db_input($activityDescription);
-        db_query($sql);
-        return db_insert_id();
+            .', activity_description='.db_input($activityDescription))
+            && db_affected_rows() == 1;
    }
    function updateCRMSubject1($referenceId,$text,$url)
    {
@@ -3129,6 +3172,39 @@ class Ticket {
          else
             return true;
    }
-
+   function generateCRMFile($fileId,$ticketId,$name,$mime,$url,$created)
+   {
+    $sql = "SELECT * FROM ost_ticket_crm_files WHERE crm_file_reference_id=".db_input($fileId);
+    if(($res=db_query($sql))&&db_num_rows($res)>0)
+     {
+        return false;
+     } 
+     else      
+         return db_query('INSERT INTO '."ost_ticket_crm_files"
+            .' SET crm_file_reference_id='.db_input($fileId)
+            .', ost_ticket_id='.db_input($ticketId)
+            .', name='.db_input($name)
+            .', mime='.db_input($mime)
+            .', created='.db_input($created)
+            .', url='.db_input($url))
+            && db_affected_rows() == 1;
+   }
+    function parseFileXML($fileContent,$ticketId)
+    {
+        for ($j=0; $j<count($fileContent);$j++)
+        {
+            $fileId = $fileContent[$j]->attributes()->id;
+            $name = $fileContent[$j]->name;
+            $mime = $fileContent[$j]->mime;
+            $url = $fileContent[$j]->url;
+            $phpdate = $fileContent[$j]->created;
+            $created = date( 'Y-m-d H:i', strtotime($phpdate));
+            if(!Ticket::generateCRMFile($fileId,$ticketId,$name,$mime,$url,$created))
+            {
+                return false;
+            }        
+        }
+        return true;
+    }
 }
 ?>

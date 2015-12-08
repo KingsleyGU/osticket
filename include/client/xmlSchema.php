@@ -9,11 +9,11 @@ require_once(INCLUDE_DIR.'class.client.php');
 require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 
-
-    // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
-    //     echo "The file remote.xml does not exist \n";
-    // }
-    // $fileName = CLIENTINC_DIR.'remote.xml';
+// error_reporting(~0); ini_set('display_errors', 1);
+    if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
+        echo "The file remote.xml does not exist \n";
+    }
+    $fileName = CLIENTINC_DIR.'remote.xml';
     // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     // $response = getRequestFromUrl($fileName);
     // $nodes = $response->xpath('/contacts/contact');
@@ -23,9 +23,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     //     echo "no content provided from the web service <br/>";
     // parseSubject1XML();
     // parseSubject2XML();
-    // while(true)
-    // {
-        $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
+        // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
         $response = getRequestFromUrl($fileName);
         if(!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
             createTicketByWebService($response);
@@ -33,9 +31,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
          {
             echo "no content provided from the web service <br/>";
             sleep(10);
-         }   
-    // }
-
+         }  
     function createTicketByWebService($xml)
     {
         try {
@@ -49,6 +45,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                 }
                 for($i=0;$i<count($nodes);$i++)
                 {
+                    // echo json_encode($nodes[$i]);
                     $data =array();
                     $data['recipients'] = array();
                     $data['subject'] = removeLineBreaker($nodes[$i]->title);
@@ -56,22 +53,24 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                          $data['subject'] = "no title";
                     $data['header'] = "";
                     $data['mid'] = 1;
-                    $data['crm_contact_id'] = $nodes[$i]->attributes()->id;
                     $data['topicId'] = 2;
                     $data['priorityId'] = 2;
+                    $data['crm_contact_id'] = $nodes[$i]->attributes()->id;
                     $data['flags'] = new ArrayObject();
                     $data['email'] = trim(removeLineBreaker($nodes[$i]->email));
                     if(empty($data['email']))
                         $data['email'] = "gumin@spitzeco.dk";
                     $data['phone'] = removeLineBreaker($nodes[$i]->phone);
                     if(empty($data['phone']))
-                        $data['phone'] = "12345678";
+                        $data['phone'] = "";
                     $data['name'] = trim(removeLineBreaker($nodes[$i]->name));
                     if(empty($data['name']))
                         $data['name'] = "Anonymous User";
                     $data['orderNumber'] = trim(removeLineBreaker($nodes[$i]->ordernumber));
+                    $data['cvr'] = trim(removeLineBreaker($nodes[$i]->cvr));
                     $data['message'] =  removeLineBreaker($nodes[$i]->content);
-                    $data['thread-type'] = 'N';
+                    $data['companyName'] = removeLineBreaker($nodes[$i]->companyname);
+                    $data['business_form_id'] = removeLineBreaker($nodes[$i]->business_form_id);
                     $data['activityCode'] = removeLineBreaker($nodes[$i]->activitycode);
                     $data['activityDescription'] = removeLineBreaker($nodes[$i]->activitydescription);
                     $data['useragent'] = removeLineBreaker($nodes[$i]->useragent);
@@ -101,8 +100,9 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                         if (!($acct = ClientAccount::createForUser($user)))
                          echo ('Internal error. Unable to create new account');
                     }   
-                    // $data['uid'] = $user->getId();
-                    // echo json_encode($data);
+                    $fileContent = $nodes[$i]->files->file;
+                    $data['fileContent'] = $fileContent;
+                    // parseFileXML($fileContent);
                     if(Ticket::lookupForContactId($data['crm_contact_id']))
                     {
                         $api = new TicketApiController();
@@ -187,5 +187,6 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         else
             echo "no content provided from the subject web service <br/>";
     }
+
 
 ?>
