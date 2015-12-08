@@ -236,7 +236,7 @@ if($ticket->isOverdue())
 
                 ?>
                 <tr>
-                    <th><?php echo __('Case');?>:</th>
+                    <th><?php echo __('Case Link');?>:</th>
                     <td>
                           <a href="<?php echo $urlFirstPart.$urlMiddlePart.$urlLastPart;?>">Case Management URL</a>
                     </td>
