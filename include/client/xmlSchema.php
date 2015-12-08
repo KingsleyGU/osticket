@@ -10,10 +10,10 @@ require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 
 // error_reporting(~0); ini_set('display_errors', 1);
-    if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
-        echo "The file remote.xml does not exist \n";
-    }
-    $fileName = CLIENTINC_DIR.'remote.xml';
+    // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
+    //     echo "The file remote.xml does not exist \n";
+    // }
+    // $fileName = CLIENTINC_DIR.'contact.xml';
     // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     // $response = getRequestFromUrl($fileName);
     // $nodes = $response->xpath('/contacts/contact');
@@ -21,9 +21,10 @@ require_once(INCLUDE_DIR.'api.tickets.php');
     //     createTicketByWebService($response);
     // else
     //     echo "no content provided from the web service <br/>";
-    // parseSubject1XML();
-    // parseSubject2XML();
-        // $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
+    parseSubject1XML();
+    while(true)
+    {
+        $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
         $response = getRequestFromUrl($fileName);
         if(!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
             createTicketByWebService($response);
@@ -32,6 +33,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
             echo "no content provided from the web service <br/>";
             sleep(10);
          }  
+     }
     function createTicketByWebService($xml)
     {
         try {
@@ -139,7 +141,8 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         $xml = getRequestFromUrl($url);
         if(!empty($xml->xpath('/crmsubjects/crmsubject'))&&($nodes = $xml->xpath('/crmsubjects/crmsubject'))&& count($nodes)>0)
         {
-            // echo $nodes[0]->attributes()->id;           
+            // echo $nodes[0]->attributes()->id;    
+            echo  count($nodes)."    number<br/>";      
             for($i=0;$i<count($nodes);$i++)
             {
                 $referenceId = $nodes[$i]->attributes()->id;
@@ -152,13 +155,13 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                 }
                 else
                 {
-                    echo  $referenceId." can not be added into the table or it has already exists <br/>";
+                    echo  $referenceId." can not be added into the subject1 table or it has already exists <br/>";
                 }
                 parseSubject2XML($referenceId);
             }
         }
         else
-            echo "no content provided from the subject web service <br/>";
+            echo "no content provided from the subject1 web service <br/>".$url;
     }
     function parseSubject2XML($subject1Id)
     {
@@ -180,12 +183,13 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                 }
                 else
                 {
-                    echo  $referenceId." can not be added into the table or it has already exists <br/>";
+                    echo  $referenceId." can not be added into the subject2 table or it has already exists <br/>";
                 }
             }
+            echo $url."<br/>";
         }
         else
-            echo "no content provided from the subject web service <br/>";
+            echo "no content provided from the subject2 web service <br/>".$url."<br/>";
     }
 
 
