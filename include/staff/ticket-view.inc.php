@@ -187,40 +187,6 @@ if($ticket->isOverdue())
                     <th><?php echo __('Create Date');?>:</th>
                     <td><?php echo Format::db_datetime($ticket->getCreateDate()); ?></td>
                 </tr>
-                <?php 
-                    $hashTableContent = $ticket-> getHashtable();
-                    // echo json_encode($hashTableContent);
-                    if(!empty($hashTableContent)&&!empty($hashTableContent['crm_subject1_id']))
-                 { ?>
-                    <tr>
-                        <th><?php echo __('CRM Subject1');?>:</th>
-                        <td>
-                            <ul class="scp-crm-ul">
-                              <li><div class="crm-ul-title">ID:</div><?php echo $hashTableContent['crm_subject1_id']; ?></li>
-                              <li><div class="crm-ul-title">Text:</div><?php echo $hashTableContent['crm_subject1_text']; ?></li>
-                              <!-- <li><div class="crm-ul-title">Url:</div><?php echo $hashTableContent['subject1_url']; ?></li> -->
-                            </ul> 
-                        </td>
-                    </tr>
-                <?php    }   
-                ?>
-                <?php 
-                    if(!empty($hashTableContent)&&!empty($hashTableContent['crm_subject2_id']))
-                 { ?>
-                    <tr>
-                        <th><?php echo __('CRM Subject2');?>:</th>
-                        <td>
-                           <ul class="scp-crm-ul">
-                              <li><div class="crm-ul-title">ID:</div><?php echo $hashTableContent['crm_subject2_id']; ?></li>
-                              <li><div class="crm-ul-title">Text:</div><?php echo $hashTableContent['crm_subject2_text']; ?></li>
-<!--                               <li><div class="crm-ul-title">Order Rule:</div><?php echo $hashTableContent['subject2_order_rule']; ?></li>
-                              <li><div class="crm-ul-title">CVR Rule:</div><?php echo $hashTableContent['subject2_cvr_rule']; ?></li>
-                              <li><div class="crm-ul-title">Title Rule:</div><?php echo $hashTableContent['subject2_title_rule']; ?></li> -->
-                            </ul>  
-                        </td>
-                    </tr>
-                <?php    }   
-                ?>
             </table>
         </td>
         <td width="50%" style="vertical-align:top">
@@ -285,49 +251,6 @@ if($ticket->isOverdue())
                         <span id="user-<?php echo $ticket->getOwnerId(); ?>-phone"><?php echo $ticket->getPhoneNumber(); ?></span>
                     </td>
                 </tr>
-                 <?php 
-                    if(!empty($hashTableContent)&&!empty($hashTableContent['company_name']))
-                 { ?>
-                    <tr>
-                        <th><?php echo __('Company');?>:</th>
-                        <td>
-                           <ul class="scp-crm-ul">
-                              <li><div class="crm-ul-title">Name:</div><?php echo $hashTableContent['company_name']; ?></li>
-                              <li><div class="crm-ul-title">CVR:</div><?php echo $hashTableContent['cvr_numbe']; ?></li>
-                            </ul>  
-                        </td>
-                    </tr>
-                <?php    }   
-                ?>    
-                <?php 
-                    if(!empty($hashTableContent)&&!empty($hashTableContent['orderNumber']))
-                 { ?>
-                    <tr>
-                        <th><?php echo __('OrderNumber');?>:</th>
-                        <td>
-                              <?php echo $hashTableContent['orderNumber']; ?>
-                        </td>
-                    </tr>
-                <?php    }   
-                ?>  
-                 <?php 
-                    $fileContents = $ticket->getFileContents();
-                    // echo json_encode($fileContents );
-                    if(!empty($fileContents)&&count($fileContents)>0)
-                 {  for($j=0;$j<count($fileContents);$j++){?>
-
-                    <tr>
-                        <th><?php echo __('CRM Files'.($j+1));?>:</th>
-                        <td>
-                           <ul class="scp-crm-ul">
-                              <li><div class="crm-ul-title">ID:</div><?php echo $fileContents[$j]['crm_file_reference_id']; ?></li>
-                              <li><div class="crm-ul-title">Name:</div><?php echo $fileContents[$j]['name']; ?></li>
-                              <li><div class="crm-ul-title">Created:</div><?php echo  $fileContents[$j]['created']; ?></li>
-                            </ul>  
-                        </td>
-                    </tr>
-                <?php    }}   
-                ?>                              
                 <tr>
                     <th><?php echo __('Source'); ?>:</th>
                     <td><?php
@@ -337,8 +260,7 @@ if($ticket->isOverdue())
                             echo '&nbsp;&nbsp; <span class="faded">('.$ticket->getIP().')</span>';
                         ?>
                     </td>
-                </tr>    
-
+                </tr>
             </table>
         </td>
     </tr>
@@ -539,15 +461,15 @@ $tcount+= $ticket->getNumNotes();
         <li><a id="transfer_tab" href="#transfer"><?php echo __('Department Transfer');?></a></li>
         <?php
         }
-
         if($thisstaff->canAssignTickets()) { ?>
         <li><a id="assign_tab" href="#assign"><?php echo $ticket->isAssigned()?__('Reassign Ticket'):__('Assign Ticket'); ?></a></li>
         <?php
         } ?>
+        <li><a id="Responza_KB" href="#responza-Knowledge"><?php echo __('Responza KnowledgeBase');?></a></li>
     </ul>
     <?php
     if($thisstaff->canPostReply()) { ?>
-    <form id="reply" action="tickets.php?id=<?php echo $ticket->getId(); ?>#reply" name="reply" method="post" enctype="multipart/form-data">
+    <form id="reply" action="tickets.php?id=<?php echo $ticket->getId(); ?>#reply" name="reply" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="msgId" value="<?php echo $msgId; ?>">
@@ -654,8 +576,8 @@ $tcount+= $ticket->getNumNotes();
                         ); ?>"
                         data-draft-object-id="<?php echo $ticket->getId(); ?>"
                         rows="9" wrap="soft"
-                        class="richtext ifhtml draft draft-delete"><?php
-                        echo $info['response']; ?></textarea>
+                        class="richtext ifhtml draft draft-delete" onclick="this.focus();this.select()"><?php
+                        echo $info['response'];?></textarea>
                 <div id="reply_form_attachments" class="attachments">
 <?php
 print $response_form->getField('attachments')->render();
@@ -725,7 +647,7 @@ print $response_form->getField('attachments')->render();
     </form>
     <?php
     } ?>
-    <form id="note" action="tickets.php?id=<?php echo $ticket->getId(); ?>#note" name="note" method="post" enctype="multipart/form-data">
+    <form id="note" action="tickets.php?id=<?php echo $ticket->getId(); ?>#note" name="note" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="locktime" value="<?php echo $cfg->getLockTime(); ?>">
@@ -804,7 +726,7 @@ print $note_form->getField('attachments')->render();
    </form>
     <?php
     if($thisstaff->canTransferTickets()) { ?>
-    <form id="transfer" action="tickets.php?id=<?php echo $ticket->getId(); ?>#transfer" name="transfer" method="post" enctype="multipart/form-data">
+    <form id="transfer" action="tickets.php?id=<?php echo $ticket->getId(); ?>#transfer" name="transfer" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="ticket_id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="a" value="transfer">
@@ -863,7 +785,7 @@ print $note_form->getField('attachments')->render();
     } ?>
     <?php
     if($thisstaff->canAssignTickets()) { ?>
-    <form id="assign" action="tickets.php?id=<?php echo $ticket->getId(); ?>#assign" name="assign" method="post" enctype="multipart/form-data">
+    <form id="assign" action="tickets.php?id=<?php echo $ticket->getId(); ?>#assign" name="assign" method="post" enctype="multipart/form-data" class="tab-response-block">
         <?php csrf_token(); ?>
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="a" value="assign">
@@ -959,6 +881,19 @@ print $note_form->getField('attachments')->render();
     </form>
     <?php
     } ?>
+     <div id="responza-Knowledge" class="tab-response-block">
+        <iframe  id="responza-iframe" src="http://newerst.spitzeco.dk//contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo urlencode(Format::htmlchars($ticket->getSubject())); ?>">
+        </iframe>
+     </div>
+<!--     <div id="responza-Knowledge" class="tab-response-block">
+        <div class="responza-article-link-content">
+        </div>
+        <div class="responza-article-block" style="display:none;">
+            <button type="button" class="responzaBtn goBackButton" onclick="goBackToArticleLink()">back</button>
+            <div class="responza-article-content">
+            </div>
+        </div>
+    </div> -->
 </div>
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
@@ -1054,8 +989,39 @@ print $note_form->getField('attachments')->render();
     </form>
     <div class="clear"></div>
 </div>
+
 <script type="text/javascript">
+// var responzaArticleArray = [];
+// $(document).ready(function(){
+//     $.get( "http://localhost:49819//api/ArticleApi/SearchArticles?title=a&customer=1&portal_id=1&field=Date&order=ASC&number=10", function( data ) {
+//         var articleSearchResultObject = jQuery.parseJSON( data );  
+//         for(var i=0; i< articleSearchResultObject.length; i++)
+//         {
+//             var articleLinkString = "<button type='button' class='responza-article-link popup-modal' onclick='switchToArticleContect("+i+")'>"+articleSearchResultObject[i]["Title"]+"</button>";
+//             $(".responza-article-link-content").append($.parseHTML(articleLinkString));
+//             responzaArticleArray.push(articleSearchResultObject[i]["HTML"]);
+//         }
+//     });
+//     $('.popup-modal').magnificPopup({
+//       type: 'inline',
+//       preloader: false,
+//       focus: '#username',
+//       modal: true
+//     });
+//     $(document).on('click', '.popup-modal-dismiss', function (e) {
+//       e.preventDefault();
+//       $.magnificPopup.close();
+//     });
+// });
+
+// Click getContentBtn to get the content of iframe
+// $("#getContentBtn").click(function(){
+//     var contentWindow = $("#responza-Knowledge-iframe").contentWindow;
+//     contentWindow.postMessage("hello to responza","http://localhost:49819/");
+// })
+
 $(function() {
+   
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;
@@ -1075,6 +1041,7 @@ $(function() {
             }
         });
     });
+
 <?php
     // Set the lock if one exists
     if ($lock) { ?>
@@ -1090,4 +1057,87 @@ $(function() {
 }();
 <?php } ?>
 });
+//this function is for displying the content of the relevant article
+function switchToArticleContect(articleIndex)
+{
+    $( ".responza-article-link-content" ).css("display","none");
+    $( ".responza-article-block" ).css("display","block");
+    $( ".responza-article-content" ).html($.parseHTML(responzaArticleArray[articleIndex]));
+
+    return false;
+}
+function goBackToArticleLink()
+{
+    $( ".responza-article-block" ).css("display","none");
+    $( ".responza-article-link-content" ).css("display","block");
+}
+$(".redactor_richtext").click(function(){
+    document.execCommand('selectAll',false,null);
+})
+$(".pasteContentFromClip").click(function(){
+    // var tempTextArea = document.createElement('textarea');
+    // tempTextArea.addClass( "tempTextArea" );
+    // tempTextArea.paste();
+    // alert(document.queryCommandSupported('paste'));
+    // unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+    // var clipboardContent = getContentFromClipboard();
+    // alert(clipboardContent);
+  //   var event;
+  //    if (document.createEvent) {
+  //   event = document.createEvent("HTMLEvents");
+  //   event.initEvent("paste", true, true);
+  // } else {
+  //   event = document.createEventObject();
+  //   event.eventType = "paste";
+  // }
+
+  // event.eventName = "paste";
+
+    // $("#div").trigger("paste");
+    // $("#div").select();
+    $("#div").focus();
+    // var press = jQuery.Event("keypress");
+    // press.ctrlKey = true;
+    // press.which = 86;
+     // var event = document.createEvent("KeyboardEvent");
+     //   event.initKeyEvent(
+     //                 "keyup",           //  event,
+     //                  true,             //  bubbleable,
+     //                  true,             //  cancelable,
+     //                  null,             //  window
+     //                  true,             //  ctrlKey,
+     //                  false,            //  altKey,
+     //                  false,            //  shiftKey,
+     //                  false,            //  metaKey,
+     //                   86,              //  keyCodeArg (virtual key code),
+     //                   0);              //  charCodeArg ;
+
+     //  var canceled = !document.body.dispatchEvent(event);
+     //  if(canceled) {
+     //    // A handler called preventDefault
+     //    alert("canceled");
+     //  } else {
+     //    // None of the handlers called preventDefault
+     //    alert("not canceled");
+     //  }
+    
+    // var e = jQuery.Event( "keydown", { keyCode: 86 } );
+    // e.ctrlKey = true;
+    // document.body.dispatchEvent(event);
+    // $("#div").trigger(e);
+    // $("#div").trigger({type: 'keydown', which: 17 && 86, keyCode: 17 && 86});
+    // var event = document.createEvent('Event');
+    // event.isTrusted = true;
+    // event.initEvent('paste', true, true);
+    // document.body.dispatchEvent(event);
+
+    var pressEvent = document.createEvent ("KeyboardEvent");    
+pressEvent.initKeyEvent ("keypress", true, true, window, true, false, false, false, 86, 0);
+var accepted=aTarget.dispatchEvent (pressEvent);
+    // $("#div").fireEvent("on" + event.eventType, event);
+    // $("#div").dispatchEvent(event);
+    // $("#div").trigger("paste");
+})
+
+
 </script>
