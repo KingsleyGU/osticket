@@ -463,77 +463,6 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
 </table>
 <div class="clear"></div>
 <h2 style="padding:10px 0 5px 0; font-size:11pt;"><?php echo Format::htmlchars($ticket->getSubject()); ?></h2>
-<?php
-$tcount = $ticket->getThreadCount();
-$tcount+= $ticket->getNumNotes();
-?>
-<ul id="threads">
-    <li><a class="active" id="toggle_ticket_thread" href="#"><?php echo sprintf(__('Ticket Thread (%d)'), $tcount); ?></a></li>
-</ul>
-<div id="ticket_thread">
-    <?php
-    $threadTypes=array('M'=>'message','R'=>'response', 'N'=>'note');
-    /* -------- Messages & Responses & Notes (if inline)-------------*/
-    $types = array('M', 'R', 'N');
-    if(($thread=$ticket->getThreadEntries($types))) {
-       foreach($thread as $entry) { ?>
-        <table class="thread-entry <?php echo $threadTypes[$entry['thread_type']]; ?>" cellspacing="0" cellpadding="1" width="940" border="0">
-            <tr>
-                <th colspan="4" width="100%">
-                <div>
-                    <span class="pull-left">
-                    <span style="display:inline-block"><?php
-                        echo Format::db_datetime($entry['created']);?></span>
-                    <span style="display:inline-block;padding:0 1em" class="faded title"><?php
-                        echo Format::truncate($entry['title'], 100); ?></span>
-                    </span>
-                    <span class="pull-right" style="white-space:no-wrap;display:inline-block">
-                        <span style="vertical-align:middle;" class="textra"></span>
-                        <span style="vertical-align:middle;"
-                            class="tmeta faded title"><?php
-                            echo Format::htmlchars($entry['name'] ?: $entry['poster']); ?></span>
-                    </span>
-                </div>
-                </th>
-            </tr>
-            <tr><td colspan="4" class="thread-body" id="thread-id-<?php
-                echo $entry['id']; ?>"><div><?php
-                echo $entry['body']->toHtml(); ?></div></td></tr>
-            <?php
-            if($entry['attachments']
-                    && ($tentry = $ticket->getThreadEntry($entry['id']))
-                    && ($urls = $tentry->getAttachmentUrls())
-                    && ($links = $tentry->getAttachmentsLinks())) {?>
-            <tr>
-                <td class="info" colspan="4"><?php echo $tentry->getAttachmentsLinks(); ?></td>
-            </tr> <?php
-            }
-            if ($urls) { ?>
-                <script type="text/javascript">
-                    $('#thread-id-<?php echo $entry['id']; ?>')
-                        .data('urls', <?php
-                            echo JsonDataEncoder::encode($urls); ?>)
-                        .data('id', <?php echo $entry['id']; ?>);
-                </script>
-<?php
-            } ?>
-        </table>
-        <?php
-        if($entry['thread_type']=='M')
-            $msgId=$entry['id'];
-       }
-    } else {
-        echo '<p>'.__('Error fetching ticket thread - get technical help.').'</p>';
-    }?>
-</div>
-<div class="clear" style="padding-bottom:10px;"></div>
-<?php if($errors['err']) { ?>
-    <div id="msg_error"><?php echo $errors['err']; ?></div>
-<?php }elseif($msg) { ?>
-    <div id="msg_notice"><?php echo $msg; ?></div>
-<?php }elseif($warn) { ?>
-    <div id="msg_warning"><?php echo $warn; ?></div>
-<?php } ?>
 
 <div id="response_options">
     <ul class="tabs">
@@ -982,6 +911,81 @@ print $note_form->getField('attachments')->render();
         </div>
     </div> -->
 </div>
+
+
+<?php
+$tcount = $ticket->getThreadCount();
+$tcount+= $ticket->getNumNotes();
+?>
+<ul id="threads">
+    <li><a class="active" id="toggle_ticket_thread" href="#"><?php echo sprintf(__('Ticket Thread (%d)'), $tcount); ?></a></li>
+</ul>
+<div id="ticket_thread">
+    <?php
+    $threadTypes=array('M'=>'message','R'=>'response', 'N'=>'note');
+    /* -------- Messages & Responses & Notes (if inline)-------------*/
+    $types = array('M', 'R', 'N');
+    if(($thread=$ticket->getThreadEntries($types))) {
+       foreach($thread as $entry) { ?>
+        <table class="thread-entry <?php echo $threadTypes[$entry['thread_type']]; ?>" cellspacing="0" cellpadding="1" width="940" border="0">
+            <tr>
+                <th colspan="4" width="100%">
+                <div>
+                    <span class="pull-left">
+                    <span style="display:inline-block"><?php
+                        echo Format::db_datetime($entry['created']);?></span>
+                    <span style="display:inline-block;padding:0 1em" class="faded title"><?php
+                        echo Format::truncate($entry['title'], 100); ?></span>
+                    </span>
+                    <span class="pull-right" style="white-space:no-wrap;display:inline-block">
+                        <span style="vertical-align:middle;" class="textra"></span>
+                        <span style="vertical-align:middle;"
+                            class="tmeta faded title"><?php
+                            echo Format::htmlchars($entry['name'] ?: $entry['poster']); ?></span>
+                    </span>
+                </div>
+                </th>
+            </tr>
+            <tr><td colspan="4" class="thread-body" id="thread-id-<?php
+                echo $entry['id']; ?>"><div><?php
+                echo $entry['body']->toHtml(); ?></div></td></tr>
+            <?php
+            if($entry['attachments']
+                    && ($tentry = $ticket->getThreadEntry($entry['id']))
+                    && ($urls = $tentry->getAttachmentUrls())
+                    && ($links = $tentry->getAttachmentsLinks())) {?>
+            <tr>
+                <td class="info" colspan="4"><?php echo $tentry->getAttachmentsLinks(); ?></td>
+            </tr> <?php
+            }
+            if ($urls) { ?>
+                <script type="text/javascript">
+                    $('#thread-id-<?php echo $entry['id']; ?>')
+                        .data('urls', <?php
+                            echo JsonDataEncoder::encode($urls); ?>)
+                        .data('id', <?php echo $entry['id']; ?>);
+                </script>
+<?php
+            } ?>
+        </table>
+        <?php
+        if($entry['thread_type']=='M')
+            $msgId=$entry['id'];
+       }
+    } else {
+        echo '<p>'.__('Error fetching ticket thread - get technical help.').'</p>';
+    }?>
+</div>
+<div class="clear" style="padding-bottom:10px;"></div>
+<?php if($errors['err']) { ?>
+    <div id="msg_error"><?php echo $errors['err']; ?></div>
+<?php }elseif($msg) { ?>
+    <div id="msg_notice"><?php echo $msg; ?></div>
+<?php }elseif($warn) { ?>
+    <div id="msg_warning"><?php echo $warn; ?></div>
+<?php } ?>
+
+
 <div style="display:none;" class="dialog" id="print-options">
     <h3><?php echo __('Ticket Print Options');?></h3>
     <a class="close" href=""><i class="icon-remove-circle"></i></a>
