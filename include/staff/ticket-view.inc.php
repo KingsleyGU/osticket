@@ -332,7 +332,7 @@ if($ticket->isOverdue())
                            <ul class="scp-crm-ul">
                               <li><div class="crm-ul-title">ID:</div><?php echo $fileContents[$j]['crm_file_reference_id']; ?></li>
                               <li><div class="crm-ul-title">Name:</div><?php echo $fileContents[$j]['name']; ?></li>
-                              <li><div class="crm-ul-title">Created:</div><?php echo  $fileContents[$j]['created']; ?></li>
+                              <li><div class="crm-ul-title">Created:</div><?php echo Format::db_datetime($fileContents[$j]['created']); ?></li>
                             </ul>  
                         </td>
                     </tr>
