@@ -195,9 +195,10 @@ if($ticket->isOverdue())
                     <tr>
                         <th><?php echo __('CRM Subject1');?>:</th>
                         <td>
-                            <ul>
-                              <li><b>Text:</b><?php echo $hashTableContent['crm_subject1_text']; ?></li>
-                              <li><b>Url:</b><?php echo $hashTableContent['subject1_url']; ?></li>
+                            <ul class="scp-crm-ul">
+                              <li><div class="crm-ul-title">ID:</div><?php echo $hashTableContent['crm_subject1_id']; ?></li>
+                              <li><div class="crm-ul-title">Text:</div><?php echo $hashTableContent['crm_subject1_text']; ?></li>
+                              <!-- <li><div class="crm-ul-title">Url:</div><?php echo $hashTableContent['subject1_url']; ?></li> -->
                             </ul> 
                         </td>
                     </tr>
@@ -209,17 +210,17 @@ if($ticket->isOverdue())
                     <tr>
                         <th><?php echo __('CRM Subject2');?>:</th>
                         <td>
-                           <ul>
-                              <li><b>Text:</b><?php echo $hashTableContent['crm_subject2_text']; ?></li>
-                              <li><b>Order Rule:</b><?php echo $hashTableContent['subject2_order_rule']; ?></li>
-                              <li><b>CVR Rule:</b><?php echo $hashTableContent['subject2_cvr_rule']; ?></li>
-                              <li><b>Title Rule:</b><?php echo $hashTableContent['subject2_title_rule']; ?></li>
+                           <ul class="scp-crm-ul">
+                              <li><div class="crm-ul-title">ID:</div><?php echo $hashTableContent['crm_subject2_id']; ?></li>
+                              <li><div class="crm-ul-title">Text:</div><?php echo $hashTableContent['crm_subject2_text']; ?></li>
+<!--                               <li><div class="crm-ul-title">Order Rule:</div><?php echo $hashTableContent['subject2_order_rule']; ?></li>
+                              <li><div class="crm-ul-title">CVR Rule:</div><?php echo $hashTableContent['subject2_cvr_rule']; ?></li>
+                              <li><div class="crm-ul-title">Title Rule:</div><?php echo $hashTableContent['subject2_title_rule']; ?></li> -->
                             </ul>  
                         </td>
                     </tr>
                 <?php    }   
                 ?>
-                
             </table>
         </td>
         <td width="50%" style="vertical-align:top">
@@ -290,9 +291,9 @@ if($ticket->isOverdue())
                     <tr>
                         <th><?php echo __('Company');?>:</th>
                         <td>
-                           <ul>
-                              <li><b>Name:</b><?php echo $hashTableContent['company_name']; ?></li>
-                              <li><b>CVR:</b><?php echo $hashTableContent['cvr_numbe']; ?></li>
+                           <ul class="scp-crm-ul">
+                              <li><div class="crm-ul-title">Name:</div><?php echo $hashTableContent['company_name']; ?></li>
+                              <li><div class="crm-ul-title">CVR:</div><?php echo $hashTableContent['cvr_numbe']; ?></li>
                             </ul>  
                         </td>
                     </tr>
@@ -318,9 +319,10 @@ if($ticket->isOverdue())
                     <tr>
                         <th><?php echo __('CRM Files'.($j+1));?>:</th>
                         <td>
-                           <ul>
-                              <li><b>Name:</b><?php echo $fileContents[$j]['name']; ?></li>
-                              <li><b>Created:</b><?php echo  $fileContents[$j]['created']; ?></li>
+                           <ul class="scp-crm-ul">
+                              <li><div class="crm-ul-title">ID:</div><?php echo $fileContents[$j]['crm_file_reference_id']; ?></li>
+                              <li><div class="crm-ul-title">Name:</div><?php echo $fileContents[$j]['name']; ?></li>
+                              <li><div class="crm-ul-title">Created:</div><?php echo  $fileContents[$j]['created']; ?></li>
                             </ul>  
                         </td>
                     </tr>

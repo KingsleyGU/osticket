@@ -1984,3 +1984,16 @@ table.custom-info td {
 .required {
     font-weight: bold;
 }
+.scp-crm-ul
+{
+    list-style-type:none;
+    margin:0px;
+    line-height: 20px;
+}
+.crm-ul-title
+{
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+    font-size: 10pt;
+}
