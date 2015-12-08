@@ -313,7 +313,7 @@ if($ticket->isOverdue())
                         <td>
                            <ul class="scp-crm-ul">
                               <li><div class="crm-ul-title">Name:</div><?php echo $hashTableContent['company_name']; ?></li>
-                              <li><div class="crm-ul-title">CVR:</div><?php echo $hashTableContent['cvr_numbe']; ?></li>
+                              <li><div class="crm-ul-title">CVR:</div><?php echo $hashTableContent['cvr_number']; ?></li>
                             </ul>  
                         </td>
                     </tr>
