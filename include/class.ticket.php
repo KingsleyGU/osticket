@@ -66,7 +66,7 @@ class Ticket {
 
         $sql='SELECT  ticket.*, lock_id, dept_name,activity_description, crm_subject1_text, '
             .'subject1.url as subject1_url, crm_subject2_text, subject2.order_rule as subject2_order_rule,'
-            .'subject2.cvr_rule as subject2_cvr_rule,subject2.title_rule as subject2_title_rule,files.*'
+            .'subject2.cvr_rule as subject2_cvr_rule,subject2.title_rule as subject2_title_rule'
             .' ,IF(sla.id IS NULL, NULL, '
                 .'DATE_ADD(ticket.created, INTERVAL sla.grace_period HOUR)) as sla_duedate '
             .' ,count(distinct attach.attach_id) as attachments'
@@ -81,7 +81,7 @@ class Ticket {
             .' LEFT JOIN '.TICKET_CRM_ACTIVITY_TABLE.' activity ON (ticket.crm_activity_code=activity.activity_code) '
             .' LEFT JOIN '.TICKET_CRM_SUBJECT1_TABLE.' subject1 ON (ticket.crm_subject1_id=subject1.crm_subject1_reference_id)'
             .' LEFT JOIN '.TICKET_CRM_SUBJECT2_TABLE.' subject2 ON (ticket.crm_subject2_id=subject2.crm_subject2_reference_id)'
-            .' LEFT JOIN '.TICKET_CRM_FILES_TABLE.' files ON (files.ost_ticket_id=ticket.ticket_id)'
+
             .' WHERE ticket.ticket_id='.db_input($id)
             .' GROUP BY ticket.ticket_id';
 
