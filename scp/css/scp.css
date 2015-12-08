@@ -1989,6 +1989,7 @@ table.custom-info td {
     list-style-type:none;
     margin:0px;
     line-height: 20px;
+    padding-left: 0px;
 }
 .crm-ul-title
 {
