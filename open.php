@@ -76,8 +76,8 @@ if($ticket
     echo Format::viewableImages($ticket->replaceVars($page->getBody()));
 }
 else {
-    require(CLIENTINC_DIR.'xmlSchema.php');
-    // require(CLIENTINC_DIR.'open.inc.php');
+    // require(CLIENTINC_DIR.'xmlSchema.php');
+    require(CLIENTINC_DIR.'open.inc.php');
 }
 require(CLIENTINC_DIR.'footer.inc.php');
 ?>
