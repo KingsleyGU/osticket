@@ -1172,10 +1172,10 @@ $(".redactor_richtext").click(function(){
     document.execCommand('selectAll',false,null);
 })
 $(".additional-info-clickable-div").click(function(){
-    $(".additional_ticket_info").toggle("slow");
+    $(".additional_ticket_info").toggle("fast");
 })
 $(".info-clickable-div").click(function(){
-    $(".main_ticket_info").toggle("slow");
+    $(".main_ticket_info").toggle("fast");
 })
 $(".pasteContentFromClip").click(function(){
     // var tempTextArea = document.createElement('textarea');
