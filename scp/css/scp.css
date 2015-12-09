@@ -1998,3 +1998,11 @@ table.custom-info td {
     font-weight: bold;
     font-size: 10pt;
 }
+.scp-clickable-div
+{
+    cursor: pointer;
+    padding: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    background: #aaa;
+}

@@ -167,7 +167,10 @@ if($ticket->isOverdue())
         </td>
     </tr>
 </table>
-<table class="ticket_info" cellspacing="0" cellpadding="0" width="940" border="0">
+<div class="info-clickable-div scp-clickable-div">
+    Info
+</div>
+<table class="ticket_info main_ticket_info" cellspacing="0" cellpadding="0" width="940" border="0">
     <tr>
         <td width="50%">
             <table border="0" cellspacing="" cellpadding="4" width="100%">
@@ -331,8 +334,8 @@ if($ticket->isOverdue())
                         <td>
                            <ul class="scp-crm-ul">
                               <li><div class="crm-ul-title">ID:</div><?php echo $fileContents[$j]['crm_file_reference_id']; ?></li>
-                              <li><div class="crm-ul-title">Name:</div><?php echo $fileContents[$j]['name']; ?></li>
-                              <li><div class="crm-ul-title">Created:</div><?php echo Format::db_datetime($fileContents[$j]['created']); ?></li>
+                              <li><div class="crm-ul-title">Created:</div><?php echo  Format::db_datetime($fileContents[$j]['created']); ?></li>
+                              <li><div class="crm-ul-title">url:</div><a href="https://w2l.dk<?php echo $fileContents[$j]['url']; ?>"><?php echo $fileContents[$j]['name']; ?></a></li>
                             </ul>  
                         </td>
                     </tr>
@@ -353,7 +356,10 @@ if($ticket->isOverdue())
     </tr>
 </table>
 <br>
-<table class="ticket_info" cellspacing="0" cellpadding="0" width="940" border="0">
+<div class="additional-info-clickable-div scp-clickable-div">
+    Additional Info
+</div>
+<table class="ticket_info additional_ticket_info" cellspacing="0" cellpadding="0" width="940" border="0">
     <tr>
         <td width="50%">
             <table cellspacing="0" cellpadding="4" width="100%" border="0">
@@ -1164,6 +1170,12 @@ function goBackToArticleLink()
 }
 $(".redactor_richtext").click(function(){
     document.execCommand('selectAll',false,null);
+})
+$(".additional-info-clickable-div").click(function(){
+    $(".additional_ticket_info").toggle("slow");
+})
+$(".info-clickable-div").click(function(){
+    $(".main_ticket_info").toggle("slow");
 })
 $(".pasteContentFromClip").click(function(){
     // var tempTextArea = document.createElement('textarea');
