@@ -43,7 +43,7 @@ define('DBHOST','localhost');
 define('DBNAME','osticket');
 define('DBUSER','root');
 define('DBPASS','root');
-
+define('DELETE_ERST_SERVICE_QUEUE',false);
 # Table prefix
 define('TABLE_PREFIX','ost_');
 

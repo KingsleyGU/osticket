@@ -103,6 +103,14 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                     {
                         echo "ticket with id ".$data['crm_contact_id']." has already exists <br/>";
                     }
+                    if(DELETE_ERST_SERVICE_QUEUE)
+                    {
+                       deleteContactsFromQueue($data['crm_contact_id']);
+                    }
+                    else
+                    {
+                        echo "please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true";
+                    }
                 }
             } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -178,6 +186,26 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         }
         else
             echo "no content provided from the subject2 web service <br/>".$url."<br/>";
+    }
+    function deleteContactsFromQueue($contactId)
+    {
+        $url = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_delete?id=".$contactId;
+        $xml = getRequestFromUrl($url);
+        if(!empty($xml->xpath('/status'))&&($status = $xml->xpath('/status'))&& count($status)>0)
+        {
+            if(!empty($status->contact_deleted == $contactId))
+            {
+                echo "contact with the id= ".$contactId." has been deleted"."<br/>";
+            }
+            if(!empty($status->contact_file_deleted))
+            {
+                echo "file with the id= ".$status->contact_file_deleted." has been deleted"."<br/>";
+            }
+        }
+        else
+        {
+            echo "can not delete the contact with its id=".$contactId;
+        }
     }
 
 

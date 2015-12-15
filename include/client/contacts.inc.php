@@ -11,7 +11,7 @@
        $fileName = CLIENTINC_DIR.'remote.xml';
        $response = getRequestFromUrl($fileName);
        createTicketByWebService($response);
-       echo "a test case has been generated";
-	}
+       echo "a test case has been generated <br/>";
+	   }
 
 ?>
