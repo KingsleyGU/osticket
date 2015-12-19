@@ -8,7 +8,7 @@ require_once(INCLUDE_DIR.'class.user.php');
 require_once(INCLUDE_DIR.'class.client.php');
 require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
-
+require_once(INCLUDE_DIR.'class.dynamic_forms.php');
 // error_reporting(~0); ini_set('display_errors', 1);
     // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
     //     echo "The file remote.xml does not exist \n";
@@ -37,7 +37,7 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                 {
                     // echo json_encode($nodes[$i]);
                     $data =array();
-                    $data['recipients'] = array();
+                    // $data['recipients'] = array();
                     $data['subject'] = removeLineBreaker($nodes[$i]->title);
                     if(empty( $data['subject']))
                          $data['subject'] = "no title";
@@ -92,7 +92,32 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                     }   
                     $fileContent = $nodes[$i]->files->file;
                     $data['fileContent'] = $fileContent;
-                    // parseFileXML($fileContent);
+                    $tform = TicketForm::objects()->one()->getForm();
+                    $messageField = $tform->getField('message');
+                    $fileField = $messageField->getWidget()->getAttachments();
+                    for ($j=0; $j<count($fileContent);$j++)
+                    {
+                        $fileId = $fileContent[$j]->attributes()->id;
+                        $file['name'] = $fileContent[$j]->name;
+                        $file['type'] = $fileContent[$j]->mime;
+                        $file['encoding'] = 'base64';
+                        // $file['cid'] = false;
+                        $url = $fileContent[$j]->url;
+                        // $file['data'] = base64_encode(file_get_contents($url));
+                        $file['data'] = getFileContentsSSL($url);
+                        // try {
+                        //     $file['id'] = $fileField->uploadAttachment($file);
+                        // }
+                        // catch (FileUploadError $ex) {
+                        //     $file['error'] = $file['name'] . ': ' . $ex->getMessage();
+                        //     echo $file['error'];
+                        // }  
+                        $data['attachments'][] = $file;    
+                        // echo $file['data'];
+                        // echo "<br/>";
+                    }
+                    // echo "22222";
+                    // echo json_encode($data);
                     if(Ticket::lookupForContactId($data['crm_contact_id']))
                     {
                         $api = new TicketApiController();
@@ -103,14 +128,14 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                     {
                         echo "ticket with id ".$data['crm_contact_id']." has already exists <br/>";
                     }
-                    if(DELETE_ERST_SERVICE_QUEUE)
-                    {
-                       deleteContactsFromQueue($data['crm_contact_id']);
-                    }
-                    else
-                    {
-                        echo "please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true";
-                    }
+                    // if(DELETE_ERST_SERVICE_QUEUE)
+                    // {
+                    //    deleteContactsFromQueue($data['crm_contact_id']);
+                    // }
+                    // else
+                    // {
+                    //     echo "please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true";
+                    // }
                 }
             } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -128,8 +153,18 @@ require_once(INCLUDE_DIR.'api.tickets.php');
                 "verify_peer_name"=>false,
             ),
         );  
-     $response = simplexml_load_string(file_get_contents($url, false, stream_context_create($arrContextOptions)), null, LIBXML_NOCDATA);
+     $response = simplexml_load_string(getFileContentsSSL($url), null, LIBXML_NOCDATA);
      return $response;
+    }
+    function getFileContentsSSL($url)
+    {
+       $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        ); 
+       return file_get_contents($url, false, stream_context_create($arrContextOptions));
     }
     function parseSubject1XML()
     {
@@ -206,6 +241,11 @@ require_once(INCLUDE_DIR.'api.tickets.php');
         {
             echo "can not delete the contact with its id=".$contactId;
         }
+    }
+    function parseFileXML($fileContent,$ticketId)
+    {
+
+        return true;
     }
 
 
