@@ -41,8 +41,8 @@ define('ADMIN_EMAIL','gumin12150454x@gmail.com');
 define('DBTYPE','mysql');
 define('DBHOST','localhost');
 define('DBNAME','osticket');
-define('DBUSER','root');
-define('DBPASS','ACE123');
+define('DBUSER','responza');
+define('DBPASS','spitze');
 define('DELETE_ERST_SERVICE_QUEUE',false);
 # Table prefix
 define('TABLE_PREFIX','ost_');
