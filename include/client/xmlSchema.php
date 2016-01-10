@@ -42,7 +42,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     if(empty( $data['subject']))
                          $data['subject'] = "no title";
                     $data['header'] = "";
-                    $data['mid'] = 1;
+                    // $data['mid'] = 1;
                     $data['source'] = "Web";
                     $data['topicId'] = 2;
                     $data['priorityId'] = 2;
