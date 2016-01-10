@@ -3174,13 +3174,14 @@ class Ticket {
    }
    function generateCRMFile($fileId,$ticketId,$name,$mime,$url,$created)
    {
-    $sql = "SELECT * FROM ost_ticket_crm_files WHERE crm_file_reference_id=".db_input($fileId);
+    $tableName = TICKET_CRM_FILES_TABLE;
+    $sql = "SELECT * FROM ".$tableName." WHERE crm_file_reference_id=".db_input($fileId);
     if(($res=db_query($sql))&&db_num_rows($res)>0)
      {
         return false;
      } 
      else      
-         return db_query('INSERT INTO '."ost_ticket_crm_files"
+         return db_query('INSERT INTO '.$tableName
             .' SET crm_file_reference_id='.db_input($fileId)
             .', ost_ticket_id='.db_input($ticketId)
             .', name='.db_input($name)
