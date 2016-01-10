@@ -43,11 +43,11 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                          $data['subject'] = "no title";
                     $data['header'] = "";
                     $data['mid'] = 1;
-                    $data['source'] = "Web";
+                    $data['source'] = "Email";
                     $data['topicId'] = 2;
                     $data['priorityId'] = 2;
                     $data['crm_contact_id'] = $nodes[$i]->attributes()->id;
-                    $data['flags'] = new ArrayObject();
+                    // $data['flags'] = new ArrayObject();
                     $data['email'] = trim(removeLineBreaker($nodes[$i]->email));
                     if(empty($data['email']))
                         $data['email'] = "gumin@spitzeco.dk";
@@ -82,7 +82,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     } else {
                         die("crmsubject2_id is not numeric");
                     }
-                    $data['flags']['bounce'] = true;
+                    // $data['flags']['bounce'] = true;
                     $user = null;
                     $acct = null;
                     if (!$user && $data['email'])
