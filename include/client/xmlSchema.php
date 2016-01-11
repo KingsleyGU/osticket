@@ -68,7 +68,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     $data['useragent'] = removeLineBreaker($nodes[$i]->useragent);
                     $crmsubject1_id = trim(removeLineBreaker($nodes[$i]->crmsubject_id));
                     if (is_numeric($crmsubject1_id)) {
-                        $data['CRM_filter_subject1_Id'] = intval($crmsubject1_id);
+                        $data['CRM_filter_subject1'] = removeLineBreaker($nodes[$i]->crmsubject_text);
                         $data['crmsubject1_id'] = intval($crmsubject1_id);
                         $data['crmsubject1_text'] = removeLineBreaker($nodes[$i]->crmsubject_text);
                     } else {
@@ -76,7 +76,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     }
                     $crmsubject2_id = trim(removeLineBreaker($nodes[$i]->crmsubject2_id));
                     if (is_numeric($crmsubject2_id)) {
-                        $data['CRM_filter_subject2_Id'] = intval($crmsubject2_id);
+                        $data['CRM_filter_subject2'] = removeLineBreaker($nodes[$i]->crmsubject2_text);
                         $data['crmsubject2_id'] = intval($crmsubject2_id);
                         $data['crmsubject2_text'] = removeLineBreaker($nodes[$i]->crmsubject2_text);
                     } else {
