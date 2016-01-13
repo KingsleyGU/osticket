@@ -2813,8 +2813,8 @@ class Ticket {
             $sql.=', phone_number='.db_input($vars['phone_number']);
         if (isset($vars['crm_contact_id']) && $vars['crm_contact_id'])
             $sql.=', crm_contact_id='.db_input($vars['crm_contact_id']);   
-        if (isset($vars['business_form_id']) && $vars['business_form_id'])
-            $sql.=', business_form_id='.db_input($vars['business_form_id']);     
+        // if (isset($vars['business_form_id']) && $vars['business_form_id'])
+        //     $sql.=', business_form_id='.db_input($vars['business_form_id']);     
         if (isset($vars['companyName']) && $vars['companyName'])
             $sql.=', company_name='.db_input($vars['companyName']);    
         if (isset($vars['cvr']) && $vars['cvr'])

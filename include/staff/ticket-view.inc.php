@@ -195,33 +195,29 @@ if($ticket->isOverdue())
                     // echo json_encode($hashTableContent);
                     if(!empty($hashTableContent)&&!empty($hashTableContent['crm_subject1_id']))
                  { ?>
-                    <tr>
+<!--                     <tr>
                         <th><?php echo __('CRM Subject1');?>:</th>
                         <td>
                             <ul class="scp-crm-ul">
                               <li><div class="crm-ul-title">ID:</div><?php echo $hashTableContent['crm_subject1_id']; ?></li>
                               <li><div class="crm-ul-title">Text:</div><?php echo $hashTableContent['crm_subject1_text']; ?></li>
-                              <!-- <li><div class="crm-ul-title">Url:</div><?php echo $hashTableContent['subject1_url']; ?></li> -->
                             </ul> 
                         </td>
-                    </tr>
+                    </tr> -->
                 <?php    }   
                 ?>
                 <?php 
                     if(!empty($hashTableContent)&&!empty($hashTableContent['crm_subject2_id']))
                  { ?>
-                    <tr>
+<!--                     <tr>
                         <th><?php echo __('CRM Subject2');?>:</th>
                         <td>
                            <ul class="scp-crm-ul">
                               <li><div class="crm-ul-title">ID:</div><?php echo $hashTableContent['crm_subject2_id']; ?></li>
                               <li><div class="crm-ul-title">Text:</div><?php echo $hashTableContent['crm_subject2_text']; ?></li>
-<!--                               <li><div class="crm-ul-title">Order Rule:</div><?php echo $hashTableContent['subject2_order_rule']; ?></li>
-                              <li><div class="crm-ul-title">CVR Rule:</div><?php echo $hashTableContent['subject2_cvr_rule']; ?></li>
-                              <li><div class="crm-ul-title">Title Rule:</div><?php echo $hashTableContent['subject2_title_rule']; ?></li> -->
                             </ul>  
                         </td>
-                    </tr>
+                    </tr> -->
                 <?php    }   
                 ?>
                 <?php 
