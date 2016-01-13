@@ -325,7 +325,7 @@ if($ticket->isOverdue())
                     if(!empty($fileContents)&&count($fileContents)>0)
                  {  for($j=0;$j<count($fileContents);$j++){?>
 
-                    <tr>
+<!--                     <tr>
                         <th><?php echo __('CRM Files'.($j+1));?>:</th>
                         <td>
                            <ul class="scp-crm-ul">
@@ -334,7 +334,7 @@ if($ticket->isOverdue())
                               <li><div class="crm-ul-title">url:</div><a href="https://w2l.dk<?php echo $fileContents[$j]['url']; ?>"><?php echo $fileContents[$j]['name']; ?></a></li>
                             </ul>  
                         </td>
-                    </tr>
+                    </tr> -->
                 <?php    }}   
                 ?>                                          
                 <tr>
