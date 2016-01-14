@@ -14,7 +14,7 @@ See LICENSE.TXT for details.
 
 vim: expandtab sw=4 ts=4 sts=4:
 **********************************************************************/
-
+header('Content-Type: text/html; charset=utf-8');
 #Disable direct access.
 if(isset($_SERVER['SCRIPT_NAME'])
         && !strcasecmp(basename($_SERVER['SCRIPT_NAME']),basename(__FILE__)))
