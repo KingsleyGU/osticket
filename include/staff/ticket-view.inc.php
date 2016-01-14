@@ -642,11 +642,11 @@ print $response_form->getField('attachments')->render();
                     foreach (TicketStatusList::getStatuses(
                                 array('states' => $states)) as $s) {
                         if (!$s->isEnabled()) continue;
-                        $selected = ($statusId == $s->getId());
+                        $selected = (3 == $s->getId());
                         echo sprintf('<option value="%d" %s>%s%s</option>',
                                 $s->getId(),
                                 $selected
-                                 ? '3="selected"' : '',
+                                 ? 'selected="selected"' : '',
                                 __($s->getName()),
                                 $selected
                                 ? (' ('.__('current').')') : ''
