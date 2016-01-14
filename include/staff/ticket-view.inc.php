@@ -646,7 +646,7 @@ print $response_form->getField('attachments')->render();
                         echo sprintf('<option value="%d" %s>%s%s</option>',
                                 $s->getId(),
                                 $selected
-                                 ? 'selected="selected"' : '',
+                                 ? '3="selected"' : '',
                                 __($s->getName()),
                                 $selected
                                 ? (' ('.__('current').')') : ''
