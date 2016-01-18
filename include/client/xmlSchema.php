@@ -127,19 +127,19 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                         $api = new TicketApiController();
                         $api->createTicket($data);
                         echo "ticket has been generated successfully <br/>";
+                        if(DELETE_ERST_SERVICE_QUEUE)
+                        {
+                           deleteContactsFromQueue($data['crm_contact_id']);
+                        }
+                        else
+                        {
+                            echo "please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true";
+                        }
                     }
                     else
                     {
                         echo "ticket with id ".$data['crm_contact_id']." has already exists <br/>";
                     }
-                    // if(DELETE_ERST_SERVICE_QUEUE)
-                    // {
-                    //    deleteContactsFromQueue($data['crm_contact_id']);
-                    // }
-                    // else
-                    // {
-                    //     echo "please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true";
-                    // }
                 }
             } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
