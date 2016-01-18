@@ -1,79 +1,60 @@
 <contacts>
-<contact id="8640">
-<crmsubject_id>9</crmsubject_id>
-<crmsubject_text>Rettigheder, brugeradministration og NemID</crmsubject_text>
-<crmsubject2_id>29</crmsubject2_id>
-<crmsubject2_text>Opret administrator for organisationen</crmsubject2_text>
-<name>Susanne Skjødt</name>
-<cvr>26721059</cvr>
-<phone/>
-<email>gumin12150454x@gmail.com</email>
+<contact id="9962">
+<crmsubject_id>2</crmsubject_id>
+<crmsubject_text>Ændre eksisterende virksomhed</crmsubject_text>
+<crmsubject2_id>5</crmsubject2_id>
+<crmsubject2_text>
+En virksomhed eller forening er forkert registreret med min adresse eller telefonnr.
+</crmsubject2_text>
+<name>Stig skov</name>
+<cvr>32626211</cvr>
+<phone>40769723</phone>
+<email>stigshdbcbh@mail-me.dk</email>
 <content>
-Hermed returneres underskreven "Ansøgning om oprettelse af Administrator for Organisationen" for jeres videre behandling.
+Denne person har et firma på min adresse. Men bor her ikke. Morten Hasling Nissen CVR-nummer 32626211 Startdato 17.11.2009 Virksomhedsform Enkeltmandsvirksomhed MvH. Stig skov
 </content>
 <ordernumber/>
-<title>
-Ansøgning om oprettelse af Administrator for Organisationen
-</title>
-<created>07.12.2015 11:34</created>
-<business_form_id>60</business_form_id>
-<activitycode>353000</activitycode>
-<activitydescription>Varmeforsyning</activitydescription>
-<companyname>FFV VARME A/S</companyname>
+<filenumber/>
+<title>Flytning af firma på min adresse.</title>
+<created>18.01.2016 15:25</created>
+<business_form_id>10</business_form_id>
+<activitycode>643030</activitycode>
+<activitydescription>Investeringsselskaber</activitydescription>
+<companyname>Morten Hasling Nissen</companyname>
 <useragent>
-Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+Mozilla/5.0 (Linux; Android 5.0.2; SM-T800 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.83 Safari/537.36
 </useragent>
-<files>
-<file id="1820">
-<name>
-wallpaper.jpg
-</name>
-<mime>image/jpeg</mime>
-<created>07.12.2015 11:34</created>
-<url>http://hdwallpaperia.com/wp-content/uploads/2013/10/Beautiful-Nature-Desktop-Wallpaper-640x360.jpg</url>
-</file>
-</files>
+<files></files>
 </contact>
-<contact id="8641">
+<contact id="9963">
 <crmsubject_id>9</crmsubject_id>
 <crmsubject_text>Rettigheder, brugeradministration og NemID</crmsubject_text>
 <crmsubject2_id>29</crmsubject2_id>
 <crmsubject2_text>Opret administrator for organisationen</crmsubject2_text>
-<name>Susanne Skjødt</name>
-<cvr>26498961</cvr>
-<phone/>
-<email>gumin12150454x@gmail.com</email>
+<name>Piotr Birketoft</name>
+<cvr>30814894</cvr>
+<phone>26159608</phone>
+<email>pnahbsdcbjdsabc@actionize.dk</email>
 <content>
-Hermed returneres underskreven "Ansøgning om oprettelse af Administrator for Organisationen" for jeres videre behandling.
+Jeg har behov for at få flyttet admin rettigheder fra Regitze Birketoft til mig - Piotr Birketoft. Se vedlagt formular efter aftale.
 </content>
 <ordernumber/>
-<title>
-Ansøgning om oprettelse af Administrator for Organisationen
-</title>
-<created>07.12.2015 11:35</created>
-<business_form_id>60</business_form_id>
-<activitycode>381100</activitycode>
-<activitydescription>Indsamling af ikke-farligt affald</activitydescription>
-<companyname>FFV RENOVATION A/S</companyname>
+<filenumber/>
+<title>Tildeling af administratorrettigheder</title>
+<created>18.01.2016 15:26</created>
+<business_form_id>80</business_form_id>
+<activitycode>823000</activitycode>
+<activitydescription>Organisering af kongresser, messer og udstillinger</activitydescription>
+<companyname>Actionize ApS</companyname>
 <useragent>
-Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0
 </useragent>
 <files>
-<file id="1819">
-<name>
-testimage.jpg
-</name>
+<file id="2174">
+<name>Anmodning om administrator.jpeg</name>
 <mime>image/jpeg</mime>
-<created>07.12.2015 11:34</created>
-<url>http://www.planwallpaper.com/static/images/images_1_05GM1zY.jpg</url>
-</file>
-<file id="1821">
-<name>
-Administrator anmodning - Virk-dk - FFV Renovation AS - signed.pdf
-</name>
-<mime>application/pdf</mime>
-<created>07.12.2015 11:35</created>
-<url>https://static.googleusercontent.com/media/www.google.dk/da/DK/work/apps/business/files/google-apps-security-and-compliance-whitepaper.pdf</url>
+<created>18.01.2016 15:26</created>
+<url>/pls/wopdprod/erstcrm_pck.getfile?id=2174</url>
 </file>
 </files>
 </contact>
