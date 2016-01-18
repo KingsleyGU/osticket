@@ -21,7 +21,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     //     createTicketByWebService($response);
     // else
     //     echo "no content provided from the web service <br/>";
-    $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
+    $fileName = "http://api.timbago.com//index.php?f=discoverItems&forWeb=true&limit=12&offset=24&sortBy=created&categoryFilter=326&areaFilter=";
     $response = getRequestFromUrl($fileName);
     echo json_encode($response);
     if($response->xpath('/contacts/contact')&&!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
