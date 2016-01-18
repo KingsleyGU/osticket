@@ -151,12 +151,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     }
     function getRequestFromUrl($url)
     {
-        $arrContextOptions=array(
-            "ssl"=>array(
-                "verify_peer"=>false,
-                "verify_peer_name"=>false,
-            ),
-        );  
+     sleep(2);
      $response = simplexml_load_string(getFileContentsSSL($url), null, LIBXML_NOCDATA);
      return $response;
     }
