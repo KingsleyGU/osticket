@@ -18,14 +18,4 @@ body: |
     online</a>.
     </p>
     <br>
-    <div style="color: rgb(127, 127, 127)">
-    Your %{company.name} Team,
-    <br>
-    %{signature}
-    </div>
-    <hr>
-    <div style="color: rgb(127, 127, 127); font-size: small; "><em>If you
-    wish to provide additional comments or information regarding the issue,
-    please reply to this email or <a href="%{recipient.ticket_link}"><span
-    style="color: rgb(84, 141, 212);" >login to your account</span></a> for
-    a complete archive of your support requests.</em></div>
+
