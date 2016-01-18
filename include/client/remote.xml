@@ -1,80 +1,27 @@
 <contacts>
-<contact id="8640">
-<crmsubject_id>9</crmsubject_id>
-<crmsubject_text>Rettigheder, brugeradministration og NemID</crmsubject_text>
-<crmsubject2_id>29</crmsubject2_id>
-<crmsubject2_text>Opret administrator for organisationen</crmsubject2_text>
-<name>Susanne Skjødt</name>
-<cvr>26721059</cvr>
-<phone/>
-<email>gumin12150454x@gmail.com</email>
+<contact id="9932">
+<crmsubject_id>2</crmsubject_id>
+<crmsubject_text>Ændre eksisterende virksomhed</crmsubject_text>
+<crmsubject2_id>4</crmsubject2_id>
+<crmsubject2_text>Ændre startdato på en virksomhed</crmsubject2_text>
+<name>guo hua wu</name>
+<cvr>37233943</cvr>
+<phone>52727923</phone>
+<email>oscasdct007@hotmail.com</email>
 <content>
-Hermed returneres underskreven "Ansøgning om oprettelse af Administrator for Organisationen" for jeres videre behandling.
+Jeg vil grene Ændre dato fra den 22 .Januar isted for den 01 Marts, må jeg gør det som? mvh Wu
 </content>
 <ordernumber/>
-<title>
-Ansøgning om oprettelse af Administrator for Organisationen
-</title>
-<created>07.12.2015 11:34</created>
-<business_form_id>60</business_form_id>
-<activitycode>353000</activitycode>
-<activitydescription>Varmeforsyning</activitydescription>
-<companyname>FFV VARME A/S</companyname>
+<filenumber/>
+<title>Ændre dato om ansatte</title>
+<created>18.01.2016 11:13</created>
+<business_form_id>10</business_form_id>
+<activitycode>561010</activitycode>
+<activitydescription>Restauranter</activitydescription>
+<companyname>Kina Ris</companyname>
 <useragent>
-Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586
 </useragent>
-<files>
-<file id="1820">
-<name>
-wallpaper.jpg
-</name>
-<mime>image/jpeg</mime>
-<created>07.12.2015 11:34</created>
-<url>http://hdwallpaperia.com/wp-content/uploads/2013/10/Beautiful-Nature-Desktop-Wallpaper-640x360.jpg</url>
-</file>
-</files>
-</contact>
-<contact id="8641">
-<crmsubject_id>9</crmsubject_id>
-<crmsubject_text>Rettigheder, brugeradministration og NemID</crmsubject_text>
-<crmsubject2_id>29</crmsubject2_id>
-<crmsubject2_text>Opret administrator for organisationen</crmsubject2_text>
-<name>Susanne Skjødt</name>
-<cvr>26498961</cvr>
-<phone/>
-<email>gumin12150454x@gmail.com</email>
-<content>
-Hermed returneres underskreven "Ansøgning om oprettelse af Administrator for Organisationen" for jeres videre behandling.
-</content>
-<ordernumber/>
-<title>
-Ansøgning om oprettelse af Administrator for Organisationen
-</title>
-<created>07.12.2015 11:35</created>
-<business_form_id>60</business_form_id>
-<activitycode>381100</activitycode>
-<activitydescription>Indsamling af ikke-farligt affald</activitydescription>
-<companyname>FFV RENOVATION A/S</companyname>
-<useragent>
-Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
-</useragent>
-<files>
-<file id="1819">
-<name>
-testimage.jpg
-</name>
-<mime>image/jpeg</mime>
-<created>07.12.2015 11:34</created>
-<url>http://www.planwallpaper.com/static/images/images_1_05GM1zY.jpg</url>
-</file>
-<file id="1821">
-<name>
-Administrator anmodning - Virk-dk - FFV Renovation AS - signed.pdf
-</name>
-<mime>application/pdf</mime>
-<created>07.12.2015 11:35</created>
-<url>https://static.googleusercontent.com/media/www.google.dk/da/DK/work/apps/business/files/google-apps-security-and-compliance-whitepaper.pdf</url>
-</file>
-</files>
+<files></files>
 </contact>
 </contacts>
