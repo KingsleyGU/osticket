@@ -14,15 +14,7 @@ notes: |
 subject: |
     Re: %{ticket.subject} [#%{ticket.number}]
 body: |
-    <h3><strong>Dear %{recipient.name.first},</strong></h3>
-    A request for support has been created and assigned ticket <a
-    href="%{recipient.ticket_link}">#%{ticket.number}</a> with the following
-    automatic reply
-    <br>
-    <br>
-    Topic: <strong>%{ticket.topic.name}</strong>
-    <br>
-    Subject: <strong>%{ticket.subject}</strong>
+
     <br>
     <br>
     %{response}
