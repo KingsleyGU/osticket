@@ -9,7 +9,7 @@ require_once(INCLUDE_DIR.'class.client.php');
 require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 require_once(INCLUDE_DIR.'class.dynamic_forms.php');
-// error_reporting(~0); ini_set('display_errors', 1);
+error_reporting(~0); ini_set('display_errors', 1);
     // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
     //     echo "The file remote.xml does not exist \n";
     // }
@@ -21,7 +21,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     //     createTicketByWebService($response);
     // else
     //     echo "no content provided from the web service <br/>";
-    $fileName = "http://api.timbago.com//index.php?f=discoverItems&forWeb=true&limit=12&offset=24&sortBy=created&categoryFilter=326&areaFilter=";
+    $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     $response = getRequestFromUrl($fileName);
     echo json_encode($response);
     if($response->xpath('/contacts/contact')&&!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
