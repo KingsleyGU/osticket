@@ -9,7 +9,7 @@ require_once(INCLUDE_DIR.'class.client.php');
 require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
 require_once(INCLUDE_DIR.'class.dynamic_forms.php');
-error_reporting(~0); ini_set('display_errors', 1);
+// error_reporting(~0); ini_set('display_errors', 1);
     // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
     //     echo "The file remote.xml does not exist \n";
     // }
@@ -21,19 +21,6 @@ error_reporting(~0); ini_set('display_errors', 1);
     //     createTicketByWebService($response);
     // else
     //     echo "no content provided from the web service <br/>";
-    $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
-    $response = getRequestFromUrl($fileName);
-    echo json_encode($response);
-    if($response->xpath('/contacts/contact')&&!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
-        createTicketByWebService($response);
-    else
-    {
-       echo "can not create a ticket or no contents provided by the web service <br/>";
-       $fileName = CLIENTINC_DIR.'remote.xml';
-       $response = getRequestFromUrl($fileName);
-       createTicketByWebService($response);
-       echo "a test case has been generated <br/>";
-    }
 
     function createTicketByWebService($xml)
     {
