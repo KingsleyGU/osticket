@@ -180,9 +180,11 @@ if($_POST && !$errors):
                  //     $errors['assign_comments'] = __('Assignment comments required');
                  // elseif(strlen($_POST['assign_comments'])<5)
                  //         $errors['assign_comments'] = __('Comment too short');
-                 $teamId = $ticket->getTeamId();
+                 
                  if($_POST['assignId'][0]=='t')
                  {
+                    $teamId = $ticket->getTeamId();
+                    // check if the team is 1. level
                     if($teamId ==3 || $teamId == 4 || $teamId == 5 || $teamId == 6)
                         $ticket->selectSLAId(1);
                     else
