@@ -183,10 +183,10 @@ if($_POST && !$errors):
                  
                  if($_POST['assignId'][0]=='t')
                  {
-                    $teamId = $ticket->getTeamId();
+                    $teamId = preg_replace("/[^0-9]/", "", $_POST['assignId']);
                     // check if the team is 1. level
                     if($teamId ==3 || $teamId == 4 || $teamId == 5 || $teamId == 6)
-                        $ticket->setSLAId(1);
+                        $ticket->selectSLAId(1);
                     else
                         $ticket->setSLAId(2);
                  }
