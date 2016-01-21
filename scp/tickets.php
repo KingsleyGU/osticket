@@ -186,9 +186,9 @@ if($_POST && !$errors):
                     $teamId = $ticket->getTeamId();
                     // check if the team is 1. level
                     if($teamId ==3 || $teamId == 4 || $teamId == 5 || $teamId == 6)
-                        $ticket->selectSLAId(1);
+                        $ticket->setSLAId(1);
                     else
-                        $ticket->selectSLAId(2);
+                        $ticket->setSLAId(2);
                  }
                  if(!$errors && $ticket->assign($_POST['assignId'], $_POST['assign_comments'], !$claim)) {
                      if($claim) {
