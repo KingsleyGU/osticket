@@ -180,7 +180,11 @@ if($_POST && !$errors):
                  //     $errors['assign_comments'] = __('Assignment comments required');
                  // elseif(strlen($_POST['assign_comments'])<5)
                  //         $errors['assign_comments'] = __('Comment too short');
-
+                 $teamId = $ticket->getTeamId();
+                 if($_POST['assignId'][0]=='t' && $teamId!=3 && $teamId!= 4 && $teamId!= 5 && $teamId!= 6)
+                 {
+                    $ticket->selectSLAId(2);
+                 }
                  if(!$errors && $ticket->assign($_POST['assignId'], $_POST['assign_comments'], !$claim)) {
                      if($claim) {
                          $msg = __('Ticket is NOW assigned to you!');
