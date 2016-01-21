@@ -237,7 +237,7 @@ if($ticket->isOverdue())
                 <tr>
                     <th><?php echo __('Case Link');?>:</th>
                     <td>
-                          <a href="<?php echo $urlFirstPart.$urlMiddlePart.$urlLastPart;?>">Case Management URL</a>
+                          <a href="<?php echo $urlFirstPart.$urlMiddlePart.$urlLastPart;?>" target="_blank">Case Management URL</a>
                     </td>
                 </tr>                   
             </table>
@@ -825,7 +825,7 @@ print $note_form->getField('attachments')->render();
                 </td>
                 <td>
                     <select id="assignId" name="assignId">
-                        <option value="0" selected="selected">&mdash; <?php echo __('Select an Agent OR a Team');?> &mdash;</option>
+                        <option value="0" selected="selected">&mdash; <?php echo __('Select a Team OR an Agent');?> &mdash;</option>
                         <?php
                         if ($ticket->isOpen()
                                 && !$ticket->isAssigned()
