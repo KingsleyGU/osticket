@@ -838,7 +838,19 @@ print $note_form->getField('attachments')->render();
                             $users = $dept->getAvailableMembers();
                         else
                             $users = Staff::getAvailableStaffMembers();
+                        if(($teams=Team::getActiveTeams())) {
+                            echo '<OPTGROUP label="'.sprintf(__('Teams (%d)'), count($teams)).'">';
+                            $teamId=(!$sid && $ticket->isAssigned())?$ticket->getTeamId():0;
+                            foreach($teams as $id => $name) {
+                                if($teamId && $teamId==$id)
+                                    continue;
 
+                                $k="t$id";
+                                echo sprintf('<option value="%s" %s>%s</option>',
+                                        $k,(($info['assignId']==$k)?'selected="selected"':''),$name);
+                            }
+                            echo '</OPTGROUP>';
+                        }
                         if ($users) {
                             echo '<OPTGROUP label="'.sprintf(__('Agents (%d)'), count($users)).'">';
                             $staffId=$ticket->isAssigned()?$ticket->getStaffId():0;
@@ -852,20 +864,6 @@ print $note_form->getField('attachments')->render();
                                 $k="s$id";
                                 echo sprintf('<option value="%s" %s>%s</option>',
                                         $k,(($info['assignId']==$k)?'selected="selected"':''), $name);
-                            }
-                            echo '</OPTGROUP>';
-                        }
-
-                        if(($teams=Team::getActiveTeams())) {
-                            echo '<OPTGROUP label="'.sprintf(__('Teams (%d)'), count($teams)).'">';
-                            $teamId=(!$sid && $ticket->isAssigned())?$ticket->getTeamId():0;
-                            foreach($teams as $id => $name) {
-                                if($teamId && $teamId==$id)
-                                    continue;
-
-                                $k="t$id";
-                                echo sprintf('<option value="%s" %s>%s</option>',
-                                        $k,(($info['assignId']==$k)?'selected="selected"':''),$name);
                             }
                             echo '</OPTGROUP>';
                         }
