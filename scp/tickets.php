@@ -190,9 +190,6 @@ if($_POST && !$errors):
                     else
                         $ticket->selectSLAId(2);
                  }
-                 {
-                    $ticket->selectSLAId(1);
-                 }
                  if(!$errors && $ticket->assign($_POST['assignId'], $_POST['assign_comments'], !$claim)) {
                      if($claim) {
                          $msg = __('Ticket is NOW assigned to you!');
