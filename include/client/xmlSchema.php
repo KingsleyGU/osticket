@@ -8,6 +8,7 @@ require_once(INCLUDE_DIR.'class.user.php');
 require_once(INCLUDE_DIR.'class.client.php');
 require_once(INCLUDE_DIR.'tnef_decoder.php');
 require_once(INCLUDE_DIR.'api.tickets.php');
+require_once(INCLUDE_DIR.'class.banlist.php');
 require_once(INCLUDE_DIR.'class.dynamic_forms.php');
 // error_reporting(~0); ini_set('display_errors', 1);
     // if (!file_exists(CLIENTINC_DIR.'remote.xml')) {
