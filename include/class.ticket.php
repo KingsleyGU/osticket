@@ -2125,7 +2125,8 @@ class Ticket {
         );
 
         // Get assigned staff just in case the ticket is closed.
-        $assignee = $this->getStaff();
+        // $assignee = $this->getStaff();
+        $assignee = $this->getTeam();
 
         if ($vars['note_status_id']
                 && ($status=TicketStatus::lookup($vars['note_status_id']))) {
