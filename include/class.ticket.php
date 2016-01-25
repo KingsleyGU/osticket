@@ -1991,7 +1991,7 @@ class Ticket {
         if(!($response = $this->getThread()->addResponse($vars, $errors)))
             return null;
 
-        $assignee = $this->getStaff();
+        // $assignee = $this->getStaff();
         $assignee = $this->getTeam();
         // Set status - if checked.
         if ($vars['reply_status_id']
