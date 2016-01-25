@@ -102,8 +102,8 @@ class MailFetcher {
     /* osTicket Settings */
 
     function canDeleteEmails() {
-        return ($this->ht['delete_mail']);
-        // return false;
+        // return ($this->ht['delete_mail']);
+        return false;
     }
 
     function getMaxFetch() {
@@ -111,8 +111,8 @@ class MailFetcher {
     }
 
     function getArchiveFolder() {
-        return $this->mailbox_encode($this->ht['archive_folder']);
-        // return $this->mailbox_encode("Beskedbasen");
+        // return $this->mailbox_encode($this->ht['archive_folder']);
+        return $this->mailbox_encode("Beskedbasen");
     }
 
     /* Core */
