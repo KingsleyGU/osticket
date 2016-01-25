@@ -1991,7 +1991,7 @@ class Ticket {
         if(!($response = $this->getThread()->addResponse($vars, $errors)))
             return null;
 
-        // $assignee = $this->getStaff();
+        $assignee = $this->getStaff();
         $assignee = $this->getTeam();
         // Set status - if checked.
         if ($vars['reply_status_id']
@@ -2126,8 +2126,8 @@ class Ticket {
         );
 
         // Get assigned staff just in case the ticket is closed.
-        $assignee = $this->getStaff();
-
+        // $assignee = $this->getStaff();
+        $assignee = $this->getTeam();
         if ($vars['note_status_id']
                 && ($status=TicketStatus::lookup($vars['note_status_id']))) {
             if ($this->setStatus($status))
