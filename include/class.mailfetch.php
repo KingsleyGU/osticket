@@ -112,7 +112,7 @@ class MailFetcher {
 
     function getArchiveFolder() {
         // return $this->mailbox_encode($this->ht['archive_folder']);
-        return $this->mailbox_encode("Beskedbasen");
+        return $this->mailbox_encode("Inbox.Beskedbasen");
     }
 
     /* Core */
