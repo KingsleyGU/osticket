@@ -1,6 +1,6 @@
 <?php
 require('staff.inc.php');
-
+header('Content-Type: text/html; charset=utf-8');
 $filename = "users.csv";
 $fp = fopen($filename, "w");
 // fileName = "file\customer-list.csv";
