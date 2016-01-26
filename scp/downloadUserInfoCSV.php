@@ -23,7 +23,7 @@ if($userInfoArray = User::getUsersCSVFile())
 
 // fclose($fp);
 // header('Content-Description: File Transfer');
-// header('Content-Encoding: UTF-8');
+header('Content-Encoding: UTF-8');
 // header('Content-Type: application/csv;charset=utf-8');
 // header('Content-Disposition: attachment; filename='.basename($filename));
 // header('Expires: 0');
@@ -33,7 +33,7 @@ if($userInfoArray = User::getUsersCSVFile())
 // echo "\xEF\xBB\xBF"; 
 // ob_clean();
 
-// echo "\xEF\xBB\xBF"; // UTF-8 BOM
+echo "\xEF\xBB\xBF"; // UTF-8 BOM
 // echo file_get_contents($filename);
 header('Location: http://s-responza-p01.es.lan/scp/users.csv');
 exit;
