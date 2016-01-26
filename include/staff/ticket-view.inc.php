@@ -900,7 +900,7 @@ print $note_form->getField('attachments')->render();
     <?php
     } ?>
      <div id="responza-Knowledge" class="tab-response-block">
-        <iframe  id="responza-iframe" src="http://newerst.spitzeco.dk//contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo urlencode(Format::htmlchars($ticket->getSubject())); ?>">
+        <iframe  id="responza-iframe" src="http://erst.spitzeco.dk//contentkb/1_1/1/1/Search?customer=Erhvervsstyrelse&title=1_1&page=1&sparam=<?php echo urlencode(Format::htmlchars($ticket->getSubject())); ?>">
         </iframe>
      </div>
 <!--     <div id="responza-Knowledge" class="tab-response-block">
