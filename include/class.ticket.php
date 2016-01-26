@@ -1723,7 +1723,9 @@ class Ticket {
         } elseif($assignId[0]=='s' || is_numeric($assignId)) {
             $alert=($alert && $thisstaff && $thisstaff->getId()==$id)?false:$alert; //No alerts on self assigned tickets!!!
             //We don't care if a team is already assigned to the ticket - staff assignment takes precedence
-            $rv=$this->assignToStaff($id, $note, $alert);
+            // $rv=$this->assignToStaff($id, $note, $alert);
+            $id = $this->getTeamId();
+            $rv=$this->assignToTeam($id, $note, $alert);
         }
 
         return $rv;
