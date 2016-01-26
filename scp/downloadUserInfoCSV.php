@@ -35,6 +35,6 @@ if($userInfoArray = User::getUsersCSVFile())
 
 // echo "\xEF\xBB\xBF"; // UTF-8 BOM
 // echo file_get_contents($filename);
-header('Location: $fileName');
+header('Location: http://s-responza-p01.es.lan/scp/users.csv');
 exit;
 ?>
