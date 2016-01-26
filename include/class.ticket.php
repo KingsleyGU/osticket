@@ -2020,7 +2020,7 @@ class Ticket {
         $variables = array(
                 'response' => $response,
                 'signature' => $signature,
-                // 'staff' => $thisstaff,
+                'staff' => $thisstaff,
                 'poster' => $thisstaff);
         $options = array(
                 'inreplyto' => $response->getEmailMessageId(),
@@ -2761,9 +2761,10 @@ class Ticket {
                 $autorespond = $topic->autoRespond();
 
             //Auto assignment.
-            if (!isset($vars['staffId']) && $topic->getStaffId())
-                $vars['staffId'] = $topic->getStaffId();
-            elseif (!isset($vars['teamId']) && $topic->getTeamId())
+            // if (!isset($vars['staffId']) && $topic->getStaffId())
+            //     $vars['staffId'] = $topic->getStaffId();
+            // else
+            if (!isset($vars['teamId']) && $topic->getTeamId())
                 $vars['teamId'] = $topic->getTeamId();
 
             //set default sla.
@@ -2777,9 +2778,10 @@ class Ticket {
         if (($org = $user->getOrganization())
                 && $org->autoAssignAccountManager()
                 && ($code = $org->getAccountManagerId())) {
-            if (!isset($vars['staffId']) && $code[0] == 's')
-                $vars['staffId'] = substr($code, 1);
-            elseif (!isset($vars['teamId']) && $code[0] == 't')
+            // if (!isset($vars['staffId']) && $code[0] == 's')
+            //     $vars['staffId'] = substr($code, 1);
+            // else
+            if (!isset($vars['teamId']) && $code[0] == 't')
                 $vars['teamId'] = substr($code, 1);
         }
 
