@@ -826,7 +826,7 @@ print $note_form->getField('attachments')->render();
                 </td>
                 <td>
                     <select id="assignId" name="assignId">
-                        <option value="0" selected="selected">&mdash; <?php echo __('Select a Team OR an Agent');?> &mdash;</option>
+                        <option value="0" selected="selected">&mdash; <?php echo __('Select a Team');?> &mdash;</option>
                         <?php
                         if ($ticket->isOpen()
                                 && !$ticket->isAssigned()
