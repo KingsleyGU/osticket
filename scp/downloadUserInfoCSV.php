@@ -22,14 +22,14 @@ if($userInfoArray = User::getUsersCSVFile())
 }
 
 fclose($fp);
-// header('Content-Description: File Transfer');
-// header('Content-Encoding: UTF-8');
+header('Content-Description: File Transfer');
+header('Content-Encoding: UTF-8');
 // header('Content-Type: application/csv;charset=utf-8');
-// header('Content-Disposition: attachment; filename='.basename($filename));
-// header('Expires: 0');
-// header('Cache-Control: must-revalidate');
-// header('Pragma: public');
-// header('Content-Length: ' . filesize($filename));
+header('Content-Disposition: attachment; filename='.basename($filename));
+header('Expires: 0');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
+header('Content-Length: ' . filesize($filename));
 ob_clean();
 
 echo "\xEF\xBB\xBF"; // UTF-8 BOM
