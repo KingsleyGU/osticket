@@ -30,12 +30,12 @@ header('Expires: 0');
 header('Cache-Control: must-revalidate');
 header('Pragma: public');
 header('Content-Length: ' . filesize($filename));
-echo "\xEF\xBB\xBF"; 
+// echo "\xEF\xBB\xBF"; 
 // ob_clean();
 // flush();
 
 //read the file from disk and output the content.
-echo "\xEF\xBB\xBF"; // UTF-8 BOM
+// echo "\xEF\xBB\xBF"; // UTF-8 BOM
 readfile($filename);
 exit;
 ?>
