@@ -33,6 +33,6 @@ header('Content-Length: ' . filesize($filename));
 ob_clean();
 
 echo "\xEF\xBB\xBF"; // UTF-8 BOM
-readfile($filename);
+echo file_get_contents($filename);
 exit;
 ?>
