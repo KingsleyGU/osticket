@@ -2972,6 +2972,7 @@ class Ticket {
         }
 
         /* Start tracking ticket lifecycle events */
+        $ticket->assignToTeam($ticket->getTeamId(),_S('Auto Assignment'),false);
         $ticket->logEvent('created');
 
         // Fire post-create signal (for extra email sending, searching)
