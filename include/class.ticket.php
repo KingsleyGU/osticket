@@ -2908,19 +2908,19 @@ class Ticket {
         $ticket->selectSLAId($vars['slaId']);
 
         // Assign ticket to staff or team (new ticket by staff)
-        if($vars['assignId']) {
-            $ticket->assign($vars['assignId'], $vars['note']);
-        }
-        else {
+        // if($vars['assignId']) {
+        //     $ticket->assign($vars['assignId'], $vars['note']);
+        // }
+        // else {
             // Auto assign staff or team - auto assignment based on filter
             // rules. Both team and staff can be assigned
-            if ($vars['staffId'])
-                 $ticket->assignToStaff($vars['staffId'], _S('Auto Assignment'));
-            if ($vars['teamId'])
-                // No team alert if also assigned to an individual agent
-                $ticket->assignToTeam($vars['teamId'], _S('Auto Assignment'),
-                    !$vars['staffId']);
-        }
+            // if ($vars['staffId'])
+            //      $ticket->assignToStaff($vars['staffId'], _S('Auto Assignment'));
+        if ($vars['teamId'])
+            // No team alert if also assigned to an individual agent
+            $ticket->assignToTeam($vars['teamId'], _S('Auto Assignment'),
+                !$vars['staffId']);
+        // }
 
         // Apply requested status — this should be done AFTER assignment,
         // because if it is requested to be closed, it should not cause the
