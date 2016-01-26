@@ -31,7 +31,7 @@ header('Content-Disposition: attachment; filename='.basename($filename));
 // header('Cache-Control: must-revalidate');
 // header('Pragma: public');
 // header('Content-Length: ' . filesize($filename));
-// // echo "\xEF\xBB\xBF"; 
+echo "\xEF\xBB\xBF"; 
 // // ob_clean();
 // // flush();
 
