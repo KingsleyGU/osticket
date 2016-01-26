@@ -1676,7 +1676,9 @@ class Ticket {
 
         $comments = sprintf(_S('Ticket claimed by %s'), $thisstaff->getName());
 
-        return $this->assignToStaff($thisstaff->getId(), $comments, false);
+        return $this->assignToTeam($this->getTeamId(), $comments, false);
+
+        // return $this->assignToStaff($thisstaff->getId(), $comments, false);
     }
 
     function assignToStaff($staff, $note, $alert=true) {
