@@ -509,12 +509,11 @@ class Ticket {
     }
 
     function getAssignee() {
+        if($team=$this->getTeam())
+            return $team->getName();
 
         if($staff=$this->getStaff())
             return $staff->getName();
-
-        if($team=$this->getTeam())
-            return $team->getName();
 
         return '';
     }
@@ -524,7 +523,6 @@ class Ticket {
         $assignees=array();
         if($staff=$this->getStaff())
             $assignees[] = $staff->getName();
-
         if($team=$this->getTeam())
             $assignees[] = $team->getName();
 
@@ -2022,7 +2020,7 @@ class Ticket {
         $variables = array(
                 'response' => $response,
                 'signature' => $signature,
-                'staff' => $thisstaff,
+                // 'staff' => $thisstaff,
                 'poster' => $thisstaff);
         $options = array(
                 'inreplyto' => $response->getEmailMessageId(),
