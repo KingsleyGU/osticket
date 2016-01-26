@@ -852,22 +852,22 @@ print $note_form->getField('attachments')->render();
                             }
                             echo '</OPTGROUP>';
                         }
-                        if ($users) {
-                            echo '<OPTGROUP label="'.sprintf(__('Agents (%d)'), count($users)).'">';
-                            $staffId=$ticket->isAssigned()?$ticket->getStaffId():0;
-                            foreach($users as $id => $name) {
-                                if($staffId && $staffId==$id)
-                                    continue;
+                        // if ($users) {
+                        //     echo '<OPTGROUP label="'.sprintf(__('Agents (%d)'), count($users)).'">';
+                        //     $staffId=$ticket->isAssigned()?$ticket->getStaffId():0;
+                        //     foreach($users as $id => $name) {
+                        //         if($staffId && $staffId==$id)
+                        //             continue;
 
-                                if (!is_object($name))
-                                    $name = new PersonsName($name);
+                        //         if (!is_object($name))
+                        //             $name = new PersonsName($name);
 
-                                $k="s$id";
-                                echo sprintf('<option value="%s" %s>%s</option>',
-                                        $k,(($info['assignId']==$k)?'selected="selected"':''), $name);
-                            }
-                            echo '</OPTGROUP>';
-                        }
+                        //         $k="s$id";
+                        //         echo sprintf('<option value="%s" %s>%s</option>',
+                        //                 $k,(($info['assignId']==$k)?'selected="selected"':''), $name);
+                        //     }
+                        //     echo '</OPTGROUP>';
+                        // }
                         ?>
                     </select>&nbsp;<span class='error'>*&nbsp;<?php echo $errors['assignId']; ?></span>
                     <?php
