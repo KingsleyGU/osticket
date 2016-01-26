@@ -366,8 +366,8 @@ if($ticket->isOverdue())
                     <td>
                         <?php
                         if($ticket->isAssigned())
-                            // echo Format::htmlchars(implode('/', $ticket->getAssignees()));
-                            echo $ticket->getTeam();
+                            echo Format::htmlchars(implode('/', $ticket->getAssignees()));
+                            // echo $ticket->getTeam();
                         else
                             echo '<span class="faded">&mdash; '.__('Unassigned').' &mdash;</span>';
                         ?>
@@ -873,7 +873,7 @@ print $note_form->getField('attachments')->render();
                     <?php
                     if ($ticket->isAssigned() && $ticket->isOpen()) { ?>
                         <div class="faded"><?php echo sprintf(__('Ticket is currently assigned to %s'),
-                            sprintf('<b>%s</b>', $ticket->getTeam())); ?></div> <?php
+                            sprintf('<b>%s</b>', $ticket->getAssignee())); ?></div> <?php
                     } elseif ($ticket->isClosed()) { ?>
                         <div class="faded"><?php echo __('Assigning a closed ticket will <b>reopen</b> it!'); ?></div>
                     <?php } ?>
