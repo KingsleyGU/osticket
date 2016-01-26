@@ -24,7 +24,7 @@ if($userInfoArray = User::getUsersCSVFile())
 fclose($fp);
 header('Content-Description: File Transfer');
 header('Content-Encoding: UTF-8');
-// header('Content-Type: application/csv;charset=utf-8');
+header('Content-Type: application/csv;');
 header('Content-Disposition: attachment; filename='.basename($filename));
 header('Expires: 0');
 header('Cache-Control: must-revalidate');
