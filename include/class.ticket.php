@@ -2979,7 +2979,7 @@ class Ticket {
         Signal::send('model.created', $ticket);
 
         /* Phew! ... time for tea (KETEPA) */
-
+        $ticket->setStaffId(0);
         return $ticket;
     }
 
@@ -3042,7 +3042,10 @@ class Ticket {
         if(!$cfg->notifyONNewStaffTicket()
                 || !isset($vars['alertuser'])
                 || !($dept=$ticket->getDept()))
+        {
+            $ticket->setStaffId(0);
             return $ticket; //No alerts.
+        }
 
         //Send Notice to user --- if requested AND enabled!!
         if(($tpl=$dept->getTemplate())
@@ -3084,7 +3087,7 @@ class Ticket {
             $email->send($ticket->getOwner(), $msg['subj'], $msg['body'], $attachments,
                 $options);
         }
-
+        $ticket->setStaffId(0);
         return $ticket;
 
     }

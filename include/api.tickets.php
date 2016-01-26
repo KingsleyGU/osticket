@@ -141,7 +141,7 @@ class TicketApiController extends ApiController {
         } elseif (!$ticket) {
             return $this->exerr(500, __("Unable to create new ticket: unknown error"));
         }
-
+        $ticket->setStaffId(0);
         return $ticket;
     }
 

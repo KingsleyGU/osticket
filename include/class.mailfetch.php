@@ -785,6 +785,7 @@ class MailFetcher {
         }
         $ticket->assignToTeam($ticket->getTeamId(), _S('Auto Assignment'),
                     false);
+        $ticket->setStaffId(0);
         return $ticket;
     }
 
