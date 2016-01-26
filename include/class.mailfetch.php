@@ -783,7 +783,8 @@ class MailFetcher {
             // Indicate failure of mail processing
             return null;
         }
-
+        $ticket->assignToTeam($ticket->getTeamId(), _S('Auto Assignment'),
+                    false);
         return $ticket;
     }
 
