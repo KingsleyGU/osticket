@@ -485,7 +485,8 @@ class Ticket {
     }
 
     function getStaffId() {
-        return $this->ht['staff_id'];
+        // return $this->ht['staff_id'];
+        return null;
     }
 
     function getStaff() {
@@ -493,7 +494,8 @@ class Ticket {
         if(!$this->staff && $this->getStaffId())
             $this->staff= Staff::lookup($this->getStaffId());
 
-        return $this->staff;
+        // return $this->staff;
+        return null;
     }
 
     function getTeamId() {
@@ -2761,9 +2763,12 @@ class Ticket {
             if ($autorespond)
                 $autorespond = $topic->autoRespond();
 
+            $vars['staffId'] = null;
+            
             //Auto assignment.
             if (!isset($vars['staffId']) && $topic->getStaffId())
                 $vars['staffId'] = $topic->getStaffId();
+                // $vars['staffId'] = 0;
             elseif (!isset($vars['teamId']) && $topic->getTeamId())
                 $vars['teamId'] = $topic->getTeamId();
 
@@ -2780,6 +2785,7 @@ class Ticket {
                 && ($code = $org->getAccountManagerId())) {
             if (!isset($vars['staffId']) && $code[0] == 's')
                 $vars['staffId'] = substr($code, 1);
+                // $vars['staffId'] = ;
             elseif (!isset($vars['teamId']) && $code[0] == 't')
                 $vars['teamId'] = substr($code, 1);
         }
