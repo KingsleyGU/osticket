@@ -16,26 +16,28 @@ if($userInfoArray = User::getUsersCSVFile())
 {
 	// echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
+	fprintf($df, chr(0xEF).chr(0xBB).chr(0xBF));
     fputcsv($fp, $fields);
 	}
 
 }
 
 fclose($fp);
-header('Content-Description: File Transfer');
-header('Content-Encoding: UTF-8');
+// header('Content-Description: File Transfer');
+// header('Content-Encoding: UTF-8');
 header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
-header('Expires: 0');
-header('Cache-Control: must-revalidate');
-header('Pragma: public');
-header('Content-Length: ' . filesize($filename));
-// echo "\xEF\xBB\xBF"; 
-// ob_clean();
-// flush();
+// header('Expires: 0');
+// header('Cache-Control: must-revalidate');
+// header('Pragma: public');
+// header('Content-Length: ' . filesize($filename));
+// // echo "\xEF\xBB\xBF"; 
+// // ob_clean();
+// // flush();
 
-//read the file from disk and output the content.
-// echo "\xEF\xBB\xBF"; // UTF-8 BOM
-readfile($filename);
-exit;
+// //read the file from disk and output the content.
+// // echo "\xEF\xBB\xBF"; // UTF-8 BOM
+ readfile($filename);
+
+// exit;
 ?>
