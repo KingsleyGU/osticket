@@ -600,6 +600,22 @@ class User extends UserModel {
     static function lookupByEmail($email) {
         return self::lookup(array('emails__address'=>$email));
     }
+    function getUsersCSVFile()
+    {
+        $sql = "select * from ost_user"; 
+        $userInfoArray = array();
+        
+        if(!($res=db_query($sql)) || !db_num_rows($res))
+            return null;
+        else
+        {
+           while (  $row  =  db_fetch_array($res) )  {
+              array_push($userInfoArray,$row);
+            }
+            return  $userInfoArray;
+        }    
+
+    }
 }
 
 class PersonsName {
