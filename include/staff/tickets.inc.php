@@ -778,7 +778,7 @@ $( "#tickets-department-transfer-submit" ).click(function() {
          url: '/scp/transferTicketToDepartment.php',
          data: $("#transferMultipleTicketToDepartment").serialize(),
          success: function(data) {
-            alert(data);
+            location.reload();
          },
          error: function(data) { 
             alert(data); 
