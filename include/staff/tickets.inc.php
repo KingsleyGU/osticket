@@ -68,18 +68,45 @@ $qwhere ='';
 
 $depts=$thisstaff->getDepts();
 $qwhere =' WHERE ( '
-        .'  ( ticket.staff_id='.db_input($thisstaff->getId())
-        .' AND status.state="open") ';
+        .'  ( ticket.staff_id='.db_input($thisstaff->getId());
+if(isSearchOrNot())
+{
+    $qwhere .= ' )';
+}
+else
+{
+    $qwhere .=' AND status.state="open") ';
+}
+        
 
-if(!$thisstaff->showAssignedOnly())
+if(!$thisstaff->showAssignedOnly()||isSearchOrNot())
     $qwhere.=' OR ticket.dept_id IN ('.($depts?implode(',', db_input($depts)):0).')';
 
+// tell if it is searching or not
+// if (isset($_REQUEST['advsid']) ||(isset($_REQUEST['a']) && $_REQUEST['a'] == 'search') ||$search)
+// {
+//     $qwhere = '';
+// }
+
+
 if(($teams=$thisstaff->getTeams()) && count(array_filter($teams)))
-    $qwhere.=' OR (ticket.team_id IN ('.implode(',', db_input(array_filter($teams)))
-            .') AND status.state="open") ';
+{   $qwhere.=' OR (ticket.team_id IN ('.implode(',', db_input(array_filter($teams)));
+     if(isSearchOrNot())
+    {
+        $qwhere .= ' ) )';
+    }
+    else
+    {
+        $qwhere .=') AND status.state="open") ';
+    }  
+}     
 
 $qwhere .= ' )';
 
+// if (isset($_REQUEST['advsid']) ||(isset($_REQUEST['a']) && $_REQUEST['a'] == 'search') ||$search)
+// {
+//     $qwhere = '';
+// }
 //STATUS to states
 $states = array(
     'open' => array('open'),
@@ -118,6 +145,8 @@ if($staffId && ($staffId==$thisstaff->getId())) { //My tickets
         $showassigned=false; //Not showing Assigned To column since assigned tickets are not part of open queue
     }
 }
+
+
 
 //Search?? Somebody...get me some coffee
 $deep_search=false;
@@ -308,6 +337,18 @@ if ($results) {
     }
 }
 
+if(isSearchOrNot())
+{
+    $id = $thisstaff->getId();
+    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+    {
+        // echo "change to admin now";
+    }
+    // else
+    // {
+    //     echo "not changing it successfully";
+    // }
+}
 //YOU BREAK IT YOU FIX IT.
 ?>
 <!-- SEARCH FORM START -->
@@ -350,6 +391,22 @@ if ($results) {
                 echo TicketStatus::status_options();
             }
             ?>
+            <form id="transferMultipleTicketToDepartment" action="/scp/transferTicketToDepartment.php" style="float:right;">
+               <div id="getTicketsIdBlock">
+               </div>
+               <button id="tickets-department-transfer-submit" class="action-button pull-right tickets-action"><?php echo __('Transfer'); ?></button>
+                <select id="transferDeptId" name="transferDeptId">
+                    <option value="0" selected="selected">&mdash; <?php echo __('Transfer to Department');?> &mdash;</option>
+                    <?php
+                    if($depts=Dept::getDepartments()) {
+                        foreach($depts as $id =>$name) {
+                           echo sprintf('<option value="%d">%s</option>',
+                                    $id,$name);
+                        }
+                    }
+                    ?>
+                </select>
+            </form>
         </div>
 </div>
 <div class="clear" style="margin-bottom:10px;"></div>
@@ -705,4 +762,29 @@ $(function() {
         return false;
     });
 });
+
+$( "#tickets-department-transfer-submit" ).click(function() {
+    $('#getTicketsIdBlock').empty();
+    $('form#tickets input[name="tids[]"]:checkbox:checked')
+    .each(function() {
+        $('<input>')
+        .prop('type', 'hidden')
+        .attr('name', 'tids[]')
+        .val($(this).val())
+        .appendTo('#getTicketsIdBlock');
+    });
+    $.ajax({
+         type: "POST",
+         url: '/scp/transferTicketToDepartment.php',
+         data: $("#transferMultipleTicketToDepartment").serialize(),
+         success: function(data) {
+            alert(data);
+         },
+         error: function(data) { 
+            alert(data); 
+         } 
+    });
+    return false;
+});
+
 </script>

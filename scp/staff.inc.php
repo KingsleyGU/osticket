@@ -55,9 +55,37 @@ if(!function_exists('staffLoginPage')) { //Ajax interface can pre-declare the fu
         exit;
     }
 }
+function isSearchOrNot()
+{
+    if(isset($_REQUEST['advsid']) ||(isset($_REQUEST['a']) && $_REQUEST['a'] == 'search') ||$search)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 $thisstaff = StaffAuthenticationBackend::getUser();
+if(isset($thisstaff)&&!empty($thisstaff))
+{
+    $originalStaff;
+    $originalStaff['isAdmin'] = $thisstaff->isAdmin();
+    $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
+    // error_reporting(~0); ini_set('display_errors', 1);
+    if(isSearchOrNot())
+    {
+        $id = $thisstaff->getId();
+        if($thisstaff->updateAdmin(1,0))
+        {
+            // echo "change to admin now <br/>";
+            // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
+        }
+        $thisstaff->reload();
 
+    }
+}
 // Bootstrap gettext translations as early as possible, but after attempting
 // to sign on the agent
 TextDomain::configureForUser($thisstaff);

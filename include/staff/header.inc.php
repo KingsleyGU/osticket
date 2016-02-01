@@ -74,7 +74,7 @@ if (($lang = Internationalization::getCurrentLanguage())
     <div id="header">
         <p id="info" class="pull-right no-pjax"><?php echo sprintf(__('Welcome, %s.'), '<strong>'.$thisstaff->getFirstName().'</strong>'); ?>
            <?php
-            if($thisstaff->isAdmin() && !defined('ADMINPAGE')) { ?>
+            if($originalStaff['isAdmin'] && !defined('ADMINPAGE')) { ?>
             | <a href="admin.php" class="no-pjax"><?php echo __('Admin Panel'); ?></a>
             <?php }else{ ?>
             | <a href="index.php" class="no-pjax"><?php echo __('Agent Panel'); ?></a>

@@ -116,6 +116,12 @@ $(function() {
         .attr('name', 'tids[]')
         .val($(this).val())
         .appendTo('form#status');
+        
+        $('<input>')
+        .prop('type', 'hidden')
+        .attr('name', 'tids[]')
+        .val($(this).val())
+        .appendTo('form#transferMultipleTicketToDepartment');
     });
 });
 </script>

@@ -537,7 +537,29 @@ implements EmailContact {
         return (db_query($sql));
     }
 
-
+    function updateAdmin($admin,$assigned_only)
+    {
+        if (is_numeric($admin))
+        {
+            if($admin>=1)
+            {
+                $admin = 1;
+            }
+            else
+            {
+                $admin = 0;
+            }
+             $sql='UPDATE '.STAFF_TABLE.' SET'
+             .' isadmin='.db_input($admin)
+             .' ,assigned_only='.db_input($assigned_only);
+             $sql.=' WHERE staff_id='.db_input($this->getId());
+             return (db_query($sql));
+        }
+        else
+        {
+            return false;
+        }
+    }
     function updateTeams($teams) {
 
         if($teams) {

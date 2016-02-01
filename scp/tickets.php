@@ -22,14 +22,23 @@ require_once(INCLUDE_DIR.'class.canned.php');
 require_once(INCLUDE_DIR.'class.json.php');
 require_once(INCLUDE_DIR.'class.dynamic_forms.php');
 require_once(INCLUDE_DIR.'class.export.php');       // For paper sizes
-
+// error_reporting(~0); ini_set('display_errors', 1);
 $page='';
 $ticket = $user = null; //clean start.
 //LOCKDOWN...See if the id provided is actually valid and if the user has access.
 if($_REQUEST['id']) {
     if(!($ticket=Ticket::lookup($_REQUEST['id'])))
          $errors['err']=sprintf(__('%s: Unknown or invalid ID.'), __('ticket'));
-    elseif(!$ticket->checkStaffAccess($thisstaff)) {
+    if($ticket->getStatus() != "open")
+    {
+        if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
+        {
+            // echo "change to admin now <br/>";
+            // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
+        }
+        $thisstaff->reload();
+    }
+    if(!$ticket->checkStaffAccess($thisstaff)) {
         $errors['err']=__('Access denied. Contact admin if you believe this is in error');
         $ticket=null; //Clear ticket obj.
     }
@@ -106,10 +115,15 @@ if($_POST && !$errors):
 
                 // Go back to the ticket listing page on reply
                 $ticket = null;
+                echo "<script>
+                 alert('message sent succesfully'); 
+                 window.history.go(-2);
+                   </script>";
 
             } elseif(!$errors['err']) {
                 $errors['err']=__('Unable to post the reply. Correct the errors below and try again!');
             }
+
             break;
         case 'transfer': /** Transfer ticket **/
             //Check permission
@@ -390,7 +404,7 @@ endif;
 
 /*... Quick stats ...*/
 $stats= $thisstaff->getTicketsStats();
-
+// 
 //Navigation
 $nav->setTabActive('tickets');
 $open_name = _P('queue-name',
@@ -514,4 +528,13 @@ if($ticket) {
 require_once(STAFFINC_DIR.'header.inc.php');
 require_once(STAFFINC_DIR.$inc);
 print $response_form->getMedia();
+if($ticket&&$ticket->getStatus() != "open")
+{
+    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+    {
+        // echo "change to admin now <br/>";
+        // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
+    }
+    $thisstaff->reload();
+}
 require_once(STAFFINC_DIR.'footer.inc.php');
