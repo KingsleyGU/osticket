@@ -1,4 +1,4 @@
-<h3><?php echo __('Ticket Collaborators'); ?></h3>
+<h3><?php echo __('Ticket Receivers'); ?></h3>
 <b><a class="close" href="#"><i class="icon-remove-circle"></i></a></b>
 <?php
 if($info && $info['msg']) {
@@ -37,7 +37,7 @@ if(($users=$ticket->getCollaborators())) {?>
     <hr style="margin-top:1em"/>
     <div><a class="collaborator"
         href="#tickets/<?php echo $ticket->getId(); ?>/add-collaborator"
-        ><i class="icon-plus-sign"></i> <?php echo __('Add New Collaborator'); ?></a></div>
+        ><i class="icon-plus-sign"></i> <?php echo __('Add New Receiver'); ?></a></div>
     <div id="savewarning" style="display:none; padding-top:2px;"><p
     id="msg_warning"><?php echo __('You have made changes that you need to save.'); ?></p></div>
     <p class="full-width">

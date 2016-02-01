@@ -485,7 +485,7 @@ class TicketsAjaxAPI extends AjaxController {
     function _addcollaborator($ticket, $user=null, $form=null, $info=array()) {
 
         $info += array(
-                    'title' => sprintf(__('Ticket #%s: Add a collaborator'), $ticket->getNumber()),
+                    'title' => sprintf(__('Ticket #%s: Add a receiver'), $ticket->getNumber()),
                     'action' => sprintf('#tickets/%d/add-collaborator', $ticket->getId()),
                     'onselect' => sprintf('ajax.php/tickets/%d/add-collaborator/', $ticket->getId()),
                     );
