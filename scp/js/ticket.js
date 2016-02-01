@@ -414,7 +414,12 @@ var ticket_onload = function($) {
             $cc.hide();
         if($(this).val() == 2)
         {
+            $("#ticket-external-receivers").show();
             $('a.collaborator, a.collaborators').click();
+        }
+        else
+        {
+           $("#ticket-external-receivers").hide(); 
         }
      });
     $("#forward-email-option").click(function(){
