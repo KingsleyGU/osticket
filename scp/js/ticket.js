@@ -415,11 +415,10 @@ var ticket_onload = function($) {
         if($(this).val() == 2)
         {
             $('a.collaborator, a.collaborators').click();
-            $("#the-lookup-form h3").html("add a user");
         }
      });
     $("#forward-email-option").click(function(){
-        $('form#reply select#emailreply').change();
+        $('a.collaborator, a.collaborators').click();
     })
     // Optionally show external images
     $('.thread-entry').each(function(i, te) {
