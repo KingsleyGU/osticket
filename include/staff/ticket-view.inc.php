@@ -514,7 +514,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                         >&mdash; <?php echo __('Do Not Email Reply'); ?> &mdash;</option>
                         <option value="2" id="forward-email-option">Forward to external Clients</option>
                     </select>
-                    <div id="ticket-external-receivers" style="display:none;">
+                    <span id="ticket-external-receivers" style="display:none;">
                         <input type='checkbox' value='1' name="emailcollab" id="emailcollab"
                             <?php echo ((!$info['emailcollab'] && !$errors) || isset($info['emailcollab']))?'checked="checked"':''; ?>
                             style="display:<?php echo $ticket->getNumCollaborators() ? 'inline-block': 'none'; ?>;"
@@ -531,7 +531,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                                 $ticket->getId(),
                                 $recipients);
                        ?>
-                    </div>
+                    </span>
                 </td>
 
             </tr>
