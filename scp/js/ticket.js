@@ -415,6 +415,7 @@ var ticket_onload = function($) {
         if($(this).val() == 2)
         {
             $('a.collaborator, a.collaborators').click();
+            $("#the-lookup-form h3").text("add a user");
         }
      });
 
