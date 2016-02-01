@@ -2046,7 +2046,7 @@ class Ticket {
                         if (isset($skip[$recipient->getUserId()]))
                             continue;
 
-                        $email->send($recipient, $msg['subj'], $msg['body'], $attachments,
+                        $email->send($recipient, $msg['subj'], $response, $attachments,
                             $options);
                     }
                 }
