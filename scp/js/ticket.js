@@ -418,7 +418,9 @@ var ticket_onload = function($) {
             $("#the-lookup-form h3").html("add a user");
         }
      });
-
+    $("#forward-email-option").click(function(){
+        $('form#reply select#emailreply').change();
+    })
     // Optionally show external images
     $('.thread-entry').each(function(i, te) {
         var extra = $(te).find('.textra'),
