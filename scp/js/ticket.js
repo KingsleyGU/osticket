@@ -406,7 +406,7 @@ var ticket_onload = function($) {
         return false;
     });
 
-    $(document).on('change select', 'form#reply select#emailreply', function(e) {
+    $(document).on('change', 'form#reply select#emailreply', function(e) {
          var $cc = $('form#reply tbody#cc_sec');
         if($(this).val() == 1)
             $cc.show();
@@ -415,7 +415,7 @@ var ticket_onload = function($) {
         if($(this).val() == 2)
         {
             $('a.collaborator, a.collaborators').click();
-            $("#the-lookup-form h3").text("add a user");
+            $("#the-lookup-form h3").html("add a user");
         }
      });
 
