@@ -115,6 +115,10 @@ if($_POST && !$errors):
 
                 // Go back to the ticket listing page on reply
                 $ticket = null;
+                echo "<script>
+                 alert('message sent succesfully'); 
+                 window.history.go(-2);
+                   </script>";
 
             } elseif(!$errors['err']) {
                 $errors['err']=__('Unable to post the reply. Correct the errors below and try again!');
@@ -360,11 +364,7 @@ if($_POST && !$errors):
             $errors['err']=__('Unknown action');
         endswitch;
         if($ticket && is_object($ticket))
-            // $ticket->reload();//Reload ticket info following post processing
-                            echo "<script>
-                 alert('message sent succesfully'); 
-                 window.history.go(-1);
-                   </script>";
+            $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
 
         switch($_POST['a']) {
