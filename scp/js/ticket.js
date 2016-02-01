@@ -411,7 +411,7 @@ var ticket_onload = function($) {
         if($(this).val() == 1)
             $cc.show();
         else
-            $cc.show();
+            $cc.hide();
      });
 
     // Optionally show external images
