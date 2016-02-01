@@ -115,10 +115,10 @@ if($_POST && !$errors):
 
                 // Go back to the ticket listing page on reply
                 $ticket = null;
-                echo "<script>
-                 alert('message sent succesfully'); 
-                 window.history.go(-2);
-                   </script>";
+                // echo "<script>
+                //  alert('message sent succesfully'); 
+                //  window.history.go(-2);
+                //    </script>";
 
             } elseif(!$errors['err']) {
                 $errors['err']=__('Unable to post the reply. Correct the errors below and try again!');
@@ -358,6 +358,10 @@ if($_POST && !$errors):
                     break;
                 default:
                     $errors['err']=__('You must select action to perform');
+                echo "<script>
+                 alert('message sent succesfully'); 
+                 window.history.go(-2);
+                   </script>";
             endswitch;
             break;
         default:
