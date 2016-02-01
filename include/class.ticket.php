@@ -2038,11 +2038,25 @@ class Ticket {
                     $variables + array('recipient' => $this->getOwner()));
 
             $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
-            $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
-                $options);
+            if($vars['emailreply']==2)
+            {
+                if($recipients=$this->getRecipients())
+                {
+                    foreach ($recipients as $recipient) {
+                        if (isset($skip[$recipient->getUserId()]))
+                            continue;
+
+                        $email->send($recipient, $msg['subj'], $msg['body'], $attachments,
+                            $options);
+                    }
+                }
+            } 
+            else
+                $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
+                    $options);
         }
 
-        if($vars['emailcollab'])
+        if($vars['emailcollab']&&$vars['emailreply']==1)
             $this->notifyCollaborators($response,
                     array('signature' => $signature));
 
