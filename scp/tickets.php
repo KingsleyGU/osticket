@@ -363,7 +363,7 @@ if($_POST && !$errors):
             // $ticket->reload();//Reload ticket info following post processing
                             echo "<script>
                  alert('message sent succesfully'); 
-                 window.history.go(-2);
+                 window.history.go(-1);
                    </script>";
     }elseif($_POST['a']) {
 
