@@ -406,7 +406,7 @@ var ticket_onload = function($) {
         return false;
     });
 
-    $(document).on('change', 'form#reply select#emailreply', function(e) {
+    $(document).on('change,click', 'form#reply select#emailreply', function(e) {
          var $cc = $('form#reply tbody#cc_sec');
         if($(this).val() == 1)
             $cc.show();
