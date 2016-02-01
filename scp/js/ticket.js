@@ -412,6 +412,10 @@ var ticket_onload = function($) {
             $cc.show();
         else
             $cc.hide();
+        if($(this).val() == 2)
+        {
+            $('a.collaborator, a.collaborators').click();
+        }
      });
 
     // Optionally show external images
