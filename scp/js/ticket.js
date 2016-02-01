@@ -408,8 +408,8 @@ var ticket_onload = function($) {
 
     $(document).on('change', 'form#reply select#emailreply', function(e) {
          var $cc = $('form#reply tbody#cc_sec');
-        if($(this).val() == 0)
-            $cc.hide();
+        if($(this).val() == 1)
+            $cc.show();
         else
             $cc.show();
      });
