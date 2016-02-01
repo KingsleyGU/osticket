@@ -59,6 +59,8 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     if(empty($data['name']))
                         $data['name'] = "Anonymous User";
                     $data['orderNumber'] = trim(removeLineBreaker($nodes[$i]->ordernumber));
+                    $data['ordernumber'] = trim(removeLineBreaker($nodes[$i]->ordernumber));
+                    $data['filenumber'] = trim(removeLineBreaker($nodes[$i]->filenumber));
                     $data['cvr'] = trim(removeLineBreaker($nodes[$i]->cvr));
                     $data['message'] =  removeLineBreaker($nodes[$i]->content);
                     $data['companyName'] = removeLineBreaker($nodes[$i]->companyname);
