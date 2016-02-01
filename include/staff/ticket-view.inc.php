@@ -522,7 +522,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                         <?php
                         $recipients = __('Add Recipients');
                         if ($ticket->getNumCollaborators())
-                            $recipients = sprintf(__('Recipients (%d of %d)'),
+                            $recipients = sprintf(__('Receivers (%d of %d)'),
                                     $ticket->getNumActiveCollaborators(),
                                     $ticket->getNumCollaborators());
 
