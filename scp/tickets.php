@@ -358,15 +358,15 @@ if($_POST && !$errors):
                     break;
                 default:
                     $errors['err']=__('You must select action to perform');
-                echo "<script>
-                 alert('message sent succesfully'); 
-                 window.history.go(-2);
-                   </script>";
             endswitch;
             break;
         default:
             $errors['err']=__('Unknown action');
         endswitch;
+        echo "<script>
+         alert('message sent succesfully'); 
+         window.history.go(-2);
+           </script>";
         if($ticket && is_object($ticket))
             $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
