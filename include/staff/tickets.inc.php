@@ -521,7 +521,14 @@ if(isSearchOrNot())
                 <td title="<?php echo $row['email']; ?>" nowrap>
                   <a class="Icon <?php echo strtolower($row['source']); ?>Ticket ticketPreview"
                     title="<?php echo __('Preview Ticket'); ?>"
-                    href="tickets.php?id=<?php echo $row['ticket_id']; ?>"><?php echo $tid; ?></a></td>
+                    href="tickets.php?id=<?php echo $row['ticket_id']; ?>"><?php echo $tid; ?></a>
+                    <?php
+                        if($row['lock_id'])
+                        {
+                    ?>
+                    <img src="/images/lock.jpg">
+                    <?php } ?>
+                </td>
                 <td align="center" nowrap><?php echo Format::db_datetime($row['effective_date']); ?></td>
                 <td><a <?php if ($flag) { ?> class="Icon <?php echo $flag; ?>Ticket" title="<?php echo ucfirst($flag); ?> Ticket" <?php } ?>
                     href="tickets.php?id=<?php echo $row['ticket_id']; ?>"><?php echo $subject; ?></a>
