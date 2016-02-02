@@ -526,7 +526,7 @@ if(isSearchOrNot())
                         if($row['lock_id'])
                         {
                     ?>
-                    <img src="/images/lock.jpg">
+                    <img src="/images/lock.jpg" style="height:24px;width:24px;">
                     <?php } ?>
                 </td>
                 <td align="center" nowrap><?php echo Format::db_datetime($row['effective_date']); ?></td>
