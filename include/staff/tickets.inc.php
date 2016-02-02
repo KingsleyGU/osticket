@@ -529,7 +529,7 @@ if(isSearchOrNot())
                 <td title="<?php echo $row['email']; ?>" nowrap>
                   <a class="Icon <?php echo strtolower($row['source']); ?>Ticket ticketPreview"
                     title="<?php echo __('Preview Ticket'); ?>"
-                    href="<?php echo "tickets.php?id=".$row['ticket_id']; ?>" style="pointer-events: none; cursor: default;"><?php echo $tid; ?></a>
+                    href="<?php echo $ticketUrl; ?>"><?php echo $tid; ?></a>
                     <?php
                         if($row['lock_id'])
                         {
