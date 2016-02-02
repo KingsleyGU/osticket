@@ -480,7 +480,9 @@ if(isSearchOrNot())
                 $tag=$row['staff_id']?'assigned':'openticket';
                 $flag=null;
                 if($row['lock_id'])
-                    $flag='locked';
+                {  
+                 $flag='locked';
+                }
                 elseif($row['isoverdue'])
                     $flag='overdue';
 
@@ -518,10 +520,16 @@ if(isSearchOrNot())
                         value="<?php echo $row['ticket_id']; ?>" <?php echo $sel?'checked="checked"':''; ?>>
                 </td>
                 <?php } ?>
+                <?php $ticketUrl = "tickets.php?id=".$row['ticket_id'];
+                    if($row['lock_id'])
+                    {  
+                     $ticketUrl = "javascript:void(0)";
+                    }
+                ?>
                 <td title="<?php echo $row['email']; ?>" nowrap>
                   <a class="Icon <?php echo strtolower($row['source']); ?>Ticket ticketPreview"
                     title="<?php echo __('Preview Ticket'); ?>"
-                    href="tickets.php?id=<?php echo $row['ticket_id']; ?>"><?php echo $tid; ?></a>
+                    href="<?php echo $ticketUrl; ?>"><?php echo $tid; ?></a>
                     <?php
                         if($row['lock_id'])
                         {
@@ -531,7 +539,7 @@ if(isSearchOrNot())
                 </td>
                 <td align="center" nowrap><?php echo Format::db_datetime($row['effective_date']); ?></td>
                 <td><a <?php if ($flag) { ?> class="Icon <?php echo $flag; ?>Ticket" title="<?php echo ucfirst($flag); ?> Ticket" <?php } ?>
-                    href="tickets.php?id=<?php echo $row['ticket_id']; ?>"><?php echo $subject; ?></a>
+                    href="<?php echo $ticketUrl; ?>"><?php echo $subject; ?></a>
                      <?php
                         if ($threadcount>1)
                             echo "<small>($threadcount)</small>&nbsp;".'<i
