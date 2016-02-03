@@ -29,14 +29,14 @@ $ticket = $user = null; //clean start.
 if($_REQUEST['id']) {
     if(!($ticket=Ticket::lookup($_REQUEST['id'])))
          $errors['err']=sprintf(__('%s: Unknown or invalid ID.'), __('ticket'));
-    // if($ticket->getStatus() != "open")
-    // {
-    //     if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
-    //     {
-    //         $thisstaff->reload();
-    //     }
-        
-    // }
+    if($ticket->getStatus() != "open")
+    {
+        if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
+        {
+            
+        }
+        $thisstaff->reload();
+    }
     if(!$ticket->checkStaffAccess($thisstaff)) {
         $errors['err']=__('Access denied. Contact admin if you believe this is in error');
         $ticket=null; //Clear ticket obj.
