@@ -1989,10 +1989,10 @@ class Ticket {
         if (!$vars['ip_address'] && $_SERVER['REMOTE_ADDR'])
             $vars['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
-        // if(!($response = $this->getThread()->addResponse($vars, $errors)))
-        //     return null;
-        if(!($response = ThreadEntry::lookup(125)))
+        if(!($response = $this->getThread()->addResponse($vars, $errors)))
             return null;
+        // if(!($response = ThreadEntry::lookup(123)))
+        //     return null;
         
 
         // $assignee = $this->getStaff();
@@ -2064,10 +2064,6 @@ class Ticket {
                     array('signature' => $signature));
 
         return $response;
-    }
-    function postReplyFromThread($vars, &$errors, $alert, $claim,$response)
-    {
-        
     }
 
     //Activity log - saved as internal notes WHEN enabled!!
