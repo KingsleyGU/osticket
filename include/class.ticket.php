@@ -1995,9 +1995,9 @@ class Ticket {
             return null;
         
         if(postReplyFromThread($vars, &$errors, $alert, $claim,$response))
-            return true;
+            return $response;
         else
-            return false;
+            return null;
         
   
     }
