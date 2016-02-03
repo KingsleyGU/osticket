@@ -12,37 +12,38 @@ require_once(INCLUDE_DIR.'class.dept.php');
             // }
 if($_REQUEST['transferDeptId']==0)
 {
-	die("not an available department");
+	echo ("not an available department");
 }
-$count = count($_REQUEST['tids']);
-$i=0;
-foreach ($_REQUEST['tids'] as $tid) {
-    if (($ticket=Ticket::lookup($tid)))
-    {
-    	$ticket->setDeptId($_REQUEST['transferDeptId']);
-    	$ticket->setStaffId(0);
-    	$ticket->setTeamId(0);
-    	if($ticket->getTeamId()==0&&$ticket->getStaffId()==0)
-    		$i++;
+else{
+    $count = count($_REQUEST['tids']);
+    $i=0;
+    foreach ($_REQUEST['tids'] as $tid) {
+        if (($ticket=Ticket::lookup($tid)))
+        {
+        	$ticket->setDeptId($_REQUEST['transferDeptId']);
+        	$ticket->setStaffId(0);
+        	$ticket->setTeamId(0);
+        	if($ticket->getTeamId()==0&&$ticket->getStaffId()==0)
+        		$i++;
+        }
+        //         && $ticket->setDeptId($_REQUEST['transferDeptId'])
+        //         && $ticket->setStaffId(0)
+        //         && $ticket->setTeamId(0))
+        //     $i++;
+        // if (($ticket=Ticket::lookup($tid)))
+        // 	$i="look up yes; ";
+        // if($ticket->setDeptId($_REQUEST['transferDeptId']))
+        // 	$i.="department yes; ";
+        // if($ticket->setStaffId(0))
+        // 	$i.="staff yes; ";
+        // if($ticket->setTeamId(0))
+        // 	$i.="team yes; ";
     }
-    //         && $ticket->setDeptId($_REQUEST['transferDeptId'])
-    //         && $ticket->setStaffId(0)
-    //         && $ticket->setTeamId(0))
-    //     $i++;
-    // if (($ticket=Ticket::lookup($tid)))
-    // 	$i="look up yes; ";
-    // if($ticket->setDeptId($_REQUEST['transferDeptId']))
-    // 	$i.="department yes; ";
-    // if($ticket->setStaffId(0))
-    // 	$i.="staff yes; ";
-    // if($ticket->setTeamId(0))
-    // 	$i.="team yes; ";
+    // if (!$i)
+    // 	echo "not transferring successfully";
+    // // else if ($i==$count)
+    // // 	echo "transferring successfully";
+    // else
+    	echo "Transferred ".$i." tickets successfully";
 }
-if (!$i)
-	echo "not transferring successfully";
-// else if ($i==$count)
-// 	echo "transferring successfully";
-else
-	echo "Transferred ".$i." tickets successfully";
-
 ?>
