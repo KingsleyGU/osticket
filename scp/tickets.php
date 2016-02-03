@@ -364,7 +364,6 @@ if($_POST && !$errors):
             $errors['err']=__('Unknown action');
         endswitch;
         echo "<script>
-         alert('message sent succesfully'); 
          window.history.go(-2);
            </script>";
         if($ticket && is_object($ticket))
