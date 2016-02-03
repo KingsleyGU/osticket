@@ -497,7 +497,7 @@ $ost->addExtraHeader('<script type="text/javascript" src="js/ticket.js?19292ad">
 $ost->addExtraHeader('<meta name="tip-namespace" content="tickets.queue" />',
     "$('#content').data('tipNamespace', 'tickets.queue');");
 
-if(isSearchOrNot())
+if(isSearchOrNot()||$ticket->getStatus() != "open")
 {
     $id = $thisstaff->getId();
     if($thisstaff->updateAdmin(0,0))
