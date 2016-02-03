@@ -22,7 +22,7 @@ require_once(INCLUDE_DIR.'class.canned.php');
 require_once(INCLUDE_DIR.'class.json.php');
 require_once(INCLUDE_DIR.'class.dynamic_forms.php');
 require_once(INCLUDE_DIR.'class.export.php');       // For paper sizes
-// error_reporting(~0); ini_set('display_errors', 1);
+error_reporting(~0); ini_set('display_errors', 1);
 $page='';
 $ticket = $user = null; //clean start.
 //LOCKDOWN...See if the id provided is actually valid and if the user has access.
@@ -404,9 +404,7 @@ if($_POST && !$errors):
         $thisstaff ->resetStats(); //We'll need to reflect any changes just made!
 endif;
 
-
 changeStaffToOrigin();
-
 
 
 /*... Quick stats ...*/
