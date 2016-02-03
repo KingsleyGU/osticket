@@ -1996,7 +1996,7 @@ class Ticket {
             return null;
         return $response;
     }
-    function postReplyFromThread($vars, &$errors, $alert=true, $claim=true,$response) {
+    function postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response) {
         global $thisstaff, $cfg;
         // $assignee = $this->getStaff();
         $assignee = $this->getTeam();
