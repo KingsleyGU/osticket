@@ -1993,7 +1993,7 @@ class Ticket {
         if(!($response = ThreadEntry::lookup(123)))
             return null;
 
-        return postReplyFromThread($vars, &$errors, $alert, $claim,$response);
+        return $response;
     }
     function postReplyFromThread($vars, &$errors, $alert=true, $claim=true,$response) {
         global $thisstaff, $cfg;
