@@ -1992,7 +1992,7 @@ class Ticket {
             return null;
         // if(!($response = ThreadEntry::lookup(123)))
         //     return null;
-        if(! postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
+        if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
             return null;
         return $response;
     }
