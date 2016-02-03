@@ -2002,7 +2002,7 @@ class Ticket {
             if(!($clientThreadEntries = $this->getClientThread()))
                 return null;
             foreach ($clientThreadEntries as $clientThreadEntry) {
-                if(!($response = $clientThreadEntry))
+                if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
                     return null;
                 if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
                     return null;
