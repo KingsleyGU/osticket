@@ -87,12 +87,15 @@ if(isset($thisstaff)&&!empty($thisstaff))
 }
 function changeStaffToOrigin()
 {
-    $id = $thisstaff->getId();
-    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+    if($thisstaff)
     {
-        // echo "change to admin now";
+        $id = $thisstaff->getId();
+        if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+        {
+            // echo "change to admin now";
+        }
+        $thisstaff->reload();
     }
-    $thisstaff->reload();
 }
 // Bootstrap gettext translations as early as possible, but after attempting
 // to sign on the agent
