@@ -1988,12 +1988,14 @@ class Ticket {
 
         if (!$vars['ip_address'] && $_SERVER['REMOTE_ADDR'])
             $vars['ip_address'] = $_SERVER['REMOTE_ADDR'];
-
-        // if(!($response = $this->getThread()->addResponse($vars, $errors)))
+                        // if(!($response = $this->getThread()->addResponse($vars, $errors)))
         //     return null;
         if(!($response = ThreadEntry::lookup(123)))
             return null;
-        
+
+        return postReplyFromThread($vars, &$errors, $alert, $claim,$response);
+    }
+    function postReplyFromThread($vars, &$errors, $alert=true, $claim=true,$response) {
 
         // $assignee = $this->getStaff();
         $assignee = $this->getTeam();
@@ -2065,7 +2067,6 @@ class Ticket {
 
         return $response;
     }
-
     //Activity log - saved as internal notes WHEN enabled!!
     function logActivity($title, $note) {
         return $this->logNote($title, $note, 'SYSTEM', false);
