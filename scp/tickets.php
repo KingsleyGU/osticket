@@ -404,6 +404,16 @@ if($_POST && !$errors):
         $thisstaff ->resetStats(); //We'll need to reflect any changes just made!
 endif;
 
+
+$id = $thisstaff->getId();
+if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+{
+    // echo "change to admin now";
+}
+$thisstaff->reload();
+
+
+
 /*... Quick stats ...*/
 $stats= $thisstaff->getTicketsStats();
 // 
@@ -486,6 +496,16 @@ if($thisstaff->canCreateTickets()) {
 $ost->addExtraHeader('<script type="text/javascript" src="js/ticket.js?19292ad"></script>');
 $ost->addExtraHeader('<meta name="tip-namespace" content="tickets.queue" />',
     "$('#content').data('tipNamespace', 'tickets.queue');");
+
+if(isSearchOrNot())
+{
+    $id = $thisstaff->getId();
+    if($thisstaff->updateAdmin(0,0))
+    {
+       
+    }
+    $thisstaff->reload();
+}
 
 $inc = 'tickets.inc.php';
 if($ticket) {
