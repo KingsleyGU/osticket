@@ -77,7 +77,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     if(isSearchOrNot())
     {
         $id = $thisstaff->getId();
-        if($thisstaff->updateAdmin(1,0))
+        if($thisstaff->updateAdmin(0,0))
         {
             // echo "change to admin now <br/>";
             // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
