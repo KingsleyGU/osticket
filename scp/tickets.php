@@ -29,7 +29,7 @@ $ticket = $user = null; //clean start.
 if($_REQUEST['id']) {
     if(!($ticket=Ticket::lookup($_REQUEST['id'])))
          $errors['err']=sprintf(__('%s: Unknown or invalid ID.'), __('ticket'));
-    if($ticket->getStatus() != "open")
+    if($ticket&&$ticket->getStatus() != "open")
     {
         if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
         {
@@ -497,7 +497,7 @@ $ost->addExtraHeader('<script type="text/javascript" src="js/ticket.js?19292ad">
 $ost->addExtraHeader('<meta name="tip-namespace" content="tickets.queue" />',
     "$('#content').data('tipNamespace', 'tickets.queue');");
 
-if(isSearchOrNot()||$ticket->getStatus() != "open")
+if(isSearchOrNot()||($ticket&&$ticket->getStatus() != "open"))
 {
     $id = $thisstaff->getId();
     if($thisstaff->updateAdmin(0,0))
