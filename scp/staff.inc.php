@@ -66,15 +66,7 @@ function isSearchOrNot()
         return false;
     }
 }
-function changeStaffToOrigin()
-{
-    $id = $thisstaff->getId();
-    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
-    {
-        // echo "change to admin now";
-    }
-    $thisstaff->reload();
-}
+
 
 $thisstaff = StaffAuthenticationBackend::getUser();
 if(isset($thisstaff)&&!empty($thisstaff))
@@ -92,6 +84,15 @@ if(isset($thisstaff)&&!empty($thisstaff))
         }
         $thisstaff->reload();
     }
+}
+function changeStaffToOrigin()
+{
+    $id = $thisstaff->getId();
+    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+    {
+        // echo "change to admin now";
+    }
+    $thisstaff->reload();
 }
 // Bootstrap gettext translations as early as possible, but after attempting
 // to sign on the agent
