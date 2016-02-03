@@ -1994,18 +1994,9 @@ class Ticket {
         if(!($response = ThreadEntry::lookup(125)))
             return null;
         
-        if(postReplyFromThread($vars, &$errors, $alert, $claim,$response))
-            return $response;
-        else
-            return null;
-        
-  
-    }
-    function postReplyFromThread($vars, &$errors, $alert, $claim, $response)
-    {
-        global $thisstaff, $cfg;
+
         // $assignee = $this->getStaff();
-         $assignee = $this->getTeam();
+        $assignee = $this->getTeam();
         // Set status - if checked.
         if ($vars['reply_status_id']
                 && $vars['reply_status_id'] != $this->getStatusId())
@@ -2072,7 +2063,11 @@ class Ticket {
             $this->notifyCollaborators($response,
                     array('signature' => $signature));
 
-        return $response; 
+        return $response;
+    }
+    function postReplyFromThread($vars, &$errors, $alert, $claim,$response)
+    {
+        
     }
 
     //Activity log - saved as internal notes WHEN enabled!!
