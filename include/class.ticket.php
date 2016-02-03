@@ -2073,14 +2073,14 @@ class Ticket {
                 }
             } 
             else
+            {
                 $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
                     $options);
+                if($vars['emailcollab']&&$vars['emailreply']==1)
+                $this->notifyCollaborators($response,
+                        array('signature' => $signature));
+            }
         }
-
-        if($vars['emailcollab']&&$vars['emailreply']==1)
-            $this->notifyCollaborators($response,
-                    array('signature' => $signature));
-
         return $response;
     }
     //Activity log - saved as internal notes WHEN enabled!!
