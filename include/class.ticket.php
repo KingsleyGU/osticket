@@ -2036,35 +2036,35 @@ class Ticket {
                 'references' => $response->getEmailReferences(),
                 'thread'=>$response);
 
-        // if(($email=$dept->getEmail())
-        //         && ($tpl = $dept->getTemplate())
-        //         && ($msg=$tpl->getReplyMsgTemplate())) {
+        if(($email=$dept->getEmail())
+                && ($tpl = $dept->getTemplate())
+                && ($msg=$tpl->getReplyMsgTemplate())) {
 
-        //     $msg = $this->replaceVars($msg->asArray(),
-        //             $variables + array('recipient' => $this->getOwner()));
+            $msg = $this->replaceVars($msg->asArray(),
+                    $variables + array('recipient' => $this->getOwner()));
 
-        //     $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
-        //     if($vars['emailreply']==2)
-        //     {
-        //         if($recipients=$this->getRecipients())
-        //         {
-        //             foreach ($recipients as $recipient) {
-        //                 if (isset($skip[$recipient->getUserId()]))
-        //                     continue;
+            $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
+            if($vars['emailreply']==2)
+            {
+                if($recipients=$this->getRecipients())
+                {
+                    foreach ($recipients as $recipient) {
+                        if (isset($skip[$recipient->getUserId()]))
+                            continue;
 
-        //                 $email->send($recipient, $msg['subj'], $msg['body'], $attachments,
-        //                     $options);
-        //             }
-        //         }
-        //     } 
-        //     else
-        //         $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
-        //             $options);
-        // }
+                        $email->send($recipient, $msg['subj'], $msg['body'], $attachments,
+                            $options);
+                    }
+                }
+            } 
+            else
+                $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
+                    $options);
+        }
 
-        // if($vars['emailcollab']&&$vars['emailreply']==1)
-        //     $this->notifyCollaborators($response,
-        //             array('signature' => $signature));
+        if($vars['emailcollab']&&$vars['emailreply']==1)
+            $this->notifyCollaborators($response,
+                    array('signature' => $signature));
 
         return $response;
     }
