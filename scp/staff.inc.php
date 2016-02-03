@@ -79,11 +79,9 @@ if(isset($thisstaff)&&!empty($thisstaff))
         $id = $thisstaff->getId();
         if($thisstaff->updateAdmin(0,0))
         {
-            // echo "change to admin now <br/>";
-            // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
+           
         }
         $thisstaff->reload();
-
     }
 }
 // Bootstrap gettext translations as early as possible, but after attempting

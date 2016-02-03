@@ -337,18 +337,7 @@ if ($results) {
     }
 }
 
-if(isSearchOrNot())
-{
-    $id = $thisstaff->getId();
-    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
-    {
-        // echo "change to admin now";
-    }
-    // else
-    // {
-    //     echo "not changing it successfully";
-    // }
-}
+
 //YOU BREAK IT YOU FIX IT.
 ?>
 <!-- SEARCH FORM START -->

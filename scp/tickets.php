@@ -530,11 +530,11 @@ if($ticket) {
 require_once(STAFFINC_DIR.'header.inc.php');
 require_once(STAFFINC_DIR.$inc);
 print $response_form->getMedia();
-// if($ticket&&$ticket->getStatus() != "open")
-// {
-//     if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
-//     {
-//         $thisstaff->reload();
-//     } 
-// }
+
+$id = $thisstaff->getId();
+if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+{
+    // echo "change to admin now";
+}
+$thisstaff->reload();
 require_once(STAFFINC_DIR.'footer.inc.php');
