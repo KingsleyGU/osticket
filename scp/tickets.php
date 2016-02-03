@@ -404,7 +404,14 @@ if($_POST && !$errors):
         $thisstaff ->resetStats(); //We'll need to reflect any changes just made!
 endif;
 
-changeStaffToOrigin();
+
+$id = $thisstaff->getId();
+if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+{
+    // echo "change to admin now";
+}
+$thisstaff->reload();
+
 
 
 /*... Quick stats ...*/
@@ -544,5 +551,10 @@ require_once(STAFFINC_DIR.'header.inc.php');
 require_once(STAFFINC_DIR.$inc);
 print $response_form->getMedia();
 
-changeStaffToOrigin();
+$id = $thisstaff->getId();
+if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+{
+    // echo "change to admin now";
+}
+$thisstaff->reload();
 require_once(STAFFINC_DIR.'footer.inc.php');
