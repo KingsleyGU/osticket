@@ -2061,7 +2061,7 @@ class Ticket {
             $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
             if($vars['emailreply']==2)
             {
-                if($recipients=$this->getRecipients())
+                if($recipients=$this->getCollaborators())
                 {
                     foreach ($recipients as $recipient) {
                         if (isset($skip[$recipient->getUserId()]))
