@@ -2000,6 +2000,7 @@ class Ticket {
     }
     function postReplyFromThread($vars, &$errors, $alert, $claim,$response)
     {
+        global $thisstaff, $cfg;
         // $assignee = $this->getStaff();
          $assignee = $this->getTeam();
         // Set status - if checked.
