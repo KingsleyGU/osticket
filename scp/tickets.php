@@ -29,15 +29,14 @@ $ticket = $user = null; //clean start.
 if($_REQUEST['id']) {
     if(!($ticket=Ticket::lookup($_REQUEST['id'])))
          $errors['err']=sprintf(__('%s: Unknown or invalid ID.'), __('ticket'));
-    if($ticket->getStatus() != "open")
-    {
-        if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
-        {
-            // echo "change to admin now <br/>";
-            // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
-        }
-        $thisstaff->reload();
-    }
+    // if($ticket->getStatus() != "open")
+    // {
+    //     if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
+    //     {
+    //         $thisstaff->reload();
+    //     }
+        
+    // }
     if(!$ticket->checkStaffAccess($thisstaff)) {
         $errors['err']=__('Access denied. Contact admin if you believe this is in error');
         $ticket=null; //Clear ticket obj.
@@ -531,13 +530,11 @@ if($ticket) {
 require_once(STAFFINC_DIR.'header.inc.php');
 require_once(STAFFINC_DIR.$inc);
 print $response_form->getMedia();
-if($ticket&&$ticket->getStatus() != "open")
-{
-    if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
-    {
-        // echo "change to admin now <br/>";
-        // echo $originalStaff['isAdmin']."  ".$originalStaff['assigned_only'];
-    }
-    $thisstaff->reload();
-}
+// if($ticket&&$ticket->getStatus() != "open")
+// {
+//     if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+//     {
+//         $thisstaff->reload();
+//     } 
+// }
 require_once(STAFFINC_DIR.'footer.inc.php');
