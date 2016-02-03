@@ -1990,7 +1990,7 @@ class Ticket {
             $vars['ip_address'] = $_SERVER['REMOTE_ADDR'];
         // if(!($response = $this->getThread()->addResponse($vars, $errors)))
         //     return null;
-        if(!($response = ThreadEntry::lookup(123)))
+        if(!($response = ThreadEntry::lookup(125)))
             return null;
         if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
             return null;
