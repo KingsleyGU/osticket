@@ -1125,7 +1125,7 @@ class Ticket {
                     'activity' => _S('New Response'),
                     'threadentry' => $response));
 
-        // $this->onActivity($vars);
+        $this->onActivity($vars);
     }
 
     /*
@@ -1879,8 +1879,8 @@ class Ticket {
 
         $this->onMessage($message, $autorespond); //must be called b4 sending alerts to staff.
 
-        if ($autorespond && $cfg && $cfg->notifyCollabsONNewMessage())
-            $this->notifyCollaborators($message, array('signature' => ''));
+        // if ($autorespond && $cfg && $cfg->notifyCollabsONNewMessage())
+        //     $this->notifyCollaborators($message, array('signature' => ''));
 
         $dept = $this->getDept();
 
@@ -2106,8 +2106,8 @@ class Ticket {
                 $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
                     $options);
                 if($vars['emailcollab']&&$vars['emailreply']==1)
-                $this->notifyCollaborators($response,
-                        array('signature' => $signature));
+                // $this->notifyCollaborators($response,
+                //         array('signature' => $signature));
             }
         }
         return $response;

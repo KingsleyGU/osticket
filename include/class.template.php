@@ -225,7 +225,8 @@ class EmailTemplateGroup {
     }
 
     function  getActivityNoticeMsgTemplate() {
-        return $this->getMsgTemplate('ticket.activity.notice');
+        // return $this->getMsgTemplate('ticket.activity.notice');
+        return null;
     }
 
     function getOverlimitMsgTemplate() {
@@ -233,8 +234,8 @@ class EmailTemplateGroup {
     }
 
     function getNoteAlertMsgTemplate() {
-        // return $this->getMsgTemplate('note.alert');
-        return null;
+        return $this->getMsgTemplate('note.alert');
+        // return null;
     }
 
     function getTransferAlertMsgTemplate() {
