@@ -78,7 +78,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     if(isSearchOrNot())
     {
         $id = $thisstaff->getId();
-        if($thisstaff->updateAdmin(0,0))
+        if($thisstaff->updateAgentTicketAccess(0))
         {
            
         }
@@ -90,7 +90,7 @@ function changeStaffToOrigin()
     if($thisstaff)
     {
         $id = $thisstaff->getId();
-        if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+        if($thisstaff->updateAgent($originalStaff['assigned_only']))
         {
             // echo "change to admin now";
         }

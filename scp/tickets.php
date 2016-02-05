@@ -31,7 +31,7 @@ if($_REQUEST['id']) {
          $errors['err']=sprintf(__('%s: Unknown or invalid ID.'), __('ticket'));
     if($ticket&&$ticket->getStatus() != "open")
     {
-        if($thisstaff->updateAdmin($originalStaff['isAdmin'],0))
+        if($thisstaff->updateAgentTicketAccess(0))
         {
             
         }
@@ -406,7 +406,7 @@ endif;
 
 
 $id = $thisstaff->getId();
-if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+if($thisstaff->updateAgentTicketAccess($originalStaff['assigned_only']))
 {
     // echo "change to admin now";
 }
@@ -500,7 +500,7 @@ $ost->addExtraHeader('<meta name="tip-namespace" content="tickets.queue" />',
 if(isSearchOrNot()||($ticket&&$ticket->getStatus() != "open"))
 {
     $id = $thisstaff->getId();
-    if($thisstaff->updateAdmin(0,0))
+    if($thisstaff->updateAgentTicketAccess(0))
     {
        
     }
@@ -552,7 +552,7 @@ require_once(STAFFINC_DIR.$inc);
 print $response_form->getMedia();
 
 $id = $thisstaff->getId();
-if($thisstaff->updateAdmin($originalStaff['isAdmin'],$originalStaff['assigned_only']))
+if($thisstaff->updateAgentTicketAccess($originalStaff['assigned_only']))
 {
     // echo "change to admin now";
 }

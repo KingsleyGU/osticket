@@ -537,21 +537,20 @@ implements EmailContact {
         return (db_query($sql));
     }
 
-    function updateAdmin($admin,$assigned_only)
+    function updateAgentTicketAccess($assigned_only)
     {
-        if (is_numeric($admin))
+        if (is_numeric($assigned_only))
         {
-            if($admin>=1)
+            if($assigned_only>=1)
             {
-                $admin = 1;
+                $assigned_only = 1;
             }
             else
             {
-                $admin = 0;
+                $assigned_only = 0;
             }
              $sql='UPDATE '.STAFF_TABLE.' SET'
-             .' isadmin='.db_input($admin)
-             .' ,assigned_only='.db_input($assigned_only);
+             .' assigned_only='.db_input($assigned_only);
              $sql.=' WHERE staff_id='.db_input($this->getId());
              return (db_query($sql));
         }
