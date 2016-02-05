@@ -1731,7 +1731,20 @@ class Ticket {
 
         return $rv;
     }
+    // deActive all collaborators
+    function deActiveCollaborators()
+    {
+        $sql='UPDATE '.TICKET_COLLABORATOR_TABLE
+            .' SET isactive=0 '
+            .' WHERE ticket_id='.db_input($this->getId());
 
+        db_query($sql);
+
+        unset($this->ht['active_collaborators']);
+        $this->collaborators = null;
+
+        return true;
+    }
     //unassign primary assignee
     function unassign() {
 

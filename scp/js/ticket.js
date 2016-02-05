@@ -414,8 +414,10 @@ var ticket_onload = function($) {
             $cc.hide();
         if($(this).val() == 2)
         {
+            alert("<?php echo $ticket->deActiveCollaborators(); ?>");
             $("#ticket-external-receivers").show();
             $('a.collaborator, a.collaborators').click();
+
         }
         else
         {
