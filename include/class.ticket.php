@@ -2199,11 +2199,11 @@ class Ticket {
         }
 
         $activity = $vars['activity'] ?: _S('New Internal Note');
-        // $this->onActivity(array(
-        //     'activity' => $activity,
-        //     'threadentry' => $note,
-        //     'assignee' => $assignee
-        // ), $alert);
+        $this->onActivity(array(
+            'activity' => $activity,
+            'threadentry' => $note,
+            'assignee' => $assignee
+        ), $alert);
 
         return $note;
     }
