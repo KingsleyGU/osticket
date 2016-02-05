@@ -1266,23 +1266,23 @@ var accepted=aTarget.dispatchEvent (pressEvent);
 <script type="text/javascript">
 var disableCollaborators= function(ticketId)
 {
-    data = new FormData();
-    data.append('ticketId', ticketId);
-    $.ajax({
-         type: "POST",
-         url: '/scp/disableCollaborators.php',
-         data: data,
-         success: function(returnData) {
-            alert(returnData);
-         },
-         error: function(returnData) { 
-            alert(returnData); 
-         } 
-    });
-  //   $.post( '/scp/disableCollaborators.php', { ticketId: ticketId })
-  // .done(function( data ) {
-  //   alert( "Data Loaded: " + data );
-  // });
+    // data = new FormData();
+    // data.append('ticketId', ticketId);
+    // $.ajax({
+    //      type: "POST",
+    //      url: '/scp/disableCollaborators.php',
+    //      data: data,
+    //      success: function(returnData) {
+    //         alert(returnData);
+    //      },
+    //      error: function(returnData) { 
+    //         alert(returnData); 
+    //      } 
+    // });
+    $.post( '/scp/disableCollaborators.php', { ticketId: ticketId })
+      .done(function( data ) {
+        alert( "Data Loaded: " + data );
+      });
     return false;
 }
 </script>
