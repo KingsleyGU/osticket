@@ -233,7 +233,8 @@ class EmailTemplateGroup {
     }
 
     function getNoteAlertMsgTemplate() {
-        return $this->getMsgTemplate('note.alert');
+        // return $this->getMsgTemplate('note.alert');
+        return null;
     }
 
     function getTransferAlertMsgTemplate() {
