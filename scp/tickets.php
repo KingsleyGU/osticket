@@ -558,25 +558,3 @@ if($thisstaff->updateAgentTicketAccess($originalStaff['assigned_only']))
 }
 $thisstaff->reload();
 require_once(STAFFINC_DIR.'footer.inc.php');
-?>
-
-<script type="text/javascript">
-var disableCollaborators= function(ticketId)
-{
-    data = new FormData();
-    data.append( 'ticketId', ticketId);
-    $.ajax({
-         type: "POST",
-         url: 'disableCollaborators.php',
-         data: data,
-         success: function(data) {
-            alert(data);
-         },
-         error: function(data) { 
-            alert(data); 
-         } 
-    });
-    return false;
-}
-</script>
-<?php

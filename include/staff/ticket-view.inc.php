@@ -1270,7 +1270,7 @@ var disableCollaborators= function(ticketId)
     data.append( 'ticketId', ticketId);
     $.ajax({
          type: "POST",
-         url: 'disableCollaborators.php',
+         url: '/scp/disableCollaborators.php',
          data: data,
          success: function(data) {
             alert(data);
