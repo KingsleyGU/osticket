@@ -414,7 +414,8 @@ var ticket_onload = function($) {
             $cc.hide();
         if($(this).val() == 2)
         {
-            alert("<?php echo $ticket->deActiveCollaborators(); ?>");
+            var tickeId = <?php echo $ticket->getId();?>;
+            alert(ticketId);
             $("#ticket-external-receivers").show();
             $('a.collaborator, a.collaborators').click();
 
