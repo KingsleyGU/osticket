@@ -519,10 +519,10 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                         <?php
                         $recipients = __('Add Recipients');
                         if ($ticket->getNumCollaborators())
-                            $recipients = sprintf(__('Receivers (%d of %d)'),
-                                    $ticket->getNumActiveCollaborators(),
-                                    $ticket->getNumCollaborators());
-
+                            // $recipients = sprintf(__('Receivers (%d of %d)'),
+                            //         $ticket->getNumActiveCollaborators(),
+                            //         $ticket->getNumCollaborators());
+                            $recipients = sprintf(__('Receivers'));
                         echo sprintf('<span><a class="collaborators preview"
                                 href="#tickets/%d/collaborators"><span id="recipients">%s</span></a></span>',
                                 $ticket->getId(),
