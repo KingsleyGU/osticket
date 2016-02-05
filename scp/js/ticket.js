@@ -320,23 +320,7 @@ $.refreshTicketView = function() {
         $.pjax({url: document.location.href, container:'#pjax-container'});
 }
 
-var disableCollaborators= function(ticketId)
-{
-    data = new FormData();
-    data.append( 'ticketId', ticketId);
-    $.ajax({
-         type: "POST",
-         url: 'disableCollaborators.php',
-         data: data,
-         success: function(data) {
-            alert(data);
-         },
-         error: function(data) { 
-            alert(data); 
-         } 
-    });
-    return false;
-}
+
 
 var ticket_onload = function($) {
     $('#response_options .tab-response-block').hide();

@@ -1131,6 +1131,9 @@ $tcount+= $ticket->getNumNotes();
 // })
 
 
+
+
+
 $(function() {
    
     $(document).on('click', 'a.change-user', function(e) {
@@ -1257,4 +1260,25 @@ var accepted=aTarget.dispatchEvent (pressEvent);
 })
 
 
+</script>
+
+
+<script type="text/javascript">
+var disableCollaborators= function(ticketId)
+{
+    data = new FormData();
+    data.append( 'ticketId', ticketId);
+    $.ajax({
+         type: "POST",
+         url: 'disableCollaborators.php',
+         data: data,
+         success: function(data) {
+            alert(data);
+         },
+         error: function(data) { 
+            alert(data); 
+         } 
+    });
+    return false;
+}
 </script>
