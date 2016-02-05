@@ -1745,6 +1745,18 @@ class Ticket {
 
         return true;
     }
+    function deleteCollaborators()
+    {
+       $sql='DELETE FROM '.TICKET_COLLABORATOR_TABLE
+            .' WHERE ticket_id='.db_input($this->getId());
+
+        db_query($sql);
+
+        unset($this->ht['active_collaborators']);
+        $this->collaborators = null;
+
+        return true;
+    }
     //unassign primary assignee
     function unassign() {
 
