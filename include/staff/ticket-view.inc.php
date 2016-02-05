@@ -514,7 +514,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                         >&mdash; <?php echo __('Do Not Email Reply'); ?> &mdash;</option>
                         <option value="2" id="forward-email-option">Forward to external Clients</option>
                     </select>
-                    <button onclick="disableCollaborators(<?php echo $ticket->getId();?>); return false;">click me</button>
+                    <button id="disableCollaboratorsButton" onclick="disableCollaborators(<?php echo $ticket->getId();?>); return false;" style="display:none;">click me</button>
                     <span id="ticket-external-receivers" style="display:none;">
                         <?php
                         $recipients = __('Add Recipients');

@@ -416,6 +416,7 @@ var ticket_onload = function($) {
             $cc.hide();
         if($(this).val() == 2)
         {
+            $('#disableCollaboratorsButton').click();
             $("#ticket-external-receivers").show();
             $('a.collaborator, a.collaborators').click();
 
