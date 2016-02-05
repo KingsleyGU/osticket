@@ -2068,14 +2068,14 @@ class Ticket {
                 'signature' => $signature,
                 'staff' => $thisstaff,
                 'poster' => $thisstaff);
-        if($vars['emailreply']==2)
-        {
-            $variables = array(
-            'response' => $response,
-            'signature' => $signature,
-            'staff' => null,
-            'poster' => null);
-        }
+        // if($vars['emailreply']==2)
+        // {
+        //     $variables = array(
+        //     'response' => $response,
+        //     'signature' => $signature,
+        //     'staff' => null,
+        //     'poster' => null);
+        // }
         $options = array(
                 'inreplyto' => $response->getEmailMessageId(),
                 'references' => $response->getEmailReferences(),
