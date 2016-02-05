@@ -2084,10 +2084,12 @@ class Ticket {
         if(($email=$dept->getEmail())
                 && ($tpl = $dept->getTemplate())
                 && ($msg=$tpl->getReplyMsgTemplate())) {
-
+        if($vars['emailreply']==1)
             $msg = $this->replaceVars($msg->asArray(),
                     $variables + array('recipient' => $this->getOwner()));
-
+        else
+            $msg = $this->replaceVars($msg->asArray(),
+                    $variables);
             $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
             if($vars['emailreply']==2)
             {
