@@ -1125,7 +1125,7 @@ class Ticket {
                     'activity' => _S('New Response'),
                     'threadentry' => $response));
 
-        $this->onActivity($vars);
+        // $this->onActivity($vars);
     }
 
     /*
