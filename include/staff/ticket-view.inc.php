@@ -1281,7 +1281,7 @@ var disableCollaborators= function(ticketId)
     // });
     $.post( '/scp/disableCollaborators.php', { ticketId: ticketId })
       .done(function( data ) {
-        alert( "Data Loaded: " + data );
+        // alert( "Data Loaded: " + data );
       });
     return false;
 }
