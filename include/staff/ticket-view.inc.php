@@ -1272,11 +1272,11 @@ var disableCollaborators= function(ticketId)
          type: "POST",
          url: '/scp/disableCollaborators.php',
          data: data,
-         success: function(data) {
-            alert(data);
+         success: function(returnData) {
+            alert(returnData);
          },
-         error: function(data) { 
-            alert(data); 
+         error: function(returnData) { 
+            alert(returnData); 
          } 
     });
   //   $.post( '/scp/disableCollaborators.php', { ticketId: ticketId })
