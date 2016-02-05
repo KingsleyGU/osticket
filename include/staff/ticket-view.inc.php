@@ -514,7 +514,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                         >&mdash; <?php echo __('Do Not Email Reply'); ?> &mdash;</option>
                         <option value="2" id="forward-email-option">Forward to external Clients</option>
                     </select>
-                    <button onclick="alert(<?php echo $ticket->getId();?>); return false;">click me</button>
+                    <button onclick="disableCollaborators(<?php echo $ticket->getId();?>); return false;">click me</button>
                     <span id="ticket-external-receivers" style="display:none;">
                         <?php
                         $recipients = __('Add Recipients');
@@ -1168,6 +1168,23 @@ $(function() {
 <?php } ?>
 });
 //this function is for displying the content of the relevant article
+function disableCollaborators(ticketId)
+{
+    data = new FormData();
+    data.append( 'ticketId', ticketId);
+    $.ajax({
+         type: "POST",
+         url: 'disableCollaborators.php',
+         data: data,
+         success: function(data) {
+            alert(data);
+         },
+         error: function(data) { 
+            alert(data); 
+         } 
+    });
+    return false;
+}
 function switchToArticleContect(articleIndex)
 {
     $( ".responza-article-link-content" ).css("display","none");
