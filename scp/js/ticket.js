@@ -320,7 +320,7 @@ $.refreshTicketView = function() {
         $.pjax({url: document.location.href, container:'#pjax-container'});
 }
 
-function disableCollaborators(ticketId)
+var disableCollaborators= function(ticketId)
 {
     data = new FormData();
     data.append( 'ticketId', ticketId);
