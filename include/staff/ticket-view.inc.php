@@ -1129,6 +1129,23 @@ $tcount+= $ticket->getNumNotes();
 //     var contentWindow = $("#responza-Knowledge-iframe").contentWindow;
 //     contentWindow.postMessage("hello to responza","http://localhost:49819/");
 // })
+function disableCollaborators(ticketId)
+{
+    data = new FormData();
+    data.append( 'ticketId', ticketId);
+    $.ajax({
+         type: "POST",
+         url: 'disableCollaborators.php',
+         data: data,
+         success: function(data) {
+            alert(data);
+         },
+         error: function(data) { 
+            alert(data); 
+         } 
+    });
+    return false;
+}
 
 $(function() {
    
@@ -1151,23 +1168,6 @@ $(function() {
             }
         });
     });
-    function disableCollaborators(ticketId)
-    {
-        data = new FormData();
-        data.append( 'ticketId', ticketId);
-        $.ajax({
-             type: "POST",
-             url: 'disableCollaborators.php',
-             data: data,
-             success: function(data) {
-                alert(data);
-             },
-             error: function(data) { 
-                alert(data); 
-             } 
-        });
-        return false;
-    }
 
 <?php
     // Set the lock if one exists
