@@ -2025,10 +2025,13 @@ class Ticket {
                     return null;
             }
         }
-        if(!($response = $this->getThread()->addResponse($vars, $errors)))
-            return null; 
-        if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
-            return null;
+        else
+        {
+            if(!($response = $this->getThread()->addResponse($vars, $errors)))
+                return null; 
+            if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
+                return null;
+       }
         return $response;
     }
     function postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response) {
