@@ -1151,6 +1151,23 @@ $(function() {
             }
         });
     });
+    function disableCollaborators(ticketId)
+    {
+        data = new FormData();
+        data.append( 'ticketId', ticketId);
+        $.ajax({
+             type: "POST",
+             url: 'disableCollaborators.php',
+             data: data,
+             success: function(data) {
+                alert(data);
+             },
+             error: function(data) { 
+                alert(data); 
+             } 
+        });
+        return false;
+    }
 
 <?php
     // Set the lock if one exists
@@ -1168,23 +1185,6 @@ $(function() {
 <?php } ?>
 });
 //this function is for displying the content of the relevant article
-function disableCollaborators(ticketId)
-{
-    data = new FormData();
-    data.append( 'ticketId', ticketId);
-    $.ajax({
-         type: "POST",
-         url: 'disableCollaborators.php',
-         data: data,
-         success: function(data) {
-            alert(data);
-         },
-         error: function(data) { 
-            alert(data); 
-         } 
-    });
-    return false;
-}
 function switchToArticleContect(articleIndex)
 {
     $( ".responza-article-link-content" ).css("display","none");
