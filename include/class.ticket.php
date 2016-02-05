@@ -2105,7 +2105,7 @@ class Ticket {
             {
                 $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
                     $options);
-                if($vars['emailcollab']&&$vars['emailreply']==1)
+                // if($vars['emailcollab']&&$vars['emailreply']==1)
                 // $this->notifyCollaborators($response,
                 //         array('signature' => $signature));
             }
