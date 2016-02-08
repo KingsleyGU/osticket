@@ -373,7 +373,7 @@ if($_POST && !$errors):
                </script>";
         // if(isset($previousURL)&&!empty($previousURL))
         //      header("Location: " . $previousURL);
-        if($ticket && is_object($ticket))
+        else($ticket && is_object($ticket))
             $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
 
