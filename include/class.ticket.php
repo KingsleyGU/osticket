@@ -2017,16 +2017,21 @@ class Ticket {
         if($vars['emailreply']==2)
         {
             $responseBody = null;
+            $finalBody = null;
             if(!($clientThreadEntries = $this->getClientThread()))
                 return null;
             foreach ($clientThreadEntries as $clientThreadEntry) {
                 if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
                     return null;
                 $responseBody = $responseBody.$response->ht['body'];
+                $finalThreadBody = $response->ht['body'];
             }
             $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
+            $response->reload();
             if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
                     return null;
+            $response->setBody(ThreadBody::fromFormattedText($finalThreadBody, $response->ht['format']));
+            $response->reload();
         }
         else
         {
