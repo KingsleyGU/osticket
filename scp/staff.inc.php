@@ -13,6 +13,9 @@
 
     vim: expandtab sw=4 ts=4 sts=4:
 **********************************************************************/
+
+session_start();
+
 if(basename($_SERVER['SCRIPT_NAME'])==basename(__FILE__)) die('Access denied'); //Say hi to our friend..
 
 if(!file_exists('../main.inc.php')) die('Fatal error... get technical support');
@@ -43,11 +46,6 @@ require_once(INCLUDE_DIR.'class.csrf.php');
     * User must be valid staff beyond this point
     * ONLY super admins can access the helpdesk on offline state.
 */
-// get previous page
-$previousURL = null;
-if(isset($_SERVER['HTTP_REFERER'])) {
-    $previousURL = $_SERVER['HTTP_REFERER'];
-}
 
 if(!function_exists('staffLoginPage')) { //Ajax interface can pre-declare the function to  trap expired sessions.
     function staffLoginPage($msg) {
@@ -81,12 +79,17 @@ if(isset($thisstaff)&&!empty($thisstaff))
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
     {
+        $_SESSION['previousPageURL'] = $_SERVER['HTTP_REFERER'];
         $id = $thisstaff->getId();
         if($thisstaff->updateAgentTicketAccess(0))
         {
            
         }
         $thisstaff->reload();
+    }
+    else
+    {
+        $_SESSION['previousPageURL'] = null;
     }
 }
 function changeStaffToOrigin()
