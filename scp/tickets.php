@@ -77,9 +77,9 @@ if($_POST && !$errors):
             if(!$thisstaff->canPostReply())
                 $errors['err'] = __('Action denied. Contact admin for access');
             else {
-                if(empty($_POST['response']))
+                if(!isset($_POST['response'])||empty($_POST['response']))
                 {
-                    $_POST['response'] = "";
+                    $_POST['response'] = " ";
                 }
 
                 // if(!$_POST['response'])
