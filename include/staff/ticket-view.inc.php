@@ -50,8 +50,8 @@ $unbannable=($emailBanned) ? BanList::includes($ticket->getEmail()) : false;
 
 if($ticket->isOverdue())
     $warn.='&nbsp;&nbsp;<span class="Icon overdueTicket">'.__('Marked overdue!').'</span>';
-if(isset($previousURL)&&!empty($previousURL))
-     echo "<h3>111111111".$previousURL."</h3>";
+if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
+     echo "<h3>111111111".$_SESSION['previousPageUrl']."</h3>";
 ?>
 <table width="940" cellpadding="2" cellspacing="0" border="0">
     <tr>

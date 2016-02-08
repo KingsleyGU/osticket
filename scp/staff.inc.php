@@ -13,6 +13,7 @@
 
     vim: expandtab sw=4 ts=4 sts=4:
 **********************************************************************/
+
 if(basename($_SERVER['SCRIPT_NAME'])==basename(__FILE__)) die('Access denied'); //Say hi to our friend..
 
 if(!file_exists('../main.inc.php')) die('Fatal error... get technical support');
@@ -81,6 +82,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
     {
+        $_SESSION['previousPageUrl'] = $_SERVER['HTTP_REFERER'];
         $id = $thisstaff->getId();
         if($thisstaff->updateAgentTicketAccess(0))
         {
