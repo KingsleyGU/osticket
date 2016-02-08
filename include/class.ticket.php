@@ -2014,6 +2014,8 @@ class Ticket {
         if (!$vars['ip_address'] && $_SERVER['REMOTE_ADDR'])
             $vars['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
+        $attachments = array();
+
         if($vars['emailreply']==2)
         {
             $responseBody = null;
@@ -2025,10 +2027,11 @@ class Ticket {
                     return null;
                 $responseBody = $responseBody.$response->ht['body'];
                 $finalThreadBody = $response->ht['body'];
+                $attachments = array_merge($attachments, $response->getAttachments());
             }
             $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
             $response->reload();
-            if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
+            if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments))
                     return null;
             $response->setBody(ThreadBody::fromFormattedText($finalThreadBody, $response->ht['format']));
             $response->reload();
@@ -2037,12 +2040,12 @@ class Ticket {
         {
             if(!($response = $this->getThread()->addResponse($vars, $errors)))
                 return null; 
-            if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response))
+            if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments))
                 return null;
        }
         return $response;
     }
-    function postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response) {
+    function postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments) {
         global $thisstaff, $cfg;
         // $assignee = $this->getStaff();
         $assignee = $this->getTeam();
@@ -2095,7 +2098,7 @@ class Ticket {
         $msg = $this->replaceVars($msg->asArray(),
                 $variables + array('recipient' => $this->getOwner()));
 
-            $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
+            
             if($vars['emailreply']==2)
             {
                 if($recipients=$this->getActiveCollaborators())
@@ -2111,6 +2114,7 @@ class Ticket {
             } 
             else
             {
+                $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
                 $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
                     $options);
                 // if($vars['emailcollab']&&$vars['emailreply']==1)
