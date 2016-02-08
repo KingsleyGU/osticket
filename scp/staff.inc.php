@@ -90,10 +90,10 @@ if(isset($thisstaff)&&!empty($thisstaff))
         }
         $thisstaff->reload();
     }
-    else
-    {
-        $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]/scp";
-    }
+    // else
+    // {
+    //     $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]/scp";
+    // }
 }
 function changeStaffToOrigin()
 {
