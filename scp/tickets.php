@@ -369,7 +369,7 @@ if($_POST && !$errors):
         endswitch;
         if(isset($previousURL)&&!empty($previousURL))
             echo "<script>
-                alert("22222");
+                
                 window.history.go(-2);
                </script>";
         // if(isset($previousURL)&&!empty($previousURL))
