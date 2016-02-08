@@ -2026,6 +2026,7 @@ class Ticket {
                 if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
                     return null;
                 $responseBody = $responseBody.$response->ht['body'];
+                $responseBody .= "<br>--------------Line breaker--------------<br>" 
                 $finalThreadBody = $response->ht['body'];
                 $attachments = array_merge($attachments, $response->getAttachments());
             }
