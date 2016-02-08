@@ -368,9 +368,10 @@ if($_POST && !$errors):
             $errors['err']=__('Unknown action');
         endswitch;
         if(isset($previousURL)&&!empty($previousURL))
-        echo "<script>
-            window.history.go(-2);
-           </script>";
+            echo "<script>
+                alert("22222");
+                window.history.go(-2);
+               </script>";
         // if(isset($previousURL)&&!empty($previousURL))
         //      header("Location: " . $previousURL);
         if($ticket && is_object($ticket))
