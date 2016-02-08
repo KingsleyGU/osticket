@@ -43,7 +43,11 @@ require_once(INCLUDE_DIR.'class.csrf.php');
     * User must be valid staff beyond this point
     * ONLY super admins can access the helpdesk on offline state.
 */
-
+// get previous page
+$previousURL = null;
+if(isset($_SERVER['HTTP_REFERER'])) {
+    $previousURL = $_SERVER['HTTP_REFERER'];
+}
 
 if(!function_exists('staffLoginPage')) { //Ajax interface can pre-declare the function to  trap expired sessions.
     function staffLoginPage($msg) {

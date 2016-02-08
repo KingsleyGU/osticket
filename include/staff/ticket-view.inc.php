@@ -44,10 +44,6 @@ if (!$errors['err']) {
         $errors['err'] = __('Email is in banlist! Must be removed before any reply/response');
     elseif (!Validator::is_valid_email($ticket->getEmail()))
         $errors['err'] = __('EndUser email address is not valid! Consider updating it before responding');
-
-if(isset($_SERVER['HTTP_REFERER'])) {
-    echo "<h3>1111111111111111111111111".$_SERVER['HTTP_REFERER']."</h3>";
-}
 }
 
 $unbannable=($emailBanned) ? BanList::includes($ticket->getEmail()) : false;

@@ -71,17 +71,19 @@ if($_POST && !$errors):
         //More coffee please.
         $errors=array();
         $lock=$ticket->getLock(); //Ticket lock if any
-        if(isset($_SERVER['HTTP_REFERER'])) {
-            echo "<h3>1111111111111111111111111".$_SERVER['HTTP_REFERER']."</h3>";
-        }
+
         switch(strtolower($_POST['a'])):
         case 'reply':
             if(!$thisstaff->canPostReply())
                 $errors['err'] = __('Action denied. Contact admin for access');
             else {
+                if(empty($_POST['response']))
+                {
+                    $_POST['response'] = "";
+                }
 
-                if(!$_POST['response'])
-                    $errors['response']=__('Response required');
+                // if(!$_POST['response'])
+                //     $errors['response']=__('Response required');
                 //Use locks to avoid double replies
                 if($lock && $lock->getStaffId()!=$thisstaff->getId())
                     $errors['err']=__('Action Denied. Ticket is locked by someone else!');
@@ -365,9 +367,11 @@ if($_POST && !$errors):
         default:
             $errors['err']=__('Unknown action');
         endswitch;
-        echo "<script>
-         window.history.go(-2);
-           </script>";
+        // echo "<script>
+        //  window.history.go(-2);
+        //    </script>";
+        if(isset($previousURL)&&!empty($previousURL))
+             header("Location: " . $previousURL);
         if($ticket && is_object($ticket))
             $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
