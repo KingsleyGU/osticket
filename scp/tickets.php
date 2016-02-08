@@ -368,11 +368,7 @@ if($_POST && !$errors):
             $errors['err']=__('Unknown action');
         endswitch;
         echo "<script>
-          alert(".$previousURL.");
-            if(!window.history.go(-2))
-            {
                window.history.go(-1); 
-            }
            </script>";
         // if(isset($previousURL)&&!empty($previousURL))
         //      header("Location: " . $previousURL);
