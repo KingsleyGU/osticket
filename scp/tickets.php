@@ -367,14 +367,14 @@ if($_POST && !$errors):
         default:
             $errors['err']=__('Unknown action');
         endswitch;
-        if(isset($previousURL)&&!empty($previousURL))
+        // if(isset($previousURL)&&!empty($previousURL))
             echo "<script>
              window.location.replace(".$previousURL.");
                </script>";
         // if(isset($previousURL)&&!empty($previousURL))
         //      header("Location: " . $previousURL);
-        elseif($ticket && is_object($ticket))
-            $ticket->reload();//Reload ticket info following post processing
+        // elseif($ticket && is_object($ticket))
+        //     $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
 
         switch($_POST['a']) {
