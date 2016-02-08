@@ -72,7 +72,7 @@ if($_POST && !$errors):
         $errors=array();
         $lock=$ticket->getLock(); //Ticket lock if any
         if(isset($_SERVER['HTTP_REFERER'])) {
-            echo "1111111111111111111111111".$_SERVER['HTTP_REFERER'];
+            echo "<h3>1111111111111111111111111".$_SERVER['HTTP_REFERER']."</h3>";
         }
         switch(strtolower($_POST['a'])):
         case 'reply':
