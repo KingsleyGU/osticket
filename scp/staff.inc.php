@@ -92,7 +92,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     }
     else
     {
-        $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]";
+        $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]/scp";
     }
 }
 function changeStaffToOrigin()
