@@ -367,7 +367,7 @@ if($_POST && !$errors):
         default:
             $errors['err']=__('Unknown action');
         endswitch;
-        if(isset($previousURL)&&!empty($previousURL))
+        if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
             echo "<script>
                 
                 window.history.go(-2);
