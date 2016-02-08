@@ -71,6 +71,9 @@ if($_POST && !$errors):
         //More coffee please.
         $errors=array();
         $lock=$ticket->getLock(); //Ticket lock if any
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            echo $_SERVER['HTTP_REFERER'];
+        }
         switch(strtolower($_POST['a'])):
         case 'reply':
             if(!$thisstaff->canPostReply())
