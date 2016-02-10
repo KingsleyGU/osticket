@@ -212,7 +212,7 @@ elseif($sortOptions[$_SESSION[$queue.'_tickets']['sort']]) {
 }
 if(!isset($_REQUEST['order']))
 {
-    $_REQUEST['order'] = "DESC";
+    $_REQUEST['order'] = "ASC";
     echo "<h3>it is order ".$_REQUEST['order']." </h3>";
 }
 
