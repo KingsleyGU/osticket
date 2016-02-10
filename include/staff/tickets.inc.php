@@ -200,6 +200,12 @@ $sortOptions=array('date'=>'effective_date','ID'=>'ticket.`number`*1',
 $orderWays=array('DESC'=>'DESC','ASC'=>'ASC');
 
 //Sorting options...
+if(!isset($_REQUEST['order']))
+{
+    $_REQUEST['sort']="date";
+    $_REQUEST['order'] = "ASC";
+    echo "<h3>it is order ".$_REQUEST['order']." </h3>";
+}
 $queue = isset($_REQUEST['status'])?strtolower($_REQUEST['status']):$status;
 if($_REQUEST['sort'] && $sortOptions[$_REQUEST['sort']])
     $order_by =$sortOptions[$_REQUEST['sort']];
@@ -209,11 +215,6 @@ elseif($sortOptions[$_SESSION[$queue.'_tickets']['sort']]) {
 
     $order_by = $sortOptions[$_SESSION[$queue.'_tickets']['sort']];
     $order = $_SESSION[$queue.'_tickets']['order'];
-}
-if(!isset($_REQUEST['order']))
-{
-    $_REQUEST['order'] = "ASC";
-    echo "<h3>it is order ".$_REQUEST['order']." </h3>";
 }
 
 if($_REQUEST['order'] && $orderWays[strtoupper($_REQUEST['order'])])
