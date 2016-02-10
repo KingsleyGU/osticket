@@ -537,9 +537,9 @@ if ($results) {
                 <td><a <?php if ($flag) { ?> class="Icon <?php echo $flag; ?>Ticket" title="<?php echo ucfirst($flag); ?> Ticket" <?php } ?>
                     href="<?php echo $ticketUrl; ?>"><?php echo $subject; ?></a>
                      <?php
-                        // if ($threadcount>1)
-                        //     echo "<small>($threadcount)</small>&nbsp;".'<i
-                        //         class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
+                        if ($threadcount>1)
+                            // echo "<small>($threadcount)</small>&nbsp;".
+                            echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         if ($row['collaborators'])
                             echo '<i class="icon-fixed-width icon-group faded"></i>&nbsp;';
                         if ($row['attachments'])
