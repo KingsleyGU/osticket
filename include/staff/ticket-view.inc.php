@@ -367,8 +367,8 @@ if($ticket->isOverdue())
                     <td>
                         <?php
                         if($ticket->isAssigned())
-                            // echo Format::htmlchars(implode('/', $ticket->getAssignees()));
-                            echo $ticket->getTeam();
+                            echo Format::htmlchars(implode('/', $ticket->getAssignees()));
+                            // echo $ticket->getTeam();
                         else
                             echo '<span class="faded">&mdash; '.__('Unassigned').' &mdash;</span>';
                         ?>
