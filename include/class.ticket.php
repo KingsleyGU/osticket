@@ -3119,7 +3119,7 @@ class Ticket {
                 || !isset($vars['alertuser'])
                 || !($dept=$ticket->getDept()))
         {
-            $ticket->setStaffId(0);
+            // $ticket->setStaffId(0);
             return $ticket; //No alerts.
         }
 
@@ -3163,7 +3163,7 @@ class Ticket {
             $email->send($ticket->getOwner(), $msg['subj'], $msg['body'], $attachments,
                 $options);
         }
-        $ticket->setStaffId(0);
+        // $ticket->setStaffId(0);
         return $ticket;
 
     }
