@@ -83,7 +83,7 @@ class Ticket {
             .' LEFT JOIN '.TICKET_CRM_SUBJECT2_TABLE.' subject2 ON (ticket.crm_subject2_id=subject2.crm_subject2_reference_id)'
 
             .' WHERE ticket.ticket_id='.db_input($id)
-            .' GROUP BY ticket.ticket_id';
+            .' GROUP BY ticket.ticket_id ORDER BY ticket.created DESC';
 
         //echo $sql;
         if(!($res=db_query($sql)) || !db_num_rows($res))
