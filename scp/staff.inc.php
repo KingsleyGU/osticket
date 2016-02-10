@@ -79,7 +79,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-    if($originalStaff['isAdmin']==1||$originalStaff['isAdmin']=='1')
+    if($thisstaff->isAdmin())
     {
         $thisstaff->updateAgentTicketAccess(0);
     }
