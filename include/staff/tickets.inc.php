@@ -665,21 +665,20 @@ if ($results) {
                 <option value="s0">&mdash; <?php echo __('Unassigned');?> &mdash;</option>
                 <option value="s<?php echo $thisstaff->getId(); ?>"><?php echo __('Me');?></option>
                 <?php
+                if(($teams=Team::getTeams())) {
+                    echo '<OPTGROUP label="'.__('Teams').' ('.count($teams).')">';
+                    foreach($teams as $id => $name) {
+                        $k="t$id";
+                        echo sprintf('<option value="%s">%s</option>', $k, $name);
+                    }
+                    echo '</OPTGROUP>';
+                }
                 if(($users=Staff::getStaffMembers())) {
                     echo '<OPTGROUP label="'.sprintf(__('Agents (%d)'),count($users)-1).'">';
                     foreach($users as $id => $name) {
                         if ($id == $thisstaff->getId())
                             continue;
                         $k="s$id";
-                        echo sprintf('<option value="%s">%s</option>', $k, $name);
-                    }
-                    echo '</OPTGROUP>';
-                }
-
-                if(($teams=Team::getTeams())) {
-                    echo '<OPTGROUP label="'.__('Teams').' ('.count($teams).')">';
-                    foreach($teams as $id => $name) {
-                        $k="t$id";
                         echo sprintf('<option value="%s">%s</option>', $k, $name);
                     }
                     echo '</OPTGROUP>';
