@@ -232,6 +232,7 @@ if(!$order_by ) {
         $order_by='pri.priority_urgency ASC, effective_date DESC, ticket.created';
 }
 // if($status == "open")
+$order = 'ASC';
     $order=$order?$order:'ASC'; //make the open ticket in the ASC order
 // else
     // $order=$order?$order:'DESC'; // other status tickets in the DESC order
