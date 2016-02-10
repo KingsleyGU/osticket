@@ -204,7 +204,7 @@ if(!isset($_REQUEST['order'])&&$status == "open")
 {
     $_REQUEST['sort']="date";
     $_REQUEST['order'] = "ASC";
-    echo "<h3>it is order ".$_REQUEST['order']." </h3>";
+    // echo "<h3>it is order ".$_REQUEST['order']." </h3>";
 }
 $queue = isset($_REQUEST['status'])?strtolower($_REQUEST['status']):$status;
 if($_REQUEST['sort'] && $sortOptions[$_REQUEST['sort']])
