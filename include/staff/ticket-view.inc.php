@@ -1136,7 +1136,12 @@ $tcount+= $ticket->getNumNotes();
 
 
 $(function() {
-   
+     //this is for toggle the system thread and response parts
+    $(".response .thread-body").css("display","none");
+    $(".note .thread-body").css("display","none");
+    $(".thread-entry").click(function(){
+        $(this).find(".thread-body").toggle();
+    });  
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;

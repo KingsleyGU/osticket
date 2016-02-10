@@ -754,6 +754,7 @@ if ($results) {
         </p>
     </form>
 </div>
+
 <script type="text/javascript">
 $(function() {
     $(document).off('.tickets');
