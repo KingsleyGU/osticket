@@ -345,6 +345,14 @@ if ($results) {
     }
 }
 
+if($thisstaff->isAdmin())
+{
+    $thisstaff->updateAgentTicketAccess(0);
+}
+else
+{
+  $thisstaff->updateAgentTicketAccess(1);  
+}
 
 //YOU BREAK IT YOU FIX IT.
 ?>
