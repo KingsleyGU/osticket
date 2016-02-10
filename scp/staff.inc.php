@@ -80,7 +80,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
 
-    $thisstaff->reload();
+    
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
     {
