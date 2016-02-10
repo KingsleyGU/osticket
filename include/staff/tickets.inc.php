@@ -200,7 +200,7 @@ $sortOptions=array('date'=>'effective_date','ID'=>'ticket.`number`*1',
 $orderWays=array('DESC'=>'DESC','ASC'=>'ASC');
 
 //Sorting options...
-if(!isset($_REQUEST['order']))
+if(!isset($_REQUEST['order'])&&$status == "open")
 {
     $_REQUEST['sort']="date";
     $_REQUEST['order'] = "ASC";
