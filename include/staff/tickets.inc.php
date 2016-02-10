@@ -345,15 +345,6 @@ if ($results) {
     }
 }
 
-if($thisstaff->isAdmin())
-{
-    $thisstaff->updateAgentTicketAccess(0);
-}
-else
-{
-  $thisstaff->updateAgentTicketAccess(1);  
-}
-$thisstaff->reload();
 //YOU BREAK IT YOU FIX IT.
 ?>
 <!-- SEARCH FORM START -->
