@@ -231,8 +231,10 @@ if(!$order_by ) {
     else //XXX: Add due date here?? No -
         $order_by='pri.priority_urgency ASC, effective_date DESC, ticket.created';
 }
-
-$order=$order?$order:'ASC';
+if($status == "open")
+    $order=$order?$order:'ASC'; //make the open ticket in the ASC order
+else
+    $order=$order?$order:'DESC'; // other status tickets in the DESC order
 if($order_by && strpos($order_by,',') && $order)
     $order_by=preg_replace('/(?<!ASC|DESC),/', " $order,", $order_by);
 
