@@ -232,7 +232,7 @@ if(!$order_by ) {
         $order_by='pri.priority_urgency ASC, effective_date DESC, ticket.created';
 }
 
-$order=$order?$order:'DESC';
+$order=$order?$order:'ASC';
 if($order_by && strpos($order_by,',') && $order)
     $order_by=preg_replace('/(?<!ASC|DESC),/', " $order,", $order_by);
 
