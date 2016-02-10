@@ -563,5 +563,12 @@ $thisstaff->reload();
 require_once(STAFFINC_DIR.'header.inc.php');
 require_once(STAFFINC_DIR.$inc);
 print $response_form->getMedia();
-
+if($thisstaff->isAdmin())
+{
+    $thisstaff->updateAgentTicketAccess(0);
+}
+else
+{
+  $thisstaff->updateAgentTicketAccess(1);  
+}
 require_once(STAFFINC_DIR.'footer.inc.php');

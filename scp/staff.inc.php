@@ -79,14 +79,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-    if($thisstaff->isAdmin())
-    {
-        $thisstaff->updateAgentTicketAccess(0);
-    }
-    else
-    {
-      $thisstaff->updateAgentTicketAccess(1);  
-    }
+
     $thisstaff->reload();
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
