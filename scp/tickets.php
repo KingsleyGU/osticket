@@ -413,10 +413,13 @@ if($_POST && !$errors):
 endif;
 
 
-$id = $thisstaff->getId();
-if($thisstaff->updateAgentTicketAccess($originalStaff['assigned_only']))
+if($thisstaff->isAdmin())
 {
-    // echo "change to admin now";
+    $thisstaff->updateAgentTicketAccess(0);
+}
+else
+{
+  $thisstaff->updateAgentTicketAccess(1);  
 }
 $thisstaff->reload();
 
