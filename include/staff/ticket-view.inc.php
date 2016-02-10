@@ -90,7 +90,7 @@ if($ticket->isOverdue())
             }?>
             <span class="action-button pull-right" data-dropdown="#action-dropdown-print">
                 <i class="icon-caret-down pull-right"></i>
-                <a id="ticket-print" href="tickets.php?id=<?php echo $ticket->getId(); ?>&a=print" target="_blank"><i class="icon-print"></i> <?php
+                <a id="ticket-print" href="tickets.php?id=<?php echo $ticket->getId(); ?>&a=print" ><i class="icon-print"></i> <?php
                     echo __('Print'); ?></a>
             </span>
             <div id="action-dropdown-print" class="action-dropdown anchor-right">
@@ -1010,7 +1010,7 @@ $tcount+= $ticket->getNumNotes();
     <h3><?php echo __('Ticket Print Options');?></h3>
     <a class="close" href=""><i class="icon-remove-circle"></i></a>
     <hr/>
-    <form action="tickets.php?id=<?php echo $ticket->getId(); ?>" method="post" id="print-form" name="print-form">
+    <form action="tickets.php?id=<?php echo $ticket->getId(); ?>" method="post" id="print-form" name="print-form" target="_blank" >
         <?php csrf_token(); ?>
         <input type="hidden" name="a" value="print">
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
