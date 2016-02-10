@@ -485,8 +485,8 @@ class Ticket {
     }
 
     function getStaffId() {
-        // return $this->ht['staff_id'];
-        return null;
+        return $this->ht['staff_id'];
+        // return null;
     }
 
     function getStaff() {
@@ -494,8 +494,8 @@ class Ticket {
         if(!$this->staff && $this->getStaffId())
             $this->staff= Staff::lookup($this->getStaffId());
 
-        // return $this->staff;
-        return null;
+        return $this->staff;
+        // return null;
     }
 
     function getTeamId() {
@@ -511,12 +511,10 @@ class Ticket {
     }
 
     function getAssignee() {
-        if($team=$this->getTeam())
-            return $team->getName();
-
         if($staff=$this->getStaff())
             return $staff->getName();
-
+        if($team=$this->getTeam())
+            return $team->getName();
         return '';
     }
 
@@ -2203,8 +2201,8 @@ class Ticket {
         );
 
         // Get assigned staff just in case the ticket is closed.
-        // $assignee = $this->getStaff();
-        $assignee = $this->getTeam();
+        $assignee = $this->getStaff();
+        // $assignee = $this->getTeam();
         if ($vars['note_status_id']
                 && ($status=TicketStatus::lookup($vars['note_status_id']))) {
             if ($this->setStatus($status))
@@ -3055,7 +3053,7 @@ class Ticket {
         Signal::send('model.created', $ticket);
 
         /* Phew! ... time for tea (KETEPA) */
-        $ticket->setStaffId(0);
+        // $ticket->setStaffId(0);
         return $ticket;
     }
 
