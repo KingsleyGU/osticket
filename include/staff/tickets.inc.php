@@ -210,6 +210,10 @@ elseif($sortOptions[$_SESSION[$queue.'_tickets']['sort']]) {
     $order_by = $sortOptions[$_SESSION[$queue.'_tickets']['sort']];
     $order = $_SESSION[$queue.'_tickets']['order'];
 }
+if(!isset($_REQUEST['order'])&&$status == "open")
+{
+    $_REQUEST['order'] = "DESC";
+}
 
 if($_REQUEST['order'] && $orderWays[strtoupper($_REQUEST['order'])])
     $order=$orderWays[strtoupper($_REQUEST['order'])];
@@ -232,8 +236,7 @@ if(!$order_by ) {
         $order_by='pri.priority_urgency ASC, effective_date DESC, ticket.created';
 }
 // if($status == "open")
-$order = 'ASC';
-    $order=$order?$order:'ASC'; //make the open ticket in the ASC order
+    $order=$order?$order:'DESC'; //make the open ticket in the ASC order
 // else
     // $order=$order?$order:'DESC'; // other status tickets in the DESC order
 if($order_by && strpos($order_by,',') && $order)
