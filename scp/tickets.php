@@ -554,16 +554,14 @@ if($ticket) {
             $js);
     }
 }
-
-require_once(STAFFINC_DIR.'header.inc.php');
-require_once(STAFFINC_DIR.$inc);
-print $response_form->getMedia();
-
-$thisstaff = StaffAuthenticationBackend::getUser();
 $id = $thisstaff->getId();
 if($thisstaff->updateAgentTicketAccess($originalStaff['assigned_only']))
 {
     // echo "change to admin now";
 }
 $thisstaff->reload();
+require_once(STAFFINC_DIR.'header.inc.php');
+require_once(STAFFINC_DIR.$inc);
+print $response_form->getMedia();
+
 require_once(STAFFINC_DIR.'footer.inc.php');
