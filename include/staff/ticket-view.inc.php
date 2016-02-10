@@ -90,7 +90,7 @@ if($ticket->isOverdue())
             }?>
             <span class="action-button pull-right" data-dropdown="#action-dropdown-print">
                 <i class="icon-caret-down pull-right"></i>
-                <a id="ticket-print" href="tickets.php?id=<?php echo $ticket->getId(); ?>&a=print"><i class="icon-print"></i> <?php
+                <a id="ticket-print" href="tickets.php?id=<?php echo $ticket->getId(); ?>&a=print" target="_blank"><i class="icon-print"></i> <?php
                     echo __('Print'); ?></a>
             </span>
             <div id="action-dropdown-print" class="action-dropdown anchor-right">
