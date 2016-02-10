@@ -229,7 +229,7 @@ if(!$order_by ) {
     elseif($showoverdue) //priority> duedate > age in ASC order.
         $order_by='pri.priority_urgency ASC, ISNULL(ticket.duedate) ASC, ticket.duedate ASC, effective_date ASC, ticket.created';
     else //XXX: Add due date here?? No -
-        $order_by='pri.priority_urgency ASC, effective_date DESC, ticket.created ASC';
+        $order_by='pri.priority_urgency ASC, effective_date DESC, ticket.created';
 }
 
 $order=$order?$order:'DESC';
