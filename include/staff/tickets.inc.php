@@ -213,6 +213,7 @@ elseif($sortOptions[$_SESSION[$queue.'_tickets']['sort']]) {
 if(!isset($_REQUEST['order'])&&$status == "open")
 {
     $_REQUEST['order'] = "DESC";
+    echo "<h3>it is order ".$_REQUEST['order']." </h3>";
 }
 
 if($_REQUEST['order'] && $orderWays[strtoupper($_REQUEST['order'])])
