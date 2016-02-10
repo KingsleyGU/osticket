@@ -210,7 +210,7 @@ elseif($sortOptions[$_SESSION[$queue.'_tickets']['sort']]) {
     $order_by = $sortOptions[$_SESSION[$queue.'_tickets']['sort']];
     $order = $_SESSION[$queue.'_tickets']['order'];
 }
-if(!isset($_REQUEST['order'])&&$status == "open")
+if(!isset($_REQUEST['order']))
 {
     $_REQUEST['order'] = "DESC";
     echo "<h3>it is order ".$_REQUEST['order']." </h3>";
