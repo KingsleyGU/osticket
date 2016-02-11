@@ -305,20 +305,16 @@ if($ticket->isOverdue())
                         <span id="user-<?php echo $ticket->getOwnerId(); ?>-phone"><?php echo $ticket->getPhoneNumber(); ?></span>
                     </td>
                 </tr>
-                  <?php 
-                    if(!empty($hashTableContent)&&!empty($hashTableContent['company_name']))
-                 { ?>
                     <tr>
                         <th><?php echo __('Company');?>:</th>
                         <td>
                            <ul class="scp-crm-ul">
-                              <li><div class="crm-ul-title">Name:</div><?php echo $hashTableContent['company_name']; ?></li>
-                              <li><div class="crm-ul-title">CVR:</div><?php echo $hashTableContent['cvr_number']; ?></li>
+                              <li><div class="crm-ul-title">Name:</div><?php  if(!empty($hashTableContent)&&!empty($hashTableContent['company_name'])){ ?><?php echo $hashTableContent['company_name']; ?><?php    } ?>  </li>
+                              <li><div class="crm-ul-title">CVR:</div><?php  if(!empty($hashTableContent)&&!empty($hashTableContent['cvr_number'])){ ?><?php echo $hashTableContent['cvr_number']; ?><?php    } ?></li>
                             </ul>  
                         </td>
                     </tr>
-                <?php    }   
-                ?>    
+                  
   
                  <?php 
                     $fileContents = $ticket->getFileContents();
