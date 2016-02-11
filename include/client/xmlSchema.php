@@ -62,6 +62,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     $data['ordernumber'] = trim(removeLineBreaker($nodes[$i]->ordernumber));
                     $data['filenumber'] = trim(removeLineBreaker($nodes[$i]->filenumber));
                     $data['cvr'] = trim(removeLineBreaker($nodes[$i]->cvr));
+                    $data['CVR'] = trim(removeLineBreaker($nodes[$i]->cvr));
                     $data['message'] =  removeLineBreaker($nodes[$i]->content);
                     $data['companyName'] = removeLineBreaker($nodes[$i]->companyname);
                     $data['company'] = removeLineBreaker($nodes[$i]->companyname);
