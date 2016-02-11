@@ -367,12 +367,12 @@ if($_POST && !$errors):
         default:
             $errors['err']=__('Unknown action');
         endswitch;
-        // if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
+        if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
             // echo "<script>                
             //     window.history.go(-2);
             //    </script>";
         // if(isset($previousURL)&&!empty($previousURL))
-             // header("Location: " . $_SESSION['previousPageUrl']);
+             header("Location: " . $_SESSION['previousPageUrl']);
         if($ticket && is_object($ticket))
             $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
