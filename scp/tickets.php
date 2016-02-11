@@ -127,7 +127,7 @@ if($_POST && !$errors):
             } elseif(!$errors['err']) {
                 $errors['err']=__('Unable to post the reply. Correct the errors below and try again!');
             }
-
+            backToSearchPage();
             break;
         case 'transfer': /** Transfer ticket **/
             //Check permission
@@ -161,6 +161,7 @@ if($_POST && !$errors):
                     $errors['transfer']=__('Correct the error(s) below and try again!');
                 }
             }
+             backToSearchPage();
             break;
         case 'assign':
 
@@ -221,6 +222,7 @@ if($_POST && !$errors):
                      $errors['assign'] = __('Correct the error(s) below and try again!');
                  }
              }
+            backToSearchPage();
             break;
         case 'postnote': /* Post Internal Note */
             $vars = $_POST;
@@ -250,6 +252,7 @@ if($_POST && !$errors):
 
                 $errors['postnote'] = __('Unable to post the note. Correct the error(s) below and try again!');
             }
+             backToSearchPage();
             break;
         case 'edit':
         case 'update':
@@ -367,12 +370,6 @@ if($_POST && !$errors):
         default:
             $errors['err']=__('Unknown action');
         endswitch;
-        if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
-            // echo "<script>                
-            //     window.history.go(-2);
-            //    </script>";
-        // if(isset($previousURL)&&!empty($previousURL))
-             header("Location: " . $_SESSION['previousPageUrl']);
         if($ticket && is_object($ticket))
             $ticket->reload();//Reload ticket info following post processing
     }elseif($_POST['a']) {
