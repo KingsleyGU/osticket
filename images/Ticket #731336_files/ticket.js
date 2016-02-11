@@ -386,9 +386,10 @@ var ticket_onload = function($) {
     //print options TODO: move to backend
     $('a#ticket-print').click(function(e) {
         e.preventDefault();
+        alert("222");
         // $('#overlay').show();
         // $('.dialog#print-options').show();
-        $( "#print-form" ).submit();
+        $("form#print-form").submit();
         return false;
     });
 
