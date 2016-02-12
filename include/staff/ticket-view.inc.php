@@ -1136,7 +1136,7 @@ $(function() {
     $(".response tbody").css("display","none");
     $(".note tbody").css("display","none");
     $(".thread-entry th").click(function(){
-        $(this).find(".thread-body").toggle();
+        $(this).parents(".thread-entry").find(".thread-body").toggle();
     });  
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
