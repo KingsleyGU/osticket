@@ -1133,8 +1133,8 @@ $tcount+= $ticket->getNumNotes();
 
 $(function() {
      //this is for toggle the system thread and response parts
-    $(".response tbody").css("display","none");
-    $(".note tbody").css("display","none");
+    $(".response .thread-body").css("display","none");
+    $(".note .thread-body").css("display","none");
     $(".thread-entry th").click(function(){
         $(this).parents(".thread-entry").find(".thread-body").toggle();
     });  
