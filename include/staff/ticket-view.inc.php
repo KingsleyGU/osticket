@@ -1135,8 +1135,8 @@ $(function() {
      //this is for toggle the system thread and response parts
     $(".response th").css("display","none");
     $(".note th").css("display","none");
-    $(".thread-entry").click(function(){
-        $(this).find("th").toggle();
+    $(".thread-entry th").click(function(){
+        $(this).find(".thread-body").toggle();
     });  
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
