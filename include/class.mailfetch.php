@@ -750,6 +750,7 @@ class MailFetcher {
         $seen = false;
         if (($thread = ThreadEntry::lookupByEmailHeaders($vars, $seen))
                 && ($t=$thread->getTicket())
+                &&($mailinfo['email'] == $t->getEmail())
                 && ($vars['staffId']
                     || !$t->isClosed()
                     || $t->isReopenable())
