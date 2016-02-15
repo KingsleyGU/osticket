@@ -748,9 +748,10 @@ class MailFetcher {
         Signal::send('mail.processed', $this, $vars);
 
         $seen = false;
-        if (($thread = ThreadEntry::lookupByEmailHeaders($vars, $seen))
+        if($mailinfo['email'] != $t->getEmail())
+            return true;
+        elseif (($thread = ThreadEntry::lookupByEmailHeaders($vars, $seen))
                 && ($t=$thread->getTicket())
-                &&($mailinfo['email'] == $t->getEmail())
                 && ($vars['staffId']
                     || !$t->isClosed()
                     || $t->isReopenable())
@@ -759,7 +760,7 @@ class MailFetcher {
                 // Email has been processed previously
                 return $message;
             $ticket = $message->getTicket();
-        } elseif ($seen) {
+        }elseif ($seen) {
             // Already processed, but for some reason (like rejection), no
             // thread item was created. Ignore the email
             return true;
