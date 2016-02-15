@@ -40,10 +40,13 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                     $data =array();
                     // $data['recipients'] = array();
                     $data['subject'] = removeLineBreaker($nodes[$i]->title);
-                    if(empty(removeLineBreaker($nodes[$i]->title))&&(!empty(removeLineBreaker($nodes[$i]->crmsubject2_text))))
-                        $data['subject'] = removeLineBreaker($nodes[$i]->crmsubject2_text);
-                    else
-                        $data['subject'] = "no title";
+                    if(empty(removeLineBreaker($nodes[$i]->title)))
+                    {
+                        if(!empty(removeLineBreaker($nodes[$i]->crmsubject2_text)))
+                            $data['subject'] = removeLineBreaker($nodes[$i]->crmsubject2_text);
+                        else
+                            $data['subject'] = "no title";
+                    }
                     $data['header'] = "";
                     // $data['mid'] = 1;
                     $data['source'] = "Web";
