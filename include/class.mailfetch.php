@@ -748,11 +748,11 @@ class MailFetcher {
         Signal::send('mail.processed', $this, $vars);
 
         $seen = false;
-        if($mailinfo['email'] != $t->getEmail())
-            return true;
-        elseif (($thread = ThreadEntry::lookupByEmailHeaders($vars, $seen))
+        if(($thread = ThreadEntry::lookupByEmailHeaders($vars, $seen))
                 && ($t=$thread->getTicket())
-                && ($vars['staffId']
+                && ($mailinfo['email'] != $t->getEmail()))
+            return true;
+        elseif (($vars['staffId']
                     || !$t->isClosed()
                     || $t->isReopenable())
                 && ($message = $thread->postEmail($vars))) {
