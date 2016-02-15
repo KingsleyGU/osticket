@@ -2113,15 +2113,26 @@ class Ticket {
                             $options);
                     }
                 }
+                $this->deleteCollaborators();
             } 
             else
             {
                 $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
-                $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
-                    $options);
-                if($vars['emailcollab']&&$vars['emailreply']==1)
-                $this->notifyCollaborators($response,
-                        array('signature' => $signature));
+                // $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
+                //     $options);
+                if($recipients=$this->getRecipients())
+                {
+                    foreach ($recipients as $recipient) {
+                        if (isset($skip[$recipient->getUserId()]))
+                            continue;
+
+                        $email->send($recipient, $msg['subj'], $msg['body'], $attachments,
+                            $options);
+                    }
+                }
+                // if($vars['emailcollab']&&$vars['emailreply']==1)
+                // $this->notifyCollaborators($response,
+                //         array('signature' => $signature));
             }
         }
         return $response;
