@@ -1613,6 +1613,9 @@ class Ticket {
             $this->setStaffId(0);
         }
 
+        //set the department SLA
+        $this->setSLAId($dept->getSLAId());
+
         /*** log the transfer comments as internal note - with alerts disabled - ***/
         $title=sprintf(_S('Ticket transferred from %1$s to %2$s'),
             $currentDept, $this->getDeptName());

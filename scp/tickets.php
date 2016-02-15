@@ -145,9 +145,13 @@ if($_POST && !$errors):
 
                 //Transfer message - required.
                 if(!$_POST['transfer_comments'])
-                    $errors['transfer_comments'] = __('Transfer comments required');
-                elseif(strlen($_POST['transfer_comments'])<5)
-                    $errors['transfer_comments'] = __('Transfer comments too short!');
+                {
+                   $_POST['transfer_comments'] = "No Commnets"; 
+                }
+                // if(!$_POST['transfer_comments'])
+                //     $errors['transfer_comments'] = __('Transfer comments required');
+                // elseif(strlen($_POST['transfer_comments'])<5)
+                //     $errors['transfer_comments'] = __('Transfer comments too short!');
 
                 //If no errors - them attempt the transfer.
                 if(!$errors && $ticket->transfer($_POST['deptId'], $_POST['transfer_comments'])) {
