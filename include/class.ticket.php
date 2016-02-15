@@ -2119,9 +2119,9 @@ class Ticket {
                 $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
                 $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
                     $options);
-                // if($vars['emailcollab']&&$vars['emailreply']==1)
-                // $this->notifyCollaborators($response,
-                //         array('signature' => $signature));
+                if($vars['emailcollab']&&$vars['emailreply']==1)
+                $this->notifyCollaborators($response,
+                        array('signature' => $signature));
             }
         }
         return $response;
