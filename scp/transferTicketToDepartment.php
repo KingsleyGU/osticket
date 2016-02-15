@@ -15,7 +15,7 @@ if($_REQUEST['transferDeptId']==0)
 	echo ("not an available department");
 }
 else{
-    $dept=Dept::lookup($id);
+    $dept=Dept::lookup($_REQUEST['transferDeptId']);
     $count = count($_REQUEST['tids']);
     $i=0;
     foreach ($_REQUEST['tids'] as $tid) {
