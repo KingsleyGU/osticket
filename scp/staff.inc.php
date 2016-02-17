@@ -117,12 +117,12 @@ function backToSearchPage()
     if(!empty($_SESSION['previous2PageUrl']))
     {
         $history_2_Url = $_SESSION['previous2PageUrl'];
-        if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'search='))
-        {
+        // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'search='))
+        // {
              echo "<script>                
                 window.history.go(-2);
                </script>"; 
-        }
+        // }
     }
 
 // if(isset($previousURL)&&!empty($previousURL))
