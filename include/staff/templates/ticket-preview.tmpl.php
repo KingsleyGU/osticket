@@ -8,7 +8,8 @@ $staff=$ticket->getStaff();
 $lock=$ticket->getLock();
 $error=$msg=$warn=null;
 
-if($lock && $lock->getStaffId()==$thisstaff->getId())
+//&& $lock->getStaffId()==$thisstaff->getId()
+if($lock)
     $warn.='&nbsp;<span class="Icon lockedTicket">'
     .sprintf(__('Ticket is locked by %s'), $lock->getStaffName()).'</span>';
 elseif($ticket->isOverdue())
