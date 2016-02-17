@@ -224,7 +224,7 @@ jQuery(function() {
         e.preventDefault();
         var elem = $(this);
 
-        var vars = elem.attr('href').split('=');
+        var vars = elem.attr('title').split('=');
         var url = 'ajax.php/tickets/'+vars[1]+'/preview';
         var id='t'+vars[1];
         var xoffset = 80;
