@@ -345,8 +345,6 @@ if ($results) {
     }
 }
 
-echo "<h3>previous2: ".$_SESSION['previous2PageUrl']."</h3>";
-echo "<h3>previous2: ".$_SESSION['previousPageUrl']."</h3>";
 //YOU BREAK IT YOU FIX IT.
 ?>
 <!-- SEARCH FORM START -->
