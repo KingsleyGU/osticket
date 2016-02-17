@@ -83,7 +83,8 @@ if(isset($thisstaff)&&!empty($thisstaff))
     {
         $_SESSION['previous2PageUrl'] = $_SESSION['previousPageUrl'];
     }
-    $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $_SESSION['previousPageUrl'] = $_SERVER['HTTP_REFERER'];
+    // "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
