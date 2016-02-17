@@ -112,11 +112,11 @@ function changeStaffToOrigin()
 function backToSearchPage()
 {
     if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
-    // echo "<script>                
-    //     window.history.go(-2);
-    //    </script>";
+      echo "<script>                
+        window.history.go(-2);
+       </script>";
 // if(isset($previousURL)&&!empty($previousURL))
-     header("Location: " . $_SESSION['previousPageUrl']);
+     // header("Location: " . $_SESSION['previousPageUrl']);
 }
 // Bootstrap gettext translations as early as possible, but after attempting
 // to sign on the agent
