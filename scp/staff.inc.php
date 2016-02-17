@@ -79,12 +79,15 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-
+    if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
+    {
+        $_SESSION['previous2PageUrl'] = $_SESSION['previousPageUrl'];
+    }
+    $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
     {
-        $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $id = $thisstaff->getId();
         if($thisstaff->updateAgentTicketAccess(0))
         {
@@ -111,10 +114,17 @@ function changeStaffToOrigin()
 }
 function backToSearchPage()
 {
-    if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
-      echo "<script>                
-        window.history.go(-2);
-       </script>";
+    if(!empty($_SESSION['previous2PageUrl']))
+    {
+        $history_2_Url = $_SESSION['previous2PageUrl'];
+        if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'search='))
+        {
+             echo "<script>                
+                window.history.go(-2);
+               </script>"; 
+        }
+    }
+
 // if(isset($previousURL)&&!empty($previousURL))
      // header("Location: " . $_SESSION['previousPageUrl']);
 }
