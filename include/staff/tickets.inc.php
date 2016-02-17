@@ -516,15 +516,15 @@ if ($results) {
                 </td>
                 <?php } ?>
                 <?php $ticketUrl = "tickets.php?id=".$row['ticket_id'];
-                    if($row['lock_id'])
-                    {  
-                     $ticketUrl = "javascript:void(0)";
-                    }
+                    //                 if($row['lock_id'])
+                    // {  
+                    //  $ticketUrl = "javascript:void(0)";
+                    // }
                 ?>
                 <td title="<?php echo $row['email']; ?>" nowrap>
                   <a class="Icon <?php echo strtolower($row['source']); ?>Ticket ticketPreview"
                     title="<?php echo __('Preview Ticket'); ?>"
-                    href="<?php echo $ticketUrl; ?>"><?php echo $tid; ?></a>
+                    href="<?php echo $ticketUrl; ?>" <?php if($row['lock_id']) echo "click='return false;'";?>><?php echo $tid; ?></a>
                     <?php
                         if($row['lock_id'])
                         {
