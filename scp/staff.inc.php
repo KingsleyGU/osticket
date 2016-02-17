@@ -81,11 +81,9 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
     if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
     {
-        $temp = $_SESSION['previousPageUrl'];
-        $_SESSION['previous2PageUrl'] = $temp;
+        $_SESSION['previous2PageUrl'] = $_SERVER['HTTP_REFERER'];
     }
-    $_SESSION['previousPageUrl'] = $_SERVER['HTTP_REFERER'];
-    // "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
@@ -118,13 +116,13 @@ function backToSearchPage()
 {
     if(!empty($_SESSION['previous2PageUrl']))
     {
-        $history_2_Url = $_SESSION['previous2PageUrl'];
-        if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
-        {
+        // $history_2_Url = $_SESSION['previous2PageUrl'];
+        // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
+        // {
              echo "<script>                
                 window.history.go(-2);
                </script>"; 
-        }
+        // }
     }
 
 // if(isset($previousURL)&&!empty($previousURL))
