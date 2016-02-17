@@ -81,7 +81,8 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
     if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
     {
-        $_SESSION['previous2PageUrl'] = $_SESSION['previousPageUrl'];
+        $temp = $_SESSION['previousPageUrl'];
+        $_SESSION['previous2PageUrl'] = $temp;
     }
     $_SESSION['previousPageUrl'] = $_SERVER['HTTP_REFERER'];
     // "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
