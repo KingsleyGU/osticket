@@ -118,7 +118,7 @@ function changeStaffToOrigin()
 }
 function backToSearchPage()
 {
-    if(!empty($_SESSION['previous2PageUrl']))
+    if(!empty($_SESSION['previous3PageUrl']))
     {
         // $history_2_Url = $_SESSION['previous2PageUrl'];
         // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
@@ -128,6 +128,8 @@ function backToSearchPage()
                </script>"; 
         // }
     }
+    elseif($ticket && is_object($ticket))
+            $ticket->reload();
 
 // if(isset($previousURL)&&!empty($previousURL))
      // header("Location: " . $_SESSION['previousPageUrl']);
