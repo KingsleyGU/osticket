@@ -52,6 +52,7 @@ if($ticket->isOverdue())
     $warn.='&nbsp;&nbsp;<span class="Icon overdueTicket">'.__('Marked overdue!').'</span>';
 // if(isset($_SESSION['previousPageUrl'])&&!empty($_SESSION['previousPageUrl']))
 //      echo "<h3>111111111".$_SESSION['previousPageUrl']."</h3>";
+echo "<h3>previous2: ".$_SESSION['previous3PageUrl']."</h3>";
 echo "<h3>previous2: ".$_SESSION['previous2PageUrl']."</h3>";
 echo "<h3>previous1: ".$_SESSION['previousPageUrl']."</h3>";
 ?>
