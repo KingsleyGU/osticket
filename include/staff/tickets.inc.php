@@ -524,7 +524,7 @@ if ($results) {
                 <td title="<?php echo $row['email']; ?>" nowrap>
                   <a class="Icon <?php echo strtolower($row['source']); ?>Ticket ticketPreview"
                     title="<?php echo __('Preview Ticket'); ?>"
-                    href="<?php echo $ticketUrl; ?>" style="pointer-events: none;" onclick="return false;"><?php echo $tid; ?></a>
+                    href="<?php echo $ticketUrl; ?>" style="pointer-events: none; cursor: default;" onclick="return false;"><?php echo $tid; ?></a>
                     <?php
                         if($row['lock_id'])
                         {
