@@ -79,6 +79,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
+    $_SESSION['previous3PageUrl'] = false;
     if(isset($_SESSION['previous2PageUrl'])&&(!empty($_SESSION['previous2PageUrl'])))
     {
         $_SESSION['previous3PageUrl'] = true;
@@ -118,7 +119,7 @@ function changeStaffToOrigin()
 }
 function backToSearchPage()
 {
-    if($_SESSION['previous3PageUrl'])
+    if(isset($_SESSION['previous3PageUrl'])&&$_SESSION['previous3PageUrl'])
     {
         // $history_2_Url = $_SESSION['previous2PageUrl'];
         // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
@@ -129,9 +130,8 @@ function backToSearchPage()
         // }
     }
     else
-         echo "<script>                
-            window.history.go(-1);
-           </script>"; 
+        header('Location: '.$_SERVER['REQUEST_URI']);
+          
 
 // if(isset($previousURL)&&!empty($previousURL))
      // header("Location: " . $_SESSION['previousPageUrl']);
