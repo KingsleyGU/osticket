@@ -81,7 +81,7 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
     if(isset($_SESSION['previous2PageUrl'])&&(!empty($_SESSION['previous2PageUrl'])))
     {
-        $_SESSION['previous3PageUrl'] = $_SESSION['previous2PageUrl'];
+        $_SESSION['previous3PageUrl'] = true;
     }
     if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
     {
@@ -118,7 +118,7 @@ function changeStaffToOrigin()
 }
 function backToSearchPage()
 {
-    if(!empty($_SESSION['previous3PageUrl']))
+    if($_SESSION['previous3PageUrl'])
     {
         // $history_2_Url = $_SESSION['previous2PageUrl'];
         // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
