@@ -79,16 +79,15 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-    $_SESSION['previous3PageUrl'] = null;
     if(isset($_SESSION['previous2PageUrl'])&&(!empty($_SESSION['previous2PageUrl'])))
     {
-        $_SESSION['previous3PageUrl'] = $_SESSION['previous2PageUrl'];
+        $_SESSION['previous3PageUrl'] = true;
     }
     if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
     {
-        $_SESSION['previous2PageUrl'] = $_SERVER['HTTP_REFERER'];
+        $_SESSION['previous2PageUrl'] = true;
     }
-    $_SESSION['previousPageUrl'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $_SESSION['previousPageUrl'] = true;
     
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
