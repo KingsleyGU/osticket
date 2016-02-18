@@ -292,9 +292,9 @@ $qselect.=' ,IF(ticket.duedate IS NULL,IF(sla.id IS NULL, NULL, DATE_ADD(ticket.
          .' ,IF(staff.staff_id IS NULL,team.name,CONCAT_WS(" ", staff.lastname, staff.firstname)) as assigned '
          .' ,IF(ptopic.topic_pid IS NULL, topic.topic, CONCAT_WS(" / ", ptopic.topic, topic.topic)) as helptopic '
          .' ,cdata.priority as priority_id, cdata.subject, pri.priority_desc, pri.priority_color';
-
-$qfrom.=' LEFT JOIN '.TICKET_LOCK_TABLE.' tlock ON (ticket.ticket_id=tlock.ticket_id AND tlock.expire>NOW()
-               AND tlock.staff_id!='.db_input($thisstaff->getId()).') '
+             
+$qfrom.=' LEFT JOIN '.TICKET_LOCK_TABLE.' tlock ON (ticket.ticket_id=tlock.ticket_id AND tlock.expire>NOW() )'
+        // AND tlock.staff_id!='.db_input($thisstaff->getId()).') '
        .' LEFT JOIN '.STAFF_TABLE.' staff ON (ticket.staff_id=staff.staff_id) '
        .' LEFT JOIN '.TEAM_TABLE.' team ON (ticket.team_id=team.team_id) '
        .' LEFT JOIN '.SLA_TABLE.' sla ON (ticket.sla_id=sla.id AND sla.isactive=1) '
