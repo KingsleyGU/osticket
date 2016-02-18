@@ -348,7 +348,7 @@ class TicketsAjaxAPI extends AjaxController {
 
         global $thisstaff;
 
-        if(!$thisstaff || !($ticket=Ticket::lookup($tid)) || !$ticket->checkStaffAccess($thisstaff))
+        if(!$thisstaff || !($ticket=Ticket::lookup($tid)))
             Http::response(404, __('No such ticket'));
 
         include STAFFINC_DIR . 'templates/ticket-preview.tmpl.php';
