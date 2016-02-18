@@ -128,8 +128,8 @@ function backToSearchPage()
                </script>"; 
         // }
     }
-    elseif($ticket && is_object($ticket))
-            $ticket->reload();
+    else
+        header("Refresh:0");
 
 // if(isset($previousURL)&&!empty($previousURL))
      // header("Location: " . $_SESSION['previousPageUrl']);
