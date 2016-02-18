@@ -129,7 +129,9 @@ function backToSearchPage()
         // }
     }
     else
-        header("Refresh:0");
+         echo "<script>                
+            window.history.go(-1);
+           </script>"; 
 
 // if(isset($previousURL)&&!empty($previousURL))
      // header("Location: " . $_SESSION['previousPageUrl']);
