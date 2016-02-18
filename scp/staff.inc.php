@@ -79,10 +79,10 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-    $_SESSION['previous3PageUrl'] = false;
+    $_SESSION['previous3PageUrl'] = null;
     if(isset($_SESSION['previous2PageUrl'])&&(!empty($_SESSION['previous2PageUrl'])))
     {
-        $_SESSION['previous3PageUrl'] = true;
+        $_SESSION['previous3PageUrl'] = $_SESSION['previous2PageUrl'];
     }
     if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
     {
