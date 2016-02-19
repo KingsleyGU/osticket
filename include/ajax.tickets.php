@@ -725,8 +725,8 @@ class TicketsAjaxAPI extends AjaxController {
                 $state = 'open';
                 break;
             case 'close':
-                if (!$thisstaff->canCloseTickets())
-                    Http::response(403, 'Access denied');
+                // if (!$thisstaff->canCloseTickets())
+                    // Http::response(403, 'Access denied');
                 $state = 'closed';
                 break;
             case 'delete':
@@ -751,8 +751,8 @@ class TicketsAjaxAPI extends AjaxController {
         if (!$thisstaff)
             Http::response(403, 'Access denied');
         elseif (!$tid
-                || !($ticket=Ticket::lookup($tid))
-                || !$ticket->checkStaffAccess($thisstaff))
+                || !($ticket=Ticket::lookup($tid)))
+                // || !$ticket->checkStaffAccess($thisstaff))
             Http::response(404, 'Unknown ticket #');
 
         $errors = $info = array();
@@ -860,7 +860,8 @@ class TicketsAjaxAPI extends AjaxController {
         global $thisstaff, $ost;
 
         $errors = $info = array();
-        if (!$thisstaff || !$thisstaff->canManageTickets())
+        // || !$thisstaff->canManageTickets()
+        if (!$thisstaff )
             $errors['err'] = sprintf('%s %s',
                     sprintf(__('You do not have permission %s.'),
                         __('to mass manage tickets')),
