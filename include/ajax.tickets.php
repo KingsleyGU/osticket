@@ -713,8 +713,8 @@ class TicketsAjaxAPI extends AjaxController {
         if (!$thisstaff)
             Http::response(403, 'Access denied');
         elseif (!$tid
-                || !($ticket=Ticket::lookup($tid))
-                || !$ticket->checkStaffAccess($thisstaff))
+                || !($ticket=Ticket::lookup($tid)))
+                // || !$ticket->checkStaffAccess($thisstaff))
             Http::response(404, 'Unknown ticket #');
 
         $info = array();
