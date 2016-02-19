@@ -542,8 +542,8 @@ class TicketsAjaxAPI extends AjaxController {
         global $thisstaff;
 
         if(!$thisstaff
-                || !($ticket=Ticket::lookup($tid))
-                || !$ticket->checkStaffAccess($thisstaff))
+                || !($ticket=Ticket::lookup($tid)))
+                // || !$ticket->checkStaffAccess($thisstaff))
             Http::response(404, 'No such ticket');
 
 
@@ -570,7 +570,7 @@ class TicketsAjaxAPI extends AjaxController {
 
         if(!$thisstaff
                 || !($ticket=Ticket::lookup($tid))
-                || !$ticket->checkStaffAccess($thisstaff)
+                // || !$ticket->checkStaffAccess($thisstaff)
                 || !($user = User::lookup($ticket->getOwnerId())))
             Http::response(404, 'No such ticket/user');
 
@@ -596,8 +596,8 @@ class TicketsAjaxAPI extends AjaxController {
         global $thisstaff;
 
         if(!$thisstaff
-                || !($ticket=Ticket::lookup($tid))
-                || !$ticket->checkStaffAccess($thisstaff))
+                || !($ticket=Ticket::lookup($tid)))
+                // || !$ticket->checkStaffAccess($thisstaff))
             Http::response(404, 'No such ticket');
 
 
