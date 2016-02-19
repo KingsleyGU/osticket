@@ -131,10 +131,10 @@ function backToSearchPage()
     else
     {
       $newUrl = $_SERVER['REQUEST_URI'];
-      if(isset($_GET['id'])&&$_GET['id']!=0)
-      {
-        $newUrl = $newUrl.'?id='.$_GET['id'];
-      }
+      // if(isset($_GET['id'])&&$_GET['id']!=0)
+      // {
+      //   $newUrl = $newUrl.'?id='.$_GET['id'];
+      // }
       header('Location: '.$newUrl);  
     }
         
