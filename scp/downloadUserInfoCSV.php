@@ -10,7 +10,7 @@ $fsize = filesize($filename);
 //put the latest data into csv file
 error_reporting(~0); ini_set('display_errors', 1);
 // $fp = fopen('users.csv', 'w');
-fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
+// fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
 
 if($userInfoArray = Staff::getStaffCSVFile())
 {
@@ -23,7 +23,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 }
 
 
-fclose($fp);
+// fclose($fp);
 // header('Content-Description: File Transfer');
 // header('Content-Encoding: UTF-8');
 
@@ -36,7 +36,7 @@ fclose($fp);
 // header('Cache-Control: must-revalidate');
 // header('Pragma: public');
 // header('Content-Length: ' . filesize($filename));
-echo "\xEF\xBB\xBF"; 
+// echo "\xEF\xBB\xBF"; 
 // ob_clean();
 // flush();
 
