@@ -1,11 +1,11 @@
 <?php
 require('staff.inc.php');
 
-// $filename = "users.csv";
-// $fp = fopen($filename, "w");
+$filename = "users.csv";
+$fp = fopen($filename, "w");
 // fileName = "file\customer-list.csv";
-// $filePath = $filename;
-// $fsize = filesize($filename);
+$filePath = $filename;
+$fsize = filesize($filename);
 
 //put the latest data into csv file
 error_reporting(~0); ini_set('display_errors', 1);
