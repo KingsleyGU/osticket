@@ -18,9 +18,9 @@ header('Content-Disposition: attachment; filename='.basename($filename));
 
 if($userInfoArray = Staff::getStaffCSVFile())
 {
-	echo json_encode($userInfoArray);
+	// echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
-	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+	// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
     fputcsv($fp, $fields);
 	}
 
