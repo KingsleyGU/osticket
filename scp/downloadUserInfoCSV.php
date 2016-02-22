@@ -13,15 +13,15 @@ $fsize = filesize($filename);
 // username,firstname,lastname,isadmin,onvacation,lastlogin
 fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
 
-header('Content-Type: application/csv;charset=utf-8');
-header('Content-Disposition: attachment; filename='.basename($filename));
+// header('Content-Type: application/csv;charset=utf-8');
+// header('Content-Disposition: attachment; filename='.basename($filename));
 
 if($userInfoArray = Staff::getStaffCSVFile())
 {
-	// echo json_encode($userInfoArray);
+	echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
 	// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
-    fputcsv($fp, $fields);
+    // fputcsv($fp, $fields);
 	}
 
 }
