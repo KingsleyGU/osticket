@@ -13,6 +13,9 @@ error_reporting(~0); ini_set('display_errors', 1);
 // username,firstname,lastname,isadmin,onvacation,lastlogin
 fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
 
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
+
 if($userInfoArray = Staff::getStaffCSVFile())
 {
 	// echo json_encode($userInfoArray);
@@ -25,8 +28,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 
 fclose($fp);
 
-header('Content-Type: application/csv;charset=utf-8');
-header('Content-Disposition: attachment; filename='.basename($filename));
+
 echo "\xEF\xBB\xBF"; 
  readfile($filename);
 
