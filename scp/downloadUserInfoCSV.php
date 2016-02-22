@@ -10,7 +10,7 @@ $fsize = filesize($filename);
 //put the latest data into csv file
 error_reporting(~0); ini_set('display_errors', 1);
 // $fp = fopen('users.csv', 'w');
-// fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
+fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
 
 if($userInfoArray = Staff::getStaffCSVFile())
 {
