@@ -12,13 +12,14 @@ error_reporting(~0); ini_set('display_errors', 1);
 // $fp = fopen('users.csv', 'w');
 // header('Content-Type: application/csv;charset=utf-8');
 // header('Content-Disposition: attachment; filename='.basename($filename));
+// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 fputcsv($fp,   array('id','org_id','default_email_id','status','name','created','updated'));
 
 if($userInfoArray = User::getUsersCSVFile())
 {
 	echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
-	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+	// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
     fputcsv($fp, $fields);
 	}
 
