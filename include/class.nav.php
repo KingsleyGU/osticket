@@ -262,7 +262,7 @@ class AdminNav extends StaffNav{
                     $subnav[]=array('desc'=>__('Teams'),'href'=>'teams.php','iconclass'=>'teams');
                     $subnav[]=array('desc'=>__('Groups'),'href'=>'groups.php','iconclass'=>'groups');
                     $subnav[]=array('desc'=>__('Departments'),'href'=>'departments.php','iconclass'=>'departments');
-                    $subnav[]=array('desc'=>__('Download Users'),'href'=>'downloadUserInfoCSV.php','target'=>'_blank','iconclass'=>'users');
+                    $subnav[]=array('desc'=>__('Download Users'),'href'=>'downloadUserInfoCSV.php','target'=>'_blank');
                     break;
                 case 'apps':
                     foreach ($this->getRegisteredApps() as $app)
