@@ -17,7 +17,7 @@ if(($subnav=$nav->getSubMenu()) && is_array($subnav)){
         if (!($id=$item['id']))
             $id="subnav$k";
 
-        echo sprintf('<li><a class="%s" href="%s" title="%s" id="%s" target="%s">%s</a></li>',
+        echo sprintf('<li><a class="%s" href="%s" title="%s" id="%s" target="_blank" target="%s">%s</a></li>',
                 $class, $item['href'], $item['title'], $id,$item['target'], $item['desc'] );
     }
 }
