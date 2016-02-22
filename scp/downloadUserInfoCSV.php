@@ -29,5 +29,5 @@ header('Content-Disposition: attachment; filename='.basename($filename));
 echo "\xEF\xBB\xBF"; 
  readfile($filename);
 
-// exit;
+exit;
 ?>
