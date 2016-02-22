@@ -18,7 +18,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	// foreach ($userInfoArray as $fields) {
 	// fprintf($df, chr(0xEF).chr(0xBB).chr(0xBF));
  //    fputcsv($fp, $fields);
-	}
+	// }
 
 }
 
