@@ -14,11 +14,11 @@ fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','c
 
 if($userInfoArray = Staff::getStaffCSVFile())
 {
-	echo json_encode($userInfoArray);
-	// foreach ($userInfoArray as $fields) {
-	// fprintf($df, chr(0xEF).chr(0xBB).chr(0xBF));
- //    fputcsv($fp, $fields);
-	// }
+	// echo json_encode($userInfoArray);
+	foreach ($userInfoArray as $fields) {
+	fprintf($df, chr(0xEF).chr(0xBB).chr(0xBF));
+    fputcsv($fp, $fields);
+	}
 
 }
 
