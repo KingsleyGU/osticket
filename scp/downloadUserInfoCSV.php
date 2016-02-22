@@ -34,7 +34,7 @@ header('Content-Disposition: attachment; filename='.basename($filename));
 // header('Content-Length: ' . filesize($filename));
 echo "\xEF\xBB\xBF"; 
 ob_clean();
-flush();
+// flush();
 
 // //read the file from disk and output the content.
 // // echo "\xEF\xBB\xBF"; // UTF-8 BOM
