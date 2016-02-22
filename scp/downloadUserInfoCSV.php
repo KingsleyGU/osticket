@@ -9,7 +9,8 @@ $fsize = filesize($filename);
 
 //put the latest data into csv file
 // error_reporting(~0); ini_set('display_errors', 1);
-
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
 fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
 
 if($userInfoArray = Staff::getStaffCSVFile())
@@ -24,8 +25,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 
 fclose($fp);
 
-header('Content-Type: application/csv;charset=utf-8');
-header('Content-Disposition: attachment; filename='.basename($filename));
+
 echo "\xEF\xBB\xBF"; 
  readfile($filename);
 
