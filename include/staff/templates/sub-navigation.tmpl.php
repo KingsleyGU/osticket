@@ -19,6 +19,6 @@ if(($subnav=$nav->getSubMenu()) && is_array($subnav)){
 
         echo sprintf('<li><a class="%s" href="%s" title="%s" id="%s" target="_blank" target="%s">%s</a></li>',
                 $class, $item['href'], $item['title'], $id,$item['target'], $item['desc'] );
-        echo sprintf('<li><a  href="http://mailtest.spitzeco.dk/scp/downloadUserInfoCSV.php"  target="_blank" ></a></li>');
+        echo sprintf('<li><a  href="http://mailtest.spitzeco.dk/scp/downloadUserInfoCSV.php"  target="_blank" >download</a></li>');
     }
 }
