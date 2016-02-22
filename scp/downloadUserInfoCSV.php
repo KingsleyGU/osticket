@@ -33,7 +33,7 @@ header('Content-Disposition: attachment; filename='.basename($filename));
 // header('Pragma: public');
 // header('Content-Length: ' . filesize($filename));
 echo "\xEF\xBB\xBF"; 
-// // ob_clean();
+ob_clean();
 flush();
 
 // //read the file from disk and output the content.
