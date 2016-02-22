@@ -280,6 +280,22 @@ implements EmailContact {
 
         return $this->dept;
     }
+    function getStaffCSVFile()
+    {
+        $sql = "select username,firstname,lastname,isadmin,onvacation,created,lastlogin from ".STAFF_TABLE; 
+        $userInfoArray = array();
+        
+        if(!($res=db_query($sql)) || !db_num_rows($res))
+            return null;
+        else
+        {
+           while (  $row  =  db_fetch_array($res) )  {
+              array_push($userInfoArray,$row);
+            }
+            return  $userInfoArray;
+        }    
+
+    }
 
     function getLanguage() {
         static $cached = false;
