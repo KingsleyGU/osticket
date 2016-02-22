@@ -31,8 +31,9 @@ fclose($fp);
 
 
 echo "\xEF\xBB\xBF"; 
- readfile($filename);
 header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
+ readfile($filename);
+
 exit;
 ?>
