@@ -529,7 +529,7 @@ if ($results) {
                         if($row['lock_id'])
                         {
                     ?>
-                    <img src="/images/lock.jpg" style="height:20px;width:20px;">
+                    <img src="/images/lock.jpg" style="height:16px;width:16px;">
                     <?php } ?>
                    </a> 
                 </td>
