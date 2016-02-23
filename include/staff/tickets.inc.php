@@ -524,13 +524,14 @@ if ($results) {
                 <td title="<?php echo $row['email']; ?>" nowrap>
                   <a class="Icon <?php echo strtolower($row['source']); ?>Ticket ticketPreview"
                     title="<?php echo "tickets.php?id=".$row['ticket_id']; ?>"
-                    href="<?php echo $ticketUrl; ?>"><?php echo $tid; ?></a>
+                    href="<?php echo $ticketUrl; ?>"><?php echo $tid; ?>
                     <?php
                         if($row['lock_id'])
                         {
                     ?>
                     <img src="/images/lock.jpg" style="height:20px;width:20px;">
                     <?php } ?>
+                   </a> 
                 </td>
                 <td align="center" nowrap><?php echo Format::db_datetime($row['effective_date']); ?></td>
                 <td><a <?php if ($flag) { ?> class="Icon <?php echo $flag; ?>Ticket" title="<?php echo ucfirst($flag); ?> Ticket" <?php } ?>
