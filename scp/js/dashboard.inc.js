@@ -141,7 +141,7 @@
         var group = current_tab.attr('table-group');
         var pagesize = 25;
         getConfig().then(function(c) { 
-            if (c.page_size) pagesize = c.page_size; 
+            if (c.page_size&&c.page_size!='0') pagesize = c.page_size; 
         });
         $.ajax({
             method:     'GET',
