@@ -115,7 +115,8 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                         $file['type'] = $fileContent[$j]->mime;
                         $file['encoding'] = 'base64';
                         // $file['cid'] = false;
-                        $url = "https://w2l.dk".$fileContent[$j]->url;
+                        // $url = "https://w2l.dk".$fileContent[$j]->url;
+                        $url = $fileContent[$j]->url;
                         // $file['data'] = base64_encode(file_get_contents($url));
                         $file['data'] = getFileContentsSSL($url);
                         // try {
