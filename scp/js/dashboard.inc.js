@@ -161,7 +161,7 @@
                     }
                 }
                 for (var i in json.data) {
-                    if (i % pagesize === 0)
+                    if (i % pagesize == 0)
                         b = $('<tbody>').attr({'page':i/pagesize+1}).addClass('hidden').appendTo(q);
                     row = json.data[i];
                     tr = $('<tr>').appendTo(b);
