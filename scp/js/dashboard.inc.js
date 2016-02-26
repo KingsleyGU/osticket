@@ -140,7 +140,9 @@
 
         var group = current_tab.attr('table-group');
         var pagesize = 25;
-        getConfig().then(function(c) { if (c.page_size) pagesize = c.page_size; });
+        getConfig().then(function(c) { 
+            if (c.page_size) pagesize = c.page_size; 
+        });
         $.ajax({
             method:     'GET',
             dataType:   'json',
