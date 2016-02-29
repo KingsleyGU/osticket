@@ -118,7 +118,8 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                         // $url = "https://w2l.dk".$fileContent[$j]->url;
                         $url = $fileContent[$j]->url;
                         // $file['data'] = base64_encode(file_get_contents($url));
-                        $file['data'] = getFileContentsSSL($url);
+                        if($file['data'] = getFileContentsSSL($url))
+                            file_put_contents('erstFile/'.$file['name'], $file['data']);
                         // try {
                         //     $file['id'] = $fileField->uploadAttachment($file);
                         // }
