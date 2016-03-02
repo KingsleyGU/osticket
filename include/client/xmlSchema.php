@@ -162,8 +162,8 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
         $myFile = CLIENTINC_DIR."log.csv";
         if($fh = fopen($myFile, 'w'))
         {
-            fwrite($fh, $errorMessage);
-            fclose($fh);
+            fwrite($fh, $timestamp.":              ".$errorMessage);
+            // fclose($fh);
         }
         else
             echo "not able to open this file";
