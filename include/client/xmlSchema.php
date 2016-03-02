@@ -121,8 +121,14 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                         if($file['data'] = getFileContentsSSL($url))
                         {
                             $timestamp = date("Y-m-d_H:i:s");
-                            if(!file_put_contents('erstFile/'.$timestamp.$file['name'], $file['data']))
-                                logErrors("not able to store the file");
+                            // if(!file_put_contents(CLIENTINC_DIR.'erstFile/'.$timestamp.$file['name'], $file['data']))
+                            //     logErrors("not able to store the file");
+                            try
+                            {
+                                file_put_contents(CLIENTINC_DIR.'erstFile/'.$timestamp.$file['name'], $file['data']);
+                            }catch (Exception $e) {
+                                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                            }
                         }
                         else
                             logErrors("The file url is not valid");
