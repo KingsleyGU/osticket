@@ -927,7 +927,7 @@ class Ticket {
                 // Send out alerts if comments are included
                 $alert = true;
             }
-
+            $this->setStaffId(0);
             $this->logNote(__('Status Changed'), $note, $thisstaff, $alert);
         }
         // Log events via callback
