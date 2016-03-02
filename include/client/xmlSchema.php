@@ -32,7 +32,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                 }
                 else
                 {
-                    echo "The xml file can not be loaded \n";
+                    logErrors("The xml file can not be loaded ");
                 }
                 for($i=0;$i<count($nodes);$i++)
                 {
@@ -144,17 +144,25 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                         }
                         else
                         {
-                            echo "please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true";
+                            logErrors("please go to include/ost-config to make the DELETE_ERST_SERVICE_QUEUE to true");
                         }
                     }
                     else
                     {
-                        echo "ticket with id ".$data['crm_contact_id']." has already exists <br/>";
+                        logErrors("ticket with id ".$data['crm_contact_id']." has already exists");
                     }
                 }
             } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
+    }
+    function logErrors($errorMessage)
+    {
+       $timestamp = date("Y-m-d_H:i:s");
+        $myFile = "log.csv";
+        $fh = fopen($myFile, 'w');
+        fwrite($fh, $errorMessage);
+        fclose($fh);
     }
     function removeLineBreaker($string)
     {
