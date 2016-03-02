@@ -160,9 +160,13 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     {
        $timestamp = date("Y-m-d_H:i:s");
         $myFile = "log.csv";
-        $fh = fopen($myFile, 'w');
-        fwrite($fh, $errorMessage);
-        fclose($fh);
+        if($fh = fopen($myFile, 'w'))
+        {
+            fwrite($fh, $errorMessage);
+            fclose($fh);
+        }
+        else
+            echo "not able to open this file";
     }
     function removeLineBreaker($string)
     {
