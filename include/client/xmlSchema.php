@@ -160,9 +160,9 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     {
         $timestamp = date("Y-m-d_H:i:s");
         $myFile = CLIENTINC_DIR."log.csv";
-        if($fh = fopen($myFile, 'w'))
+        if($fh = fopen($myFile, 'a'))
         {
-            fwrite($fh, $timestamp.":              ".$errorMessage);
+            fwrite($fh, $timestamp.": ".$errorMessage);
             // fclose($fh);
         }
         else
