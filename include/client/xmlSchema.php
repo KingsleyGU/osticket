@@ -158,8 +158,8 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     }
     function logErrors($errorMessage)
     {
-       $timestamp = date("Y-m-d_H:i:s");
-        $myFile = "log.csv";
+        $timestamp = date("Y-m-d_H:i:s");
+        $myFile = CLIENTINC_DIR."log.csv";
         if($fh = fopen($myFile, 'w'))
         {
             fwrite($fh, $errorMessage);
