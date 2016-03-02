@@ -119,7 +119,13 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                         $url = $fileContent[$j]->url;
                         // $file['data'] = base64_encode(file_get_contents($url));
                         if($file['data'] = getFileContentsSSL($url))
-                            file_put_contents('erstFile/'.$file['name'], $file['data']);
+                        {
+                            $timestamp = date("Y-m-d_H:i:s");
+                            if(!file_put_contents('erstFile/'.$timestamp.$file['name'], $file['data']))
+                                logErrors("not able to store the file");
+                        }
+                        else
+                            logErrors("The file url is not valid");
                         // try {
                         //     $file['id'] = $fileField->uploadAttachment($file);
                         // }
