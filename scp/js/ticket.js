@@ -64,14 +64,14 @@ var autoLock = {
             autoLock.renewLock(e);
         }
 
-        if(autoLock.lockId && !autoLock.lasteventTime) { //I hate nav away warnings..but
-            $(document).on('pjax:beforeSend.changed', function(e) {
-                return confirm(__("Any changes or info you've entered will be discarded!"));
-            });
-            $(window).bind('beforeunload', function(e) {
-                return __("Any changes or info you've entered will be discarded!");
-             });
-        }
+        // if(autoLock.lockId && !autoLock.lasteventTime) { //I hate nav away warnings..but
+        //     $(document).on('pjax:beforeSend.changed', function(e) {
+        //         return confirm(__("Any changes or info you've entered will be discarded!"));
+        //     });
+        //     $(window).bind('beforeunload', function(e) {
+        //         return __("Any changes or info you've entered will be discarded!");
+        //      });
+        // }
 
         autoLock.lasteventTime=new Date().getTime();
     },
@@ -244,9 +244,9 @@ var autoLock = {
         }
     },
 
-    discardWarning: function(e) {
-        e.returnValue=__("Any changes or info you've entered will be discarded!");
-    },
+    // discardWarning: function(e) {
+    //     e.returnValue=__("Any changes or info you've entered will be discarded!");
+    // },
 
     //TODO: Monitor events and elapsed time and warn user when the lock is about to expire.
     monitorEvents: function() {
