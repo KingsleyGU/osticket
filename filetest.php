@@ -1,9 +1,15 @@
 <?php
-$image = new ImageMagick();
+require('client.inc.php');
+require_once(INCLUDE_DIR.'mpdf/mpdf.php');
+$pdf = new mPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',16);
 
-if($f=fopen("http://mailtest.spitzeco.dk/osticketLocal/file.php?key=p0u5jcnzlzq134cjew27utvxohxe1n94&expires=1457654400&signature=7ea5d189d83a8cb87a8d34894b004ee395154891", "w")){ 
-  $image->writeImageFile($f);
-}
-echo $image;
+
+
+$file = file_get_contents("http://mailtest.spitzeco.dk/osticket/file.php?key=p0u5jcnzlzq134cjew27utvxohxe1n94&expires=1457654400&signature=15aa64ad32f4ac088eba051a169598dea5a73b3e");
+$pdf ->WriteHTML($file,4);
+
+$content = $pdf->Output('doc.pdf','F');
 
 ?>
