@@ -26,9 +26,9 @@ $(document).ready(function(){
         if(!fObj.data('changed')){
             fObj.data('changed', true);
             $('input[type=submit]', fObj).css('color', 'red');
-            $(window).bind('beforeunload', function(e) {
-                return __("Are you sure you want to leave? Any changes or info you've entered will be discarded!");
-             });
+            // $(window).bind('beforeunload', function(e) {
+            //     return __("Are you sure you want to leave? Any changes or info you've entered will be discarded!");
+            //  });
         }
        });
 
