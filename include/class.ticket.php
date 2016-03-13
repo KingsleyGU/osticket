@@ -2021,10 +2021,20 @@ class Ticket {
         {
             $responseBody = null;
             $finalBody = null;
-            if(!($clientThreadEntries = $this->getClientThread()))
-                return null;
-            foreach ($clientThreadEntries as $clientThreadEntry) {
-                if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
+            $threadList = array();
+            if(isset($vars['thread_list']))
+            {
+                $threadList =  explode(",", $vars['thread_list']);
+            }
+
+            // if(!($clientThreadEntries = $this->getClientThread()))
+            //     return null;
+            // foreach ($clientThreadEntries as $clientThreadEntry) {
+            //     if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
+            //         return null;
+            foreach ($threadList as $key => $threadId) 
+            {
+                if(!($response = ThreadEntry::lookup(intval($threadId))))
                     return null;
                 $responseBody = $responseBody.$response->ht['body'];
                 $responseBody = $responseBody ."<br>--------------Line breaker--------------<br>";
