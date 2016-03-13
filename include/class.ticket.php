@@ -2027,15 +2027,15 @@ class Ticket {
                 $threadList =  explode(",", $vars['thread_list']);
             }
 
-            // if(!($clientThreadEntries = $this->getClientThread()))
-            //     return null;
-            // foreach ($clientThreadEntries as $clientThreadEntry) {
-            //     if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
-            //         return null;
-            foreach ($threadList as $key => $threadId) 
-            {
-                if(!($response = ThreadEntry::lookup(intval($threadId))))
+            if(!($clientThreadEntries = $this->getClientThread()))
+                return null;
+            foreach ($clientThreadEntries as $clientThreadEntry) {
+                if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
                     return null;
+            // foreach ($threadList as $key => $threadId) 
+            // {
+            //     $response = ThreadEntry::lookup(intval($threadId));
+                    // return null;
                 $responseBody = $responseBody.$response->ht['body'];
                 $responseBody = $responseBody ."<br>--------------Line breaker--------------<br>";
                 $finalThreadBody = $response->ht['body'];
