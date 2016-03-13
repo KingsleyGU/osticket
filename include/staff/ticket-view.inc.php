@@ -955,21 +955,21 @@ $tcount+= $ticket->getNumNotes();
                         echo Format::db_datetime($entry['created']);?></span>
                     <span style="display:inline-block;padding:0 1em" class="faded title"><?php
                         echo Format::truncate($entry['title'], 100); ?></span>
-                    </span>
-                    <?php 
-                        if($entry['thread_type'] != 'N')
-                        {
-                    ?>
-                    <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>"> I have a bike<br>
-                    <?php 
-                        }
-                    ?>                    
+                    </span>                  
                     <span class="pull-right" style="white-space:no-wrap;display:inline-block">
                         <span style="vertical-align:middle;" class="textra"></span>
                         <span style="vertical-align:middle;"
                             class="tmeta faded title"><?php
                             echo Format::htmlchars($entry['name'] ?: $entry['poster']); ?></span>
                     </span>
+                    <?php 
+                        if($entry['thread_type'] != 'N')
+                        {
+                    ?>
+                    <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice pull-right" value="<?php echo $entry['id']; ?>"> I have a bike<br>
+                    <?php 
+                        }
+                    ?>                      
                 </div>
                 </th>
             </tr>
