@@ -961,14 +961,14 @@ $tcount+= $ticket->getNumNotes();
                         if($entry['thread_type'] != 'N')
                         {
                     ?>
-                    <div class="pull-right">
+                    <div class="pull-right" style="pointer-events: none">
                     <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>"> Forward
                     </div>
                     <?php 
                         }
                     ?>   
 
-                    <span class="pull-right" style="white-space:no-wrap;display:inline-block" style="pointer-events: none">
+                    <span class="pull-right" style="white-space:no-wrap;display:inline-block" >
                         <span style="vertical-align:middle;" class="textra"></span>
                         <span style="vertical-align:middle;"
                             class="tmeta faded title"><?php
