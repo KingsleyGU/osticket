@@ -2035,12 +2035,14 @@ class Ticket {
             foreach ($threadList as $threadId) 
             {
                 if($threadId != "")
-                {$response = ThreadEntry::lookup(intval($threadId));
+                {
+                    $response = ThreadEntry::lookup(intval($threadId));
                     // return null;
-                $responseBody = $responseBody.$response->ht['body'].json_encode($threadList);
-                $responseBody = $responseBody ."<br>--------------Line breaker--------------<br>";
-                $finalThreadBody = $response->ht['body'];
-                $attachments = array_merge($attachments, $response->getAttachments());}
+                    $responseBody = $responseBody.$response->ht['body'];
+                    $responseBody = $responseBody ."<br>--------------Line breaker--------------<br>";
+                    $finalThreadBody = $response->ht['body'];
+                    $attachments = array_merge($attachments, $response->getAttachments());
+                }
             }
             $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
             $response->reload();
