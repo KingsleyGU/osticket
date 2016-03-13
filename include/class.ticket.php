@@ -2027,19 +2027,20 @@ class Ticket {
                 $threadList =  explode(",", $vars['thread_list']);
             }
 
-            if(!($clientThreadEntries = $this->getClientThread()))
-                return null;
-            foreach ($clientThreadEntries as $clientThreadEntry) {
-                if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
-                    return null;
-            // foreach ($threadList as $key => $threadId) 
-            // {
-            //     $response = ThreadEntry::lookup(intval($threadId));
+            // if(!($clientThreadEntries = $this->getClientThread()))
+            //     return null;
+            // foreach ($clientThreadEntries as $clientThreadEntry) {
+            //     if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
+            //         return null;
+            foreach ($threadList as $threadId) 
+            {
+                if($threadId != "")
+                {$response = ThreadEntry::lookup(intval($threadId));
                     // return null;
                 $responseBody = $responseBody.$response->ht['body'].json_encode($threadList);
                 $responseBody = $responseBody ."<br>--------------Line breaker--------------<br>";
                 $finalThreadBody = $response->ht['body'];
-                $attachments = array_merge($attachments, $response->getAttachments());
+                $attachments = array_merge($attachments, $response->getAttachments());}
             }
             $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
             $response->reload();
