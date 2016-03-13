@@ -967,8 +967,8 @@ $tcount+= $ticket->getNumNotes();
                     <?php 
                         }
                     ?>   
-                                                       
-                    <span class="pull-right" style="white-space:no-wrap;display:inline-block">
+
+                    <span class="pull-right" style="white-space:no-wrap;display:inline-block" style="pointer-events: none">
                         <span style="vertical-align:middle;" class="textra"></span>
                         <span style="vertical-align:middle;"
                             class="tmeta faded title"><?php
