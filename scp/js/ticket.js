@@ -417,6 +417,7 @@ var ticket_onload = function($) {
             $cc.hide();
         if($(this).val() == 2)
         {
+            $(".forward_thread_choice").show();
             $('#disableCollaboratorsButton').click();
             $("#ticket-external-receivers").show();
             $('a.collaborator, a.collaborators').click();
@@ -424,6 +425,7 @@ var ticket_onload = function($) {
         }
         else
         {
+            $(".forward_thread_choice").hide();
            $("#ticket-external-receivers").hide(); 
         }
      });
