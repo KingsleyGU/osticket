@@ -1205,7 +1205,7 @@ function checkForwardThreadList()
       if($( this ).prop('checked'))
         threadList += $( this ).val() + ",";
     });
-    alert(threadList);
+    // alert(threadList);
     $("#reply .thread_list").val(threadList);
 
 }
