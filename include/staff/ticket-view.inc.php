@@ -955,13 +955,8 @@ $tcount+= $ticket->getNumNotes();
                         echo Format::db_datetime($entry['created']);?></span>
                     <span style="display:inline-block;padding:0 1em" class="faded title"><?php
                         echo Format::truncate($entry['title'], 100); ?></span>
-                    </span>                  
-                    <span class="pull-right" style="white-space:no-wrap;display:inline-block">
-                        <span style="vertical-align:middle;" class="textra"></span>
-                        <span style="vertical-align:middle;"
-                            class="tmeta faded title"><?php
-                            echo Format::htmlchars($entry['name'] ?: $entry['poster']); ?></span>
-                    </span>
+                    </span>  
+
                     <?php 
                         if($entry['thread_type'] != 'N')
                         {
@@ -971,7 +966,14 @@ $tcount+= $ticket->getNumNotes();
                     </div>
                     <?php 
                         }
-                    ?>                      
+                    ?>   
+                                                       
+                    <span class="pull-right" style="white-space:no-wrap;display:inline-block">
+                        <span style="vertical-align:middle;" class="textra"></span>
+                        <span style="vertical-align:middle;"
+                            class="tmeta faded title"><?php
+                            echo Format::htmlchars($entry['name'] ?: $entry['poster']); ?></span>
+                    </span>                    
                 </div>
                 </th>
             </tr>
