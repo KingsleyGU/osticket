@@ -966,7 +966,9 @@ $tcount+= $ticket->getNumNotes();
                         if($entry['thread_type'] != 'N')
                         {
                     ?>
-                    <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice pull-right" value="<?php echo $entry['id']; ?>"> I have a bike<br>
+                    <div class="pull-right">
+                    <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>"> Forward
+                    </div>
                     <?php 
                         }
                     ?>                      
