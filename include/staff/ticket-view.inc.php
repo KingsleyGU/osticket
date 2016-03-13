@@ -493,6 +493,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="msgId" value="<?php echo $msgId; ?>">
         <input type="hidden" name="a" value="reply">
+        <input type="hidden" name="threads[]" value="">
         <span class="error"></span>
         <table style="width:100%" border="0" cellspacing="0" cellpadding="3">
            <tbody id="to_sec">
@@ -962,7 +963,7 @@ $tcount+= $ticket->getNumNotes();
                         {
                     ?>
                     <div class="pull-right">
-                    <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>"> Forward
+                    <input type="checkbox" name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> Forward
                     </div>
                     <?php 
                         }
@@ -1196,6 +1197,16 @@ function switchToArticleContect(articleIndex)
     $( ".responza-article-content" ).html($.parseHTML(responzaArticleArray[articleIndex]));
 
     return false;
+}
+function checkForwardThreadList()
+{
+    var threadList = "";
+    $( ".forward_thread_choice" ).each(function() {
+      if($( this ).prop('checked'))
+        threadList += $( this ).val() + ",";
+    });
+    alert(threadList);
+
 }
 function goBackToArticleLink()
 {
