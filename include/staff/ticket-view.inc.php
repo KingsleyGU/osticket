@@ -493,7 +493,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <input type="hidden" name="msgId" value="<?php echo $msgId; ?>">
         <input type="hidden" name="a" value="reply">
-        <input type="hidden" name="threads[]" value="">
+        <input type="hidden" name="thread_list" class="thread_list" value="">
         <span class="error"></span>
         <table style="width:100%" border="0" cellspacing="0" cellpadding="3">
            <tbody id="to_sec">
@@ -1206,6 +1206,7 @@ function checkForwardThreadList()
         threadList += $( this ).val() + ",";
     });
     alert(threadList);
+    $("#reply .thread_list").val(threadList);
 
 }
 function goBackToArticleLink()
