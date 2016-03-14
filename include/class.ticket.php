@@ -2021,10 +2021,10 @@ class Ticket {
         {
             $responseBody = null;
             $finalBody = null;
-            $threadList = array();
+            $threadIdList = array();
             if(isset($vars['thread_list']))
             {
-                $threadList =  explode(",", $vars['thread_list']);
+                $threadIdList =  explode(",", $vars['thread_list']);
             }
 
             // if(!($clientThreadEntries = $this->getClientThread()))
@@ -2032,7 +2032,7 @@ class Ticket {
             // foreach ($clientThreadEntries as $clientThreadEntry) {
             //     if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
             //         return null;
-            foreach ($threadList as $threadId) 
+            foreach ($threadIdList as $threadId) 
             {
                 if($threadId != "")
                 {
