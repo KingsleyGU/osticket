@@ -418,15 +418,18 @@ var ticket_onload = function($) {
         if($(this).val() == 2)
         {
             $(".forward_thread_block").show();
+            $("#choose_all_threads_btn").show();
             $('#disableCollaboratorsButton').click();
+            $("#choose_all_threads_btn").click();
             $("#ticket-external-receivers").show();
             $('a.collaborator, a.collaborators').click();
 
         }
         else
         {
+            $("#choose_all_threads_btn").hide();
             $(".forward_thread_block").hide();
-           $("#ticket-external-receivers").hide(); 
+            $("#ticket-external-receivers").hide(); 
         }
      });
     $("#forward-email-option").click(function(){

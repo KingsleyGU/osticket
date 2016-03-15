@@ -530,7 +530,10 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                                 $recipients);
                        ?>
                     </span>
+                    <button id="choose_all_threads_btn" style="display:none;">Choose all thread</button>
                 </td>
+                
+
 
             </tr>
             </tbody>
@@ -1207,8 +1210,12 @@ function checkForwardThreadList()
     });
     // alert(threadList);
     $("#reply .thread_list").val(threadList);
-
 }
+$("#choose_all_threads_btn").click(function(){
+       $( ".forward_thread_choice" ).each(function() {
+        $(this).prop('checked', true);
+    }); 
+})
 function goBackToArticleLink()
 {
     $( ".responza-article-block" ).css("display","none");
