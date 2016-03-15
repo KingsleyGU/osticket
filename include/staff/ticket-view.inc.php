@@ -530,7 +530,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                                 $recipients);
                        ?>
                     </span>
-                    <a id="choose_all_threads_btn" style="display:none;" href="#">Choose all thread</a>
+                    <a id="choose_all_threads_btn" style="display:none;" href="#" class="action-button">Choose all thread</a>
                 </td>
                 
 
