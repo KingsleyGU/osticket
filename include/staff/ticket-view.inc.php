@@ -1212,6 +1212,7 @@ function checkForwardThreadList()
     $("#reply .thread_list").val(threadList);
 }
 $("#choose_all_threads_btn").click(function(){
+        e.preventDefault();
        $( ".forward_thread_choice" ).each(function() {
         $(this).prop('checked', true);
     }); 
