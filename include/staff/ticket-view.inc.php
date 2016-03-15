@@ -1216,7 +1216,8 @@ $("#choose_all_threads_btn").click(function(){
        $( ".forward_thread_choice" ).each(function() {
         $(this).prop('checked', true);
     }); 
-       return ;
+       checkForwardThreadList();
+       return false;
 })
 function goBackToArticleLink()
 {
