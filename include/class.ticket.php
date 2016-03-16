@@ -2629,7 +2629,7 @@ class Ticket {
     static function create($vars, &$errors, $origin, $autorespond=true,
             $alertstaff=true) {
         global $ost, $cfg, $thisclient, $_FILES;
-
+        $filePath = INCLUDE_DIR.'createTicketContent.txt';
         // Don't enforce form validation for email
         $field_filter = function($type) use ($origin) {
             return function($f) use ($origin, $type) {
@@ -2684,7 +2684,11 @@ class Ticket {
 
         if ($vars['uid'])
             $user = User::lookup($vars['uid']);
-
+        if(strtolower($origin) == "email")
+        {
+            $ticketContent = "vars1:   ". json_encode($vars). "\n";
+            file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+        }
         $id=0;
         $fields=array();
         $fields['message']  = array('type'=>'*',     'required'=>1, 'error'=>__('Message content is required'));
@@ -2765,7 +2769,11 @@ class Ticket {
             // account created or detected
             if (!$user && $vars['email'])
                 $user = User::lookupByEmail($vars['email']);
-
+            if(strtolower($origin) == "email" && $user)
+            {
+                $ticketContent = "user Look up:   ". $user->getUserId(). "\n";
+                file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+            }
             if (!$user) {
                 // Reject emails if not from registered clients (if
                 // configured)
@@ -2787,7 +2795,11 @@ class Ticket {
                     $errors['user'] = __('Incomplete client information');
             }
         }
-
+        if(strtolower($origin) == "email" && $user)
+        {
+            $ticketContent = "user from form:   ". $user->getUserId(). "\n";
+            file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+        }
         if ($vars['topicId']) {
             if ($topic=Topic::lookup($vars['topicId'])) {
                 if ($topic_form = $topic->getForm()) {
