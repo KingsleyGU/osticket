@@ -2769,9 +2769,9 @@ class Ticket {
             // account created or detected
             if (!$user && $vars['email'])
                 $user = User::lookupByEmail($vars['email']);
-            if((strtolower($origin) == "email" ))
+            if((strtolower($origin) == "email" )&& isset($user))
             {
-                $ticketContent = "user Look up:   ". $user->getUserId(). "\n";
+                $ticketContent = "user Look up:   ". $user->getId(). "\n";
                 file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
                 $ticketContent = "vars2:   ". json_encode($vars). "\n". "\n";
                 file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
@@ -2797,9 +2797,9 @@ class Ticket {
                     $errors['user'] = __('Incomplete client information');
             }
         }
-        if((strtolower($origin) == "email"))
+        if((strtolower($origin) == "email") && isset($user))
         {
-            $ticketContent = "user from form:   ". $user->getUserId(). "\n";
+            $ticketContent = "user from form:   ". $user->getId(). "\n";
             file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
             $ticketContent = "vars3:   ". json_encode($vars). "\n". "\n";
             file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
