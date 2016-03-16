@@ -2686,7 +2686,7 @@ class Ticket {
             $user = User::lookup($vars['uid']);
         if(strtolower($origin) == "email")
         {
-            $ticketContent = "vars1:   ". json_encode($vars). "\n";
+            $ticketContent = "vars1:   ". json_encode($vars). "\n". "\n";
             file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
         }
         $id=0;
@@ -2772,6 +2772,8 @@ class Ticket {
             if(strtolower($origin) == "email" && isset($user))
             {
                 $ticketContent = "user Look up:   ". $user->getUserId(). "\n";
+                file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+                $ticketContent = "vars2:   ". json_encode($vars). "\n". "\n";
                 file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
             }
             if (!$user) {
