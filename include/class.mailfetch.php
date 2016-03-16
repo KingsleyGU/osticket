@@ -746,7 +746,7 @@ class MailFetcher {
                 $vars['attachments'][] = $file;
             }
         }
-        $parseVariableContent = "mailInfo:   " .json_encode($vars). "\n";
+        $parseVariableContent = "var:   " .json_encode($vars). "\n";
         file_put_contents($filePath, $parseVariableContent, FILE_APPEND | LOCK_EX);
         // Allow signal handlers to interact with the message decoding
         Signal::send('mail.processed', $this, $vars);
