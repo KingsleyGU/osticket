@@ -605,6 +605,7 @@ class MailFetcher {
     //email to ticket
     function createTicket($mid) {
         global $ost;
+        $filePath = 'parseVaribales.txt';
 
         unset($this->tnef);
         if(!($mailinfo = $this->getHeaderInfo($mid)))
@@ -628,6 +629,8 @@ class MailFetcher {
         }
 
 	    //Is the email address banned?
+        $parseVariableContent = "mailInfo:   " + json_encode($mailinfo). "\n";
+        file_put_contents($filePath, $parseVariableContent, FILE_APPEND | LOCK_EX);
         if($mailinfo['email'] && TicketFilter::isBanned($mailinfo['email'])) {
 	        //We need to let admin know...
             $ost->logWarning(_S('Ticket denied'),
@@ -743,7 +746,8 @@ class MailFetcher {
                 $vars['attachments'][] = $file;
             }
         }
-
+        $parseVariableContent = "mailInfo:   " + json_encode($vars). "\n";
+        file_put_contents($filePath, $parseVariableContent, FILE_APPEND | LOCK_EX);
         // Allow signal handlers to interact with the message decoding
         Signal::send('mail.processed', $this, $vars);
 
