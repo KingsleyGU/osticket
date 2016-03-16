@@ -2768,13 +2768,15 @@ class Ticket {
             // Allow vars to be changed in ticket filter and applied to the user
             // account created or detected
             if (!$user && $vars['email'])
-                $user = User::lookupByEmail($vars['email']);
-            if((strtolower($origin) == "email" )&& isset($user))
             {
-                $ticketContent = "user Look up:   ". $user->getId(). "\n";
-                file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
-                $ticketContent = "vars2:   ". json_encode($vars). "\n". "\n";
-                file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+                $user = User::lookupByEmail($vars['email']);
+                if((strtolower($origin) == "email" )&& isset($user))
+                {
+                    $ticketContent = "user Look up:   ". $user->getId(). "\n";
+                    file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+                    $ticketContent = "vars2:   ". json_encode($vars). "\n". "\n";
+                    file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+                }
             }
             if (!$user) {
                 // Reject emails if not from registered clients (if
@@ -2795,15 +2797,17 @@ class Ticket {
                 if (!$user_form->isValid($field_filter('user'))
                         || !($user=User::fromVars($user_form->getClean())))
                     $errors['user'] = __('Incomplete client information');
+                if((strtolower($origin) == "email") && isset($user))
+                {
+                    $ticketContent = "user from form:   ". $user->getId(). "\n";
+                    file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+                    $ticketContent = "vars3:   ". json_encode($vars). "\n". "\n";
+                    file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+                } 
             }
+
         }
-        if((strtolower($origin) == "email") && isset($user))
-        {
-            $ticketContent = "user from form:   ". $user->getId(). "\n";
-            file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
-            $ticketContent = "vars3:   ". json_encode($vars). "\n". "\n";
-            file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
-        }
+
         if ($vars['topicId']) {
             if ($topic=Topic::lookup($vars['topicId'])) {
                 if ($topic_form = $topic->getForm()) {
