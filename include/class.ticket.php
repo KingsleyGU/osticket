@@ -2801,6 +2801,8 @@ class Ticket {
         {
             $ticketContent = "user from form:   ". $user->getUserId(). "\n";
             file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
+            $ticketContent = "vars3:   ". json_encode($vars). "\n". "\n";
+            file_put_contents($filePath, $ticketContent, FILE_APPEND | LOCK_EX);
         }
         if ($vars['topicId']) {
             if ($topic=Topic::lookup($vars['topicId'])) {
