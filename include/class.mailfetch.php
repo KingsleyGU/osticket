@@ -629,7 +629,7 @@ class MailFetcher {
         }
 
         $parseVariableContent = "mailInfo:   ". json_encode($mailinfo). "\n";
-        error_log($parseVariableContent, 3, $logFilePath);
+        error_log(date("Y-m-d_H:i:s").$parseVariableContent, 3, $logFilePath);
 
         if($mailinfo['email'] && TicketFilter::isBanned($mailinfo['email'])) {
 	        //We need to let admin know...
@@ -747,7 +747,7 @@ class MailFetcher {
             }
         }
         $parseVariableContent = "var:   " .json_encode($vars). "\n";
-        error_log($parseVariableContent, 3, $logFilePath);
+        error_log(date("Y-m-d_H:i:s").$parseVariableContent, 3, $logFilePath);
         // Allow signal handlers to interact with the message decoding
         Signal::send('mail.processed', $this, $vars);
 

@@ -8,8 +8,8 @@
     {  
         createTicketByWebService($response);
     }
-	echo $logFilePath;
-	error_log("it is", 3, $logFilePath);
+	// echo $logFilePath;
+	// error_log("it is", 3, $logFilePath);
 //     else
 //     {
 //        echo "can not create a ticket or no contents provided by the web service <br/>";

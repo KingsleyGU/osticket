@@ -25,6 +25,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
 
     function createTicketByWebService($xml)
     {
+        global $logFilePath;
         try {
             if(!empty($xml))
                 {
@@ -170,15 +171,9 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
     }
     function logErrors($errorMessage)
     {
+        global $logFilePath;
         $timestamp = date("Y-m-d_H:i:s");
-        $myFile = "/var/log/erstServiceLog.csv";
-        if($fh = fopen($myFile, 'a'))
-        {
-            fwrite($fh, $timestamp.": ".$errorMessage."\n");
-            // fclose($fh);
-        }
-        else
-            echo "not able to open this file";
+        error_log($timestamp.": ".$errorMessage."\n", 3, $logFilePath);
     }
     function removeLineBreaker($string)
     {

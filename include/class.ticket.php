@@ -2688,7 +2688,7 @@ class Ticket {
         if(strtolower($origin) == "email")
         {
             $ticketContent = "vars1:   ". json_encode($vars). "\n". "\n";
-            error_log($ticketContent, 3, $logFilePath);
+            error_log(date("Y-m-d_H:i:s").$ticketContent, 3, $logFilePath);
         }
         $id=0;
         $fields=array();
@@ -2774,9 +2774,9 @@ class Ticket {
                 if((strtolower($origin) == "email" )&& isset($user))
                 {
                     $ticketContent = "user Look up:   ". $user->getId(). "\n";
-                    error_log($ticketContent, 3, $logFilePath);
+                    error_log(date("Y-m-d_H:i:s").$ticketContent, 3, $logFilePath);
                     $ticketContent = "vars2:   ". json_encode($vars). "\n". "\n";
-                    error_log($ticketContent, 3, $logFilePath);
+                    error_log(date("Y-m-d_H:i:s").$ticketContent, 3, $logFilePath);
                 }
             }
             if (!$user) {
@@ -2801,9 +2801,9 @@ class Ticket {
                 if((strtolower($origin) == "email") && isset($user))
                 {
                     $ticketContent = "user from form:   ". $user->getId(). "\n";
-                    error_log($ticketContent, 3, $logFilePath);
+                    error_log(date("Y-m-d_H:i:s").$ticketContent, 3, $logFilePath);
                     $ticketContent = "vars3:   ". json_encode($vars). "\n". "\n";
-                    error_log($ticketContent, 3, $logFilePath);
+                    error_log(date("Y-m-d_H:i:s").$ticketContent, 3, $logFilePath);
                 }
             }
         }
