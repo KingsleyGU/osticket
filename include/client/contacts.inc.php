@@ -1,6 +1,6 @@
 <?php
 	global $logFilePath;
-	error_reporting(~0); ini_set('display_errors', 1);
+	// error_reporting(~0); ini_set('display_errors', 1);
     // $fileName = CLIENTINC_DIR.'remote.xml';
     $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     $response = getRequestFromUrl($fileName);
@@ -8,6 +8,7 @@
     {  
         createTicketByWebService($response);
     }
+    logErrors("Yes, it is");
 	// echo $logFilePath;
 	// error_log("it is", 3, $logFilePath);
 //     else
