@@ -2261,13 +2261,13 @@ class Ticket {
         $pdf = new Ticket2PDF($this, $psize, $notes);
         $name='Ticket-'.$this->getNumber().'.pdf';
 
-        $pdf->SetImportUse();
-        $pagecount = $pdf->SetSourceFile(INCLUDE_DIR."pdfConverter/test.pdf");
-        for ($i=1; $i<=($pagecount); $i++) {
-            $pdf->AddPage();
-            $import_page = $pdf->ImportPage($i);
-            $pdf->UseTemplate($import_page);
-        }
+        // $pdf->SetImportUse();
+        // $pagecount = $pdf->SetSourceFile(INCLUDE_DIR."pdfConverter/test.pdf");
+        // for ($i=1; $i<=($pagecount); $i++) {
+        //     $pdf->AddPage();
+        //     $import_page = $pdf->ImportPage($i);
+        //     $pdf->UseTemplate($import_page);
+        // }
 
 
         $pdf->Output($name, 'I');
