@@ -703,28 +703,28 @@ class Ticket {
 
         return $this->recipients;
     }
-    // function getAllAttachments()
-    // {
-    //   $attachments = array();
-    //   if(!($clientThreadEntries = $this->getClientThread()))
-    //       return null;
-    //   foreach ($clientThreadEntries as $clientThreadEntry) {
-    //   { 
-    //     if(!($thread = ThreadEntry::lookup($clientThreadEntry['id'])))
-    //         return null;
-    //     $attachments = array_merge($attachments, $thread->getAttachments()); 
-    //   }
-    //   foreach ($attachments as $key => $attachment) {
-    //       $attachmentUrl = $attachment->getDownloadUrl();
-    //       if(!is_array(getimagesize($attachmentUrl)))
-    //       {
-    //         $extension = pathinfo($attachment->getName(), PATHINFO_EXTENSION);
-    //         if(!$this->checkAttachmentPrintablility($extension))
-    //             unset($attachments[$key]);
-    //       }
-    //   }
-    //   return $attachments;
-    // }
+    function getAllAttachments()
+    {
+      $attachments = array();
+      if(!($clientThreadEntries = $this->getClientThread()))
+          return null;
+      foreach ($clientThreadEntries as $clientThreadEntry) {
+      { 
+        if(!($thread = ThreadEntry::lookup($clientThreadEntry['id'])))
+            return null;
+        $attachments = array_merge($attachments, $thread->getAttachments()); 
+      }
+      foreach ($attachments as $key => $attachment) {
+          $attachmentUrl = $attachment->getDownloadUrl();
+          if(!is_array(getimagesize($attachmentUrl)))
+          {
+            $extension = pathinfo($attachment->getName(), PATHINFO_EXTENSION);
+            // if(!$this->checkAttachmentPrintablility($extension))
+            //     unset($attachments[$key]);
+          }
+      }
+      return $attachments;
+    }
     function checkAttachmentPrintablility($extension)
     {
         if($extension == "xls"|| $extension = "xlsx")
