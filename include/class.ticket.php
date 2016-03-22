@@ -2260,16 +2260,6 @@ class Ticket {
 
         $pdf = new Ticket2PDF($this, $psize, $notes);
         $name='Ticket-'.$this->getNumber().'.pdf';
-
-        // $pdf->SetImportUse();
-        // $pagecount = $pdf->SetSourceFile(INCLUDE_DIR."pdfConverter/test.pdf");
-        // for ($i=1; $i<=($pagecount); $i++) {
-        //     $pdf->AddPage();
-        //     $import_page = $pdf->ImportPage($i);
-        //     $pdf->UseTemplate($import_page);
-        // }
-
-
         $pdf->Output($name, 'I');
         //Remember what the user selected - for autoselect on the next print.
         $_SESSION['PAPER_SIZE'] = $psize;
@@ -2639,7 +2629,7 @@ class Ticket {
     static function create($vars, &$errors, $origin, $autorespond=true,
             $alertstaff=true) {
         global $ost, $cfg, $thisclient, $_FILES;
-        $filePath = INCLUDE_DIR.'createTicketContent.txt';
+        $filePath = 'var/log/createTicketContentLog.txt';
         // Don't enforce form validation for email
         $field_filter = function($type) use ($origin) {
             return function($f) use ($origin, $type) {
