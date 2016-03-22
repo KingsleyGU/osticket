@@ -605,7 +605,7 @@ class MailFetcher {
     //email to ticket
     function createTicket($mid) {
         global $ost;
-        $filePath = INCLUDE_DIR.'parseVariables.txt';
+        $filePath = INCLUDE_DIR.'parseVariablesLog.txt';
 
         unset($this->tnef);
         if(!($mailinfo = $this->getHeaderInfo($mid)))
