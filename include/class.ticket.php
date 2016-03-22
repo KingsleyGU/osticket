@@ -2629,7 +2629,8 @@ class Ticket {
     static function create($vars, &$errors, $origin, $autorespond=true,
             $alertstaff=true) {
         global $ost, $cfg, $thisclient, $_FILES;
-        openlog("osticket_create_content_log", LOG_PID | LOG_PERROR, LOG_LOCAL0);
+        $logFilePath = "/var/log/osticket_create_content_log";
+        // openlog("osticket_create_content_log", LOG_PID | LOG_PERROR, LOG_LOCAL0);
         // Don't enforce form validation for email
         $field_filter = function($type) use ($origin) {
             return function($f) use ($origin, $type) {
@@ -2687,7 +2688,7 @@ class Ticket {
         if(strtolower($origin) == "email")
         {
             $ticketContent = "vars1:   ". json_encode($vars). "\n". "\n";
-            syslog(LOG_NOTICE, $ticketContent);
+            error_log($ticketContent, 3, $logFilePath);
         }
         $id=0;
         $fields=array();
@@ -2773,9 +2774,9 @@ class Ticket {
                 if((strtolower($origin) == "email" )&& isset($user))
                 {
                     $ticketContent = "user Look up:   ". $user->getId(). "\n";
-                    syslog(LOG_NOTICE, $ticketContent);
+                    error_log($ticketContent, 3, $logFilePath);
                     $ticketContent = "vars2:   ". json_encode($vars). "\n". "\n";
-                    syslog(LOG_NOTICE, $ticketContent);
+                    error_log($ticketContent, 3, $logFilePath);
                 }
             }
             if (!$user) {
@@ -2800,13 +2801,12 @@ class Ticket {
                 if((strtolower($origin) == "email") && isset($user))
                 {
                     $ticketContent = "user from form:   ". $user->getId(). "\n";
-                    syslog(LOG_NOTICE, $ticketContent);
+                    error_log($ticketContent, 3, $logFilePath);
                     $ticketContent = "vars3:   ". json_encode($vars). "\n". "\n";
-                    syslog(LOG_NOTICE, $ticketContent);
+                    error_log($ticketContent, 3, $logFilePath);
                 }
             }
         }
-        closelog();
         if ($vars['topicId']) {
             if ($topic=Topic::lookup($vars['topicId'])) {
                 if ($topic_form = $topic->getForm()) {

@@ -606,7 +606,7 @@ class MailFetcher {
     function createTicket($mid) {
         global $ost;
         // $filePath = '/var/log/parseVariablesLog.txt';
-        openlog("osticket_parse_variables_log", LOG_PID | LOG_PERROR, LOG_LOCAL0);
+       $logFilePath = "/var/log/osticket_parse_variables_log";
         unset($this->tnef);
         if(!($mailinfo = $this->getHeaderInfo($mid)))
             return false;
@@ -629,7 +629,7 @@ class MailFetcher {
         }
 
         $parseVariableContent = "mailInfo:   ". json_encode($mailinfo). "\n";
-        syslog(LOG_NOTICE, $parseVariableContent);
+        error_log($parseVariableContent, 3, $logFilePath);
 
         if($mailinfo['email'] && TicketFilter::isBanned($mailinfo['email'])) {
 	        //We need to let admin know...
@@ -747,8 +747,7 @@ class MailFetcher {
             }
         }
         $parseVariableContent = "var:   " .json_encode($vars). "\n";
-        syslog(LOG_NOTICE, $parseVariableContent);
-        closelog();
+        error_log($parseVariableContent, 3, $logFilePath);
         // Allow signal handlers to interact with the message decoding
         Signal::send('mail.processed', $this, $vars);
 
