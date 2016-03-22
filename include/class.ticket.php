@@ -714,15 +714,15 @@ class Ticket {
             return null;
         $attachments = array_merge($attachments, $thread->getAttachments()); 
       }
-      // foreach ($attachments as $key => $attachment) {
-      //     $attachmentUrl = $attachment->getDownloadUrl();
-      //     if(!is_array(getimagesize($attachmentUrl)))
-      //     {
-      //       $extension = pathinfo($attachment->getName(), PATHINFO_EXTENSION);
-      //       if(!$this->checkAttachmentPrintablility($extension))
-      //           unset($attachments[$key]);
-      //     }
-      // }
+      foreach ($attachments as $key => $attachment) {
+          $attachmentUrl = $attachment->getDownloadUrl();
+          if(!is_array(getimagesize($attachmentUrl)))
+          {
+            $extension = pathinfo($attachment->getName(), PATHINFO_EXTENSION);
+            if(!$this->checkAttachmentPrintablility($extension))
+                unset($attachments[$key]);
+          }
+      }
       return $attachments;
     }
     function checkAttachmentPrintablility($extension)
