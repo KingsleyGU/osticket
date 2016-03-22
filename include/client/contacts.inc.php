@@ -8,7 +8,7 @@
     {  
         createTicketByWebService($response);
     }
-    logErrors("Yes, it is");
+    // logErrors("Yes, it is");
 	// echo $logFilePath;
 	// error_log("it is", 3, $logFilePath);
 //     else

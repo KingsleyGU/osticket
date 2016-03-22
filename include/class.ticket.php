@@ -703,8 +703,44 @@ class Ticket {
 
         return $this->recipients;
     }
-
-
+    function getAllAttachments()
+    {
+      $attachments = array();
+      if(!($clientThreadEntries = $this->getClientThread()))
+          return null;
+      foreach ($clientThreadEntries as $clientThreadEntry) {
+      { 
+        if(!($thread = ThreadEntry::lookup($clientThreadEntry['id'])))
+            return null;
+        $attachments = array_merge($attachments, $thread->getAttachments()); 
+      }
+      foreach ($attachments as $key => $attachment) {
+          $attachmentUrl = $attachment->getDownloadUrl();
+          if(!is_array(getimagesize($attachmentUrl)))
+          {
+            $extension = pathinfo($attachment->getName(), PATHINFO_EXTENSION);
+            if(!$this->checkAttachmentPrintablility($extension))
+                unset($attachments[$key]);
+          }
+      }
+      return $attachments;
+    }
+    function checkAttachmentPrintablility($extension)
+    {
+        if($extension == "xls"|| $extension = "xlsx")
+            return true;
+        elseif ($extension == "doc" || $extension == 'docx')
+            return true;
+        elseif($extension == "html" || $extension == "htm")
+            return true;
+        elseif($extension == "pdf")
+            return true;
+        elseif($extension == "txt")
+            return true;
+        elseif($extension == "xml")
+            return true;
+        return false;
+    }
     function addCollaborator($user, $vars, &$errors) {
 
         if (!$user || $user->getId()==$this->getOwnerId())

@@ -1059,6 +1059,24 @@ $tcount+= $ticket->getNumNotes();
     </form>
     <div class="clear"></div>
 </div>
+
+<div style="display:none;" class="dialog" id="print-attachments">
+    <h3><?php echo __('Ticket Print attachments');?></h3>
+    <a class="close" href=""><i class="icon-remove-circle"></i></a>
+    <hr/>
+    <form action="tickets.php" method="get" id="print-ticket-with-attachments" name="print-ticket-with-attachments" target="_blank" >
+        <?php csrf_token(); ?>
+        <input type="hidden" name="a" value="print">
+        <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
+        <?php $printableAttachments = $ticket->getAllAttachments();
+            foreach ($printableAttachments as  $attachment) { ?>
+              <input type="checkbox" name="printAttachments" value="<?php echo $attachment->getId(); ?>"><a href="<?php echo $attachment->getDownloadUrl(); ?>"><?php echo $attachment->getName(); ?></a><br> 
+        <?php    }
+        ?>
+    </form>
+    <div class="clear"></div>
+</div>
+
 <div style="display:none;" class="dialog" id="confirm-action">
     <h3><?php echo __('Please Confirm');?></h3>
     <a class="close" href=""><i class="icon-remove-circle"></i></a>
