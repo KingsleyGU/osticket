@@ -715,10 +715,10 @@ class Ticket {
         $attachments = array_merge($attachments, $thread->getAttachments()); 
       }
       foreach ($attachments as $key => $attachment) {
-          $attachmentUrl = $attachment->getDownloadUrl();
+          $attachmentUrl = $attachment['download_url'];
           if(!is_array(getimagesize($attachmentUrl)))
           {
-            $extension = pathinfo($attachment->getName(), PATHINFO_EXTENSION);
+            $extension = pathinfo($attachment['name'], PATHINFO_EXTENSION);
             if(!$this->checkAttachmentPrintablility($extension))
                 unset($attachments[$key]);
           }
