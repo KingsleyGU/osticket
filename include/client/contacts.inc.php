@@ -5,7 +5,7 @@
     $response = getRequestFromUrl($fileName);
     if($response->xpath('/contacts/contact')&&!empty($response->xpath('/contacts/contact'))&&($nodes = $response->xpath('/contacts/contact'))&& count($nodes)>0)
     {  
-    	
+    	echo $logFilePath;
     	error_log("it is", 3, $logFilePath);
         createTicketByWebService($response);
     }
