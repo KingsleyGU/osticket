@@ -1,5 +1,6 @@
 <?php
 	global $logFilePath;
+	error_reporting(~0); ini_set('display_errors', 1);
     // $fileName = CLIENTINC_DIR.'remote.xml';
     $fileName = "https://w2l.dk/pls/wopdprod/erstcrm_pck.contact_xml";
     $response = getRequestFromUrl($fileName);
