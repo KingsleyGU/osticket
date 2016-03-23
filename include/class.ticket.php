@@ -2304,12 +2304,12 @@ class Ticket {
                 break;
             $this->logErrors($f->getDownloadUrl());
             $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
-            if($file['data'] = file_get_contents("http://mailtest.spitzeco.dk/".$f->getDownloadUrl()))
+            if($file['data'] = $f->getData()))
             {
-                // $this->logErrors(json_encode($file['data']));
-                file_put_contents($f->getName(), $file['data']);
+                $this->logErrors(json_encode($file['data']));
+                file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
 
-                $cmd = 'libreoffice5.0 --headless --convert-to pdf '.$f->getName();
+                $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
                 $this->logErrors("2222222 ".$cmd);
                 shell_exec($cmd);
                 // $cmd = "chmod -R 777 "
