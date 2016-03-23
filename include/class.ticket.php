@@ -2307,14 +2307,14 @@ class Ticket {
             if($fileData = $f->getData())
             {
                 $this->logErrors(json_encode($fileData));
-                file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $fileData);
+                file_put_contents(CLIENTINC_DIR.'pdfConverter/'."test.pdf", $fileData);
 
-                $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
+                $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'."test.pdf";
                 $this->logErrors("2222222 ".$cmd);
                 shell_exec($cmd);
                 // $cmd = "chmod -R 777 "
-                $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-                $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
+                // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
+                $pagecount = $pdf->SetSourceFile(INCLUDE_DIR."test".".pdf");
                 for ($i=1; $i<=($pagecount); $i++) {
                     $pdf->AddPage();
                     $import_page = $pdf->ImportPage($i);
