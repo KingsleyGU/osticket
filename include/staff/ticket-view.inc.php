@@ -1075,7 +1075,7 @@ $tcount+= $ticket->getNumNotes();
         <input type="hidden" name="notes" id="print-attachment-notes">
         <?php $printableAttachments = $ticket->getAllAttachments();
             foreach ($printableAttachments as  $attachment) { ?>
-              <input type="checkbox" name="printAttachments[]" value="<?php echo $attachment['file_id'];?>"><a href="<?php echo $attachment['download_url']; ?>"><?php echo $attachment['name']; ?></a><br> 
+              <input type="checkbox" target="_blank" name="printAttachments[]" value="<?php echo $attachment['file_id'];?>"><a href="<?php echo $attachment['download_url']; ?>"><?php echo $attachment['name']; ?></a><br> 
         <?php    }
         ?>
     </form>
