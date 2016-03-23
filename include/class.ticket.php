@@ -2310,7 +2310,7 @@ class Ticket {
                 file_put_contents(INCLUDE_DIR.'pdfConverter/'.$f->getName(), $fileData);
                 $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$f->getName();
                 shell_exec($cmd);
-                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
+                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf:writer_pdf_Export '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
                 $this->logErrors("2222222 ".$cmd);
                 shell_exec($cmd);
                 
