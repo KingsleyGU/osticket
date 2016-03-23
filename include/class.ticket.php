@@ -2304,7 +2304,7 @@ class Ticket {
                 break;
             $this->logErrors($f->getDownloadUrl());
             $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
-            if($file['data'] = $f->getData()))
+            if($file['data'] = $f->getData())
             {
                 $this->logErrors(json_encode($file['data']));
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
