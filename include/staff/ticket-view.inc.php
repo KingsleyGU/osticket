@@ -1239,6 +1239,7 @@ function chooseAttachment(notes)
     $("#print-attachment-notes").val(notes);
     $('#overlay').show();
     $('.dialog#print-attachments').show();
+    return false;
 }
 $("#choose_all_threads_btn").click(function(){
         
