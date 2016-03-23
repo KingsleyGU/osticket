@@ -2321,7 +2321,8 @@ class Ticket {
                 system($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
-                $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfConverter/tempConverterFile.pdf pdfConverter/tempConverterFile.pdf"
+                $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
+                $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
                 // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 shell_exec($cmd);
                 try {
