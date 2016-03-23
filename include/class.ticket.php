@@ -2323,7 +2323,6 @@ class Ticket {
                 shell_exec($cmd);
                 // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
                 // $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
-                // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 // shell_exec($cmd);
                 try {
                     $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf");
