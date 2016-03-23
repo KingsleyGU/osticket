@@ -2306,7 +2306,7 @@ class Ticket {
             $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
             if($fileData = $f->getData())
             {
-                $this->logErrors(json_encode($file['data']));
+                $this->logErrors(json_encode($fileData));
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $fileData);
 
                 $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
