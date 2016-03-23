@@ -2303,6 +2303,7 @@ class Ticket {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
                 break;
             $this->logErrors($f->getDownloadUrl());
+            $this->logErrors($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl());
             if($file['data'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl()))
             {
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
