@@ -1072,6 +1072,7 @@ $tcount+= $ticket->getNumNotes();
         <?php csrf_token(); ?>
         <input type="hidden" name="a" value="print">
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
+        <input type="hidden" name="notes" id="print-attachment-notes">
         <?php $printableAttachments = $ticket->getAllAttachments();
             foreach ($printableAttachments as  $attachment) { ?>
               <input type="checkbox" name="printAttachments[]" value="<?php echo $attachment['file_id'];?>"><a href="<?php echo $attachment['download_url']; ?>"><?php echo $attachment['name']; ?></a><br> 
@@ -1232,6 +1233,12 @@ function checkForwardThreadList()
     });
     // alert(threadList);
     $("#reply .thread_list").val(threadList);
+}
+function chooseAttachment(notes)
+{
+    $("#print-attachment-notes").val(notes);
+    $('#overlay').show();
+    $('.dialog#print-attachments').show();
 }
 $("#choose_all_threads_btn").click(function(){
         
