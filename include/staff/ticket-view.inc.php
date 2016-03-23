@@ -1085,7 +1085,7 @@ $tcount+= $ticket->getNumNotes();
         <hr style="margin-top:3em"/>
         <p class="full-width">
             <span class="buttons pull-right">
-                <input type="submit" value="<?php echo __('Print');?>" onclick="printAttachmentValue(); event.preventDefault();">
+                <input type="submit" value="<?php echo __('Print');?>" >
             </span>
          </p>
     </form>
