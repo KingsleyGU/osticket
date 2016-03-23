@@ -2312,7 +2312,7 @@ class Ticket {
                 $cmd = 'libreoffice5.0 --headless --convert-to pdf '.$f->getName();
                 $this->logErrors("2222222 ".$cmd);
                 shell_exec($cmd);
-                $cmd = "chmod -R 777 "
+                // $cmd = "chmod -R 777 "
                 $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
                 for ($i=1; $i<=($pagecount); $i++) {
