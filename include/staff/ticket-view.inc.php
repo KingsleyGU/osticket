@@ -1078,6 +1078,7 @@ $tcount+= $ticket->getNumNotes();
               <input type="checkbox" target="_blank" name="printAttachments[]" value="<?php echo $attachment['file_id'];?>"><a href="<?php echo $attachment['download_url']; ?>"><?php echo $attachment['name']; ?></a><br> 
         <?php    }
         ?>
+        <input type="submit" value="print">
     </form>
     <div class="clear"></div>
 </div>
