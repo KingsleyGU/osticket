@@ -128,7 +128,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                             {
                                 file_put_contents(CLIENTINC_DIR.'erstFile/'.$timestamp.$file['name'], $file['data']);
                             }catch (Exception $e) {
-                                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                                logErrors('Caught exception: ',  $e->getMessage(), "\n");
                             }
                         }
                         else

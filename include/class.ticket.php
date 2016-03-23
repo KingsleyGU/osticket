@@ -2283,7 +2283,7 @@ class Ticket {
     }
 
     //Print ticket... export the ticket thread as PDF.
-    function pdfExport($psize='Letter', $notes=false) {
+    function pdfExport($psize='Letter', $notes=false,$printAttachments) {
         global $thisstaff;
 
         require_once(INCLUDE_DIR.'class.pdf.php');
@@ -2298,11 +2298,22 @@ class Ticket {
         $name='Ticket-'.$this->getNumber().'.pdf';
 
         $pdf->SetImportUse();
-        $pagecount = $pdf->SetSourceFile(INCLUDE_DIR."pdfConverter/test.pdf");
-        for ($i=1; $i<=($pagecount); $i++) {
-            $pdf->AddPage();
-            $import_page = $pdf->ImportPage($i);
-            $pdf->UseTemplate($import_page);
+        foreach ($printAttachments as $attachmentId) {
+            if (!($f = AttachmentFile::lookup($id)))
+                break;
+            if($file['data'] = file_get_contents($f->getDownloadUrl()))
+            {
+                file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
+                $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
+                shell_exec($cmd);
+                $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
+                $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
+                for ($i=1; $i<=($pagecount); $i++) {
+                    $pdf->AddPage();
+                    $import_page = $pdf->ImportPage($i);
+                    $pdf->UseTemplate($import_page);
+                }
+            }
         }
 
 

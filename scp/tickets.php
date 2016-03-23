@@ -529,8 +529,12 @@ if($ticket) {
         if (!$forms) $forms=DynamicFormEntry::forTicket($ticket->getId());
         // Auto add new fields to the entries
         foreach ($forms as $f) $f->addMissingFields();
-    } elseif($_REQUEST['a'] == 'print' && !$ticket->pdfExport($_REQUEST['psize'], $_REQUEST['notes']))
-        $errors['err'] = __('Internal error: Unable to export the ticket to PDF for print.');
+    } elseif($_REQUEST['a'] == 'print')
+        $printAttachments = array();
+        if(isset($_REQUEST['printAttachments']))
+            $printAttachments = $_REQUEST['printAttachments'];
+        if(!$ticket->pdfExport($_REQUEST['psize'], $_REQUEST['notes'],$printAttachments))
+            $errors['err'] = __('Internal error: Unable to export the ticket to PDF for print.');
 } else {
 	$inc = 'tickets.inc.php';
     if($_REQUEST['a']=='open' && $thisstaff->canCreateTickets())
