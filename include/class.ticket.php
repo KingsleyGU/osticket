@@ -2340,6 +2340,7 @@ class Ticket {
     }
     function importPdfPages($pdf,$filePath)
     {
+        $this->pdf_recreate($filePath);
         $pagecount = $pdf->SetSourceFile($filePath);
         for ($i=1; $i<=($pagecount); $i++) {
             $pdf->AddPage();
@@ -2353,7 +2354,23 @@ class Ticket {
         $timestamp = date("Y-m-d_H:i:s");
         error_log($timestamp.": ".$errorMessage."\n", 3, $logFilePath);
     }
+    function pdf_recreate($f)
+    {
 
+        rename($f,str_replace('.pdf','_.pdf',$f));  
+
+        $fileArray=array(str_replace('.pdf','_.pdf',$f));
+        $outputName=$f;
+        $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$outputName ";
+
+        foreach($fileArray as $file)
+        {
+          $cmd .= $file." ";
+        }
+        $result = shell_exec($cmd);
+        unlink(str_replace('.pdf','_.pdf',$f));
+
+    }
     function delete($comments='') {
         global $ost, $thisstaff;
 
