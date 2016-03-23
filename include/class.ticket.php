@@ -2302,7 +2302,7 @@ class Ticket {
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($id))))
                 break;
-            $this->logErrors($f->getDownloadUrl());
+            $this->logErrors("".$f->getDownloadUrl());
             if($file['data'] = file_get_contents($f->getDownloadUrl()))
             {
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
