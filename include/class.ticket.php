@@ -2293,47 +2293,54 @@ class Ticket {
             elseif (!$thisstaff || !($psize = $thisstaff->getDefaultPaperSize()))
                 $psize = 'Letter';
         }
-
+        $pdfConverterPath = INCLUDE_DIR.'pdfConverter/';
+        $name='Ticket.pdf';
         $pdf = new Ticket2PDF($this, $psize, $notes);
+        $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
+        shell_exec($cmd);        
+        $pdf->Output($pdfConverterPath.$name, 'F');
+        $pdf = new mPDF();
+        $pdf->SetImportUse();
+        $this->importPdfPages($pdf,$pdfConverterPath.$name);
+        $this->logErrors(json_encode($printAttachments));
+        foreach ($printAttachments as $attachmentId) {
+            if (!($f = AttachmentFile::lookup(intval($attachmentId))))
+                break;
+            $this->logErrors($f->getDownloadUrl());
+            $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
+            if($fileData = $f->getData())
+            {
+                // $this->logErrors(json_encode($file['data']));
+                $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
+                $tempName = "tempConverterFile";
+                file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
+                shell_exec($cmd);
+                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
+                $this->logErrors("2222222 ".$cmd);
+                system($cmd);
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
+                shell_exec($cmd);
+                // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
+                $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf");
+            }
+        }
+
         $name='Ticket-'.$this->getNumber().'.pdf';
-        $pdf->Output(INCLUDE_DIR.'pdfConverter/'.$name, 'F');
-        // $pdf->SetImportUse();
-        // $this->logErrors(json_encode($printAttachments));
-        // foreach ($printAttachments as $attachmentId) {
-        //     if (!($f = AttachmentFile::lookup(intval($attachmentId))))
-        //         break;
-        //     $this->logErrors($f->getDownloadUrl());
-        //     $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
-        //     if($fileData = $f->getData())
-        //     {
-        //         // $this->logErrors(json_encode($file['data']));
-        //         $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
-        //         $tempName = "tempConverterFile";
-        //         file_put_contents(INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension, $fileData);
-        //         $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension;
-        //         shell_exec($cmd);
-        //         $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.INCLUDE_DIR.'pdfConverter/'." ".INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension;
-        //         $this->logErrors("2222222 ".$cmd);
-        //         system($cmd);
-        //         $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$tempName.".pdf";
-        //         shell_exec($cmd);
-        //         // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-        //         $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.'pdfConverter/'.$tempName.".pdf");
-        //         for ($i=1; $i<=($pagecount); $i++) {
-        //             $pdf->AddPage();
-        //             $import_page = $pdf->ImportPage($i);
-        //             $pdf->UseTemplate($import_page);
-        //         }
-        //     }
-        // }
-
-
-        // $pdf->Output($name, 'I');
+        $pdf->Output($name, 'I');
         //Remember what the user selected - for autoselect on the next print.
         $_SESSION['PAPER_SIZE'] = $psize;
         exit;
     }
-
+    function importPdfPages($pdf,$filePath)
+    {
+        $pagecount = $pdf->SetSourceFile($filePath);
+        for ($i=1; $i<=($pagecount); $i++) {
+            $pdf->AddPage();
+            $import_page = $pdf->ImportPage($i);
+            $pdf->UseTemplate($import_page);
+        }   
+    }
     function logErrors($errorMessage)
     {
         $logFilePath = "/var/log/osticket_attachment_print_log";
