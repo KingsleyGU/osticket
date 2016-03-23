@@ -2315,7 +2315,8 @@ class Ticket {
                 $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.INCLUDE_DIR.'pdfConverter/'." ".INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension;
                 $this->logErrors("2222222 ".$cmd);
                 system($cmd);
-                
+                $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$tempName.".pdf";
+                shell_exec($cmd);
                 // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.'pdfConverter/'.$tempName.".pdf");
                 for ($i=1; $i<=($pagecount); $i++) {
