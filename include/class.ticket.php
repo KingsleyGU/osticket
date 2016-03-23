@@ -2302,8 +2302,8 @@ class Ticket {
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
                 break;
-            $this->logErrors("".$f->getDownloadUrl());
-            if($file['data'] = file_get_contents($f->getDownloadUrl()))
+            $this->logErrors($f->getDownloadUrl());
+            if($file['data'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl()))
             {
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
                 $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
