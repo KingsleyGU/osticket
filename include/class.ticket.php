@@ -2299,7 +2299,7 @@ class Ticket {
         $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
         shell_exec($cmd);        
         $pdf->Output($pdfConverterPath.$name, 'F');
-        $pdf = new mPDF();
+        $pdf = new mPDF('utf-8', 'A4', '8', '', 10, 10, 7, 7, 10, 10);
         $pdf->SetImportUse();
         $this->importPdfPages($pdf,$pdfConverterPath.$name);
         $this->logErrors(json_encode($printAttachments));
