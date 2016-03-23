@@ -2303,8 +2303,8 @@ class Ticket {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
                 break;
             $this->logErrors($f->getDownloadUrl());
-            $this->logErrors($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl());
-            if($file['data'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl()))
+            $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
+            if($file['data'] = file_get_contents("http://mailtest.spitzeco.dk/".$f->getDownloadUrl()))
             {
                 $this->logErrors("111111111");
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
