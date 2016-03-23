@@ -532,7 +532,10 @@ if($ticket) {
     } elseif($_REQUEST['a'] == 'print'){
         $printAttachments = array();
         if(isset($_REQUEST['printAttachments']))
+        {  
+            echo json_encode($_REQUEST['printAttachments']);
             $printAttachments = $_REQUEST['printAttachments'];
+        }
         if(!$ticket->pdfExport($_REQUEST['psize'], $_REQUEST['notes'],$printAttachments))
             $errors['err'] = __('Internal error: Unable to export the ticket to PDF for print.');
     }
