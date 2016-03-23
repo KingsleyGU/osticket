@@ -2323,7 +2323,7 @@ class Ticket {
                 shell_exec($cmd);
                 // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 try {
-                    $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf")
+                    $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf");
                 } catch (Exception $e) {
                     logErrors('Caught exception: ',  $e->getMessage(), "\n");
                     break;
