@@ -1085,7 +1085,7 @@ $tcount+= $ticket->getNumNotes();
         <hr style="margin-top:3em"/>
         <p class="full-width">
             <span class="buttons pull-right">
-                <input type="submit" value="<?php echo __('Print');?>" onclick="event.preventDefault(); return false;">
+                <input type="submit" value="<?php echo __('Print');?>" onclick="printAttachmentValue(); event.preventDefault();">
             </span>
          </p>
     </form>
@@ -1251,6 +1251,14 @@ function chooseAttachment(notes)
     $('.dialog#print-attachments').show();
     return false;
 }
+
+function printAttachmentValue()
+{
+    event.preventDefault();
+    var formData = $("#print-ticket-with-attachments").serialize();
+    alert(JSON.stringify(formData));
+}
+
 $("#choose_all_threads_btn").click(function(){
         
        $( ".forward_thread_choice" ).each(function() {
