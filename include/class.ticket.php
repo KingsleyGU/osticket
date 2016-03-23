@@ -2322,7 +2322,8 @@ class Ticket {
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
                 // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-                $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf");
+                if(!$this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf"))
+                    break;
             }
         }
 
