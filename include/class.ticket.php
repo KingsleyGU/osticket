@@ -2306,8 +2306,11 @@ class Ticket {
             $this->logErrors($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl());
             if($file['data'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].$f->getDownloadUrl()))
             {
+                $this->logErrors("111111111");
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
+
                 $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
+                $this->logErrors("2222222 ".$cmd);
                 shell_exec($cmd);
                 $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
