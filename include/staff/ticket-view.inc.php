@@ -102,6 +102,10 @@ if($ticket->isOverdue())
                  class="icon-file-alt"></i> <?php echo __('Ticket Thread'); ?></a>
                  <li><a class="no-pjax" target="_blank" href="tickets.php?id=<?php echo $ticket->getId(); ?>&a=print&notes=1"><i
                  class="icon-file-text-alt"></i> <?php echo __('Thread + Internal Notes'); ?></a>
+                 <li><a class="no-pjax"  href="#" onclick="chooseAttachment(0)"><i
+                 class="icon-file-alt"></i> <?php echo __('Thread + Attachments'); ?></a>
+                 <li><a class="no-pjax"  href="#" onclick="chooseAttachment(1)"><i
+                 class="icon-file-text-alt"></i> <?php echo __('Thread + Internal Notes + Attachments'); ?></a>
               </ul>
             </div>
             <div id="action-dropdown-more" class="action-dropdown anchor-right">
@@ -1064,13 +1068,13 @@ $tcount+= $ticket->getNumNotes();
     <h3><?php echo __('Ticket Print attachments');?></h3>
     <a class="close" href=""><i class="icon-remove-circle"></i></a>
     <hr/>
-    <form action="tickets.php" method="get" id="print-ticket-with-attachments" name="print-ticket-with-attachments" target="_blank" >
+    <form action="tickets.php?id=<?php echo $ticket->getId(); ?>" method="post" id="print-ticket-with-attachments" name="print-ticket-with-attachments" target="_blank" >
         <?php csrf_token(); ?>
         <input type="hidden" name="a" value="print">
         <input type="hidden" name="id" value="<?php echo $ticket->getId(); ?>">
         <?php $printableAttachments = $ticket->getAllAttachments();
             foreach ($printableAttachments as  $attachment) { ?>
-              <input type="checkbox" name="printAttachments" value="<?php echo $attachment['file_id'];?>"><a href="<?php echo $attachment['download_url']; ?>"><?php echo $attachment['name']; ?></a><br> 
+              <input type="checkbox" name="printAttachments[]" value="<?php echo $attachment['file_id'];?>"><a href="<?php echo $attachment['download_url']; ?>"><?php echo $attachment['name']; ?></a><br> 
         <?php    }
         ?>
     </form>
