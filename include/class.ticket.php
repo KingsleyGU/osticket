@@ -2299,7 +2299,7 @@ class Ticket {
         $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
         shell_exec($cmd);        
         $pdf->Output($pdfConverterPath.$name, 'F');
-        $pdf = new mPDF('utf-8', 'A4', '8', '', 10, 10, 7, 7, 10, 10);
+        $pdf = new mPDF();
         $pdf->SetImportUse();
         $this->importPdfPages($pdf,$pdfConverterPath.$name);
         $this->logErrors(json_encode($printAttachments));
@@ -2322,8 +2322,13 @@ class Ticket {
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
                 // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-                if(!$this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf"))
+                try {
+                    $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf")
+                } catch (Exception $e) {
+                    logErrors('Caught exception: ',  $e->getMessage(), "\n");
                     break;
+                }
+                
             }
         }
 
