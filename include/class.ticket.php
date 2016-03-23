@@ -2300,7 +2300,7 @@ class Ticket {
         $pdf->SetImportUse();
         $this->logErrors(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
-            if (!($f = AttachmentFile::lookup(intval($id))))
+            if (!($f = AttachmentFile::lookup(intval($attachmentId))))
                 break;
             $this->logErrors("".$f->getDownloadUrl());
             if($file['data'] = file_get_contents($f->getDownloadUrl()))
