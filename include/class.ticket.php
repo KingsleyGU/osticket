@@ -2296,7 +2296,7 @@ class Ticket {
 
         $pdf = new Ticket2PDF($this, $psize, $notes);
         $name='Ticket-'.$this->getNumber().'.pdf';
-
+        $pdf->Output($name, 'F');
         $pdf->SetImportUse();
         $this->logErrors(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
