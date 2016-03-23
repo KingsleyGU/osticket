@@ -2321,10 +2321,10 @@ class Ticket {
                 system($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
-                $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
-                $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
+                // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
+                // $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
                 // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-                shell_exec($cmd);
+                // shell_exec($cmd);
                 try {
                     $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf");
                 } catch (Exception $e) {
