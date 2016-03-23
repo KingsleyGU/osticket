@@ -2297,24 +2297,24 @@ class Ticket {
         $pdf = new Ticket2PDF($this, $psize, $notes);
         $name='Ticket-'.$this->getNumber().'.pdf';
 
-        // $pdf->SetImportUse();
-        // foreach ($printAttachments as $attachmentId) {
-        //     if (!($f = AttachmentFile::lookup($id)))
-        //         break;
-        //     if($file['data'] = file_get_contents($f->getDownloadUrl()))
-        //     {
-        //         file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
-        //         $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
-        //         shell_exec($cmd);
-        //         $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-        //         $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
-        //         for ($i=1; $i<=($pagecount); $i++) {
-        //             $pdf->AddPage();
-        //             $import_page = $pdf->ImportPage($i);
-        //             $pdf->UseTemplate($import_page);
-        //         }
-        //     }
-        // }
+        $pdf->SetImportUse();
+        foreach ($printAttachments as $attachmentId) {
+            if (!($f = AttachmentFile::lookup(intval($id))))
+                break;
+            if($file['data'] = file_get_contents($f->getDownloadUrl()))
+            {
+                file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
+                $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
+                shell_exec($cmd);
+                $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
+                $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
+                for ($i=1; $i<=($pagecount); $i++) {
+                    $pdf->AddPage();
+                    $import_page = $pdf->ImportPage($i);
+                    $pdf->UseTemplate($import_page);
+                }
+            }
+        }
 
 
         $pdf->Output($name, 'I');
