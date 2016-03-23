@@ -2307,15 +2307,17 @@ class Ticket {
             if($fileData = $f->getData())
             {
                 // $this->logErrors(json_encode($file['data']));
-                file_put_contents(INCLUDE_DIR.'pdfConverter/'."test.docx", $fileData);
-                $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'."test.docx";
+                $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
+                $tempName = "tempConverterFile";
+                file_put_contents(INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension, $fileData);
+                $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension;
                 shell_exec($cmd);
-                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.INCLUDE_DIR.'pdfConverter/'." ".INCLUDE_DIR.'pdfConverter/'."test.docx";
+                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.INCLUDE_DIR.'pdfConverter/'." ".INCLUDE_DIR.'pdfConverter/'.$tempName.".".$extension;
                 $this->logErrors("2222222 ".$cmd);
                 system($cmd);
                 
-                $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
-                $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
+                // $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
+                $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.'pdfConverter/'.$tempName.".pdf");
                 for ($i=1; $i<=($pagecount); $i++) {
                     $pdf->AddPage();
                     $import_page = $pdf->ImportPage($i);
