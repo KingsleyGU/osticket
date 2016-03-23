@@ -2310,9 +2310,9 @@ class Ticket {
                 file_put_contents(INCLUDE_DIR.'pdfConverter/'.$f->getName(), $fileData);
                 $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$f->getName();
                 shell_exec($cmd);
-                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName()." -outdir /tmp".$f->getName();
+                $cmd = 'sudo export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --invisible --norestore --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
                 $this->logErrors("2222222 ".$cmd);
-                shell_exec($cmd);
+                exec($cmd);
                 
                 $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
