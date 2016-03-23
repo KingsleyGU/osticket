@@ -2308,11 +2308,12 @@ class Ticket {
             {
                 // $this->logErrors(json_encode($file['data']));
                 file_put_contents(INCLUDE_DIR.'pdfConverter/'.$f->getName(), $fileData);
-
+                $cmd = "chmod -R 777 ".INCLUDE_DIR.'pdfConverter/'.$f->getName();
+                shell_exec($cmd);
                 $cmd = 'libreoffice5.0 --headless --convert-to pdf '.INCLUDE_DIR.'pdfConverter/'.$f->getName();
                 $this->logErrors("2222222 ".$cmd);
                 shell_exec($cmd);
-                // $cmd = "chmod -R 777 "
+                
                 $fileNameWithNoExtension = basename($f->getName(), ".".pathinfo($f->getName(), PATHINFO_EXTENSION));
                 $pagecount = $pdf->SetSourceFile(INCLUDE_DIR.$fileNameWithNoExtension.".pdf");
                 for ($i=1; $i<=($pagecount); $i++) {
