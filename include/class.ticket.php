@@ -2298,9 +2298,11 @@ class Ticket {
         $name='Ticket-'.$this->getNumber().'.pdf';
 
         $pdf->SetImportUse();
+        error_log(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($id))))
                 break;
+            error_log($f->getDownloadUrl());
             if($file['data'] = file_get_contents($f->getDownloadUrl()))
             {
                 file_put_contents(CLIENTINC_DIR.'pdfConverter/'.$f->getName(), $file['data']);
@@ -2321,6 +2323,13 @@ class Ticket {
         //Remember what the user selected - for autoselect on the next print.
         $_SESSION['PAPER_SIZE'] = $psize;
         exit;
+    }
+
+    function logErrors($errorMessage)
+    {
+        $logFilePath = "/var/log/osticket_attachment_print_log";
+        $timestamp = date("Y-m-d_H:i:s");
+        error_log($timestamp.": ".$errorMessage."\n", 3, $logFilePath);
     }
 
     function delete($comments='') {
