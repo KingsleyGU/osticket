@@ -2322,7 +2322,7 @@ class Ticket {
                 $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
                 $this->logErrors("fileName  ".$f->getName());
                 $stringName = preg_replace('/\s+/', '', $f->getName());
-                $tempName = basename($stringName, $extension);;
+                $tempName = basename($stringName, '.'.$extension);
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
@@ -2332,7 +2332,7 @@ class Ticket {
                 system($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
-                $formattedFile = "formatted.pdf";
+                $formattedFile = $tempName."formatted.pdf";
                 $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
                 $this->logErrors("3333333333333 ".$cmd);
                 shell_exec($cmd);
