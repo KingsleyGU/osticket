@@ -2321,11 +2321,17 @@ class Ticket {
                 system($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
+                $formattedFile = "formatted.pdf";
+                $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
+                $this->logErrors("3333333333333 ".$cmd);
+                system($cmd);
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
+                shell_exec($cmd);
                 // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
                 // $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
                 // shell_exec($cmd);
                 try {
-                    $this->importPdfPages($pdf,$pdfConverterPath.$tempName.".pdf");
+                    $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
                 } catch (Exception $e) {
                     logErrors('Caught exception: ',  $e->getMessage(), "\n");
                     break;
