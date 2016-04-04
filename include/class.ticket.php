@@ -2318,6 +2318,7 @@ class Ticket {
             {
                 // $this->logErrors(json_encode($file['data']));
                 $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
+                $this->logErrors("fileName  ".$f->getName());
                 $tempName = "tempConverterFile";
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
