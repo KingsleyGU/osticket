@@ -2324,7 +2324,7 @@ class Ticket {
                 $formattedFile = "formatted.pdf";
                 $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
                 $this->logErrors("3333333333333 ".$cmd);
-                system($cmd);
+                shell_exec($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
                 shell_exec($cmd);
                 // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
