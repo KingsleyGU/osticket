@@ -2295,17 +2295,13 @@ class Ticket {
         }
         $pdfConverterPath = INCLUDE_DIR.'pdfConverter/';
         $name='Ticket.pdf';
-        $pdf = new Ticket2PDF($this, $psize, $notes);
-        $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
-        shell_exec($cmd);        
+        $pdf = new Ticket2PDF($this, $psize, $notes);       
         $pdf->Output($pdfConverterPath.$name, 'F');
-        $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.'Ticket1.pdf'.' '.$pdfConverterPath.'Ticket.pdf';
-        $this->logErrors("3333333333333 ".$cmd);
-        shell_exec($cmd);
-
+        $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
+        shell_exec($cmd); 
         $pdf = new mPDF();
         $pdf->SetImportUse();
-        $this->importPdfPages($pdf,$pdfConverterPath.'Ticket1.pdf');
+        $this->importPdfPages($pdf,$pdfConverterPath.$name);
         $this->logErrors(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
@@ -2321,11 +2317,11 @@ class Ticket {
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
                 shell_exec($cmd);
-                // $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
-                // $this->logErrors("2222222 ".$cmd);
-                // system($cmd);
-                // $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
-                // shell_exec($cmd);
+                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
+                $this->logErrors("2222222 ".$cmd);
+                system($cmd);
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
+                shell_exec($cmd);
                 $formattedFile = "formatted.pdf";
                 $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$originalFileName;
                 $this->logErrors("3333333333333 ".$cmd);
