@@ -2326,8 +2326,8 @@ class Ticket {
                 $tempName = $timestamp.basename($stringName, '.'.$extension);
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
-                if(!file_exists ($originalFileName))
-                {
+                // if(!file_exists ($originalFileName))
+                // {
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
                     shell_exec($cmd);
                     $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
@@ -2352,7 +2352,7 @@ class Ticket {
                         logErrors('Caught exception: ',  $e->getMessage(), "\n");
                         break;
                     }
-                }
+                // }
                 
             }
         }
