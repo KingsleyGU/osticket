@@ -2326,8 +2326,8 @@ class Ticket {
                 $tempName = $timestamp.basename($stringName, '.'.$extension);
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
-                // if(!file_exists ($originalFileName))
-                // {
+                if(!file_exists ($originalFileName))
+                {
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
                     shell_exec($cmd);
                     $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
@@ -2352,16 +2352,16 @@ class Ticket {
                         logErrors('Caught exception: ',  $e->getMessage(), "\n");
                         break;
                     }
-                // }
+                }
                 
             }
         }
-        $cmd = " find ".$pdfConverterPath.' -type f -delete';
-        shell_exec($cmd);
         $name='Ticket-'.$this->getNumber().'.pdf';
         $pdf->Output($name, 'I');
         //Remember what the user selected - for autoselect on the next print.
         $_SESSION['PAPER_SIZE'] = $psize;
+        $cmd = " find ".$pdfConverterPath.' -type f -delete';
+        shell_exec($cmd);
         exit;
     }
     function importPdfPages($pdf,$filePath)
