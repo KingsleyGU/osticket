@@ -2299,6 +2299,11 @@ class Ticket {
         $pdf->Output($pdfConverterPath.$name, 'F');
         $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
         shell_exec($cmd); 
+        $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$name.' '.$pdfConverterPath."Ticket1.pdf";
+        $cmd = "chmod -R 777 ".$pdfConverterPath."Ticket1.pdf";
+        shell_exec($cmd); 
+        // $this->logErrors("3333333333333 ".$cmd);
+        // shell_exec($cmd);
         $pdf = new mPDF();
         $pdf->SetImportUse();
         $this->importPdfPages($pdf,$pdfConverterPath.$name);
