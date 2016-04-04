@@ -2356,7 +2356,8 @@ class Ticket {
                 
             }
         }
-
+        $cmd = " find ".$pdfConverterPath.' -type f -delete';
+        shell_exec($cmd);
         $name='Ticket-'.$this->getNumber().'.pdf';
         $pdf->Output($name, 'I');
         //Remember what the user selected - for autoselect on the next print.
