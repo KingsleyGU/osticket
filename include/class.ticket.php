@@ -2307,7 +2307,9 @@ class Ticket {
         shell_exec($cmd);        
         $pdf = new mPDF();
         $pdf->SetImportUse();
+        $this->logErrors("1111111fileName  ".$formattedFile);
         $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
+        $this->logErrors("22222222222222222fileName  ".$formattedFile);
         $this->logErrors(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
