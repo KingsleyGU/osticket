@@ -2323,7 +2323,7 @@ class Ticket {
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
                 $formattedFile = "formatted.pdf";
-                $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$originalFileName;
+                $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
                 $this->logErrors("3333333333333 ".$cmd);
                 shell_exec($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
