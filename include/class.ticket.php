@@ -2319,35 +2319,39 @@ class Ticket {
             if($fileData = $f->getData())
             {
                 // $this->logErrors(json_encode($file['data']));
+                $timestamp = date("Y-m-d_H");
                 $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
                 $this->logErrors("fileName  ".$f->getName());
                 $stringName = preg_replace('/\s+/', '', $f->getName());
-                $tempName = basename($stringName, '.'.$extension);
+                $tempName = $timestamp.basename($stringName, '.'.$extension);
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
-                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
-                shell_exec($cmd);
-                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
-                $this->logErrors("2222222 ".$cmd);
-                system($cmd);
-                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
-                shell_exec($cmd);
-                $formattedFile = $tempName."formatted.pdf";
-                $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
-                $this->logErrors("3333333333333 ".$cmd);
-                shell_exec($cmd);
-                $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
-                shell_exec($cmd);
-                // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
-                // $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
-                // shell_exec($cmd);
-                try {
-                    $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
+                if(!file_exists ($originalFileName))
+                {
+                    $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
+                    shell_exec($cmd);
+                    $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
+                    $this->logErrors("2222222 ".$cmd);
+                    system($cmd);
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                     shell_exec($cmd);
-                } catch (Exception $e) {
-                    logErrors('Caught exception: ',  $e->getMessage(), "\n");
-                    break;
+                    $formattedFile = $tempName."formatted.pdf";
+                    $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
+                    $this->logErrors("3333333333333 ".$cmd);
+                    shell_exec($cmd);
+                    $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
+                    shell_exec($cmd);
+                    // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
+                    // $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
+                    // shell_exec($cmd);
+                    try {
+                        $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
+                        $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
+                        shell_exec($cmd);
+                    } catch (Exception $e) {
+                        logErrors('Caught exception: ',  $e->getMessage(), "\n");
+                        break;
+                    }
                 }
                 
             }
