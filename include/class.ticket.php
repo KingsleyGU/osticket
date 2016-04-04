@@ -2321,7 +2321,8 @@ class Ticket {
                 // $this->logErrors(json_encode($file['data']));
                 $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
                 $this->logErrors("fileName  ".$f->getName());
-                $tempName = "tempConverterFile";
+                $stringName = preg_replace('/\s+/', '', $f->getName());
+                $tempName = basename($stringName, $extension);;
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
@@ -2342,6 +2343,8 @@ class Ticket {
                 // shell_exec($cmd);
                 try {
                     $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
+                    $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
+                    shell_exec($cmd);
                 } catch (Exception $e) {
                     logErrors('Caught exception: ',  $e->getMessage(), "\n");
                     break;
