@@ -2299,14 +2299,15 @@ class Ticket {
         $pdf->Output($pdfConverterPath.$name, 'F');
         $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
         shell_exec($cmd); 
-        $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath."Ticket1.pdf".' '.$pdfConverterPath.$name;
-        $cmd = "chmod -R 777 ".$pdfConverterPath."Ticket1.pdf";
-        shell_exec($cmd); 
-        // $this->logErrors("3333333333333 ".$cmd);
-        // shell_exec($cmd);
+        $formattedFile = "Ticket1.pdf";
+        $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$name;
+        $this->logErrors("3333333333333 ".$cmd);
+        shell_exec($cmd);
+        $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
+        shell_exec($cmd);        
         $pdf = new mPDF();
         $pdf->SetImportUse();
-        $this->importPdfPages($pdf,$pdfConverterPath."Ticket1.pdf");
+        $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
         $this->logErrors(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
