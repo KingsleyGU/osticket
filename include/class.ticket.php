@@ -2294,6 +2294,8 @@ class Ticket {
                 $psize = 'Letter';
         }
         $pdfConverterPath = INCLUDE_DIR.'pdfConverter/';
+        $cmd = " find ".$pdfConverterPath.' -type f -delete';
+        shell_exec($cmd);
         $name='Ticket.pdf';
         $pdf = new Ticket2PDF($this, $psize, $notes);       
         $pdf->Output($pdfConverterPath.$name, 'F');
@@ -2360,8 +2362,6 @@ class Ticket {
         $pdf->Output($name, 'I');
         //Remember what the user selected - for autoselect on the next print.
         $_SESSION['PAPER_SIZE'] = $psize;
-        $cmd = " find ".$pdfConverterPath.' -type f -delete';
-        shell_exec($cmd);
         exit;
     }
     function importPdfPages($pdf,$filePath)
