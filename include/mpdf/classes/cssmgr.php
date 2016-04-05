@@ -221,8 +221,9 @@ function ReadCSS($html) {
 		}
 	}
 
+	// mPDF 5.5.13
 	// Replace any background: url(data:image... with temporary image file reference
-	preg_match_all("/(url\(data:image\/(jpeg|gif|png);base64,(.*?)\))/si", $CSSstr, $idata);	// mPDF 5.7.2
+	preg_match_all("/(url\(data:image\/(jpeg|gif|png);base64,(.*)\))/si", $CSSstr, $idata);
 	if (count($idata[0])) { 
 		for($i=0;$i<count($idata[0]);$i++) {
 			$file = _MPDF_TEMP_PATH.'_tempCSSidata'.RAND(1,10000).'_'.$i.'.'.$idata[2][$i];
@@ -698,13 +699,6 @@ function fixCSS($prop) {
 			}
 			else { $newprop[$k] = $v; }
 		}
-		else if ($k == 'LIST-STYLE') {	// mPDF 5.7.2
-			if (preg_match('/(lower-roman|upper-roman|lower-latin|lower-alpha|upper-latin|upper-alpha|none|decimal|disc|circle|square|arabic-indic|bengali|devanagari|gujarati|gurmukhi|kannada|malayalam|oriya|persian|tamil|telugu|thai|urdu|cambodian|khmer|lao)/i',$v,$m)
-			|| preg_match('/U\+([a-fA-F0-9]+)/i',$v,$m)) { 
-				$newprop['LIST-STYLE-TYPE'] = strtolower(trim($m[1]));
-			}
-		}
-
 
 		else { 
 			$newprop[$k] = $v; 
@@ -1247,13 +1241,8 @@ function MergeCSS($inherit,$tag,$attr) {
 	}
 	//===============================================
 /*-- TABLES --*/
-	// mPDF 5.7.3
-	// cellSpacing overwrites TABLE default but not specific CSS set on table
-	if ($tag=='TABLE' && isset($attr['CELLSPACING'])) {
-		$p['BORDER-SPACING-H'] = $p['BORDER-SPACING-V'] = $attr['CELLSPACING'];
-	}
 	// cellPadding overwrites TD/TH default but not specific CSS set on cell
-	if (($tag=='TD' || $tag=='TH') && isset($this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding']) && ($this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding'] || $this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding']==='0')) { 	// mPDF 5.7.3
+	if (($tag=='TD' || $tag=='TH') && isset($this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding']) && ($this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding'] || $this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding']===0)) { 
 		$p['PADDING-LEFT'] = $this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding'];
 		$p['PADDING-RIGHT'] = $this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding'];
 		$p['PADDING-TOP'] = $this->mpdf->table[$this->mpdf->tableLevel][$this->mpdf->tbctr[$this->mpdf->tableLevel]]['cell_padding'];
