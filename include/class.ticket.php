@@ -731,10 +731,10 @@ class Ticket {
     {
         if ($extension == "doc" || $extension == 'docx')
             return true;        
-        // elseif($extension == "xls"|| $extension == "xlsx")
-        //     return true;
-        // elseif ($extension == "ppt" || $extension == 'pptx')
-        //     return true;        
+        elseif($extension == "xls"|| $extension == "xlsx")
+            return true;
+        elseif ($extension == "ppt" || $extension == 'pptx')
+            return true;        
         elseif($extension == "html" || $extension == "htm")
             return true;
         elseif($extension == "pdf")
