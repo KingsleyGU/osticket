@@ -729,7 +729,7 @@ class Ticket {
     }
     function checkAttachmentPrintablility($extension)
     {
-        if($extension == "xls"|| $extension = "xlsx")
+        if($extension == "xls"|| $extension == "xlsx")
             return true;
         elseif ($extension == "doc" || $extension == 'docx')
             return true;
