@@ -102,10 +102,10 @@ if($ticket->isOverdue())
                  class="icon-file-alt"></i> <?php echo __('Ticket Thread'); ?></a>
                  <li><a class="no-pjax" target="_blank" href="tickets.php?id=<?php echo $ticket->getId(); ?>&a=print&notes=1"><i
                  class="icon-file-text-alt"></i> <?php echo __('Thread + Internal Notes'); ?></a>
-<!--                  <li><a class="no-pjax"  href="#" onclick="chooseAttachment(0)"><i
+                 <li><a class="no-pjax"  href="#" onclick="chooseAttachment(0)"><i
                  class="icon-file-alt"></i> <?php echo __('Thread + Attachments'); ?></a>
                  <li><a class="no-pjax"  href="#" onclick="chooseAttachment(1)"><i
-                 class="icon-file-text-alt"></i> <?php echo __('Thread + Internal Notes + Attachments'); ?></a> -->
+                 class="icon-file-text-alt"></i> <?php echo __('Thread + Internal Notes + Attachments'); ?></a>
               </ul>
             </div>
             <div id="action-dropdown-more" class="action-dropdown anchor-right">
