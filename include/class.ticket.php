@@ -2332,7 +2332,8 @@ class Ticket {
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
                 $this->logErrors("file existance: ".$originalFileName);
                 $this->logErrors("file existance: ".file_exists($originalFileName));
-                if(!file_exists($originalFileName))
+                $formattedFile = $tempName."formatted.pdf";
+                if(!file_exists($formattedFile))
                 {
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
                     shell_exec($cmd);
@@ -2341,7 +2342,7 @@ class Ticket {
                     system($cmd);
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                     shell_exec($cmd);
-                    $formattedFile = $tempName."formatted.pdf";
+                    
                     $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
                     // $this->logErrors("3333333333333 ".$cmd);
                     shell_exec($cmd);
