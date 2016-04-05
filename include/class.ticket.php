@@ -2315,6 +2315,7 @@ class Ticket {
         $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
         // $this->logErrors("22222222222222222fileName  ".$formattedFile);
         // $this->logErrors(json_encode($printAttachments));
+        $attachmentOrder = 1;
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
                 break;
@@ -2327,7 +2328,8 @@ class Ticket {
                 $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
                 // $this->logErrors("fileName  ".$f->getName());
                 $stringName = preg_replace('/\s+/', '', $f->getName());
-                $tempName = $timestamp.basename($stringName, '.'.$extension);
+                // $tempName = $timestamp.basename($stringName, '.'.$extension);
+                $tempName = "tempFile".$attachmentOrder;
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
                 $this->logErrors("file existance: ".$originalFileName);
@@ -2360,6 +2362,7 @@ class Ticket {
                         break;
                     }
                 }
+                $attachmentOrder = $attachmentOrder + 1;
                 
             }
         }
