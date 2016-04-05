@@ -724,7 +724,7 @@ class Ticket {
             if(!$this->checkAttachmentPrintablility($extension))
                 unset($attachments[$key]);
           }
-          else
+          // else
             $this->logErrors("image path:".json_encode(getimagesize($attachmentUrl)));
       }
       return $attachments;
