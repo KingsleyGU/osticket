@@ -724,8 +724,8 @@ class Ticket {
             if(!$this->checkAttachmentPrintablility($extension))
                 unset($attachments[$key]);
           }
-          else
-            unset($attachments[$key]);
+          // else
+          //   unset($attachments[$key]);
       }
       return $attachments;
     }
