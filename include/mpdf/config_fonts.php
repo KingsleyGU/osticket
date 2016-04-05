@@ -93,10 +93,10 @@ starting at 1, as they appear in the .ttc file e.g.
 
 $this->fontdata = array(
 	"dejavusanscondensed" => array(
-		'R' => "DejaVuSans.ttf",
-		'B' => "DejaVuSans-Bold.ttf",
-		'I' => "DejaVuSans-Oblique.ttf",
-		'BI' => "DejaVuSans-BoldOblique.ttf",
+		'R' => "cambria.ttc",
+		'B' => "cambriab.ttf",
+		'I' => "cambriai.ttf",
+		'BI' => "cambriaz.ttf",
 		),
 	"dejavusans" => array(
 		'R' => "DejaVuSans.ttf",
