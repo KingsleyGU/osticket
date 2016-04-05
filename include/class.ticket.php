@@ -719,6 +719,7 @@ class Ticket {
           if(!is_array(getimagesize($attachmentUrl)))
           {
             $extension = pathinfo($attachment['name'], PATHINFO_EXTENSION);
+            $this->logErrors("check printability ".$this->checkAttachmentPrintablility($extension));
             if(!$this->checkAttachmentPrintablility($extension))
                 unset($attachments[$key]);
           }
