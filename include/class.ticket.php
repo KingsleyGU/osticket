@@ -717,7 +717,7 @@ class Ticket {
       foreach ($attachments as $key => $attachment) {
           $attachmentUrl = $attachment['download_url'];
           $this->logErrors("image path:".$attachmentUrl);
-          if(!is_array(getimagesize($attachmentUrl)))
+          if(!is_array(getimagesize("http://".$_SERVER['SERVER_NAME'].$attachmentUrl)))
           {
             $extension = pathinfo($attachment['name'], PATHINFO_EXTENSION);
             // $this->logErrors("extension ".$extension);
