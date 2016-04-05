@@ -2302,19 +2302,10 @@ class Ticket {
         $pdf = new Ticket2PDF($this, $psize, $notes);       
         $pdf->Output($pdfConverterPath.$name, 'F');
         $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
-        shell_exec($cmd); 
-        $formattedFile = "Ticket1.pdf";
-        $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$name;
-        // $this->logErrors("3333333333333 ".$cmd);
-        shell_exec($cmd);
-        $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
-        shell_exec($cmd);        
+        shell_exec($cmd);      
         $pdf = new mPDF();
         $pdf->SetImportUse();
-        // $this->logErrors("1111111fileName  ".$formattedFile);
-        $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
-        // $this->logErrors("22222222222222222fileName  ".$formattedFile);
-        // $this->logErrors(json_encode($printAttachments));
+        $this->importPdfPages($pdf,$pdfConverterPath.$name);
         $attachmentOrder = 1;
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
@@ -2332,36 +2323,30 @@ class Ticket {
                 $tempName = "tempFile".$attachmentOrder;
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
-                $this->logErrors("file existance: ".$originalFileName);
-                $this->logErrors("file existance: ".file_exists($originalFileName));
                 $formattedFile = $tempName."formatted.pdf";
-                if(!file_exists($formattedFile))
-                {
-                    $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
-                    shell_exec($cmd);
-                    $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
-                    // $this->logErrors("2222222 ".$cmd);
-                    system($cmd);
+
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
+                shell_exec($cmd);
+                $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
+                // $this->logErrors("2222222 ".$cmd);
+                system($cmd);
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
+                shell_exec($cmd);
+                
+                $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
+                shell_exec($cmd);
+                $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
+                shell_exec($cmd);
+
+                try {
+                    $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                     shell_exec($cmd);
-                    
-                    $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
-                    // $this->logErrors("3333333333333 ".$cmd);
-                    shell_exec($cmd);
-                    $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
-                    shell_exec($cmd);
-                    // $gsfilePath = $pdfConverterPath."tempConverterFile.pdf";
-                    // $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$gsfilePath $gsfilePath";
-                    // shell_exec($cmd);
-                    try {
-                        $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
-                        $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
-                        shell_exec($cmd);
-                    } catch (Exception $e) {
-                        logErrors('Caught exception: ',  $e->getMessage(), "\n");
-                        break;
-                    }
+                } catch (Exception $e) {
+                    logErrors('Caught exception: ',  $e->getMessage(), "\n");
+                    break;
                 }
+
                 $attachmentOrder = $attachmentOrder + 1;
                 
             }
