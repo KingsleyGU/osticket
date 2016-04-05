@@ -716,6 +716,7 @@ class Ticket {
       }
       foreach ($attachments as $key => $attachment) {
           $attachmentUrl = $attachment['download_url'];
+          $this->logErrors("image path:".$attachmentUrl);
           if(!is_array(getimagesize($attachmentUrl)))
           {
             $extension = pathinfo($attachment['name'], PATHINFO_EXTENSION);
@@ -725,7 +726,7 @@ class Ticket {
                 unset($attachments[$key]);
           }
           // else
-            $this->logErrors("image path:".json_encode(getimagesize($attachmentUrl)));
+            $this->logErrors("is image:".json_encode(getimagesize($attachmentUrl)));
       }
       return $attachments;
     }
