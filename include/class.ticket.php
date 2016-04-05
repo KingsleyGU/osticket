@@ -703,7 +703,7 @@ class Ticket {
 
         return $this->recipients;
     }
-    function getAllAttachments()
+    function getAllPrintableAttachments()
     {
       $attachments = array();
       if(!($clientThreadEntries = $this->getClientThread()))
@@ -724,6 +724,8 @@ class Ticket {
             if(!$this->checkAttachmentPrintablility($extension))
                 unset($attachments[$key]);
           }
+          else
+            unset($attachments[$key]);
       }
       return $attachments;
     }
@@ -731,6 +733,8 @@ class Ticket {
     {
         if($extension == "xls"|| $extension == "xlsx")
             return true;
+        elseif ($extension == "ppt" || $extension == 'pptx')
+            return true;        
         elseif ($extension == "doc" || $extension == 'docx')
             return true;
         elseif($extension == "html" || $extension == "htm")
