@@ -719,8 +719,8 @@ class Ticket {
           if(!is_array(getimagesize($attachmentUrl)))
           {
             $extension = pathinfo($attachment['name'], PATHINFO_EXTENSION);
-            $this->logErrors("extension ".$extension);
-            $this->logErrors("check printability ".$this->checkAttachmentPrintablility($extension));
+            // $this->logErrors("extension ".$extension);
+            // $this->logErrors("check printability ".$this->checkAttachmentPrintablility($extension));
             if(!$this->checkAttachmentPrintablility($extension))
                 unset($attachments[$key]);
           }
@@ -2305,43 +2305,45 @@ class Ticket {
         shell_exec($cmd); 
         $formattedFile = "Ticket1.pdf";
         $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$name;
-        $this->logErrors("3333333333333 ".$cmd);
+        // $this->logErrors("3333333333333 ".$cmd);
         shell_exec($cmd);
         $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
         shell_exec($cmd);        
         $pdf = new mPDF();
         $pdf->SetImportUse();
-        $this->logErrors("1111111fileName  ".$formattedFile);
+        // $this->logErrors("1111111fileName  ".$formattedFile);
         $this->importPdfPages($pdf,$pdfConverterPath.$formattedFile);
-        $this->logErrors("22222222222222222fileName  ".$formattedFile);
-        $this->logErrors(json_encode($printAttachments));
+        // $this->logErrors("22222222222222222fileName  ".$formattedFile);
+        // $this->logErrors(json_encode($printAttachments));
         foreach ($printAttachments as $attachmentId) {
             if (!($f = AttachmentFile::lookup(intval($attachmentId))))
                 break;
-            $this->logErrors($f->getDownloadUrl());
-            $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
+            // $this->logErrors($f->getDownloadUrl());
+            // $this->logErrors("http://mailtest.spitzeco.dk/".$f->getDownloadUrl());
             if($fileData = $f->getData())
             {
                 // $this->logErrors(json_encode($file['data']));
                 $timestamp = date("Y-m-d_H");
                 $extension = pathinfo($f->getName(), PATHINFO_EXTENSION);
-                $this->logErrors("fileName  ".$f->getName());
+                // $this->logErrors("fileName  ".$f->getName());
                 $stringName = preg_replace('/\s+/', '', $f->getName());
                 $tempName = $timestamp.basename($stringName, '.'.$extension);
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
-                // if(!file_exists ($originalFileName))
-                // {
+                $this->logErrors("file existance: ".$originalFileName);
+                $this->logErrors("file existance: ".file_exists($originalFileName));
+                if(!file_exists($originalFileName))
+                {
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
                     shell_exec($cmd);
                     $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
-                    $this->logErrors("2222222 ".$cmd);
+                    // $this->logErrors("2222222 ".$cmd);
                     system($cmd);
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                     shell_exec($cmd);
                     $formattedFile = $tempName."formatted.pdf";
                     $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
-                    $this->logErrors("3333333333333 ".$cmd);
+                    // $this->logErrors("3333333333333 ".$cmd);
                     shell_exec($cmd);
                     $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
                     shell_exec($cmd);
@@ -2356,7 +2358,7 @@ class Ticket {
                         logErrors('Caught exception: ',  $e->getMessage(), "\n");
                         break;
                     }
-                // }
+                }
                 
             }
         }
