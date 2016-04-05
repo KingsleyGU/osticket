@@ -729,12 +729,12 @@ class Ticket {
     }
     function checkAttachmentPrintablility($extension)
     {
-        if($extension == "xls"|| $extension == "xlsx")
-            return true;
-        elseif ($extension == "ppt" || $extension == 'pptx')
+        if ($extension == "doc" || $extension == 'docx')
             return true;        
-        elseif ($extension == "doc" || $extension == 'docx')
-            return true;
+        // elseif($extension == "xls"|| $extension == "xlsx")
+        //     return true;
+        // elseif ($extension == "ppt" || $extension == 'pptx')
+        //     return true;        
         elseif($extension == "html" || $extension == "htm")
             return true;
         elseif($extension == "pdf")
