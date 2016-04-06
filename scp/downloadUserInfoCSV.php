@@ -19,17 +19,17 @@ $fsize = filesize($filename);
 // header('Content-Type: application/csv;charset=utf-8');
 // header('Content-Disposition: attachment; filename='.basename($filename));
 // fputcsv($fp, "NAME", "EMAIL","WEB");
-fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'), '|');
+fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
 
-if($userInfoArray = Staff::getStaffCSVFile())
-{
-	// echo json_encode($userInfoArray);
-	foreach ($userInfoArray as $fields) {
-	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
-    fputcsv($fp, $fields);
-	}
+// if($userInfoArray = Staff::getStaffCSVFile())
+// {
+// 	// echo json_encode($userInfoArray);
+// 	foreach ($userInfoArray as $fields) {
+// 	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+//     fputcsv($fp, $fields);
+// 	}
 
-}
+// }
 
 fclose($fp);
 
