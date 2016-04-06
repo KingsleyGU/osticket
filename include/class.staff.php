@@ -304,9 +304,10 @@ implements EmailContact {
         {
             $teamsName = "";
            while (  $row  =  db_fetch_array($res) )  {
+                    // $teamsName = json_encode($row);
                if($team = Team::lookup(intval($row['team_id'])))
                {
-                    $teamsName = $teamsName.$team->getName().",  "
+                    $teamsName = $teamsName.$team->getName().",  ";
                }
             }
             return  $teamsName;
