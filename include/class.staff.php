@@ -297,7 +297,7 @@ implements EmailContact {
     }
     function getStaffTeams($staff_id)
     {
-        $sql = "select  * from ".TEAM_TABLE." where staff_id=".$staff_id;  
+        $sql = "select  * from ".TEAM_MEMBER_TABLE." where staff_id=".$staff_id;  
         if(!($res=db_query($sql)) || !db_num_rows($res))
             return " ";
         else
