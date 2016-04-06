@@ -18,8 +18,8 @@ $fsize = filesize($filename);
 // header('Content-Length: ' . filesize($filePath));  // File size
 // header('Content-Type: application/csv;charset=utf-8');
 // header('Content-Disposition: attachment; filename='.basename($filename));
-fputcsv($fp, "NAME", "EMAIL","WEB");
-fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'));
+// fputcsv($fp, "NAME", "EMAIL","WEB");
+fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin'), '|');
 
 if($userInfoArray = Staff::getStaffCSVFile())
 {
