@@ -942,7 +942,7 @@ print $note_form->getField('attachments')->render();
 
 <?php
 $tcount = $ticket->getThreadCount();
-$tcount+= $ticket->getNumNotes();
+// $tcount+= $ticket->getNumNotes();
 ?>
 <ul id="threads">
     <li><a class="active" id="toggle_ticket_thread" href="#"><?php echo sprintf(__('Ticket Thread (%d)'), $tcount); ?></a></li>
