@@ -30,10 +30,10 @@ if($userInfoArray = Staff::getStaffCSVFile())
 fclose($fp);
 
 
-// echo "\xEF\xBB\xBF"; 
-// header('Content-Type: application/csv;charset=utf-8');
-// header('Content-Disposition: attachment; filename='.basename($filename));
-// readfile($filename);
+echo "\xEF\xBB\xBF"; 
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
+readfile($filename);
 
 exit;
 ?>
