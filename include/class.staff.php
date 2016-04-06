@@ -300,17 +300,17 @@ implements EmailContact {
         $sql = "select  * from ".TEAM_MEMBER_TABLE." where staff_id=".$staff_id;  
         if(!($res=db_query($sql)) || !db_num_rows($res))
             return " ";
-        // else
-        // {
-        //     $teamsName = "";
-        //    while (  $row  =  db_fetch_array($res) )  {
-        //        if($team = Team::lookup($row['team_id']))
-        //        {
-        //             $teamsName = $teamsName.$team->getName().",  "
-        //        }
-        //     }
-        //     return  $teamsName;
-        // } 
+        else
+        {
+            $teamsName = "";
+           while (  $row  =  db_fetch_array($res) )  {
+               if($team = Team::lookup(intval($row['team_id'])))
+               {
+                    $teamsName = $teamsName.$team->getName().",  "
+               }
+            }
+            return  $teamsName;
+        } 
     }
 
     function getLanguage() {
