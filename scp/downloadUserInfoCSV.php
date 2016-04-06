@@ -1,7 +1,7 @@
 <?php
 require('staff.inc.php');
 
-$filename = "users.csv";
+$filename = SCP_DIR."users.csv";
 $fp = fopen($filename, "w");
 
 $filePath = $filename;
