@@ -1,7 +1,7 @@
 <?php
 require('staff.inc.php');
 
-$filename = SCP_DIR."users.csv";
+$filename = "/var/log/users.csv";
 echo $filename;
 echo "existance: ".file_exists($filename);
 $fp = fopen($filename, "w") or die('Unable to open file!');;
