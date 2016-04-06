@@ -295,23 +295,23 @@ implements EmailContact {
             return  $userInfoArray;
         }    
     }
-    // function getStaffTeams($staff_id)
-    // {
-    //     $sql = "select  * from ".TEAM_TABLE." where staff_id=".$staff_id;  
-    //     if(!($res=db_query($sql)) || !db_num_rows($res))
-    //         return " ";
-    //     else
-    //     {
-    //         $teamsName = "";
-    //        while (  $row  =  db_fetch_array($res) )  {
-    //            if($team = Team::lookup($row['team_id']))
-    //            {
-    //                 $teamsName = $teamsName.$team->getName().",  "
-    //            }
-    //         }
-    //         return  $teamsName;
-    //     } 
-    // }
+    function getStaffTeams($staff_id)
+    {
+        $sql = "select  * from ".TEAM_TABLE." where staff_id=".$staff_id;  
+        if(!($res=db_query($sql)) || !db_num_rows($res))
+            return " ";
+        else
+        {
+            $teamsName = "";
+           while (  $row  =  db_fetch_array($res) )  {
+               if($team = Team::lookup($row['team_id']))
+               {
+                    $teamsName = $teamsName.$team->getName().",  "
+               }
+            }
+            return  $teamsName;
+        } 
+    }
 
     function getLanguage() {
         static $cached = false;
