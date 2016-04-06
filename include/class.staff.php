@@ -299,7 +299,7 @@ implements EmailContact {
     {
         $sql = "select  * from ".TEAM_MEMBER_TABLE." where staff_id=".$staff_id;  
         if(!($res=db_query($sql)) || !db_num_rows($res))
-            return array();
+            return null;
         else
         {
             $teams = array();
@@ -307,7 +307,7 @@ implements EmailContact {
                 
                if($team = Team::lookup(intval($row['team_id'])))
                {
-                    array_push($teams,$team->getName())
+                    array_push($teams,$team->getName());
                     // $teamsName = $teamsName.$team->getName().",";
                }
             }
