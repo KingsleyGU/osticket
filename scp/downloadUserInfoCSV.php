@@ -27,9 +27,9 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
 	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 	// fputcsv($fp,$fields);
-	$teams = addslashes(Staff::getStaffTeams($fields['staff_id']));
+	$teams = Staff::getStaffTeams($fields['staff_id']);
 	// echo $teams;
-    fputcsv($fp, array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],null));
+    fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),$teams));
 	}
 
 }

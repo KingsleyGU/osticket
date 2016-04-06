@@ -299,18 +299,19 @@ implements EmailContact {
     {
         $sql = "select  * from ".TEAM_MEMBER_TABLE." where staff_id=".$staff_id;  
         if(!($res=db_query($sql)) || !db_num_rows($res))
-            return " ";
+            return array();
         else
         {
-            $teamsName = "";
+            $teams = array();
            while (  $row  =  db_fetch_array($res) )  {
-                    // $teamsName = json_encode($row);
+                
                if($team = Team::lookup(intval($row['team_id'])))
                {
-                    $teamsName = $teamsName.$team->getName().",";
+                    array_push($teams,$team->getName())
+                    // $teamsName = $teamsName.$team->getName().",";
                }
             }
-            return  $teamsName;
+            return  $teams;
         } 
     }
 
