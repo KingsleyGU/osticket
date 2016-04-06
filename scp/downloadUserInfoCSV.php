@@ -29,7 +29,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	// fputcsv($fp,$fields);
 	$teams = addslashes(Staff::getStaffTeams($fields['staff_id']));
 	// echo $teams;
-    fputcsv($fp, array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],$teams));
+    fputcsv($fp, array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],null));
 	}
 
 }
