@@ -3,6 +3,7 @@ require('staff.inc.php');
 
 $filename = SCP_DIR."users.csv";
 echo $filename;
+echo "existance: ".file_exists($filename);
 $fp = fopen($filename, "w");
 
 $filePath = $filename;
