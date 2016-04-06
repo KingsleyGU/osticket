@@ -282,7 +282,7 @@ implements EmailContact {
     }
     function getStaffCSVFile()
     {
-        $sql = "select username,firstname,lastname,isadmin,onvacation,created,lastlogin from ".STAFF_TABLE; 
+        $sql = "select username,staff_id,firstname,lastname,isadmin,onvacation,created,lastlogin from ".STAFF_TABLE; 
         $userInfoArray = array();
         
         if(!($res=db_query($sql)) || !db_num_rows($res))
@@ -294,7 +294,23 @@ implements EmailContact {
             }
             return  $userInfoArray;
         }    
-
+    }
+    function getStaffTeams($staff_id)
+    {
+        $sql = "select  team_id from ".TEAM_TABLE;  
+        if(!($res=db_query($sql)) || !db_num_rows($res))
+            return " ";
+        else
+        {
+            $teamsName = "";
+           while (  $row  =  db_fetch_array($res) )  {
+               if($team = Team::lookup($row['team_id']))
+               {
+                    $teamsName = $teamsName.$team->getName().",  "
+               }
+            }
+            return  $teamsName;
+        } 
     }
 
     function getLanguage() {

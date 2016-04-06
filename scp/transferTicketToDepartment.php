@@ -26,6 +26,6 @@ else{
 
     }
 
-    	echo "Transferred ".$i." tickets successfully";
+	echo "Transferred ".$i." tickets successfully";
 }
 ?>
