@@ -11,7 +11,7 @@ $fsize = filesize($filename);
 
 //put the latest data into csv file
 // error_reporting(~0); ini_set('display_errors', 1);
-// ini_set('auto_detect_line_endings',TRUE);
+ini_set('auto_detect_line_endings',TRUE);
 header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
 header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
 header('Accept-Ranges: bytes');  // Allow support for download resume
@@ -27,7 +27,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
 	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 	// fputcsv($fp,$fields);
-    fputcsv($fp, array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']," "));
+    fputcsv($fp, array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
 	}
 
 }
