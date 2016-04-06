@@ -12,12 +12,12 @@ $fsize = filesize($filename);
 //put the latest data into csv file
 error_reporting(~0); ini_set('display_errors', 1);
 // ini_set('auto_detect_line_endings',TRUE);
-// header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
-// header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
-// header('Accept-Ranges: bytes');  // Allow support for download resume
-// header('Content-Length: ' . filesize($filePath));  // File size
-// header('Content-Type: application/csv;charset=utf-8');
-// header('Content-Disposition: attachment; filename='.basename($filename));
+header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
+header('Accept-Ranges: bytes');  // Allow support for download resume
+header('Content-Length: ' . filesize($filePath));  // File size
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
 fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin','teams'));
 
 if($userInfoArray = Staff::getStaffCSVFile())
@@ -33,10 +33,10 @@ if($userInfoArray = Staff::getStaffCSVFile())
 fclose($fp);
 
 
-// echo "\xEF\xBB\xBF"; 
-// header('Content-Type: application/csv;charset=utf-8');
-// header('Content-Disposition: attachment; filename='.basename($filename));
-// readfile($filename);
+echo "\xEF\xBB\xBF"; 
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
+readfile($filename);
 
 exit;
 ?>
