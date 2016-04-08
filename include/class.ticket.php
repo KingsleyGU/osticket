@@ -195,7 +195,12 @@ class Ticket {
                 || ($this->getTeamId()
                     && $staff->isTeamMember($this->getTeamId())
         ))
-            return true;
+        {
+            $this->logErrors("Team Id:".$this->getTeamId());
+            $this->logErrors("Staff Id:".$staff->getId());
+            $this->logErrors("Staff Id:".$staff->isTeamMember($this->getTeamId()));
+           return true;
+        }
 
         // No access bro!
         return false;
