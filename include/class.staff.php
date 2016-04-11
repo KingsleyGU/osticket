@@ -309,7 +309,7 @@ implements EmailContact {
                if($team = Team::lookup(intval($row['team_id'])))
                {
                     if($teamname = $team->getName())
-                        $teams = $teams.$teamname;
+                        $teams = $teams.addslashes($teamname);
                }
             }
             return  $teams;
