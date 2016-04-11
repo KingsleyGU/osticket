@@ -302,13 +302,14 @@ implements EmailContact {
             return null;
         else
         {
-            $teams = array();
+            // $teams = array();
+            $teams = "":
            while (  $row  =  db_fetch_array($res) )  {
                 
                if($team = Team::lookup(intval($row['team_id'])))
                {
-                    array_push($teams,$team->getName());
-                    // $teamsName = $teamsName.$team->getName().",";
+                    // array_push($teams,$team->getName());
+                    $teamsName = $teamsName.$team->getName().",";
                }
             }
             return  $teams;
