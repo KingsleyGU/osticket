@@ -302,7 +302,6 @@ implements EmailContact {
             return "";
         else
         {
-            // $teams = array();
             $teams = "";
            while (  $row  =  db_fetch_array($res) )  {
                 
@@ -312,7 +311,7 @@ implements EmailContact {
                         $teams = $teams.addslashes($teamname);
                }
             }
-            return  substr($teams, 0, 17);
+            return  trim($teams);
         } 
     }
 
