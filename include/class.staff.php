@@ -308,11 +308,11 @@ implements EmailContact {
                 
                if($team = Team::lookup(intval($row['team_id'])))
                {
-                    // array_push($teams,$team->getName());
-                    $teams = $teams.$team->getName().",";
+                    if($teamname = $team->getName())
+                        $teams = $teams."1";
                }
             }
-            return  "yes, it is";
+            return  $teams;
         } 
     }
 
