@@ -30,7 +30,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	$teams = Staff::getStaffTeams($fields['staff_id']);
 	// echo $teams;
 	// fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],json_encode($teams)));
-    fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),$teams));
+    fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 	}
 
 }
