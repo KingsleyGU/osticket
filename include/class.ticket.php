@@ -197,8 +197,8 @@ class Ticket {
          }
 
         // Only consider assignment if the ticket is open
-        // if (!$this->isOpen())
-        //     return false;
+        if (!$this->isOpen())
+            return false;
 
         // Check ticket access based on direct or team assignment
         if ($staff->getId() == $this->getStaffId()
