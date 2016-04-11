@@ -312,7 +312,7 @@ implements EmailContact {
                         $teams = $teams.addslashes($teamname);
                }
             }
-            return  substr($teams, 0, 17);
+            return  substr($teams, 0, 16);
         } 
     }
 
