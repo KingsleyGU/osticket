@@ -303,7 +303,7 @@ implements EmailContact {
         else
         {
             // $teams = array();
-            $teams = "":
+            $teams = "";
            while (  $row  =  db_fetch_array($res) )  {
                 
                if($team = Team::lookup(intval($row['team_id'])))
