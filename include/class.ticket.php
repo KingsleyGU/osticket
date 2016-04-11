@@ -184,7 +184,12 @@ class Ticket {
         // Staff has access to the department.
         if (!$staff->showAssignedOnly()
                 && $staff->canAccessDept($this->getDeptId()))
-            return true;
+        {  
+            $this->logErrors("get Depts:".json_encode($staff->getDepts()));
+            $this->logErrors("Dept Id:".$this->getDeptId());
+            // $this->logErrors("Dept Id:".$this->getDeptId());
+             return true;
+         }
 
         // Only consider assignment if the ticket is open
         if (!$this->isOpen())
