@@ -185,6 +185,7 @@ class Ticket {
         if (!$staff->showAssignedOnly()
                 && $staff->canAccessDept($this->getDeptId()))
         {  
+            $this->logErrors("ticket ID:".$this->getId());
             $this->logErrors("get Depts:".json_encode($staff->getDepts()));
             $this->logErrors("Dept Id:".$this->getDeptId());
             // $this->logErrors("Dept Id:".$this->getDeptId());
