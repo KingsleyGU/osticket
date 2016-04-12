@@ -58,23 +58,18 @@ if($userInfoArray = Staff::getStaffCSVFile())
 			// fputcsv($fp,$resultArray);
 			logErrors(json_encode($teamsArray));
 			$newTeamsArray = Team::getActiveTeams();
-			// foreach ($newTeamsArray as $value) {
+			foreach ($newTeamsArray as $key=>$value) {
 				// logErrors("team id: ".$key);
-				// if($team = Team::lookup(intval($key)))
-				// {
+				if($team = Team::lookup(intval($key)))
+				{
 					// logErrors("staff id: ".$fields['staff_id']);
-					// array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
+					array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
 				// for ($x = 0; $x <= 10; $x++) {
 				//     array_push($resultArray,1);
 				// } 
-				array_push($resultArray,1);
-				array_push($resultArray,1);
-				array_push($resultArray,1);
-				array_push($resultArray,1);
-				array_push($resultArray,1);
-				array_push($resultArray,1);
-				// }
-			// }
+
+				}
+			}
 			// logErrors(json_encode($resultArray));
 			fputcsv($fp,$resultArray);
 	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
