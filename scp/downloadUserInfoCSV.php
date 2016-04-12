@@ -39,7 +39,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		// echo $teams;
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
-			fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],$teams));
+			fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],strlen($teams)));
 	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 		
 		} catch (Exception $e) {
