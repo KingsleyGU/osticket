@@ -541,7 +541,7 @@ if ($results) {
                         $ticket = Ticket::lookup($row['ticket_id']);
                         $threadcount = $ticket->getNumResponses() + $ticket->getNumMessages();
                         if ($threadcount>1)
-                            echo "<small>($threadcount)</small>&nbsp;".
+                            echo "<small>($threadcount)</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         if ($row['collaborators'])
                             echo '<i class="icon-fixed-width icon-group faded"></i>&nbsp;';
