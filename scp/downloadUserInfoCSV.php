@@ -37,7 +37,7 @@ function booleanToString($bool)
 	if($bool)
 		return "Yes";
 	else
-		return "No"
+		return "No";
 }
 if($userInfoArray = Staff::getStaffCSVFile())
 {
