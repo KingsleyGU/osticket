@@ -32,7 +32,13 @@ function logErrors($errorMessage)
     $timestamp = date("Y-m-d_H:i:s");
     error_log($timestamp.": ".$errorMessage."\n", 3, $logFilePath);
 }
-
+function booleanToString($bool)
+{
+	if($bool)
+		return "Yes";
+	else
+		return "No"
+}
 if($userInfoArray = Staff::getStaffCSVFile())
 {
 	// echo json_encode($userInfoArray);
@@ -51,7 +57,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 				if($team = Team::lookup(intval($key)))
 				{
 					// logErrors("staff id: ".$fields['staff_id']);
-					array_push($resultArray,$team->hasMember(Staff::lookup(intval($fields['staff_id']))));	
+					array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
 
 				}
 			}
