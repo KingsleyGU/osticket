@@ -77,7 +77,8 @@ fclose($fp);
 
 // ini_set('auto_detect_line_endings',TRUE);
 // echo "\xEF\xBB\xBF"; 
-header('Content-Type: application/csv;charset=utf-8');
+
+header('Content-Type: application/octet-stream;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
 readfile($filename);
 
