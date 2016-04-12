@@ -29,6 +29,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	// fputcsv($fp,$fields);
 	$teams = Staff::getStaffTeams($fields['staff_id']);
 	// echo $teams;
+	html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 	fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],$teams));
     // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 	}
