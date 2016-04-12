@@ -13,12 +13,12 @@ $fsize = filesize($filename);
 // error_reporting(~0); ini_set('display_errors', 1);
 // ini_set('auto_detect_line_endings',TRUE);
 ini_set('auto_detect_line_endings',TRUE);
-header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
-header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
-header('Accept-Ranges: bytes');  // Allow support for download resume
-header('Content-Length: ' . filesize($filePath));  // File size
-header('Content-Type: application/csv;charset=utf-8');
-header('Content-Disposition: attachment; filename='.basename($filename));
+// header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
+// header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
+// header('Accept-Ranges: bytes');  // Allow support for download resume
+// header('Content-Length: ' . filesize($filePath));  // File size
+// header('Content-Type: application/csv;charset=utf-8');
+// header('Content-Disposition: attachment; filename='.basename($filename));
 $titleArray =  array('username','firstname','lastname','isadmin','onvacation','created','lastlogin');
 $teamsArray = Team::getActiveTeams();
 // logErrors(json_encode($teamsArray));
@@ -90,12 +90,12 @@ fclose($fp);
 
 // ini_set('auto_detect_line_endings',TRUE);
 // echo "\xEF\xBB\xBF"; 
-header("Cache-Control: no-store, no-cache, must-revalidate"); 
-header("Cache-Control: post-check=0, pre-check=0", false); 
-header("Cache-Control: private",false); 
-header("Pragma: no-cache");
-header('Content-Length: ' . filesize($filePath));
-header('Content-Type: application/csv;charset=utf-8');
+// header("Cache-Control: no-store, no-cache, must-revalidate"); 
+// header("Cache-Control: post-check=0, pre-check=0", false); 
+// header("Cache-Control: private",false); 
+// header("Pragma: no-cache");
+// header('Content-Length: ' . filesize($filePath));
+header('Content-Type: text/csv;charset=utf-8');
 header("Content-Transfer-Encoding: binary");
 header('Content-Disposition: attachment; filename='.basename($filename));
 echo file_get_contents($filename);
