@@ -21,7 +21,7 @@ header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
 $titleArray =  array('username','firstname','lastname','isadmin','onvacation','created','lastlogin');
 $teamsArray = Team::getActiveTeams();
-logErrors(json_encode($teamsArray));
+// logErrors(json_encode($teamsArray));
 foreach ($teamsArray as $key => $value) {
 	array_push($titleArray,$value);
 }
@@ -56,6 +56,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		try {
 			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
 			// fputcsv($fp,$resultArray);
+			logErrors(json_encode($teamsArray));
 			$newTeamsArray = Team::getActiveTeams();
 			foreach ($newTeamsArray as $key => $value) {
 				// logErrors("team id: ".$key);
