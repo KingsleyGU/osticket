@@ -33,34 +33,34 @@ function logErrors($errorMessage)
     error_log($timestamp.": ".$errorMessage."\n", 3, $logFilePath);
 }
 
-if($userInfoArray = Staff::getStaffCSVFile())
-{
-	// echo json_encode($userInfoArray);
-	foreach ($userInfoArray as $fields) {
-			// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
-		fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
-		// fputcsv($fp,$fields);
-		$teams = Staff::getStaffTeams($fields['staff_id']);
-		logErrors(json_encode(Team::getActiveTeams()));
-		// echo $teams;
-		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
-		try {
-			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
-			foreach ($teamsArray as $key => $value) {
-				if($team = Team::lookup($key))
-				{
-					array_push($resultArray,$team->hasMember(Staff::lookup($fields['staff_id'])));		
-				}
-			}
-			fputcsv($fp,$resultArray);
-	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
+// if($userInfoArray = Staff::getStaffCSVFile())
+// {
+// 	// echo json_encode($userInfoArray);
+// 	foreach ($userInfoArray as $fields) {
+// 			// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
+// 		fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+// 		// fputcsv($fp,$fields);
+// 		$teams = Staff::getStaffTeams($fields['staff_id']);
+// 		logErrors(json_encode(Team::getActiveTeams()));
+// 		// echo $teams;
+// 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
+// 		try {
+// 			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
+// 			foreach ($teamsArray as $key => $value) {
+// 				if($team = Team::lookup($key))
+// 				{
+// 					array_push($resultArray,$team->hasMember(Staff::lookup($fields['staff_id'])));		
+// 				}
+// 			}
+// 			fputcsv($fp,$resultArray);
+// 	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 		
-		} catch (Exception $e) {
-			logErrors('Caught exception: ',  $e->getMessage(), "\n");
-		}
-	}
+// 		} catch (Exception $e) {
+// 			logErrors('Caught exception: ',  $e->getMessage(), "\n");
+// 		}
+// 	}
 
-}
+// }
 
 fclose($fp);
 
