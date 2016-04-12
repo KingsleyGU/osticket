@@ -37,7 +37,7 @@ function logErrors($errorMessage)
 }
 function booleanToString($bool)
 {
-	if($bool)
+	if(intval($bool))
 		return "Yes";
 	else
 		return "No";
@@ -54,7 +54,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		// echo $teams;
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
-			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
+			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],booleanToString($fields['isadmin']),booleanToString($fields['onvacation']),$fields['created'],$fields['lastlogin']);
 			// fputcsv($fp,$resultArray);
 			logErrors(json_encode($teamsArray));
 			$newTeamsArray = Team::getActiveTeams();
