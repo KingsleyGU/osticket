@@ -1,7 +1,7 @@
 <?php
 require('staff.inc.php');
 
-$filename = SCP_DIR."users.csv";
+$filename = "/var/log/users.csv";
 // echo $filename;
 // echo "existance: ".file_exists($filename);
 $fp = fopen($filename, "w") or die('Unable to open file!');;
@@ -12,7 +12,12 @@ $fsize = filesize($filename);
 //put the latest data into csv file
 // error_reporting(~0); ini_set('display_errors', 1);
 // ini_set('auto_detect_line_endings',TRUE);
-
+header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
+header('Accept-Ranges: bytes');  // Allow support for download resume
+header('Content-Length: ' . filesize($filePath));  // File size
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
 $titleArray =  array('username','firstname','lastname','isadmin','onvacation','created','lastlogin');
 $teamsArray = Team::getActiveTeams();
 foreach ($teamsArray as $key => $value) {
@@ -29,7 +34,7 @@ function logErrors($errorMessage)
 }
 function booleanToString($bool)
 {
-	if(intval($bool))
+	if($bool)
 		return "Yes";
 	else
 		return "No";
@@ -44,7 +49,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		$teams = Staff::getStaffTeams($fields['staff_id']);
 		// logErrors(json_encode(Team::getActiveTeams()));
 		// echo $teams;
-		// html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
+		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
 			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
 			foreach ($teamsArray as $key => $value) {
@@ -52,12 +57,11 @@ if($userInfoArray = Staff::getStaffCSVFile())
 				if($team = Team::lookup(intval($key)))
 				{
 					// logErrors("staff id: ".$fields['staff_id']);
-					array_push($resultArray,booleanToString(Staff::lookup(intval($fields['staff_id']))));	
+					array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
 
 				}
 			}
-			// logErrors(json_encode($resultArray));
-
+			logErrors(json_encode($resultArray));
 			fputcsv($fp,$resultArray);
 	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 		
@@ -71,16 +75,10 @@ if($userInfoArray = Staff::getStaffCSVFile())
 fclose($fp);
 
 // ini_set('auto_detect_line_endings',TRUE);
-// echo "\xEF\xBB\xBF"; 
-// header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
-// header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime($filePath)) . ' GMT');
-// header('Accept-Ranges: bytes');  // Allow support for download resume
-// header('Content-Length: ' . filesize($filePath));  // File size
-// // header('Content-Type: application/csv;charset=utf-8');
-// // header('Content-Disposition: attachment; filename='.basename($filename));
-// header('Content-Type: application/octet-stream;charset=utf-8');
-// header('Content-Disposition: attachment; filename='.basename($filename));
-// readfile($filename);
+echo "\xEF\xBB\xBF"; 
+header('Content-Type: application/csv;charset=utf-8');
+header('Content-Disposition: attachment; filename='.basename($filename));
+readfile($filename);
 
-// exit;
+exit;
 ?>

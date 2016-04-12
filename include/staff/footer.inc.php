@@ -49,19 +49,6 @@ if ($.support.pjax) {
       $.pjax.click(event, {container: $('#pjax-container'), timeout: 2000});
   })
 }
-$(document).ready(function(){
-    $.ajax({
-         type: "POST",
-         url: '/scp/downloadUserInfoCSV.php',
-         data: null,
-         success: function(data) {
-            
-         },
-         error: function(data) { 
-            // alert("can not get user data"); 
-         } 
-    });
-})
 </script>
 <?php
 if ($thisstaff && $thisstaff->getLanguage() != 'en_US') { ?>
