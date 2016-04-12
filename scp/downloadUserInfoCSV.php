@@ -77,7 +77,11 @@ if($userInfoArray = Staff::getStaffCSVFile())
 fclose($fp);
 
 // ini_set('auto_detect_line_endings',TRUE);
-echo "\xEF\xBB\xBF"; 
+// echo "\xEF\xBB\xBF"; 
+header("Cache-Control: no-store, no-cache, must-revalidate"); 
+header("Cache-Control: post-check=0, pre-check=0", false); 
+header("Cache-Control: private",false); 
+header("Pragma: no-cache");
 header('Content-Length: ' . filesize($filePath));
 header('Content-Type: application/csv;charset=utf-8');
 header("Content-Transfer-Encoding: binary");
