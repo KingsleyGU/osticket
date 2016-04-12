@@ -51,7 +51,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		// echo $teams;
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
-			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
+			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created']);
 			foreach ($teamsArray as $key => $value) {
 				logErrors("team id: ".$key);
 				if($team = Team::lookup(intval($key)))
