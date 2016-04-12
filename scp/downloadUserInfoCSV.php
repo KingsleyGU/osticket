@@ -65,7 +65,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 				array_push($resultArray,$value);
 				// }
 			}
-			logErrors(json_encode($resultArray));
+			// logErrors(json_encode($resultArray));
 			fputcsv($fp,$resultArray);
 	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 		
