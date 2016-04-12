@@ -31,15 +31,20 @@ if($userInfoArray = Staff::getStaffCSVFile())
 {
 	// echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
-		// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
-	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
-	// fputcsv($fp,$fields);
-	$teams = Staff::getStaffTeams($fields['staff_id']);
-	logErrors($teams);
-	// echo $teams;
-	html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
-	fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],$teams));
-    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
+			// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
+		fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+		// fputcsv($fp,$fields);
+		$teams = Staff::getStaffTeams($fields['staff_id']);
+		// logErrors($teams);
+		// echo $teams;
+		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
+		try {
+			fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],$teams));
+	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
+		
+		} catch (Exception $e) {
+			logErrors('Caught exception: ',  $e->getMessage(), "\n");
+		}
 	}
 
 }
