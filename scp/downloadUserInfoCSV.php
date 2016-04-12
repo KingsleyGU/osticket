@@ -46,12 +46,12 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
 			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']);
-			foreach ($teamsArray as $key => $value) {
-				if($team = Team::lookup($key))
-				{
-					array_push($resultArray,$team->hasMember(Staff::lookup($fields['staff_id'])));		
-				}
-			}
+			// foreach ($teamsArray as $key => $value) {
+			// 	if($team = Team::lookup($key))
+			// 	{
+			// 		array_push($resultArray,$team->hasMember(Staff::lookup($fields['staff_id'])));		
+			// 	}
+			// }
 			fputcsv($fp,$resultArray);
 	    // fputcsv($fp, array_merge(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin']),null));
 		
