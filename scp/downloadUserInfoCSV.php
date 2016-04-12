@@ -57,7 +57,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 				if($team = Team::lookup(intval($key)))
 				{
 					// logErrors("staff id: ".$fields['staff_id']);
-					array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
+					array_push($resultArray,intval($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
 
 				}
 			}
