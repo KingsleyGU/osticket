@@ -92,7 +92,7 @@ class Team {
         return db_count(
              'SELECT COUNT(*) FROM '.TEAM_MEMBER_TABLE
             .' WHERE team_id='.db_input($this->getId())
-            .'   AND staff_id='.db_input($staff->getId())) !== 0;
+            .'   AND staff_id='.db_input($staff->getId())) != 0;
     }
 
     function getLeadId() {

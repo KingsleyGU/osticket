@@ -55,19 +55,12 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
 			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],booleanToString($fields['isadmin']),booleanToString($fields['onvacation']),$fields['created'],$fields['lastlogin']);
-			// fputcsv($fp,$resultArray);
-			logErrors(json_encode($teamsArray));
-			$newTeamsArray = Team::getActiveTeams();
-			foreach ($newTeamsArray as $key=>$value) {
+			foreach ($teamsArray as $key=>$value) {
 				// logErrors("team id: ".$key);
 				if($team = Team::lookup(intval($key)))
 				{
-					// logErrors("staff id: ".$fields['staff_id']);
+					logErrors(json_encode($team->getName()));
 					array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
-				// for ($x = 0; $x <= 10; $x++) {
-				//     array_push($resultArray,1);
-				// } 
-
 				}
 			}
 			// logErrors(json_encode($resultArray));
@@ -84,7 +77,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 fclose($fp);
 
 // ini_set('auto_detect_line_endings',TRUE);
-// echo "\xEF\xBB\xBF"; 
+echo "\xEF\xBB\xBF"; 
 // header("Cache-Control: no-store, no-cache, must-revalidate"); 
 // header("Cache-Control: post-check=0, pre-check=0", false); 
 // header("Cache-Control: private",false); 
