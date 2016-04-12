@@ -21,6 +21,7 @@ header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
 $titleArray =  array('username','firstname','lastname','isadmin','onvacation','created','lastlogin');
 $teamsArray = Team::getActiveTeams();
+logErrors(json_encode($teamsArray));
 foreach ($teamsArray as $key => $value) {
 	array_push($titleArray,$value);
 }
