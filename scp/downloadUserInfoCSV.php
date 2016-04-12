@@ -71,7 +71,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 				array_push($resultArray,1);
 				array_push($resultArray,1);
 				array_push($resultArray,1);
-				// array_push($resultArray,1);
+				array_push($resultArray,1);
 				// array_push($resultArray,1);
 				// }
 			// }
