@@ -63,7 +63,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 				// {
 					// logErrors("staff id: ".$fields['staff_id']);
 					// array_push($resultArray,booleanToString($team->hasMember(Staff::lookup(intval($fields['staff_id'])))));	
-				array_push($resultArray,$key);
+				array_push($resultArray,1);
 				// }
 			}
 			// logErrors(json_encode($resultArray));
