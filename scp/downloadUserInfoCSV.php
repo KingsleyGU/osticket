@@ -35,7 +35,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 		// fputcsv($fp,$fields);
 		$teams = Staff::getStaffTeams($fields['staff_id']);
-		// logErrors($teams);
+		logErrors(json_encode(Team::getActiveTeams()));
 		// echo $teams;
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
