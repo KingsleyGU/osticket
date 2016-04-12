@@ -40,7 +40,7 @@ function booleanToString($bool)
 	if(intval($bool))
 		return "Yes";
 	else
-		return "No";
+		return "";
 }
 if($userInfoArray = Staff::getStaffCSVFile())
 {
