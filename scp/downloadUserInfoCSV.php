@@ -24,6 +24,7 @@ $teamsArray = Team::getActiveTeams();
 foreach ($teamsArray as $key => $value) {
 	array_push($titleArray,$value);
 }
+fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 fputcsv($fp, $titleArray);
 
 
