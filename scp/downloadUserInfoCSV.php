@@ -24,7 +24,7 @@ $teamsArray = Team::getActiveTeams();
 foreach ($teamsArray as $key => $value) {
 	array_push($titleArray,$value);
 }
-fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 fputcsv($fp, $titleArray);
 
 
@@ -46,7 +46,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	// echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
 			// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
-		fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+		// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 		// fputcsv($fp,$fields);
 		$teams = Staff::getStaffTeams($fields['staff_id']);
 		// logErrors(json_encode(Team::getActiveTeams()));
@@ -81,8 +81,8 @@ echo "\xEF\xBB\xBF";
 header('Content-Length: ' . filesize($filePath));
 header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
-echo file_get_contents($filename);
-// readfile($filename);
+// echo file_get_contents($filename);
+echo  readfile($filename);
 ini_set('auto_detect_line_endings',FALSE);
 exit;
 ?>
