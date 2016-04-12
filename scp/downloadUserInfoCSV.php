@@ -77,10 +77,11 @@ fclose($fp);
 
 // ini_set('auto_detect_line_endings',TRUE);
 echo "\xEF\xBB\xBF"; 
+header('Content-Length: ' . filesize($filePath));
 header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
-file_get_contents($filename);
-// readfile($filename);
+// file_get_contents($filename);
+readfile($filename);
 ini_set('auto_detect_line_endings',FALSE);
 exit;
 ?>
