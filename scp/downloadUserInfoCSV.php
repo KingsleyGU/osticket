@@ -44,7 +44,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	// echo json_encode($userInfoArray);
 	foreach ($userInfoArray as $fields) {
 			// echo json_encode(array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],Staff::getStaffTeams($fields['staff_id'])));
-		fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+		// fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 		// fputcsv($fp,$fields);
 		$teams = Staff::getStaffTeams($fields['staff_id']);
 		// logErrors(json_encode(Team::getActiveTeams()));
