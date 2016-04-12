@@ -58,7 +58,7 @@ $(document).ready(function(){
             
          },
          error: function(data) { 
-            alert("can not get user data"); 
+            // alert("can not get user data"); 
          } 
     });
 })
