@@ -20,6 +20,13 @@ header('Content-Type: application/csv;charset=utf-8');
 header('Content-Disposition: attachment; filename='.basename($filename));
 fputcsv($fp,   array('username','firstname','lastname','isadmin','onvacation','created','lastlogin','teams'));
 
+function logErrors($errorMessage)
+{
+    $logFilePath = "/var/log/osticket_download_user_log";
+    $timestamp = date("Y-m-d_H:i:s");
+    error_log($timestamp.": ".$errorMessage."\n", 3, $logFilePath);
+}
+
 if($userInfoArray = Staff::getStaffCSVFile())
 {
 	// echo json_encode($userInfoArray);
@@ -28,6 +35,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 	fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 	// fputcsv($fp,$fields);
 	$teams = Staff::getStaffTeams($fields['staff_id']);
+	logErrors($teams);
 	// echo $teams;
 	html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 	fputcsv($fp,array($fields['username'],$fields['firstname'],$fields['lastname'],$fields['isadmin'],$fields['onvacation'],$fields['created'],$fields['lastlogin'],$teams));
