@@ -80,6 +80,7 @@ fclose($fp);
 echo "\xEF\xBB\xBF"; 
 header('Content-Length: ' . filesize($filePath));
 header('Content-Type: application/csv;charset=utf-8');
+header("Content-Transfer-Encoding: binary");
 header('Content-Disposition: attachment; filename='.basename($filename));
 // echo file_get_contents($filename);
 echo  readfile($filename);
