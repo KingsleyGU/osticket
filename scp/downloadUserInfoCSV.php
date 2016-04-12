@@ -58,7 +58,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 			// fputcsv($fp,$resultArray);
 			logErrors(json_encode($teamsArray));
 			$newTeamsArray = Team::getActiveTeams();
-			foreach ($newTeamsArray as $key => $value) {
+			foreach ($newTeamsArray as $value) {
 				// logErrors("team id: ".$key);
 				// if($team = Team::lookup(intval($key)))
 				// {
