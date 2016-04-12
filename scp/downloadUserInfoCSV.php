@@ -78,7 +78,8 @@ fclose($fp);
 echo "\xEF\xBB\xBF"; 
 header('Content-Type: application/csv;');
 header('Content-Disposition: attachment; filename='.basename($filename));
-readfile($filename);
+file_get_contents('users.csv', $filename);
+// readfile($filename);
 
 exit;
 ?>
