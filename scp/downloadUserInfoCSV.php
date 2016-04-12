@@ -19,7 +19,7 @@ $fsize = filesize($filename);
 // header('Content-Length: ' . filesize($filePath));  // File size
 // header('Content-Type: application/csv;charset=utf-8');
 // header('Content-Disposition: attachment; filename='.basename($filename));
-$titleArray =  array('username','firstname','lastname','isadmin','onvacation','created','lastlogin');
+$titleArray =  array('username','firstname','lastname','isadmin','created','lastlogin');
 $teamsArray = Team::getActiveTeams();
 // logErrors(json_encode($teamsArray));
 foreach ($teamsArray as $key => $value) {
@@ -54,7 +54,7 @@ if($userInfoArray = Staff::getStaffCSVFile())
 		// echo $teams;
 		html_entity_decode(mb_convert_encoding(stripslashes($teams), "HTML-ENTITIES", 'UTF-8'));
 		try {
-			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],booleanToString($fields['isadmin']),booleanToString($fields['onvacation']),$fields['created'],$fields['lastlogin']);
+			$resultArray = array($fields['username'],$fields['firstname'],$fields['lastname'],booleanToString($fields['isadmin']),$fields['created'],$fields['lastlogin']);
 			foreach ($teamsArray as $key=>$value) {
 				// logErrors("team id: ".$key);
 				if($team = Team::lookup(intval($key)))
