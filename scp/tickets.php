@@ -520,7 +520,11 @@ if(isSearchOrNot()||($ticket&&$ticket->getStatus() != "open"))
 }
 
 $inc = 'tickets.inc.php';
-if($ticket) {
+if(isset($_REQUEST['thread_detail']))
+{
+    $inc = 'thread-detail.php';
+}
+elseif($ticket) {
     $ost->setPageTitle(sprintf(__('Ticket #%s'),$ticket->getNumber()));
     $nav->setActiveSubMenu(-1);
     $inc = 'ticket-view.inc.php';
