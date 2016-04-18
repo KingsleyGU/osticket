@@ -729,6 +729,12 @@ if ($results) {
             <span class="between"><?php echo __('TO');?></span>
             <input class="dp" type="input" size="20" name="endDate">
         </fieldset>
+        <fieldset class="date_range">
+            <label><?php echo __('Date Range').' &mdash; '.__('Closed Date');?>:</label>
+            <input class="dp" type="input" size="20" name="closed-startDate">
+            <span class="between"><?php echo __('TO');?></span>
+            <input class="dp" type="input" size="20" name="closed-endDate">
+        </fieldset>
         <?php
         $tform = TicketForm::objects()->one();
         echo $tform->getForm()->getMedia();
