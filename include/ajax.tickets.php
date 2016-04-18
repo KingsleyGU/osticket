@@ -215,12 +215,12 @@ class TicketsAjaxAPI extends AjaxController {
             $closed_startTime=$closed_endTime=0;
 
         if($closed_startTime) {
-            $where.=' AND ticket.closed>=FROM_UNIXTIME('.$closed_startTime.')';
+            $where.=' AND ticket.closed IS NOT NULL AND ticket.closed>=FROM_UNIXTIME('.$closed_startTime.')';
             $criteria['closed__gte'] = $closed_startTime;
         }
 
         if($closed_endTime) {
-            $where.=' AND ticket.closed<=FROM_UNIXTIME('.$closed_endTime.')';
+            $where.='AND ticket.closed IS NOT NULL AND ticket.closed<=FROM_UNIXTIME('.$closed_endTime.')';
             $criteria['closed__lte'] = $closed_startTime;
         }
         // Dynamic fields
