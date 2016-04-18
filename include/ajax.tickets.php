@@ -206,7 +206,23 @@ class TicketsAjaxAPI extends AjaxController {
             $where.=' AND ticket.created<=FROM_UNIXTIME('.$endTime.')';
             $criteria['created__lte'] = $startTime;
         }
+        $closed_startTime  =($req['closed_startDate'] && (strlen($req['closed_startDate'])>=8))?strtotime($req['closed_startDate']):0;
+        $closed_endTime    =($req['closed_endDate'] && (strlen($req['closed_endDate'])>=8))?strtotime($req['closed_endDate']):0;
+        if ($closed_endTime)
+            // $closed_endTime should be the last second of the day, not the first like $closed_startTime
+            $closed_endTime += (60 * 60 * 24) - 1;
+        if( ($closed_startTime && $closed_startTime>time()) or ($closed_startTime>$closed_endTime && $closed_endTime>0))
+            $closed_startTime=$closed_endTime=0;
 
+        if($closed_startTime) {
+            $where.=' AND ticket.closed>=FROM_UNIXTIME('.$closed_startTime.')';
+            $criteria['closed__gte'] = $closed_startTime;
+        }
+
+        if($closed_endTime) {
+            $where.=' AND ticket.closed<=FROM_UNIXTIME('.$closed_endTime.')';
+            $criteria['closed__lte'] = $closed_startTime;
+        }
         // Dynamic fields
         $cdata_search = false;
         foreach (TicketForm::getInstance()->getFields() as $f) {

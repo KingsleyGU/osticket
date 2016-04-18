@@ -367,6 +367,12 @@ class MysqlSearchBackend extends SearchBackend {
                     case 'created__lte':
                         $where[] = sprintf('A1.created <= %s', db_input($value));
                         break;
+                    case 'closed__gte':
+                        $where[] = sprintf('A1.closed >= %s', db_input($value));
+                        break;
+                    case 'closed__lte':
+                        $where[] = sprintf('A1.closed <= %s', db_input($value));
+                        break;                        
                     case 'email':
                     case 'org_id':
                     case 'form_id':
