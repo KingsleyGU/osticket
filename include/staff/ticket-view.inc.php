@@ -946,7 +946,7 @@ $tcount = $ticket->getThreadCount();
 ?>
 <ul id="threads">
     <li><a class="active" id="toggle_ticket_thread" href="#"><?php echo sprintf(__('Ticket Thread (%d)'), $tcount); ?></a></li>
-    <li><a style="padding-left:0px;" onclick='window.open("tickets.php?thread_detail=1&id='+<?php echo $ticket->getId(); ?>+'");return false;' id="ticket_thread_detail" target="_blank" href="javascript:void(0);"><?php echo sprintf(__('Ticket Thread detail')); ?></a></li>
+    <li><a style="padding-left:0px;" onclick='window.open("tickets.php?thread_detail=1&id=<?php echo $ticket->getId(); ?>");return false;' id="ticket_thread_detail" target="_blank" href="javascript:void(0);"><?php echo sprintf(__('Ticket Thread detail')); ?></a></li>
 </ul>
 <div id="ticket_thread">
     <?php
