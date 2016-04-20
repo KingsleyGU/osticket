@@ -140,7 +140,7 @@ div#header a {
     clear:both;
     margin:0;
     padding:0 20px;
-    height:26px;
+    height:36px;
     line-height:26px;
     border-left:1px solid #aaa;
     border-right:1px solid #aaa;
@@ -165,8 +165,7 @@ div#header a {
     display:inline-block;
     min-width:95px;
     width: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 10px;
     height:26px;
     color:#555;
     text-align:center;
@@ -272,7 +271,7 @@ div#header a {
 
 #sub_nav a {
     display:inline-block;
-    padding:0 10px 0 21px;
+    padding:5px 10px 5px 21px;
     background-position:0 50%;
     background-repeat:no-repeat;
     color:#000;
