@@ -967,9 +967,16 @@ $tcount = $ticket->getThreadCount();
                     </span>  
 
                     <?php 
+                        $typeText = "";
+                        $entryBody = $entry['body']->toHtml();
+                        $containComment = strpos($entryBody, '<p>');
+                        if ($entry['name']&&$entry['thread_type'] == 'N'&&$containComment!== false) {
+                            $typeText = "Internal Note";
+                        }
                         if($entry['thread_type'] != 'N')
                         {
                     ?>
+
                     <div class="pull-right forward_thread_block" style="display:none">
                     <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> Forward
                     </div>
@@ -978,6 +985,8 @@ $tcount = $ticket->getThreadCount();
                     ?>   
 
                     <span class="pull-right" style="white-space:no-wrap;display:inline-block" >
+                        <span style="vertical-align:middle;" class="tmeta faded title"><?php
+                            echo Format::htmlchars($typeText); ?></span>  
                         <span style="vertical-align:middle;" class="textra"></span>
                         <span style="vertical-align:middle;"
                             class="tmeta faded title"><?php
