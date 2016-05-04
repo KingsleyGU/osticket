@@ -2093,8 +2093,6 @@ class Ticket {
             //         return null;
             if(($response = $this->getThread()->addResponse($vars, $errors)))
             {  
-                $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
-                $response->reload();
                 $responseBody = $responseBody ."<br>--------------Reply from ERST--------------<br>";  
                 $responseBody.$response->ht['body'];
             }
