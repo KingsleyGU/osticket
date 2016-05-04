@@ -2094,7 +2094,7 @@ class Ticket {
             if(($response = $this->getThread()->addResponse($vars, $errors)))
             {  
                 $responseBody = $responseBody ."<br>--------------Reply from ERST--------------<br>";  
-                $responseBody.$response->ht['body'];
+                $responseBody = $responseBody.$response->ht['body'];
             }
             foreach ($threadIdList as $threadId) 
             {
