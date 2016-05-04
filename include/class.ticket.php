@@ -2093,7 +2093,7 @@ class Ticket {
             //         return null;
             if(($response = $this->getThread()->addResponse($vars, $errors)))
             {  
-                $responseBody = $responseBody ."<br>--------------Reply from ERST--------------<br>";  
+                $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
                 $responseBody = $responseBody.$response->ht['body'];
             }
             foreach ($threadIdList as $threadId) 
@@ -2103,9 +2103,9 @@ class Ticket {
                     $response = ThreadEntry::lookup(intval($threadId));
                     // return null;
                     if($response->getType()=='M')
-                        $responseBody = $responseBody ."<br>--------------Message from Client--------------<br>";
+                        $responseBody = $responseBody ."<br>--------------Message from ".$response->getPoster()."--------------<br>";
                     else
-                        $responseBody = $responseBody ."<br>--------------Reply from ERST--------------<br>";                    
+                        $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";                    
                     $responseBody = $responseBody.$response->ht['body'];
                     $finalThreadBody = $response->ht['body'];
                     $attachments = array_merge($attachments, $response->getAttachments());
