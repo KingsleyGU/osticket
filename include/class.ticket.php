@@ -2091,13 +2091,6 @@ class Ticket {
             // foreach ($clientThreadEntries as $clientThreadEntry) {
             //     if(!($response = ThreadEntry::lookup($clientThreadEntry['id'])))
             //         return null;
-            if(!($response = $this->getThread()->addResponse($vars, $errors)))
-            {  
-                $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
-                $response->reload();
-                $responseBody = $responseBody ."<br>--------------Reply from ERST--------------<br>";  
-                $responseBody.$response->ht['body'];
-            }
             foreach ($threadIdList as $threadId) 
             {
                 if($threadId != "")
@@ -2113,6 +2106,14 @@ class Ticket {
                     $attachments = array_merge($attachments, $response->getAttachments());
                 }
             }
+            if(!($response = $this->getThread()->addResponse($vars, $errors)))
+            {  
+                $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
+                $response->reload();
+                $responseBody = $responseBody ."<br>--------------Reply from ERST--------------<br>";  
+                $responseBody.$response->ht['body'];
+                $finalThreadBody = $response->ht['body'];
+            }            
             $response->setBody(ThreadBody::fromFormattedText($responseBody, $response->ht['format']));
             $response->reload();
             if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments))
