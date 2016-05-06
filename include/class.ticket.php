@@ -2123,10 +2123,10 @@ class Ticket {
                         {
                                 if($staff = $response->getStaff())
                                 {
-                                    $responseBody = $responseBody ."Name: ".$staff->getFullName()."<br>";
-                                    $responseBody = $responseBody ."Email: ".$staff->getEmail()."<br>";
+                                    $responseBody = $responseBody ."<b>Name:</b> ".$staff->getFullName()."<br>";
+                                    $responseBody = $responseBody ."<b>Email:</b> ".$staff->getEmail()."<br>";
                                     if($staff->getPhoneNumber() != "")
-                                        $responseBody = $responseBody ."Phone number: ".$staff->getPhoneNumber()."<br>"; 
+                                        $responseBody = $responseBody ."<b>Phone number:</b> ".$staff->getPhoneNumber()."<br>"; 
                                 }    
                         }
                     }                  
