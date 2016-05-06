@@ -2111,7 +2111,8 @@ class Ticket {
                             {
                                 $responseBody = $responseBody ."Name: ".$user->getFullName()."<br>";
                                 $responseBody = $responseBody ."Email: ".$user->getEmail()."<br>";
-                                $responseBody = $responseBody ."Phone number: ".$user->getPhoneNumber()."<br>";
+                                if(!empty($user->getPhoneNumber()))
+                                    $responseBody = $responseBody ."Phone number: ".$user->getPhoneNumber()."<br>";
                             }
                         }
                     }
