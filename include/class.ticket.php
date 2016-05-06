@@ -2103,9 +2103,28 @@ class Ticket {
                     $response = ThreadEntry::lookup(intval($threadId));
                     // return null;
                     if($response->getType()=='M')
+                    {
                         $responseBody = $responseBody ."<br>--------------Message from ".$response->getPoster()."--------------<br>";
+                        if($response->getUserId() != 0)
+                        {
+                            if($user = $response->getUser())
+                            {
+                                $responseBody = $responseBody ."Name: ".$user->getFullName()."<br>";
+                                $responseBody = $responseBody ."Email: ".$user->getEmail()."<br>";
+                                $responseBody = $responseBody ."Phone number: ".$user->getPhoneNumber()."<br>";
+                            }
+                        }
+                    }
                     else
-                        $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";                    
+                    {   
+                        $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
+                        // if($response->getStaffId() != 0)
+                        // {
+                        //                                   $responseBody = $responseBody ."Name: ".$user->getFullName()."<br>";
+                        //         $responseBody = $responseBody ."Email: ".$user->getEmail()."<br>";
+                        //         $responseBody = $responseBody ."Phone number: ".$user->getPhoneNumber()."<br>";  
+                        // }
+                    }                  
                     $responseBody = $responseBody.$response->ht['body'];
                     $finalThreadBody = $response->ht['body'];
                     $attachments = array_merge($attachments, $response->getAttachments());
