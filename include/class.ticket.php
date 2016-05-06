@@ -2119,12 +2119,16 @@ class Ticket {
                     else
                     {   
                         $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
-                        // if($response->getStaffId() != 0)
-                        // {
-                        //                                   $responseBody = $responseBody ."Name: ".$user->getFullName()."<br>";
-                        //         $responseBody = $responseBody ."Email: ".$user->getEmail()."<br>";
-                        //         $responseBody = $responseBody ."Phone number: ".$user->getPhoneNumber()."<br>";  
-                        // }
+                        if($response->getStaffId() != 0)
+                        {
+                                if($staff = $response->getStaff())
+                                {
+                                    $responseBody = $responseBody ."Name: ".$staff->getFullName()."<br>";
+                                    $responseBody = $responseBody ."Email: ".$staff->getEmail()."<br>";
+                                    if($staff->getPhoneNumber() != "")
+                                        $responseBody = $responseBody ."Phone number: ".$staff->getPhoneNumber()."<br>"; 
+                                }    
+                        }
                     }                  
                     $responseBody = $responseBody.$response->ht['body'];
                     $responseBody = $responseBody ."<br><br>";
