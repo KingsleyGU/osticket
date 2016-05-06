@@ -2109,10 +2109,10 @@ class Ticket {
                         {
                             if($user = $response->getUser())
                             {
-                                $responseBody = $responseBody ."Name: ".$user->getFullName()."<br>";
-                                $responseBody = $responseBody ."Email: ".$user->getEmail()."<br>";
+                                $responseBody = $responseBody ."<b>Name:</b> ".$user->getFullName()."<br>";
+                                $responseBody = $responseBody ."<b>Email:</b> ".$user->getEmail()."<br>";
                                 if($user->getPhoneNumber() != "")
-                                    $responseBody = $responseBody ."Phone number: ".$user->getPhoneNumber()."<br>";
+                                    $responseBody = $responseBody ."<b>Phone number:</b> ".$user->getPhoneNumber()."<br>";
                             }
                         }
                     }
