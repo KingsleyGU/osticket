@@ -2118,16 +2118,15 @@ class Ticket {
                     }
                     else
                     {   
-                        $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
-                        if($response->getStaffId() != 0)
-                        {
-                                if($currentStaff = $response->getStaff())
-                                {
-                                    $responseBody = $responseBody ."<b>Name:</b> ".$currentStaff->getFullName()."<br>";
-                                    $responseBody = $responseBody ."<b>Email:</b> ".$currentStaff->getEmail()."<br>";
-                                    if($currentStaff->getPhoneNumber() != "")
-                                        $responseBody = $responseBody ."<b>Phone number:</b> ".$currentStaff->getPhoneNumber()."<br>"; 
-                                }    
+                        $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>"; 
+                        if($response->getStaffId()!=0) 
+                        {   if($currentThreadStaff = $response->getStaff())
+                            {
+                                $responseBody = $responseBody ."<b>Name:</b> ".$currentThreadStaff->getName()."<br>";
+                                $responseBody = $responseBody ."<b>Email:</b> ".$currentThreadStaff->getEmail()."<br>";
+                                // if($currentThreadStaff->getPhoneNumber() != "")
+                                //     $responseBody = $responseBody ."<b>Phone number:</b> ".$currentThreadStaff->getPhoneNumber()."<br>";
+                            }
                         }
                     }                  
                     $responseBody = $responseBody.$response->ht['body'];
