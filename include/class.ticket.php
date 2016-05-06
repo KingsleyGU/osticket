@@ -2127,6 +2127,7 @@ class Ticket {
                         // }
                     }                  
                     $responseBody = $responseBody.$response->ht['body'];
+                    $responseBody = $responseBody ."<br><br><br><br>";
                     $finalThreadBody = $response->ht['body'];
                     $attachments = array_merge($attachments, $response->getAttachments());
                 }
