@@ -2121,12 +2121,12 @@ class Ticket {
                         $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
                         if($response->getStaffId() != 0)
                         {
-                                if($staff = $response->getStaff())
+                                if($currentStaff = $response->getStaff())
                                 {
-                                    $responseBody = $responseBody ."<b>Name:</b> ".$staff->getFullName()."<br>";
-                                    $responseBody = $responseBody ."<b>Email:</b> ".$staff->getEmail()."<br>";
-                                    if($staff->getPhoneNumber() != "")
-                                        $responseBody = $responseBody ."<b>Phone number:</b> ".$staff->getPhoneNumber()."<br>"; 
+                                    $responseBody = $responseBody ."<b>Name:</b> ".$currentStaff->getFullName()."<br>";
+                                    $responseBody = $responseBody ."<b>Email:</b> ".$currentStaff->getEmail()."<br>";
+                                    if($currentStaff->getPhoneNumber() != "")
+                                        $responseBody = $responseBody ."<b>Phone number:</b> ".$currentStaff->getPhoneNumber()."<br>"; 
                                 }    
                         }
                     }                  
