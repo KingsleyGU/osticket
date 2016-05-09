@@ -1200,6 +1200,7 @@ $(function() {
     $(".thread-entry th").click(function(){
         $(this).parents(".thread-entry").find(".thread-body").toggle();
     });  
+    checkForwardThreadList();
     $(document).on('click', 'a.change-user', function(e) {
         e.preventDefault();
         var tid = <?php echo $ticket->getOwnerId(); ?>;
