@@ -2085,8 +2085,8 @@ class Ticket {
             {
                 $threadIdList =  explode(",", $vars['thread_list']);
             }
-            $this->logErrors($vars['thread_list']);
-            $this->logErrors(json_encode($threadIdList));
+            // $this->logErrors($vars['thread_list']);
+            // $this->logErrors(json_encode($threadIdList));
             // if(!($clientThreadEntries = $this->getClientThread()))
             //     return null;
             // foreach ($clientThreadEntries as $clientThreadEntry) {
