@@ -534,7 +534,7 @@ foreach (DynamicFormEntry::forTicket($ticket->getId()) as $form) {
                                 $recipients);
                        ?>
                     </span>
-                    <a id="choose_all_threads_btn" style="text-decoration:none;" href="#" class="button">Choose all threads</a>
+                    <a id="choose_all_threads_btn" style="text-decoration:none;" href="#" class="button">Choose all threads to reply</a>
                 </td>
                 
 
@@ -978,7 +978,7 @@ $tcount = $ticket->getThreadCount();
                     ?>
 
                     <div class="pull-right forward_thread_block" >
-                    <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();' checked> Forward
+                    <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> Forward
                     </div>
                     <?php 
                         }
