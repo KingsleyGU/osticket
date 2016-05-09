@@ -2075,7 +2075,7 @@ class Ticket {
             $vars['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
         $attachments = array();
-
+        $response = null;
         if($vars['emailreply']==2 ||$vars['emailreply']==1)
         {
             $responseBody = null;
@@ -2095,6 +2095,8 @@ class Ticket {
             {  
                 // $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
                 $responseBody = $responseBody.$response->ht['body'];
+                if($vars['emailreply']==1)
+                    $finalThreadBody = $response->ht['body'];
             }
             foreach ($threadIdList as $threadId) 
             {
