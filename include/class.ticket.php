@@ -2221,7 +2221,7 @@ class Ticket {
             } 
             else
             {
-                $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
+                // $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
                 // $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
                 //     $options);
                 if($recipients=$this->getRecipients())
