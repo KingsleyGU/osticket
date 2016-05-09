@@ -978,7 +978,7 @@ $tcount = $ticket->getThreadCount();
                     ?>
 
                     <div class="pull-right forward_thread_block" >
-                    <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> Forward
+                    <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();' checked> Forward
                     </div>
                     <?php 
                         }
