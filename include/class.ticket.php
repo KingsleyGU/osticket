@@ -2085,7 +2085,8 @@ class Ticket {
             {
                 $threadIdList =  explode(",", $vars['thread_list']);
             }
-
+            $this->logErrors($vars['thread_list']);
+            $this->logErrors(json_encode($threadIdList));
             // if(!($clientThreadEntries = $this->getClientThread()))
             //     return null;
             // foreach ($clientThreadEntries as $clientThreadEntry) {
@@ -2095,8 +2096,8 @@ class Ticket {
             {  
                 // $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
                 $responseBody = $responseBody.$response->ht['body'];
-                if($vars['emailreply']==1)
-                    $finalThreadBody = $response->ht['body'];
+                // if($vars['emailreply']==1)
+                $finalThreadBody = $response->ht['body'];
             }
             foreach ($threadIdList as $threadId) 
             {
