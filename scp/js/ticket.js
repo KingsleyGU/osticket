@@ -425,6 +425,13 @@ var ticket_onload = function($) {
             $('a.collaborator, a.collaborators').click();
 
         }
+        else if($(this).val() == 1)
+        {
+            $(".forward_thread_block").show();
+            $("#choose_all_threads_btn").click();
+            // $('a.collaborator, a.collaborators').click();
+
+        }        
         else
         {
             $("#choose_all_threads_btn").hide();
