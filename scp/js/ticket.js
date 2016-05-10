@@ -430,6 +430,7 @@ var ticket_onload = function($) {
             $(".forward_thread_block").show();
             unselectAllThreadList();
             $("#choose_all_threads_btn").show();
+            $("#ticket-external-receivers").hide();
             // $("#choose_all_threads_btn").click();
             // $('a.collaborator, a.collaborators').click();
 
