@@ -1270,19 +1270,27 @@ function printAttachmentValue()
     alert(JSON.stringify(formData));
 }
 
-$("#choose_all_threads_btn").click(function(){
-        
-       $( ".forward_thread_choice" ).each(function() {
-        $(this).prop('checked', true);
-    }); 
-       checkForwardThreadList();
-       return false;
-})
 function goBackToArticleLink()
 {
     $( ".responza-article-block" ).css("display","none");
     $( ".responza-article-link-content" ).css("display","block");
 }
+function unselectAllThreadList()
+{
+       $( ".forward_thread_choice" ).each(function() {
+            $(this).prop('checked', false);
+        }); 
+       checkForwardThreadList();
+}
+// all the click event actions
+$("#choose_all_threads_btn").click(function(){
+        
+       $( ".forward_thread_choice" ).each(function() {
+            $(this).prop('checked', true);
+        }); 
+       checkForwardThreadList();
+       return false;
+})
 $(".redactor_richtext").click(function(){
     document.execCommand('selectAll',false,null);
 })
