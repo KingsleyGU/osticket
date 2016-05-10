@@ -418,7 +418,7 @@ var ticket_onload = function($) {
         if($(this).val() == 2)
         {
             $(".forward_thread_block").show();
-            // $("#choose_all_threads_btn").show();
+            $("#choose_all_threads_btn").hide();
             $('#disableCollaboratorsButton').click();
             $("#choose_all_threads_btn").click();
             $("#ticket-external-receivers").show();
