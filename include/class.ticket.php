@@ -2076,7 +2076,7 @@ class Ticket {
 
         $attachments = array();
         $response = null;
-        if($vars['emailreply']==2)
+        if($vars['emailreply']==2 ||$vars['emailreply']==1)
         {
             $responseBody = null;
             $finalBody = null;
