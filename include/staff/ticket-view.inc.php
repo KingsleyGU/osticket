@@ -1277,10 +1277,10 @@ function goBackToArticleLink()
 }
 function unselectAllThreadList()
 {
-       $( ".forward_thread_choice" ).each(function() {
-            $(this).prop('checked', false);
-        }); 
-       checkForwardThreadList();
+   $( ".forward_thread_choice" ).each(function() {
+        $(this).prop('checked', false);
+    }); 
+   checkForwardThreadList();
 }
 // all the click event actions
 $("#choose_all_threads_btn").click(function(){
@@ -1372,22 +1372,10 @@ var accepted=aTarget.dispatchEvent (pressEvent);
 <script type="text/javascript">
 var disableCollaborators= function(ticketId)
 {
-    // data = new FormData();
-    // data.append('ticketId', ticketId);
-    // $.ajax({
-    //      type: "POST",
-    //      url: '/scp/disableCollaborators.php',
-    //      data: data,
-    //      success: function(returnData) {
-    //         alert(returnData);
-    //      },
-    //      error: function(returnData) { 
-    //         alert(returnData); 
-    //      } 
-    // });
+
     $.post( '/scp/disableCollaborators.php', { ticketId: ticketId })
       .done(function( data ) {
-        // alert( "Data Loaded: " + data );
+        console.log( "Data Loaded: " + data );
       });
     return false;
 }

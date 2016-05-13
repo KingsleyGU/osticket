@@ -2076,7 +2076,7 @@ class Ticket {
 
         $attachments = array();
         $response = null;
-        if($vars['emailreply']==2 ||$vars['emailreply']==1)
+        if($vars['emailreply']==2)
         {
             $responseBody = null;
             $finalBody = null;
@@ -2145,13 +2145,13 @@ class Ticket {
             $response->setBody(ThreadBody::fromFormattedText($finalThreadBody, $response->ht['format']));
             $response->reload();
         }
-       //  else
-       //  {
-       //      if(!($response = $this->getThread()->addResponse($vars, $errors)))
-       //          return null; 
-       //      if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments))
-       //          return null;
-       // }
+        else
+        {
+            if(!($response = $this->getThread()->addResponse($vars, $errors)))
+                return null; 
+            if(!$this->postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments))
+                return null;
+       }
         return $response;
     }
     function postReplyFromThread($vars, $errors, $alert=true, $claim=true,$response,$attachments) {
