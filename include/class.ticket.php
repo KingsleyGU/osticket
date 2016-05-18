@@ -2096,7 +2096,7 @@ class Ticket {
             {  
                 // $responseBody = $responseBody ."<br>--------------Reply from ".$response->getPoster()."--------------<br>";  
                 $responseBody = $responseBody.$response->ht['body'];
-                if(isset($thisstaff)&&$thisstaff->getSignature()&&$vars['cannedResp']==0)
+                if(isset($thisstaff)&&$thisstaff->getSignature()&&$vars['cannedResp']==0&&sizeof($threadIdList)>1)
                     $responseBody = $responseBody.$thisstaff->getSignature();
                 // if($vars['emailreply']==1)
                 $finalThreadBody = $response->ht['body'];
