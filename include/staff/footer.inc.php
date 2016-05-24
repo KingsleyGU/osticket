@@ -48,7 +48,7 @@ $(document).ready(function(){
     // alert(validURL.length);
     // alert(window.location.hostname + window.location.pathname);
     if(validURL.length>=2)
-        window.location.href = window.location.hostname + window.location.pathname;
+        window.location.href = validURL[0];
 })
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
