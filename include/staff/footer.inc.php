@@ -45,7 +45,7 @@ $(document).ready(function(){
     var currentFullURL = window.location.href;
     alert(currentFullURL);
     var validURL = currentFullURL.split("#");
-    alert(validURL.size());
+    alert(validURL.length());
     if(validURL.length()>=2)
         window.location.replace(validURL[0]);
 })
