@@ -41,6 +41,11 @@ if(is_object($thisstaff) && $thisstaff->isStaff()) { ?>
 </div>
 
 <script type="text/javascript">
+$(document).ready(function(){
+    var currentFullURL = window.location.href;
+    var validURL = currentFullURL.split("#");
+    alert(validURL[0]);
+})
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
     if (!$(this).hasClass('no-pjax')

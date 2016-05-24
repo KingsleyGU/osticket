@@ -2378,6 +2378,7 @@ class Ticket {
                 // $this->logErrors("fileName  ".$f->getName());
                 $stringName = preg_replace('/\s+/', '', $f->getName());
                 // $tempName = $timestamp.basename($stringName, '.'.$extension);
+                // give the file a temp name in case the file name contians some blank space and then the command would take effect
                 $tempName = "tempFile".$attachmentOrder;
                 file_put_contents($pdfConverterPath.$tempName.".".$extension, $fileData);
                 $originalFileName = $pdfConverterPath.$tempName.".".$extension;
@@ -2385,12 +2386,13 @@ class Ticket {
 
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".".$extension;
                 shell_exec($cmd);
+                // this is a command for changing other format to pdf
                 $cmd = 'export HOME=/tmp && /usr/bin/libreoffice5.0 --headless --convert-to pdf --outdir '.$pdfConverterPath." ".$pdfConverterPath.$tempName.".".$extension;
                 // $this->logErrors("2222222 ".$cmd);
                 system($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
-                
+                // this command is for making unformatted files become formatted
                 $cmd ='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile='.$pdfConverterPath.$formattedFile.' '.$pdfConverterPath.$tempName.".pdf";
                 shell_exec($cmd);
                 $cmd = "chmod -R 777 ".$pdfConverterPath.$formattedFile;
