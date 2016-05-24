@@ -2100,6 +2100,7 @@ class Ticket {
                     $responseBody = $responseBody.$thisstaff->getSignature();
                 // if($vars['emailreply']==1)
                 $finalThreadBody = $response->ht['body'];
+                $attachments = array_merge($attachments, $response->getAttachments());
             }
             foreach ($threadIdList as $threadId) 
             {
