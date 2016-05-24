@@ -45,7 +45,8 @@ $(document).ready(function(){
     var currentFullURL = window.location.href;
     alert(currentFullURL);
     var validURL = currentFullURL.split("#");
-    if(validURL.size()>=2)
+    alert(validURL.size());
+    if(validURL.length()>=2)
         window.location.replace(validURL[0]);
 })
 if ($.support.pjax) {
