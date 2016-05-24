@@ -47,7 +47,7 @@ $(document).ready(function(){
     var validURL = currentFullURL.split("#");
     // alert(validURL.length);
     if(validURL.length>=2)
-        window.location.replace(validURL[0]);
+        window.location.replace(window.location.hostname + window.location.pathname);
 })
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
