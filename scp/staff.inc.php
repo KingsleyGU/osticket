@@ -79,11 +79,11 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-    if(isset($_SESSION['previous2PageUrl'])&&(!empty($_SESSION['previous2PageUrl'])))
+    if(isset($_SESSION['previous2PageUrl'])&&$_SESSION['previous2PageUrl'])
     {
         $_SESSION['previous3PageUrl'] = true;
     }
-    if(isset($_SESSION['previousPageUrl'])&&(!empty($_SESSION['previousPageUrl'])))
+    if(isset($_SESSION['previousPageUrl'])&&$_SESSION['previousPageUrl'])
     {
         $_SESSION['previous2PageUrl'] = true;
     }
