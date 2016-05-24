@@ -43,9 +43,9 @@ if(is_object($thisstaff) && $thisstaff->isStaff()) { ?>
 <script type="text/javascript">
 $(document).ready(function(){
     var currentFullURL = window.location.href;
-    alert(currentFullURL);
+    // alert(currentFullURL);
     var validURL = currentFullURL.split("#");
-    alert(validURL.length);
+    // alert(validURL.length);
     if(validURL.length>=2)
         window.location.replace(validURL[0]);
 })
