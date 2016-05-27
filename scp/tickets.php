@@ -520,7 +520,6 @@ if(isSearchOrNot()||($ticket&&$ticket->getStatus() != "open"))
 }
 
 $inc = 'tickets.inc.php';
-$_SESSION['previousPageUrl'] = true;
 if(isset($_REQUEST['thread_detail']))
 {
     $inc = 'thread-detail.php';
@@ -528,8 +527,11 @@ if(isset($_REQUEST['thread_detail']))
 elseif($ticket) {
     $ost->setPageTitle(sprintf(__('Ticket #%s'),$ticket->getNumber()));
     $nav->setActiveSubMenu(-1);
+     if(!isset($_SESSION['previousPageUrl'])||!$_SESSION['previousPageUrl'])
+     {
+        $_SESSION['previousPageUrl'] = false;
+     }
     $inc = 'ticket-view.inc.php';
-    $_SESSION['previousPageUrl'] = false;
     if($_REQUEST['a']=='edit' && $thisstaff->canEditTickets()) {
         $inc = 'ticket-edit.inc.php';
         if (!$forms) $forms=DynamicFormEntry::forTicket($ticket->getId());

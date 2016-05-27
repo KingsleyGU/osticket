@@ -130,18 +130,12 @@ function backToSearchPage()
     }
     else
     {
-      $newUrl = $_SERVER['REQUEST_URI'];
-      // if(isset($_GET['id'])&&$_GET['id']!=0)
-      // {
-      //   $newUrl = $newUrl.'?id='.$_GET['id'];
-      // }
-      header('Location: '.$newUrl);  
-    }
-        
-          
+          $_SESSION['previousPageUrl'] = false;
+          $newUrl = $_SERVER['REQUEST_URI'];
+          header('Location: '.$newUrl);  
 
-// if(isset($previousURL)&&!empty($previousURL))
-     // header("Location: " . $_SESSION['previousPageUrl']);
+    }
+
 }
 // Bootstrap gettext translations as early as possible, but after attempting
 // to sign on the agent
