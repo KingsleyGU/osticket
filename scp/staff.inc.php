@@ -79,15 +79,15 @@ if(isset($thisstaff)&&!empty($thisstaff))
     $originalStaff;
     $originalStaff['isAdmin'] = $thisstaff->isAdmin();
     $originalStaff['assigned_only'] = $thisstaff->showAssignedOnly();
-    if(isset($_SESSION['previous2PageUrl'])&&$_SESSION['previous2PageUrl'])
-    {
-        $_SESSION['previous3PageUrl'] = true;
-    }
-    if(isset($_SESSION['previousPageUrl'])&&$_SESSION['previousPageUrl'])
-    {
-        $_SESSION['previous2PageUrl'] = true;
-    }
-    $_SESSION['previousPageUrl'] = true;
+    // if(isset($_SESSION['previous2PageUrl'])&&$_SESSION['previous2PageUrl'])
+    // {
+    //     $_SESSION['previous3PageUrl'] = true;
+    // }
+    // if(isset($_SESSION['previousPageUrl'])&&$_SESSION['previousPageUrl'])
+    // {
+    //     $_SESSION['previous2PageUrl'] = true;
+    // }
+    
     
     // error_reporting(~0); ini_set('display_errors', 1);
     if(isSearchOrNot())
@@ -118,7 +118,7 @@ function changeStaffToOrigin()
 }
 function backToSearchPage()
 {
-    if(isset($_SESSION['previous3PageUrl'])&&$_SESSION['previous3PageUrl'])
+    if(isset($_SESSION['previousPageUrl'])&&$_SESSION['previousPageUrl'] == true)
     {
         // $history_2_Url = $_SESSION['previous2PageUrl'];
         // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
