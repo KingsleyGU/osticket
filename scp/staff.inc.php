@@ -130,7 +130,6 @@ function backToSearchPage()
     }
     else
     {
-          $_SESSION['previousPageUrl'] = false;
           $newUrl = $_SERVER['REQUEST_URI'];
           header('Location: '.$newUrl);  
 

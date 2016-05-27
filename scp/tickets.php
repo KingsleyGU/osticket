@@ -527,7 +527,7 @@ if(isset($_REQUEST['thread_detail']))
 elseif($ticket) {
     $ost->setPageTitle(sprintf(__('Ticket #%s'),$ticket->getNumber()));
     $nav->setActiveSubMenu(-1);
-     if(!isset($_SESSION['previousPageUrl'])||!$_SESSION['previousPageUrl'])
+     if(!isset($_SERVER['HTTP_REFERER'])||!$_SESSION['previousPageUrl'])
      {
         $_SESSION['previousPageUrl'] = false;
      }
