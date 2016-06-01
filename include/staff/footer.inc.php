@@ -52,8 +52,8 @@ $(document).ready(function(){
     if(window.opener.document.forms[0])
     {
         // window.opener.document.forms[0].submit();
-        // location.href = location.href;
-        location.reload();
+        location.href = location.href;
+        // location.reload();
     }
 })
 if ($.support.pjax) {
