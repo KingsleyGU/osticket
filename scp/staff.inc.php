@@ -123,9 +123,8 @@ function backToSearchPage()
         // $history_2_Url = $_SESSION['previous2PageUrl'];
         // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
         // {
-             echo "<script>  
-                window.opener.document.forms[0].submit();              
-                window.history.go(-3);
+             echo "<script>                
+                window.history.go(-2);
                </script>"; 
         // }
     }
