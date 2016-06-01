@@ -2245,11 +2245,11 @@ class Ticket {
                 // $this->notifyCollaborators($response,
                 //         array('signature' => $signature));
             }
-            else
-            {
-                $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
-                            $options);
-            }
+            // else
+            // {
+            //     $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
+            //                 $options);
+            // }
         }
         return $response;
     }
