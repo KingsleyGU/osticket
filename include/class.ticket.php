@@ -1782,6 +1782,7 @@ class Ticket {
         $rv=0;
         $id=preg_replace("/[^0-9]/", "", $assignId);
         if($assignId[0]=='t') {
+            $this->setStaffId(0);
             $rv=$this->assignToTeam($id, $note, $alert);
         } elseif($assignId[0]=='s' || is_numeric($assignId)) {
             $alert=($alert && $thisstaff && $thisstaff->getId()==$id)?false:$alert; //No alerts on self assigned tickets!!!
