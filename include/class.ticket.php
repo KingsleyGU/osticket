@@ -2225,7 +2225,8 @@ class Ticket {
                 }
                 $this->deleteCollaborators();
             } 
-            elseif($vars['emailreply']==1)
+            else
+                // if($vars['emailreply']==1)
             {
                 // $attachments = $cfg->emailAttachments()?$response->getAttachments():array();
                 // $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
@@ -2244,11 +2245,11 @@ class Ticket {
                 // $this->notifyCollaborators($response,
                 //         array('signature' => $signature));
             }
-            else
-            {
-                $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
-                            $options);
-            }
+            // else
+            // {
+            //     $email->send($this->getOwner(), $msg['subj'], $msg['body'], $attachments,
+            //                 $options);
+            // }
         }
         return $response;
     }
