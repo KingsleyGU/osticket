@@ -125,7 +125,7 @@ function backToSearchPage()
         // {
              echo "<script>   
                 window.opener.document.forms[0].reset();             
-                window.history.go(-3);
+                window.history.go(-2);
                </script>"; 
         // }
     }
