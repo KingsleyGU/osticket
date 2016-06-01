@@ -124,7 +124,7 @@ function backToSearchPage()
         // if(strpos($history_2_Url, 'advsid=')||strpos($history_2_Url, 'a=search'))
         // {
              echo "<script>   
-                window.opener.document.forms[0].reset();             
+            
                 window.history.go(-2);
                </script>"; 
         // }
