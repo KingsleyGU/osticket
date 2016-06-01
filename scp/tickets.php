@@ -527,10 +527,10 @@ if(isset($_REQUEST['thread_detail']))
 elseif($ticket) {
     $ost->setPageTitle(sprintf(__('Ticket #%s'),$ticket->getNumber()));
     $nav->setActiveSubMenu(-1);
-     if(!isset($_SERVER['HTTP_REFERER'])||!$_SESSION['previousPageUrl'])
-     {
-        $_SESSION['previousPageUrl'] = false;
-     }
+     // if(!isset($_SERVER['HTTP_REFERER'])||!$_SESSION['previousPageUrl'])
+     // {
+     //    $_SESSION['previousPageUrl'] = false;
+     // }
     $inc = 'ticket-view.inc.php';
     if($_REQUEST['a']=='edit' && $thisstaff->canEditTickets()) {
         $inc = 'ticket-edit.inc.php';
