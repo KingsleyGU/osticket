@@ -867,8 +867,8 @@ print $note_form->getField('attachments')->render();
                             echo '<OPTGROUP label="'.sprintf(__('Teams (%d)'), count($teams)).'">';
                             $teamId=(!$sid && $ticket->isAssigned())?$ticket->getTeamId():0;
                             foreach($teams as $id => $name) {
-                                if($teamId && $teamId==$id)
-                                    continue;
+                                // if($teamId && $teamId==$id)
+                                //     continue;
 
                                 $k="t$id";
                                 echo sprintf('<option value="%s" %s>%s</option>',
