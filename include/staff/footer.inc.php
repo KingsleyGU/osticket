@@ -42,13 +42,19 @@ if(is_object($thisstaff) && $thisstaff->isStaff()) { ?>
 
 <script type="text/javascript">
 $(document).ready(function(){
-    var currentFullURL = window.location.href;
-    // alert(currentFullURL);
-    var validURL = currentFullURL.split("#");
-    // alert(validURL.length);
-    // alert(window.location.hostname + window.location.pathname);
-    if(validURL.length>=2)
-        window.location.href = validURL[0];
+    // var currentFullURL = window.location.href;
+    // // alert(currentFullURL);
+    // var validURL = currentFullURL.split("#");
+    // // alert(validURL.length);
+    // // alert(window.location.hostname + window.location.pathname);
+    // if(validURL.length>=2)
+    //     window.location.href = validURL[0];
+    if(window.opener.document.forms[0])
+    {
+        // window.opener.document.forms[0].submit();
+        // location.href = location.href;
+        location.reload();
+    }
 })
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
