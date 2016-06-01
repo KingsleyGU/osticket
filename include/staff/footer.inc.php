@@ -41,15 +41,15 @@ if(is_object($thisstaff) && $thisstaff->isStaff()) { ?>
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
-    var currentFullURL = window.location.href;
-    // alert(currentFullURL);
-    var validURL = currentFullURL.split("#");
-    // alert(validURL.length);
-    // alert(window.location.hostname + window.location.pathname);
-    if(validURL.length>=2)
-        window.location.href = validURL[0];
-})
+// $(document).ready(function(){
+//     var currentFullURL = window.location.href;
+//     // alert(currentFullURL);
+//     var validURL = currentFullURL.split("#");
+//     // alert(validURL.length);
+//     // alert(window.location.hostname + window.location.pathname);
+//     if(validURL.length>=2)
+//         window.location.href = validURL[0];
+// })
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
     if (!$(this).hasClass('no-pjax')
