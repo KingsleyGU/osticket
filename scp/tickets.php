@@ -192,8 +192,8 @@ if($_POST && !$errors):
                  } elseif($ticket->isAssigned()) {
                      if($_POST['assignId'][0]=='s' && $id==$ticket->getStaffId())
                          $errors['assignId']=__('Ticket already assigned to the agent.');
-                     elseif($_POST['assignId'][0]=='t' && $id==$ticket->getTeamId())
-                         $errors['assignId']=__('Ticket already assigned to the team.');
+                     // elseif($_POST['assignId'][0]=='t' && $id==$ticket->getTeamId())
+                     //     $errors['assignId']=__('Ticket already assigned to the team.');
                  }
 
                  //Comments are not required on self-assignment (claim)
