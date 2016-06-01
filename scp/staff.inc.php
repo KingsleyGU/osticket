@@ -126,6 +126,7 @@ function backToSearchPage()
              echo "<script>   
             
                 window.history.go(-2);
+                window.location = window.location.href;
                </script>"; 
         // }
     }
