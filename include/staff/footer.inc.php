@@ -49,8 +49,10 @@ $(document).ready(function(){
     // // alert(window.location.hostname + window.location.pathname);
     // if(validURL.length>=2)
     //     window.location.href = validURL[0];
-    location.href = location.href;
+
+    window.opener.document.forms[0].submit(); self.close();
 })
+
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
     if (!$(this).hasClass('no-pjax')
