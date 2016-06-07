@@ -49,7 +49,7 @@ $(document).ready(function(){
     // // alert(window.location.hostname + window.location.pathname);
     // if(validURL.length>=2)
     //     window.location = window.location.href;
-    if(window.opener.document.forms[0])
+    if(window.opener.document.forms[0] != null)
     {
         window.location = window.location.href;
     }
