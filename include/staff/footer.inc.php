@@ -54,8 +54,8 @@ $(document).ready(function(){
     //     window.location = window.location.href;
     // }
     // location.reload(true);
-    if (window.location.href.indexOf('reload')==-1&&window.location.href.indexOf('id=')==-1) {
-     window.location.replace(window.location.href+'&reload');
+    // if (window.location.href.indexOf('reload')==-1&&window.location.href.indexOf('id=')==-1) {
+    //  window.location.replace(window.location.href+'&reload');
 }
 })
 if ($.support.pjax) {
