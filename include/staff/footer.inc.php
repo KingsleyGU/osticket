@@ -49,10 +49,7 @@ $(document).ready(function(){
     // // alert(window.location.hostname + window.location.pathname);
     // if(validURL.length>=2)
     //     window.location = window.location.href;
-    if(window.opener.document.forms[0])
-    {
-        window.location = window.location.href;
-    }
+$(window).bind( 'hashchange', function(e) { location.reload(); });
 })
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
