@@ -2368,7 +2368,9 @@ class Ticket {
         $pdf->Output($pdfConverterPath.$name, 'F');
         $cmd = "chmod -R 777 ".$pdfConverterPath.$name;
         shell_exec($cmd);      
-        $pdf = new mPDF();
+        $pdf = new mPDF('c');
+        $pdf->allow_charset_conversion=true;  // Set by default to TRUE
+        $pdf->charset_in='windows-1252';
         $pdf->SetImportUse();
         $this->importPdfPages($pdf,$pdfConverterPath.$name);
         $attachmentOrder = 1;
