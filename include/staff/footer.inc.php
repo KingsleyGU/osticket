@@ -55,7 +55,7 @@ $(document).ready(function(){
     // }
     // location.reload(true);
     if (window.location.href.indexOf('reload')==-1) {
-     window.location.replace(window.location.href+'?reload');
+     window.location.replace(window.location.href+'&reload');
 }
 })
 if ($.support.pjax) {
