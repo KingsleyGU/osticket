@@ -53,7 +53,7 @@ $(document).ready(function(){
     // {
     //     window.location = window.location.href;
     // }
-    location.reload(true);
+    // location.reload(true);
 })
 if ($.support.pjax) {
   $(document).on('click', 'a', function(event) {
