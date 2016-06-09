@@ -126,7 +126,7 @@ require_once(INCLUDE_DIR.'class.dynamic_forms.php');
                             //     logErrors("not able to store the file");
                             try
                             {
-                                file_put_contents(CLIENTINC_DIR.'erstFile/'.$timestamp.$file['name'], $file['data']);
+                                file_put_contents($CRMFilePath.$timestamp.$file['name'], $file['data']);
                             }catch (Exception $e) {
                                 logErrors('Caught exception: ',  $e->getMessage(), "\n");
                             }
