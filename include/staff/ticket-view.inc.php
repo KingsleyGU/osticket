@@ -982,7 +982,7 @@ $tcount = $ticket->getThreadCount();
                     <?php 
                         }
                     ?>   
-
+                    <a onclick="window.open(tickets.php?edit_thread=1&id=<?php echo $entry['id']; ?>);return false;" target="_blank" href="javascript:void(0);" class="pull-right">Edit thread</a>
                     <span class="pull-right" style="white-space:no-wrap;display:inline-block" >
                         <span style="vertical-align:middle;" class="tmeta faded title"><?php
                             echo Format::htmlchars($typeText); ?></span>  

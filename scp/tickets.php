@@ -522,7 +522,11 @@ if(isSearchOrNot()||($ticket&&$ticket->getStatus() != "open"))
 $inc = 'tickets.inc.php';
 if(isset($_REQUEST['thread_detail']))
 {
-    $inc = 'thread-detail.php';
+    $inc = 'thread-detail.inc.php';
+}
+elseif(isset($_REQUEST['edit_thread']))
+{
+    $inc = 'edit_thread.inc.php';
 }
 elseif($ticket) {
     $ost->setPageTitle(sprintf(__('Ticket #%s'),$ticket->getNumber()));
