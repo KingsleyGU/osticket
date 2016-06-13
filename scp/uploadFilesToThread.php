@@ -1,5 +1,5 @@
 <?php
-require('../staff.inc.php');
+require('staff.inc.php');
 require_once(INCLUDE_DIR.'class.attachment.php');
 require_once(INCLUDE_DIR.'class.thread.php');
 
