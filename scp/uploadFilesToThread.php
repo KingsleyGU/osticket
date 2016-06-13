@@ -11,7 +11,9 @@ if(!isset($_REQUEST['thread_id']))
 }
 elseif(is_numeric($_REQUEST['thread_id'])&&($thread = ThreadEntry::lookup($_REQUEST['thread_id'])))
 {
-	$thread->saveAttachments($_REQUEST['attach:response[]']);
+    foreach ($_REQUEST['attach:response'] as $fileID) {
+    	$thread->saveAttachment($fileID);
+    }
 	header("Location: /osticket/scp/tickets.php?id=".$_REQUEST['ticket_id']);
 }
 
