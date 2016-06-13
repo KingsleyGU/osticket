@@ -1,9 +1,10 @@
 <?php
-require('staff.inc.php');
+require('../staff.inc.php');
 require_once(INCLUDE_DIR.'class.attachment.php');
 require_once(INCLUDE_DIR.'class.thread.php');
 
 error_reporting(~0); ini_set('display_errors', 1);
+// echo "1111";
 if(!isset($_REQUEST['thread_id']))
 {
 	echo ("Thread ID not provided");
