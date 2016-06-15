@@ -6,5 +6,5 @@
     <?php
     print $response_form->getField('attachments')->render();
     ?>
-    <input type='submit' value="Save" class="pull-right">
+    <input type='submit' value="Save">
 </form>
