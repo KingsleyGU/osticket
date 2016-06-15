@@ -363,6 +363,20 @@ if($ticket->isOverdue())
         <td width="50%">
             <table cellspacing="0" cellpadding="4" width="100%" border="0">
                 <?php
+                $systemEmail = $ticket->getSystemEmail();
+                if($systemEmail!=null)
+                {
+                ?>
+                <tr>
+                    <th width="100"><?php echo __('System Mail');?>:</th>
+                    <td>
+                        <?php
+                                echo $systemEmail;
+                        ?>
+                    </td>
+                </tr>               
+                <?php
+                }
                 if($ticket->isOpen()) { ?>
                 <tr>
                     <th width="100"><?php echo __('Assigned To');?>:</th>

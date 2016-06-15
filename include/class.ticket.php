@@ -261,6 +261,14 @@ class Ticket {
         }    
 
     }
+    function getSystemEmail()
+    {
+        $systemEmailID = $this->ht['email_id'];
+        if($systemEmailID != 0 && $email = Email::lookup($systemEmailID))
+            return  $email-> getAddress();     
+        else
+            return null;
+    }
    function getOrderNumber() {
         return $this->ht['orderNumber'];
     }
