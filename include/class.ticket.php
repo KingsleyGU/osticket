@@ -265,7 +265,7 @@ class Ticket {
     {
         $systemEmailID = $this->ht['email_id'];
         if($systemEmailID != 0 && $email = Email::lookup($systemEmailID))
-            return  $email-> getAddress();     
+            return  $email->getName()."(".$email-> getEmail().")";     
         else
             return null;
     }
