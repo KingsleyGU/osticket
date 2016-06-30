@@ -17,6 +17,7 @@
 /*
  * Mainly used as a helper...
  */
+include_once(INCLUDE_DIR.'class.spent_time.php');
 
 class TicketLock {
     var $id;
