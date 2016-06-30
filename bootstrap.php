@@ -86,6 +86,8 @@ class Bootstrap {
         define('FAQ_TOPIC_TABLE',$prefix.'faq_topic');
         define('FAQ_CATEGORY_TABLE',$prefix.'faq_category');
 
+        define('SPENT_TIME_TABLE',$prefix.'spent_time');
+
         define('DRAFT_TABLE',$prefix.'draft');
         define('TICKET_TABLE',$prefix.'ticket');
         define('TICKET_THREAD_TABLE',$prefix.'ticket_thread');

@@ -754,6 +754,7 @@ class Ticket {
       }
       return $attachments;
     }
+    // check if a file extension could be converted to pdf file or not
     function checkAttachmentPrintablility($extension)
     {
         if ($extension == "doc" || $extension == 'docx')

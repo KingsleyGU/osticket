@@ -66,7 +66,10 @@ class TicketLock {
     function getStaffName() {
         return $this->ht['staff'];
     }
-
+    function getTicketId()
+    {
+        return $this->ht['ticket_id'];
+    }
     function getCreateTime() {
         return $this->ht['created'];
     }
@@ -106,6 +109,7 @@ class TicketLock {
     //release aka delete a lock.
     function release() {
         //FORCED release - we don't give a ....
+        Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
         $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE lock_id='.db_input($this->getId()).' LIMIT 1';
         return (db_query($sql) && db_affected_rows());
     }
