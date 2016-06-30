@@ -18,7 +18,6 @@ class Spent_time{
 	{
 		if(is_numeric($staffId)&&is_numeric($ticketId))
 		{
-			if ($created instanceof DateTime) {
 				$currentTime = new DateTime(date('Y-m-d H:i:s'));
 				$interval = $currentTime->diff($created);
 				$elapsed = $interval->format('%y years %m months %a days %h hours %i minutes %S seconds');
@@ -30,7 +29,7 @@ class Spent_time{
 	            .', seconds=TIME_TO_SEC(TIMEDIFF(ended,created))';
 				
 				return db_query($sql)&&db_affected_rows() == 1;
-			}			
+					
 		}
 		return false;
 	}
