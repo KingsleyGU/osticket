@@ -21,7 +21,7 @@ class Spent_time{
 				$sql = 'INSERT INTO '.SPENT_TIME_TABLE
 	            .' SET ticket_id='.db_input($ticketId)
 	            .', staff_id='.db_input($staffId)
-	            .', created='.db_input(new DateTime($created))
+	            .', created='.db_input($created)
 	            .', ended=NOW()'
 	            .', seconds=TIME_TO_SEC(TIMEDIFF(ended,created))';
 				
