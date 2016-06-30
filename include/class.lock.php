@@ -145,6 +145,7 @@ class TicketLock {
 
     //Simply remove ALL locks a user (staff) holds on a ticket(s).
     function removeStaffLocks($staffId, $ticketId=0) {
+        Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
         $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE staff_id='.db_input($staffId);
         if($ticketId)
             $sql.=' AND ticket_id='.db_input($ticketId);
