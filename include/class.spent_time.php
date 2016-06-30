@@ -29,7 +29,7 @@ class Spent_time{
 	            .', ended='.db_input($currentTime)
 	            .', seconds='.db_input($interval);
 				
-				return return db_query($sql)&&db_affected_rows() == 1;
+				return db_query($sql)&&db_affected_rows() == 1;
 			}			
 		}
 		return false;
