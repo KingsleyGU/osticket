@@ -110,7 +110,7 @@ class TicketLock {
     //release aka delete a lock.
     function release() {
         // //FORCED release - we don't give a ....
-        if(is_numeric($this->getStaffId())&&is_numeric($this->getTicketId()))
+        if($this->getCreateTime() instanceof DateTime)
         {
             Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
             $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE lock_id='.db_input($this->getId()).' LIMIT 1';
