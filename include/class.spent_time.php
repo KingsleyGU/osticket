@@ -26,8 +26,8 @@ class Spent_time{
 	            .' SET ticket_id='.db_input($ticketId)
 	            .', staff_id='.db_input($staffId)
 	            .', created='.db_input($created)
-	            .', ended='.db_input($currentTime)
-	            .', seconds='.db_input($interval);
+	            .', ended=NOW()'
+	            .', seconds=TIME_TO_SEC(TIMEDIFF(ended,created))';
 				
 				return db_query($sql)&&db_affected_rows() == 1;
 			}			
