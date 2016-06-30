@@ -109,10 +109,11 @@ class TicketLock {
 
     //release aka delete a lock.
     function release() {
-        //FORCED release - we don't give a ....
-        Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
-        $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE lock_id='.db_input($this->getId()).' LIMIT 1';
-        return (db_query($sql) && db_affected_rows());
+        // //FORCED release - we don't give a ....
+        // Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
+        // $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE lock_id='.db_input($this->getId()).' LIMIT 1';
+        // return (db_query($sql) && db_affected_rows());
+        return false;
     }
 
     /* ----------------------- Static functions ---------------------------*/
@@ -145,12 +146,13 @@ class TicketLock {
 
     //Simply remove ALL locks a user (staff) holds on a ticket(s).
     function removeStaffLocks($staffId, $ticketId=0) {
-        Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
-        $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE staff_id='.db_input($staffId);
-        if($ticketId)
-            $sql.=' AND ticket_id='.db_input($ticketId);
+        // Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
+        // $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE staff_id='.db_input($staffId);
+        // if($ticketId)
+        //     $sql.=' AND ticket_id='.db_input($ticketId);
 
-        return db_query($sql);
+        // return db_query($sql);
+        return false;
     }
 
     //Called  via cron
