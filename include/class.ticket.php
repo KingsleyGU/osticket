@@ -994,8 +994,8 @@ class Ticket {
                 // Send out alerts if comments are included
                 $alert = true;
             }
-            // if($this->getStatusId() == 1)
-            //      $this->setStaffId(0);
+            if($this->getStatusId() == 3)
+                 $this->setStaffId(0);
             $this->logNote(__('Status Changed'), $note, $thisstaff, $alert);
         }
         // Log events via callback
