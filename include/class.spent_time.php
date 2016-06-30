@@ -19,7 +19,7 @@ class Spent_time{
 		if(is_numeric($staffId)&&is_numeric($ticketId))
 		{
 			if ($created instanceof DateTime) {
-				$currentTime = new DateTime();
+				$currentTime = new DateTime(date('Y-m-d H:i:s'));
 				$interval = $currentTime->diff($created);
 				$elapsed = $interval->format('%y years %m months %a days %h hours %i minutes %S seconds');
 				$sql = 'INSERT INTO '.SPENT_TIME_TABLE
