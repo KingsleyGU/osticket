@@ -111,11 +111,11 @@ class TicketLock {
     function release() {
         // //FORCED release - we don't give a ....
  
-            Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
-            $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE lock_id='.db_input($this->getId()).' LIMIT 1';
-            return (db_query($sql) && db_affected_rows());
+        Spent_time::create($this->getStaffId(),$this->getTicketId(),$this->getCreateTime());
+        $sql='DELETE FROM '.TICKET_LOCK_TABLE.' WHERE lock_id='.db_input($this->getId()).' LIMIT 1';
+        return (db_query($sql) && db_affected_rows());
         
-        return false;
+        // return false;
     }
 
     /* ----------------------- Static functions ---------------------------*/
