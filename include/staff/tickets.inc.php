@@ -542,14 +542,18 @@ if ($results) {
                         $threadcount = $ticket->getNumResponses() + $ticket->getNumMessages();
                         $messageCount = 0;
                         $responseCount = 0;
+                        $internalNoteCount = 0;
                         if($ticket->getNumMessages())
                             $messageCount = $ticket->getNumMessages();
                         if($ticket->getNumResponses())
                             $responseCount = $ticket->getNumResponses();
+                        if($ticket->getNumInternalNotes())
+                            $internalNoteCount = $ticket->getNumInternalNotes();
                         if ($threadcount>0)
                         {
                             echo "<small>M(".$messageCount.")</small>&nbsp;";
                             echo "<small>R(".$responseCount.")</small>&nbsp;";
+                            echo "<small>R(".$internalNoteCount.")</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         }
                         if ($row['collaborators'])

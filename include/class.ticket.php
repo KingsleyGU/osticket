@@ -653,11 +653,22 @@ class Ticket {
     function getNumResponses() {
         return $this->getThread()->getNumResponses();
     }
-
     function getNumNotes() {
         return $this->getThread()->getNumNotes();
     }
-
+    function getNumInternalNotes()
+    {
+        $internalNoteCount = 0;
+        $thread=$this->getNotes();
+        foreach($thread as $entry) {
+            $entryBody = $entry['body']->toHtml();
+            $containComment = strpos($entryBody, '<p>');
+            if ($containComment!== false) {
+                $internalNoteCount++;
+            }
+        }
+        return $internalNoteCount;
+    }
     function getMessages() {
         return $this->getThreadEntries('M');
     }
