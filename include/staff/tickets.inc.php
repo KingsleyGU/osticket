@@ -546,10 +546,12 @@ if ($results) {
                         //     $messageCount = $ticket->getNumMessages();
                         // if($ticket->getNumResponses())
                         //     $responseCount = $ticket->getNumResponses();
-                        if ($threadcount>1)
+                        if ($threadcount>0)
+                        {
                             echo "<small>M(".$messageCount.")</small>&nbsp;";
                             echo "<small>R(".$responseCount.")</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
+                        }
                         if ($row['collaborators'])
                             echo '<i class="icon-fixed-width icon-group faded"></i>&nbsp;';
                         if ($row['attachments'])
