@@ -16,7 +16,7 @@
     <input type="hidden" name="thread_id" value="<?php echo $_REQUEST['thread_id'];?>">
 
     <?php echo $threadContent; ?><br>
-    <textarea name="thread_content" style="width:100%;height:150px;"></textarea>
+    <textarea name="thread_content" style="width:100%;height:250px;"></textarea>
 
     <div id="reply_form_attachments" class="attachments">
     <?php
