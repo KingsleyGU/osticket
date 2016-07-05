@@ -16,7 +16,7 @@
     <input type="hidden" name="thread_id" value="<?php echo $_REQUEST['thread_id'];?>">
 
         <?php echo $threadContent; ?>
-    <textarea name="ticket_content"></textarea>
+    <textarea name="thread_content"></textarea>
 
     <div id="reply_form_attachments" class="attachments">
     <?php

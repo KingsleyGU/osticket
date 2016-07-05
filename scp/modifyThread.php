@@ -18,6 +18,7 @@ elseif(is_numeric($_REQUEST['thread_id'])&&($thread = ThreadEntry::lookup($_REQU
 }
 if($_REQUEST['thread_content']!=null&&$_REQUEST['thread_content']!=""&&$thread->setBody($_REQUEST['thread_content']))
 {
+	$thread->reload();
 	header("Location: /scp/tickets.php?id=".$_REQUEST['ticket_id']);
 }
 
