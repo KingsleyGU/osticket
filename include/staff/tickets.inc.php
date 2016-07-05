@@ -553,7 +553,8 @@ if ($results) {
                         {
                             echo "<small>M(".$messageCount.")</small>&nbsp;";
                             echo "<small>R(".$responseCount.")</small>&nbsp;";
-                            echo "<small>N(".$internalNoteCount.")</small>&nbsp;";
+                            if($internalNoteCount>0)
+                                echo "<small>N(".$internalNoteCount.")</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         }
                         if ($row['collaborators'])
