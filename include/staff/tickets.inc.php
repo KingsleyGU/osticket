@@ -548,7 +548,7 @@ if ($results) {
                             $responseCount = $ticket->getNumResponses();
                         if ($threadcount>1)
                             echo "<small>M(".$messageCount.")</small>&nbsp;";
-                            echo "<small>R(".$responseCount.")</small>&nbsp;";
+                            echo "<small>R("."0".")</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         if ($row['collaborators'])
                             echo '<i class="icon-fixed-width icon-group faded"></i>&nbsp;';
