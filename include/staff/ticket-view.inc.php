@@ -997,7 +997,7 @@ $tcount = $ticket->getThreadCount();
                         }
                     ?>   
                     <span class="pull-right" style="white-space:no-wrap;display:inline-block" >
-                        <span style="vertical-align:middle;" class="tmeta faded title"><?php
+                        <span style="vertical-align:middle; color:#ff0000; font-weight:bold;" class="tmeta faded title"><?php
                             echo Format::htmlchars($typeText); ?></span>  
                         <span style="vertical-align:middle;" class="textra"></span>
                         <span style="vertical-align:middle;"
