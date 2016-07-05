@@ -542,13 +542,13 @@ if ($results) {
                         $threadcount = $ticket->getNumResponses() + $ticket->getNumMessages();
                         $messageCount = 0;
                         $responseCount = 0;
-                        if($ticket->getNumMessages())
-                            $messageCount = $ticket->getNumMessages();
-                        if($ticket->getNumResponses())
-                            $responseCount = $ticket->getNumResponses();
+                        // if($ticket->getNumMessages())
+                        //     $messageCount = $ticket->getNumMessages();
+                        // if($ticket->getNumResponses())
+                        //     $responseCount = $ticket->getNumResponses();
                         if ($threadcount>1)
-                            echo "<small>M("."0".")</small>&nbsp;";
-                            echo "<small>R("."0".")</small>&nbsp;";
+                            echo "<small>M(".$messageCount.")</small>&nbsp;";
+                            echo "<small>R(".$responseCount.")</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         if ($row['collaborators'])
                             echo '<i class="icon-fixed-width icon-group faded"></i>&nbsp;';
