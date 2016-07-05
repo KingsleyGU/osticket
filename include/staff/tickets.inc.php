@@ -540,9 +540,15 @@ if ($results) {
                      <?php
                         $ticket = Ticket::lookup($row['ticket_id']);
                         $threadcount = $ticket->getNumResponses() + $ticket->getNumMessages();
+                        $messageCount = 0;
+                        $responseCount = 0;
+                        if(isset($ticket->getNumMessages())&&$ticket->getNumMessages()>0)
+                            $messageCount = $ticket->getNumMessages();
+                        if(isset($ticket->getNumResponses())&&$ticket->getNumResponses()>0)
+                            $responseCount = $ticket->getNumResponses();
                         if ($threadcount>1)
-                            echo "<small>M(".$ticket->getNumMessages().")</small>&nbsp;";
-                            echo "<small>R(".$ticket->getNumResponses().")</small>&nbsp;";
+                            echo "<small>M(".$messageCount.")</small>&nbsp;";
+                            echo "<small>R(".$responseCount.")</small>&nbsp;";
                             echo '<i class="icon-fixed-width icon-comments-alt"></i>&nbsp;';
                         if ($row['collaborators'])
                             echo '<i class="icon-fixed-width icon-group faded"></i>&nbsp;';
