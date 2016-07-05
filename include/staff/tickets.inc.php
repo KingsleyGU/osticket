@@ -542,10 +542,10 @@ if ($results) {
                         $threadcount = $ticket->getNumResponses() + $ticket->getNumMessages();
                         $messageCount = 0;
                         $responseCount = 0;
-                        // if($ticket->getNumMessages())
-                        //     $messageCount = $ticket->getNumMessages();
-                        // if($ticket->getNumResponses())
-                        //     $responseCount = $ticket->getNumResponses();
+                        if($ticket->getNumMessages())
+                            $messageCount = $ticket->getNumMessages();
+                        if($ticket->getNumResponses())
+                            $responseCount = $ticket->getNumResponses();
                         if ($threadcount>0)
                         {
                             echo "<small>M(".$messageCount.")</small>&nbsp;";
