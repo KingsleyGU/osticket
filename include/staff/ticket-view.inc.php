@@ -42,9 +42,9 @@ if (!$errors['err']) {
         //         $lock->getStaffName());
         
         $overviewPageUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        echo "<script>   
-                window.alert('This case has been locked by ".$overviewPageUrl."');
-               </script>"; 
+        // echo "<script>   
+        //         window.alert('This case has been locked by ".$overviewPageUrl."');
+        //        </script>"; 
         header('Location: '.$overviewPageUrl);
 
     }
