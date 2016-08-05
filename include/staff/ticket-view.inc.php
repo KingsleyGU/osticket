@@ -40,10 +40,11 @@ if (!$errors['err']) {
     if ($lock && $lock->getStaffId()!=$thisstaff->getId())
     {    // $errors['err'] = sprintf(__('This ticket is currently locked by %s'),
         //         $lock->getStaffName());
-        echo "<script>   
-                window.alert('This case has been locked by ".$lock->getStaffName()."');
-               </script>"; 
+        
         $overviewPageUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        echo "<script>   
+                window.alert('This case has been locked by ".$overviewPageUrl."');
+               </script>"; 
         header('Location: '.$overviewPageUrl);
 
     }
