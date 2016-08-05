@@ -43,6 +43,9 @@ if (!$errors['err']) {
         echo "<script>   
                 window.alert('This case has been locked by ".$lock->getStaffName()."');
                </script>"; 
+        $overviewPageUrl=strtok($_SERVER["REQUEST_URI"],'?');
+        header('Location: '.$overviewPageUrl);
+
     }
     elseif (($emailBanned=TicketFilter::isBanned($ticket->getEmail())))
         $errors['err'] = __('Email is in banlist! Must be removed before any reply/response');
