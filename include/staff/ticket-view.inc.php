@@ -43,7 +43,7 @@ if (!$errors['err']) {
         
         $overviewPageUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         echo "<script>   
-                window.alert('This case has been locked by ".$overviewPageUrl."');
+                window.alert('This case has been locked by ".$lock->getStaffName()."');
                 window.location = '".$overviewPageUrl."';
                </script>"; 
         // header('Location: '.$overviewPageUrl);
