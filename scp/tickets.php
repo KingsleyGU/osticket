@@ -93,6 +93,7 @@ if($_POST && !$errors):
                             window.alert('This case has been locked by ".$lock->getStaffName()."');
                             window.location = '".$overviewPageUrl."';
                            </script>"; 
+                   exit;
                 }
 
                 //Make sure the email is not banned
