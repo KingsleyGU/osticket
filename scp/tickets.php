@@ -86,7 +86,14 @@ if($_POST && !$errors):
                 //     $errors['response']=__('Response required');
                 //Use locks to avoid double replies
                 if($lock && $lock->getStaffId()!=$thisstaff->getId())
-                    $errors['err']=__('Action Denied. Ticket is locked by someone else!');
+                    // $errors['err']=__('Action Denied. Ticket is locked by someone else!');
+                {
+                    $overviewPageUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+                    echo "<script>   
+                            window.alert('This case has been locked by ".$lock->getStaffName()."');
+                            window.location = '".$overviewPageUrl."';
+                           </script>"; 
+                }
 
                 //Make sure the email is not banned
                 if(!$errors['err'] && TicketFilter::isBanned($ticket->getEmail()))
