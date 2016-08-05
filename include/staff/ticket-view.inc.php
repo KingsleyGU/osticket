@@ -41,7 +41,7 @@ if (!$errors['err']) {
     {    // $errors['err'] = sprintf(__('This ticket is currently locked by %s'),
         //         $lock->getStaffName());
         echo "<script>   
-                window.alert('This case has been locked by ".$lock->getStaffId()."');
+                window.alert('This case has been locked by ".$lock->getStaffName()."');
                </script>"; 
     }
     elseif (($emailBanned=TicketFilter::isBanned($ticket->getEmail())))
