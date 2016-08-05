@@ -38,11 +38,12 @@ elseif ($ticket->isAssigned()
 if (!$errors['err']) {
 
     if ($lock && $lock->getStaffId()!=$thisstaff->getId())
-        // $errors['err'] = sprintf(__('This ticket is currently locked by %s'),
+    {    // $errors['err'] = sprintf(__('This ticket is currently locked by %s'),
         //         $lock->getStaffName());
         echo "<script>   
-                window.alert('This case has been locked by the other users');
+                window.alert('This case has been locked by ".$lock->getStaffId()."');
                </script>"; 
+    }
     elseif (($emailBanned=TicketFilter::isBanned($ticket->getEmail())))
         $errors['err'] = __('Email is in banlist! Must be removed before any reply/response');
     elseif (!Validator::is_valid_email($ticket->getEmail()))
