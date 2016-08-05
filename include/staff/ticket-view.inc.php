@@ -43,7 +43,7 @@ if (!$errors['err']) {
         echo "<script>   
                 window.alert('This case has been locked by ".$lock->getStaffName()."');
                </script>"; 
-        $overviewPageUrl=strtok($_SERVER["REQUEST_URI"],'?');
+        $overviewPageUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         header('Location: '.$overviewPageUrl);
 
     }
