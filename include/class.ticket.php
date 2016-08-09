@@ -2194,6 +2194,8 @@ class Ticket {
         ) {
             $this->setStaffId($thisstaff->getId()); //direct assignment;
         }
+        if($this->getStatusId() == 1)
+            $this->setStaffId(0);
 
         $this->onResponse($response, array('assignee' => $assignee)); //do house cleaning..
 
