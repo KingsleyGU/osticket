@@ -692,6 +692,7 @@ if ($results) {
                 <?php
                 if(($teams=Team::getTeams())) {
                     echo '<OPTGROUP label="'.__('Teams').' ('.count($teams).')">';
+                    sort($teams);
                     foreach($teams as $id => $name) {
                         $k="t$id";
                         echo sprintf('<option value="%s">%s</option>', $k, $name);
@@ -700,6 +701,7 @@ if ($results) {
                 }
                 if(($users=Staff::getStaffMembers())) {
                     echo '<OPTGROUP label="'.sprintf(__('Agents (%d)'),count($users)-1).'">';
+                    sort($users);
                     foreach($users as $id => $name) {
                         if ($id == $thisstaff->getId())
                             continue;
