@@ -717,8 +717,8 @@ if ($results) {
                     foreach($users as $id => $name)
                     {
                         $usersForSorting[$id] = null;
-                        $usersForSorting['userName'] = $name;
-                        $usersForSorting['userId'] = $id;
+                        $usersForSorting[$id]['userName'] = $name;
+                        $usersForSorting[$id]['userId'] = $id;
                         $userNames[$id] = $name;
                     }
                     array_multisort($userNames,SORT_ASC,$usersForSorting);
