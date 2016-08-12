@@ -693,9 +693,19 @@ if ($results) {
                 if(($teams=Team::getTeams())) {
                     echo '<OPTGROUP label="'.__('Teams').' ('.count($teams).')">';
                     // sort($teams);
-                    foreach($teams as $id => $name) {
-                        $k="t$id";
-                        echo sprintf('<option value="%s">%s</option>', $k, $name);
+                    $teamsForSorting;
+                    $teamNames;
+                    foreach($teams as $id => $name)
+                    {
+                        $teamsForSorting[$id] = null;
+                        $teamsForSorting[$id]['teamName'] = $name;
+                        $teamsForSorting[$id]['teamId'] = $id;
+                        $teamNames[$id] = $name;
+                    }
+                    array_multisort($teamNames, SORT_ASC, $teamsForSorting);
+                    foreach($teamsForSorting as $id => $team) {
+                        $k="t".$team['teamId'];
+                        echo sprintf('<option value="%s">%s</option>', $k, $team['teamName']);
                     }
                     echo '</OPTGROUP>';
                 }
