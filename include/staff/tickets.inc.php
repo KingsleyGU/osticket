@@ -712,11 +712,21 @@ if ($results) {
                 if(($users=Staff::getStaffMembers())) {
                     echo '<OPTGROUP label="'.sprintf(__('Agents (%d)'),count($users)-1).'">';
                     // sort($users);
-                    foreach($users as $id => $name) {
+                    $usersForSorting;
+                    $usersNames;
+                    foreach($users as $id => $name)
+                    {
+                        $usersForSorting[$id] = null;
+                        $usersForSorting['userName'] = $name;
+                        $usersForSorting['userId'] = $id;
+                        $userNames[$id] = $name;
+                    }
+                    array_multisort($userNames,SORT_ASC,$usersForSorting);
+                    foreach($usersForSorting as $id => $user) {
                         if ($id == $thisstaff->getId())
                             continue;
-                        $k="s$id";
-                        echo sprintf('<option value="%s">%s</option>', $k, $name);
+                        $k="s".$user['userId'];
+                        echo sprintf('<option value="%s">%s</option>', $k, $user['userName']);
                     }
                     echo '</OPTGROUP>';
                 }
