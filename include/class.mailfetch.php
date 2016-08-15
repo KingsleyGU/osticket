@@ -357,6 +357,13 @@ class MailFetcher {
             if (!$header['mid'])
                 $header['mid'] = '<' . md5($header['header']) . '@local>';
         }
+        $emailSubject = $header['subject'];
+        $digstPos = strrpos($emailSubject, " (DIGST Id nr");
+        if($digstPos !== false)
+        {   
+            $filteredEmailSubject = substr($emailSubject, 0,$digstPos);
+            $header['subject'] = $filteredEmailSubject;
+        }
 
         return $header;
     }
