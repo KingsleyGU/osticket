@@ -358,9 +358,9 @@ if ($results) {
             <td><input type="text" id="basic-ticket-search" name="query"
             size=30 value="<?php echo Format::htmlchars($_REQUEST['query'],
             true); ?>"
-                autocomplete="off" autocorrect="off" autocapitalize="off"></td>
-            <td><input type="submit" name="basic_search" class="button" value="<?php echo __('Search'); ?>"></td>
-            <td>&nbsp;&nbsp;<a href="#" id="go-advanced">[<?php echo __('advanced'); ?>]</a>&nbsp;<i class="help-tip icon-question-sign" href="#advanced"></i></td>
+                autocomplete="off" autocorrect="off" autocapitalize="off">
+            <input type="submit" name="basic_search" class="button" value="<?php echo __('Search'); ?>">
+            &nbsp;&nbsp;<a href="#" id="go-advanced">[<?php echo __('advanced'); ?>]</a>&nbsp;<i class="help-tip icon-question-sign" href="#advanced"></i></td>
         </tr>
     </table>
     </form>
