@@ -990,7 +990,6 @@ $tcount = $ticket->getThreadCount();
                     <?php
                         $click_href = "tickets.php?edit_thread=1&ticket_id=".$_REQUEST['id']."&thread_id=".$entry['id']; 
                     ?>
-                    <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit</a>
 
                     <?php 
                         $typeText = "";
@@ -1002,7 +1001,7 @@ $tcount = $ticket->getThreadCount();
                         if($entry['thread_type'] != 'N')
                         {
                     ?>
-
+                    <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit</a>
                     <div class="pull-right forward_thread_block" >
                     <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> <span>Forward</span>
                     </div>
