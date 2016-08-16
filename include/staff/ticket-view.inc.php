@@ -1004,7 +1004,10 @@ $tcount = $ticket->getThreadCount();
                     </div>
                     <?php 
                         }
+                        $click_href = "tickets.php?edit_thread=1&ticket_id=".$_REQUEST['id']."&thread_id=".$entry['id'];
                     ?>   
+                    <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit Thread </a>
+  
                     <span class="pull-right" style="white-space:no-wrap;display:inline-block" >
                         <span style="vertical-align:middle; color:#ff0000; font-weight:bold;" class="tmeta faded title"><?php
                             echo Format::htmlchars($typeText); ?></span>  
