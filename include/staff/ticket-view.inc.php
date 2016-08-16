@@ -437,10 +437,10 @@ if($ticket->isOverdue())
         </td>
         <td width="50%">
             <table cellspacing="0" cellpadding="4" width="100%" border="0">
-<!--                 <tr>
+                <tr>
                     <th width="100"><?php echo __('Help Topic');?>:</th>
                     <td><?php echo Format::htmlchars($ticket->getHelpTopic()); ?></td>
-                </tr> -->
+                </tr>
                 <tr>
                     <th nowrap><?php echo __('Last Message');?>:</th>
                     <td><?php echo Format::db_datetime($ticket->getLastMsgDate()); ?></td>
