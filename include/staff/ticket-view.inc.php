@@ -990,7 +990,7 @@ $tcount = $ticket->getThreadCount();
                     <?php
                         $click_href = "tickets.php?edit_thread=1&ticket_id=".$_REQUEST['id']."&thread_id=".$entry['id']; 
                     ?>
-                    <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit Thread </a>
+                    <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit</a>
 
                     <?php 
                         $typeText = "";
@@ -1017,8 +1017,7 @@ $tcount = $ticket->getThreadCount();
                             class="tmeta faded title"><?php
                             echo Format::htmlchars($entry['name'] ?: $entry['poster']); ?></span>
                     </span>  
-                  <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit Thread </a>
-                    
+ 
                 </div>
                 </th>
             </tr>
