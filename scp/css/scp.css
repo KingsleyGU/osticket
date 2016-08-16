@@ -135,7 +135,15 @@ div#header a {
     padding:8px;
     text-align:center;
 }
-
+#basic-ticket-search
+{
+    min-height: 40px;
+    border: none;
+    border-radius: 2px;
+    background-color: #fff;
+    border: #999 1px solid;
+    min-width: 280px;
+}
 #nav, #sub_nav {
     clear:both;
     margin:0;
