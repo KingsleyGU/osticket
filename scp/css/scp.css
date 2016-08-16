@@ -137,14 +137,14 @@ div#header a {
 }
 #basic-ticket-search
 {
-    min-height: 30px;
+    min-height: 25px;
     padding-left: 5px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #fff;
     border: #999 1px solid;
     min-width: 280px;
-    font-size: 20px;
+    font-size: 18px;
 }
 #nav, #sub_nav {
     clear:both;
