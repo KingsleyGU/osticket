@@ -981,7 +981,7 @@ ul.tabs li a {
     height: 500px;
 }
 ul.tabs li a.active {
-    color:#fff;
+    color:#fff !important;
     background-color:#337ab7;
     border-bottom:none;
     bottom: 0;
