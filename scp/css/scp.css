@@ -991,7 +991,7 @@ ul.tabs li a.active {
     width: 100%;
     height:900px;
 }
-#response_options > form {
+#response_options > form, #response_options > iframe{
     padding:20px 20px;
     background:#f9f9f9;
     border:2px solid #337ab7;
