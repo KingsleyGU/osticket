@@ -736,7 +736,7 @@ print $response_form->getField('attachments')->render();
                     <div>
                         <div class="faded" style="padding-left:0.15em"><?php
                         echo __('Note title - summary of the note (optional)'); ?></div>
-                        <input type="text" name="title" id="title" size="60" value="<?php echo $info['title']; ?>" >
+                        <input type="text" name="title" id="title" size="60" value="<?php echo $info['title']; ?>" class="postNoteTitle">
                         <br/>
                         <span class="error">&nbsp;<?php echo $errors['title']; ?></span>
                     </div>
