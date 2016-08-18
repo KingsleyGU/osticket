@@ -359,7 +359,7 @@ if ($results) {
             size=30 value="<?php echo Format::htmlchars($_REQUEST['query'],
             true); ?>"
                 autocomplete="off" autocorrect="off" autocapitalize="off">
-            <input type="submit" name="basic_search" class="button" value="<?php echo __('Search'); ?>" style="margin:0px 15px;">
+            <input type="submit" name="basic_search" class="button action-button" value="<?php echo __('Search'); ?>" style="margin:0px 15px;">
             &nbsp;&nbsp;<a href="#" id="go-advanced">[<?php echo __('advanced'); ?>]</a>&nbsp;<i class="help-tip icon-question-sign" href="#advanced"></i></td>
         </tr>
     </table>
