@@ -956,7 +956,7 @@ ul.tabs li a {
     padding: 5px;
     height: 28px;
     line-height: 28px;
-    color: #444;
+    color: #337ab7 !important;
     display: inline-block;
     outline: none;
     position: relative;
