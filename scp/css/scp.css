@@ -581,6 +581,10 @@ a.print {
 
 #actions button, .button { padding:2px 5px 3px; margin-right:10px;  color:#777;}
 
+.tabs form select{
+    padding: 4px 0px;
+    border-radius: 4px;
+}
 .btn_sm {
     padding:5px 10px;
     font-size:14px;
