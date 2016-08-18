@@ -993,7 +993,9 @@ ul.tabs li a.active {
 #response_options > form {
     padding:10px 5px;
     background:#f9f9f9;
-    border:1px solid #337ab7;
+    border:2px solid #337ab7;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #response_options > form > table {
