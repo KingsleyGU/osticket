@@ -588,6 +588,7 @@ a.print {
 }
 #response_options form select option{
     margin: 2px;
+    line-height: 15px;
 }
 .btn_sm {
     padding:5px 10px;
