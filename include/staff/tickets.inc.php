@@ -392,7 +392,7 @@ if ($results) {
                <div id="getTicketsIdBlock">
                </div>
                <button id="tickets-department-transfer-submit" class="action-button pull-right tickets-action"><?php echo __('Transfer'); ?></button>
-                <select id="transferDeptId" name="transferDeptId">
+                <select id="transferDeptId" name="transferDeptId" style="padding:5px 0px; border-radius:5px;">
                     <option value="0" selected="selected">&mdash; <?php echo __('Transfer to Department');?> &mdash;</option>
                     <?php
                     if($depts=Dept::getDepartments()) {
