@@ -823,7 +823,6 @@ h2 .reload {
 #threads li a {
     display:inline-block;
     width:auto;
-    height:30px;
     line-height:30px;
     border-top:1px solid #F4FAFF;
     padding:0 10px 0 32px;
@@ -831,7 +830,6 @@ h2 .reload {
 }
 
 #threads li a.active {
-    height:29px;
     background-color:#fff;
     border:1px solid #aaa;
     border-bottom:none;
