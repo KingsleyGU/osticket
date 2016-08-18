@@ -592,7 +592,7 @@ a.print {
 }
 .btn_sm {
     padding:5px 10px;
-    font-size:14px;
+    font-size:16px;
     background:url(../images/btn_sm_bg.png) top left repeat-x #f90;
     border:1px solid #e80;
     border-radius: 5px;
