@@ -584,6 +584,7 @@ a.print {
 #response_options form select{
     padding: 4px 0px;
     border-radius: 4px;
+    margin: 3px 0px;
 }
 .btn_sm {
     padding:5px 10px;
