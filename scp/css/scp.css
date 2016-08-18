@@ -956,7 +956,7 @@ ul.tabs li a {
     font-weight:bold;
     padding:5px;
     height:28px;
-    line-height:20px;
+    line-height:28px;
     color:#444;
     display:inline-block;
     outline:none;
@@ -981,7 +981,7 @@ ul.tabs li a {
     height: 500px;
 }
 ul.tabs li a.active {
-    color:#184E81;
+    color:#fff;
     background-color:#337ab7;
     border-bottom:none;
     bottom: 0;
