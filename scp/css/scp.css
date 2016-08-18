@@ -582,12 +582,14 @@ a.print {
 #actions button, .button { padding:2px 5px 3px; margin-right:10px;  color:#777;}
 
 .btn_sm {
-    padding:2px 5px;
-    font-size:9pt;
+    padding:5px 10px;
+    font-size:14px;
     background:url(../images/btn_sm_bg.png) top left repeat-x #f90;
     border:1px solid #777;
+    border-radius: 5px;
     color:#fff;
     font-weight:bold;
+    margin-right: 20px;
 }
 
 .btn:hover, .btn_sm:hover {
