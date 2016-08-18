@@ -1003,7 +1003,7 @@ $tcount = $ticket->getThreadCount();
                     ?>
                     <a onclick='window.open("<?php echo $click_href; ?>")' target="_blank" href="javascript:void(0);" class="pull-right" style="margin:0px 10px 0px 15px;">Edit</a>
                     <div class="pull-right forward_thread_block" >
-                    <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> <span>Forward</span>
+                    <input type="checkbox"  name="forward_thread_choice" class="forward_thread_choice" value="<?php echo $entry['id']; ?>" onclick='checkForwardThreadList();'> <span style="display:inline-block; margin-top:-8px;">Forward</span>
                     </div>
                     <?php 
                         }             
