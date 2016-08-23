@@ -50,7 +50,7 @@ require(STAFFINC_DIR.'header.inc.php');
             <option value="+3 months"><?php echo __('One Quarter');?></option>
         </select>
     </label>
-    <button class="btn" type="submit"><?php echo __('Refresh');?></button>
+    <button class="action-button btn-success" type="submit"><?php echo __('Refresh');?></button>
 </form>
 
 <!-- Create a graph and fetch some data to create pretty dashboard -->
