@@ -626,10 +626,10 @@ if ($results) {
     <hr style="margin-top:1em"/>
     <p class="full-width">
         <span class="buttons pull-left">
-            <input type="button" value="<?php echo __('No, Cancel');?>" class="close">
+            <input type="button" class="action-button btn-success" value="<?php echo __('No, Cancel');?>" class="close">
         </span>
         <span class="buttons pull-right">
-            <input type="button" value="<?php echo __('Yes, Do it!');?>" class="confirm">
+            <input type="button" class="action-button btn-danger" value="<?php echo __('Yes, Do it!');?>" class="confirm">
         </span>
      </p>
     <div class="clear"></div>
@@ -787,11 +787,11 @@ if ($results) {
         <div id="result-count" class="clear"></div>
         <p>
             <span class="buttons pull-right">
-                <input type="submit" value="<?php echo __('Search');?>">
+                <input type="submit" class="action-button btn-success" value="<?php echo __('Search');?>">
             </span>
             <span class="buttons pull-left">
-                <input type="reset" value="<?php echo __('Reset');?>">
-                <input type="button" value="<?php echo __('Cancel');?>" class="close">
+                <input type="reset" class="action-button btn-danger" value="<?php echo __('Reset');?>">
+                <input type="button" class="action-button btn-warning" value="<?php echo __('Cancel');?>" class="close">
             </span>
             <span class="spinner">
                 <img src="./images/ajax-loader.gif" width="16" height="16">
