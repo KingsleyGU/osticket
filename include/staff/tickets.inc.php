@@ -378,7 +378,7 @@ if ($results) {
 
             <?php
             if ($thisstaff->canDeleteTickets()) { ?>
-            <a id="tickets-delete" class="action-button pull-right tickets-action"
+            <a id="tickets-delete" class="action-button pull-right tickets-action btn-danger"
                 href="#tickets/status/delete"><i
             class="icon-trash"></i> <?php echo __('Delete'); ?></a>
             <?php
@@ -391,7 +391,7 @@ if ($results) {
             <form id="transferMultipleTicketToDepartment" action="/scp/transferTicketToDepartment.php" style="float:right;">
                <div id="getTicketsIdBlock">
                </div>
-               <button id="tickets-department-transfer-submit" class="action-button pull-right tickets-action"><?php echo __('Transfer'); ?></button>
+               <button id="tickets-department-transfer-submit" class="action-button pull-right tickets-action btn-primary"><?php echo __('Transfer'); ?></button>
                 <select id="transferDeptId" name="transferDeptId" style="padding:4px 0px; border-radius:4px;">
                     <option value="0" selected="selected">&mdash; <?php echo __('Transfer to Department');?> &mdash;</option>
                     <?php
