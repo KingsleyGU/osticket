@@ -18,7 +18,7 @@ $actions= array(
     class="action-button pull-right"
     data-dropdown="#action-dropdown-statuses">
     <i class="icon-caret-down pull-right"></i>
-    <a class="tickets-action"
+    <a class="tickets-action btn-info"
         href="#statuses"><i
         class="icon-flag"></i> <?php
         echo __('Change Status'); ?></a>
