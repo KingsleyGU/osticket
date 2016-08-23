@@ -1174,10 +1174,10 @@ $tcount = $ticket->getThreadCount();
         <hr style="margin-top:1em"/>
         <p class="full-width">
             <span class="buttons pull-left">
-                <input type="button" value="<?php echo __('Cancel');?>" class="close">
+                <input type="button" class="action-button btn-warning" value="<?php echo __('Cancel');?>" class="close">
             </span>
             <span class="buttons pull-right">
-                <input type="submit" value="<?php echo __('OK');?>">
+                <input type="submit" class="action-button btn-danger" value="<?php echo __('OK');?>">
             </span>
          </p>
     </form>
