@@ -1088,11 +1088,11 @@ $tcount = $ticket->getThreadCount();
         <hr style="margin-top:3em"/>
         <p class="full-width">
             <span class="buttons pull-left">
-                <input type="reset" value="<?php echo __('Reset');?>">
-                <input type="button" value="<?php echo __('Cancel');?>" class="close">
+                <input type="reset" class="action-button btn-danger" value="<?php echo __('Reset');?>">
+                <input type="button" class="action-button btn-warning" value="<?php echo __('Cancel');?>" class="close">
             </span>
             <span class="buttons pull-right">
-                <input type="submit" value="<?php echo __('Print');?>">
+                <input type="submit" class="action-button btn-success" value="<?php echo __('Print');?>">
             </span>
          </p>
     </form>
@@ -1120,7 +1120,7 @@ $tcount = $ticket->getThreadCount();
         <hr style="margin-top:3em"/>
         <p class="full-width">
             <span class="buttons pull-right">
-                <input type="submit" value="<?php echo __('Print');?>" >
+                <input type="submit" class="action-button btn-success" value="<?php echo __('Print');?>" >
             </span>
          </p>
     </form>
