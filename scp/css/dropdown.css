@@ -108,7 +108,7 @@
 }
 .action-button span,
 .action-button a {
-  color: #777;
+  /*color: #777;*/
   display: inline-block;
   float: left;
 }
