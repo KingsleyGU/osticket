@@ -89,7 +89,7 @@
   -moz-background-clip: padding;
   background-clip: padding-box;
   display: inline-block;
-  border: 1px solid #aaa;
+  border: none;
   cursor: pointer;
   font-size: 14px;
   overflow: hidden;
@@ -100,7 +100,7 @@
   background-image: -ms-linear-gradient(top, #efefef 0%, #dddddd 100%);
   background-image: -o-linear-gradient(top, #efefef 0%, #dddddd 100%);
   background-image: linear-gradient(top, #efefef 0%, #dddddd 100%);*/
-  padding: 3px 6px;
+  padding: 5px 10px;
   text-decoration: none !important;
   line-height:18px;
   margin-left:5px;
