@@ -84,7 +84,7 @@ $_SESSION['users_qs_'.$qhash] = $query;
             <tr>
                 <td><input type="text" id="basic-user-search" name="query" size=30 value="<?php echo Format::htmlchars($_REQUEST['query']); ?>"
                 autocomplete="off" autocorrect="off" autocapitalize="off"></td>
-                <td><input type="submit" name="basic_search" class="button" value="<?php echo __('Search'); ?>"></td>
+                <td><input type="submit" name="basic_search" class="action-button btn-success" value="<?php echo __('Search'); ?>"></td>
                 <!-- <td>&nbsp;&nbsp;<a href="" id="advanced-user-search">[advanced]</a></td> -->
             </tr>
         </table>
