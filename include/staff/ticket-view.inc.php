@@ -708,8 +708,8 @@ print $response_form->getField('attachments')->render();
          </tbody>
         </table>
         <p  style="padding:0 165px;">
-            <input class="btn_sm" type="submit" value="<?php echo __('Post Reply');?>" onClick="this.form.submit(); this.disabled=true;">
-            <input class="btn_sm" type="reset" value="<?php echo __('Reset');?>">
+            <input class="btn_sm btn-warning" type="submit" value="<?php echo __('Post Reply');?>" onClick="this.form.submit(); this.disabled=true;">
+            <input class="btn_sm btn-warning" type="reset" value="<?php echo __('Reset');?>">
         </p>
     </form>
     <?php
