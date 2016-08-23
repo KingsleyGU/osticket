@@ -1536,7 +1536,7 @@ time {
     text-align:center;
 }
 
-.dialog input[type="submit"],
+/*.dialog input[type="submit"],
 .dialog input[type="reset"],
 .dialog input[type="button"] {
     display:inline-block;
@@ -1548,7 +1548,7 @@ time {
     padding:0 10px;
     background: url('../images/grey_btn_bg.png?1312910883') top left repeat-x;
     color: #333;
-}
+}*/
 
 .dialog input[type="reset"],
 .dialog input[type="button"] {
