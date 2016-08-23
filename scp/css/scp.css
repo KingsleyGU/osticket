@@ -949,7 +949,7 @@ ul.tabs li {
 }
 
 ul.tabs li a {
-    min-width: 200px;
+    min-width: 150px;
     font-weight: bold;
     padding: 5px;
     height: 28px;
