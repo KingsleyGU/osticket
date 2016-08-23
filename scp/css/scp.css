@@ -2043,7 +2043,7 @@ table.custom-info td {
     border-color: #ac2925;
 }
 .btn-info {
-    color: #fff !important;
+    color: #fff;
     background-color: #5bc0de;
     border-color: #46b8da;
 }
