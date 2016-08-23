@@ -447,9 +447,9 @@ a.Icon:hover {
     background:#fff;
 }
 
-#content a:not(.re-icon) {
+/*#content a:not(.re-icon) {
     color:#184E81;
-}
+}*/
 
 #footer {
     clear:both;
