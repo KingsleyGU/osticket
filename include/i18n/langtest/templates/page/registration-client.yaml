@@ -1,4 +1,0 @@
----
-notes: 'Denne skabelon definerer at e-mails sendes til klienter, når deres konto er blevet oprettet i portal klienten eller af en agent på deres vegne. Denne e-mail tjener som en bekræftelse af e-mail-adresse. Brug venligst %{link} et eller andet sted i body.'
-name: 'Velkommen til %{company.name}'
-body: '<h3><strong>Hej %{recipient.name.first},</strong></h3> <div> Vi har oprettet en konto til dig i vores helpdesk: %{url}.<br /> <br /> Venligst følg linket nedenunder for at bekræfte din konto og få adgang til dine bestillinger.<br /> <br /> <a href="%{link}">%{link}</a><br /> <br /> <em style="font-size: small">Med venlig hilsen<br /> %{company.name}</em> </div>'

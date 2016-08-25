@@ -1,7 +1,0 @@
----
-notes: |
-  Sendt til brugerne, når de har overskredet den maksimalt åben bestillings grænse. den
-  grænse er konfigurerbar i Admin Panel, og er defineret ved det antal
-  af bestillinger der er åben ved en bestemt e-mail-adresse.
-subject: Åbne bestillinger grænse er nået
-body: '<h3><strong>Kære %{ticket.name.first},</strong></h3> Du har nået det maksimale antal åbne bestillinger som er tilladt. Hvis du vil åbne en anden bestilling, skal en af dine ventende bestillinger være lukket. For at opdatere eller tilføje kommentarer til en åben bestilling skal du blot <a href="%{url}/tickets.php?e=%{ticket.email}"> logge ind på vores helpdesk</a>. <br><br>Tak, <br/> Support Ticket System'

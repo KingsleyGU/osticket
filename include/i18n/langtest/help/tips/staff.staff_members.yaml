@@ -1,7 +1,0 @@
----
-staff_members:
-  title: Medarbejdere
-  content: 'Følgende tabel viser resultaterne af filteret ovenfor. Hvis ikke filterindstillinger er valgt, så er alle <span class="doc-desc-title"> Agent</span> (personale) <span class="doc-desc-title"> medlemmer</span> vises, og brudt op af sider. Se afsnittet sider nedenfor for at navigere gennem flere resultater.'
-status:
-  title: Status
-  content: 'Dette vil vise om <span class="doc-desc-title"> Agenten</span> er låst, aktiv eller aktiv (ferie).'
